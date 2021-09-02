@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <Folder Include="Data\Repositories\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
 
 </Project>

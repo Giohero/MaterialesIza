@@ -8,6 +8,10 @@
     public class DataContext : IdentityDbContext<User>
     {
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Provider> Providers { get; set; }
+
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
 
