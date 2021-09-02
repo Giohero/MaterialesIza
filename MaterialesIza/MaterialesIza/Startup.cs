@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using MaterialesIza.Helpers;
 
 namespace MaterialesIza
 {
@@ -43,6 +44,12 @@ namespace MaterialesIza
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+            
+            services.AddTransient<Seeder>();
+
+            services.AddScoped<IUserHelper, UserHelper>();
+            services.AddScoped<IImageHelper, ImageHelper>();
+
             services.AddControllersWithViews();
         }
 
