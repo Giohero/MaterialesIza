@@ -8,6 +8,11 @@
     public class DataContext : IdentityDbContext<User>
     {
         public DbSet<Admin> Admins { get; set; }
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        {
+
+        }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             var cascadeFKs = builder.Model
