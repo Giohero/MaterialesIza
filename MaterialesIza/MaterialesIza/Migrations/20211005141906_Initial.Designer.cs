@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MaterialesIza.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210902191537_Inicial")]
-    partial class Inicial
+    [Migration("20211005141906_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,12 +28,12 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("userId")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("userId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Admins");
                 });
@@ -45,12 +45,12 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("userId")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("userId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Clients");
                 });
@@ -62,14 +62,102 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("userId")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("userId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.OrderDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("OrderDetails");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductTypeId");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.ProductType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("productTypes");
                 });
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.Provider", b =>
@@ -79,14 +167,135 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("userId")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("userId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Providers");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.Purchase", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ProviderId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProviderId");
+
+                    b.ToTable("Purchases");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.PurchaseDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PurchaseId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("PurchaseId");
+
+                    b.ToTable("purchaseDetails");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.Sale", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Sales");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.SaleDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SaleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("SaleId");
+
+                    b.ToTable("SaleDetails");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.Service", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ServiceTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ServiceTypeId");
+
+                    b.ToTable("Services");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.ServiceType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("TypeService")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ServiceTypes");
                 });
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.User", b =>
@@ -299,30 +508,106 @@ namespace MaterialesIza.Migrations
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.Admin", b =>
                 {
-                    b.HasOne("MaterialesIza.Data.Entities.User", "user")
+                    b.HasOne("MaterialesIza.Data.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("userId");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.Client", b =>
                 {
-                    b.HasOne("MaterialesIza.Data.Entities.User", "user")
+                    b.HasOne("MaterialesIza.Data.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("userId");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.Employee", b =>
                 {
-                    b.HasOne("MaterialesIza.Data.Entities.User", "user")
+                    b.HasOne("MaterialesIza.Data.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("userId");
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.Order", b =>
+                {
+                    b.HasOne("MaterialesIza.Data.Entities.Client", "Client")
+                        .WithMany("Orders")
+                        .HasForeignKey("ClientId");
+
+                    b.HasOne("MaterialesIza.Data.Entities.Employee", "Employee")
+                        .WithMany("Orders")
+                        .HasForeignKey("EmployeeId");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.OrderDetail", b =>
+                {
+                    b.HasOne("MaterialesIza.Data.Entities.Order", "Order")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("OrderId");
+
+                    b.HasOne("MaterialesIza.Data.Entities.Service", "Service")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("ServiceId");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.Product", b =>
+                {
+                    b.HasOne("MaterialesIza.Data.Entities.ProductType", "ProductType")
+                        .WithMany("Products")
+                        .HasForeignKey("ProductTypeId");
                 });
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.Provider", b =>
                 {
-                    b.HasOne("MaterialesIza.Data.Entities.User", "user")
+                    b.HasOne("MaterialesIza.Data.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("userId");
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.Purchase", b =>
+                {
+                    b.HasOne("MaterialesIza.Data.Entities.Provider", "Provider")
+                        .WithMany("Purchases")
+                        .HasForeignKey("ProviderId");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.PurchaseDetail", b =>
+                {
+                    b.HasOne("MaterialesIza.Data.Entities.Product", "Product")
+                        .WithMany("PurchaseDetails")
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("MaterialesIza.Data.Entities.Purchase", "Purchase")
+                        .WithMany("PurchaseDetails")
+                        .HasForeignKey("PurchaseId");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.Sale", b =>
+                {
+                    b.HasOne("MaterialesIza.Data.Entities.Client", "Client")
+                        .WithMany("Sales")
+                        .HasForeignKey("ClientId");
+
+                    b.HasOne("MaterialesIza.Data.Entities.Employee", "Employee")
+                        .WithMany("Sales")
+                        .HasForeignKey("EmployeeId");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.SaleDetail", b =>
+                {
+                    b.HasOne("MaterialesIza.Data.Entities.Product", "Product")
+                        .WithMany("SaleDetails")
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("MaterialesIza.Data.Entities.Sale", "Sale")
+                        .WithMany("SaleDetails")
+                        .HasForeignKey("SaleId");
+                });
+
+            modelBuilder.Entity("MaterialesIza.Data.Entities.Service", b =>
+                {
+                    b.HasOne("MaterialesIza.Data.Entities.ServiceType", "ServiceType")
+                        .WithMany("Services")
+                        .HasForeignKey("ServiceTypeId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

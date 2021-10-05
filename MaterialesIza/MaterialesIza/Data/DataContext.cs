@@ -11,6 +11,16 @@
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Provider> Providers { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductType> productTypes { get; set; }
+        public DbSet<Purchase> Purchases { get; set; }
+        public DbSet<PurchaseDetail> purchaseDetails { get; set; }
+        public DbSet<Sale> Sales { get; set; }
+        public DbSet<SaleDetail> SaleDetails { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<ServiceType> ServiceTypes { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {

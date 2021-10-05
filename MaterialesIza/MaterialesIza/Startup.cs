@@ -50,6 +50,7 @@ namespace MaterialesIza
             services.AddScoped<IUserHelper, UserHelper>();
             services.AddScoped<IImageHelper, ImageHelper>();
 
+
             services.AddControllersWithViews();
         }
 
