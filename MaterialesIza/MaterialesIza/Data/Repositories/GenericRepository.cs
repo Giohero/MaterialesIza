@@ -39,19 +39,22 @@ namespace MaterialesIza.Data.Repositories
             return entity;
         }
 
-        public Task<T> UpdateAsync(T entity)
+      
+        public async Task<T> UpdateAsync(T entity)
         {
-            throw new System.NotImplementedException();
+            _dataContext.Set<T>().Update(entity);
+            await SaveAllAsync();
+            return entity;
+        }
+        public async Task DeleteAsync(T entity)
+        {
+            _dataContext.Set<T>().Remove(entity);
+            await SaveAllAsync();
         }
 
-        public Task DeleteAsync(T entity)
+        public async Task<bool> ExistAsync(int id)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<bool> ExistAsync(int id)
-        {
-            throw new System.NotImplementedException();
+            return await _dataContext.Set<T>().AnyAsync(e => e.Id == id);
         }
 
         public async Task<bool> SaveAllAsync()
