@@ -155,7 +155,7 @@ namespace MaterialesIza.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("productTypes");
+                    b.ToTable("ProductTypes");
                 });
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.Provider", b =>
@@ -211,7 +211,7 @@ namespace MaterialesIza.Migrations
 
                     b.HasIndex("PurchaseId");
 
-                    b.ToTable("purchaseDetails");
+                    b.ToTable("PurchaseDetails");
                 });
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.Sale", b =>

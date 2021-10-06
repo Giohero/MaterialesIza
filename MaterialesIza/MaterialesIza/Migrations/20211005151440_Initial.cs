@@ -49,7 +49,7 @@ namespace MaterialesIza.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "productTypes",
+                name: "ProductTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -58,7 +58,7 @@ namespace MaterialesIza.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_productTypes", x => x.Id);
+                    table.PrimaryKey("PK_ProductTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -272,9 +272,9 @@ namespace MaterialesIza.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_productTypes_ProductTypeId",
+                        name: "FK_Products_ProductTypes_ProductTypeId",
                         column: x => x.ProductTypeId,
-                        principalTable: "productTypes",
+                        principalTable: "ProductTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -424,7 +424,7 @@ namespace MaterialesIza.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "purchaseDetails",
+                name: "PurchaseDetails",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -434,15 +434,15 @@ namespace MaterialesIza.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_purchaseDetails", x => x.Id);
+                    table.PrimaryKey("PK_PurchaseDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_purchaseDetails_Products_ProductId",
+                        name: "FK_PurchaseDetails_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_purchaseDetails_Purchases_PurchaseId",
+                        name: "FK_PurchaseDetails_Purchases_PurchaseId",
                         column: x => x.PurchaseId,
                         principalTable: "Purchases",
                         principalColumn: "Id",
@@ -534,13 +534,13 @@ namespace MaterialesIza.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_purchaseDetails_ProductId",
-                table: "purchaseDetails",
+                name: "IX_PurchaseDetails_ProductId",
+                table: "PurchaseDetails",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_purchaseDetails_PurchaseId",
-                table: "purchaseDetails",
+                name: "IX_PurchaseDetails_PurchaseId",
+                table: "PurchaseDetails",
                 column: "PurchaseId");
 
             migrationBuilder.CreateIndex(
@@ -598,7 +598,7 @@ namespace MaterialesIza.Migrations
                 name: "OrderDetails");
 
             migrationBuilder.DropTable(
-                name: "purchaseDetails");
+                name: "PurchaseDetails");
 
             migrationBuilder.DropTable(
                 name: "SaleDetails");
@@ -628,7 +628,7 @@ namespace MaterialesIza.Migrations
                 name: "Providers");
 
             migrationBuilder.DropTable(
-                name: "productTypes");
+                name: "ProductTypes");
 
             migrationBuilder.DropTable(
                 name: "Clients");

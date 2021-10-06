@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using MaterialesIza.Helpers;
+using MaterialesIza.Data.Repositories;
 
 namespace MaterialesIza
 {
@@ -49,6 +50,11 @@ namespace MaterialesIza
 
             services.AddScoped<IUserHelper, UserHelper>();
             services.AddScoped<IImageHelper, ImageHelper>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductTypeRepository, ProductTypeRepository>();
+            services.AddScoped<IServiceRepository, ServiceRepository>();
+            services.AddScoped<IServiceTypeRepository, ServiceTypeRepository>();
 
 
             services.AddControllersWithViews();

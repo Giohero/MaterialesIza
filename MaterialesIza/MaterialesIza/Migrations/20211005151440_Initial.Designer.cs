@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MaterialesIza.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211005141906_Initial")]
+    [Migration("20211005151440_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -157,7 +157,7 @@ namespace MaterialesIza.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("productTypes");
+                    b.ToTable("ProductTypes");
                 });
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.Provider", b =>
@@ -213,7 +213,7 @@ namespace MaterialesIza.Migrations
 
                     b.HasIndex("PurchaseId");
 
-                    b.ToTable("purchaseDetails");
+                    b.ToTable("PurchaseDetails");
                 });
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.Sale", b =>

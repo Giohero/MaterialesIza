@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace MaterialesIza.Data.Repositories
 {
-    public class GenericRepositorie<T> : IGenericRepositorie<T> where T : class, IEntity
-
+    public class GenericRepository<T> : IGenericRepository<T> where T : class, IEntity
     {
+
         private readonly DataContext _dataContext;
 
-        public GenericRepositorie(DataContext dataContext)
+        public GenericRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
@@ -58,7 +58,6 @@ namespace MaterialesIza.Data.Repositories
         {
             return await _dataContext.SaveChangesAsync() > 0;
         }
-
 
 
     }

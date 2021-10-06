@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 
 namespace MaterialesIza.Data.Repositories
 {
-    interface IGenericRepositorie <T> where T : class
-
+    public interface IGenericRepository<T> where T : class
     {
         IQueryable<T> GetAll();
 
@@ -21,6 +20,5 @@ namespace MaterialesIza.Data.Repositories
         Task DeleteAsync(T entity);
 
         Task<bool> ExistAsync(int id);
-
     }
 }

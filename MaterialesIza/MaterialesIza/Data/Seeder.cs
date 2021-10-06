@@ -175,13 +175,13 @@
 
         private async Task CheckProductTypeAsync(string name)
         {
-            this.dataContext.productTypes.Add(new ProductType { Name = name });
+            this.dataContext.ProductTypes.Add(new ProductType { Name = name });
             await this.dataContext.SaveChangesAsync();
         }
 
         private async Task CheckPurchaseDetailAsync(Product product, Purchase purchase)
         {
-            this.dataContext.purchaseDetails.Add(new PurchaseDetail { Product = product, Purchase = purchase });
+            this.dataContext.PurchaseDetails.Add(new PurchaseDetail { Product = product, Purchase = purchase });
             await this.dataContext.SaveChangesAsync();
         }
 

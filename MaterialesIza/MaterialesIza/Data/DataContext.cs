@@ -14,9 +14,9 @@
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductType> productTypes { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
-        public DbSet<PurchaseDetail> purchaseDetails { get; set; }
+        public DbSet<PurchaseDetail> PurchaseDetails { get; set; }
         public DbSet<Sale> Sales { get; set; }
         public DbSet<SaleDetail> SaleDetails { get; set; }
         public DbSet<Service> Services { get; set; }
