@@ -1,6 +1,4 @@
-﻿
-
-namespace MaterialesIza.Controllers
+﻿namespace MaterialesIza.Controllers
 {
     using System;
     using System.Collections.Generic;
