@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MaterialesIza.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211006015125_Initial")]
-    partial class Initial
+    [Migration("20211007050827_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.18")
+                .HasAnnotation("ProductVersion", "3.1.19")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -124,15 +124,19 @@ namespace MaterialesIza.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProductTypeId")
+                    b.Property<int?>("ProductTypesId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -140,7 +144,7 @@ namespace MaterialesIza.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductTypeId");
+                    b.HasIndex("ProductTypesId");
 
                     b.ToTable("Products");
                 });
@@ -551,9 +555,9 @@ namespace MaterialesIza.Migrations
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.Product", b =>
                 {
-                    b.HasOne("MaterialesIza.Data.Entities.ProductType", "ProductType")
+                    b.HasOne("MaterialesIza.Data.Entities.ProductType", "ProductTypes")
                         .WithMany("Products")
-                        .HasForeignKey("ProductTypeId");
+                        .HasForeignKey("ProductTypesId");
                 });
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.Provider", b =>

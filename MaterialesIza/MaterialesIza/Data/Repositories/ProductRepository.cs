@@ -4,6 +4,7 @@ namespace MaterialesIza.Data.Repositories
 {
     using MaterialesIza.Data.Entities;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -16,7 +17,13 @@ namespace MaterialesIza.Data.Repositories
             this.dataContext = dataContext;
         }
 
-        public IEnumerable<SelectListItem> GetComboProductType()
+        public IQueryable GetAllWithSaleDetails()
+        {
+            return this.dataContext.Products
+                .Include(p => p.SaleDetails);
+        }
+
+        public IEnumerable<SelectListItem> GetComboProductTypes()
         {
             var list = this.dataContext.ProductTypes.Select(m => new SelectListItem
             {
@@ -30,5 +37,7 @@ namespace MaterialesIza.Data.Repositories
             });
             return list;
         }
+
+        
     }
 }

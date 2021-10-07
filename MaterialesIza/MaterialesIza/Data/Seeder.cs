@@ -63,6 +63,75 @@
                 await CheckProvidersAsync(user);
             }
 
+            if (!this.dataContext.Products.Any())
+            {
+                var productType = this.dataContext.ProductTypes.FirstOrDefault(p => p.Name == "Cobre");
+                await this.CheckProductAsync("Cemento", 200, 100, "Bulto", productType);
+                await this.CheckProductAsync("Cal", 20, 100, "Bulto", productType);
+                await this.CheckProductAsync("Ladrillo", 5, 100, "Pieza", productType);
+
+
+            }
+
+            if (!this.dataContext.SaleDetails.Any())
+            {
+                var sale = this.dataContext.Sales.FirstOrDefault();
+                var product = this.dataContext.Products.FirstOrDefault();
+                await this.CheckSaleDetailAsync(sale,product);
+            }
+
+            if (!this.dataContext.Orders.Any())
+            {
+                var employee = this.dataContext.Employees.FirstOrDefault();
+                var client = this.dataContext.Clients.FirstOrDefault();
+                await this.CheckOrderAsync(employee,client);
+            }
+
+            if (!this.dataContext.OrderDetails.Any())
+            {
+                var order = this.dataContext.Orders.FirstOrDefault();
+                var service = this.dataContext.Services.FirstOrDefault();
+                await this.CheckOrderDetailAsync(order,service);
+            }
+
+            if (!this.dataContext.Services.Any())
+            {
+                var serviceType = this.dataContext.ServiceTypes.FirstOrDefault();
+                await this.CheckServiceAsync("Mano Chango","Retroexcavadora",serviceType);
+
+            }
+            if (!this.dataContext.ServiceTypes.Any())
+            {
+                await this.CheckServiceTypeAsync("Mano Chango");
+            }
+
+            if (!this.dataContext.Sales.Any())
+            {
+                var client = this.dataContext.Clients.FirstOrDefault();
+                var employee = this.dataContext.Employees.FirstOrDefault();
+                await this.CheckSaleAsync(client,employee);
+            }
+
+            if (!this.dataContext.ProductTypes.Any())
+            {
+               
+                await this.CheckProductTypeAsync("Construccion");
+            }
+
+            if (!this.dataContext.Purchases.Any())
+            {
+                var provider = this.dataContext.Providers.FirstOrDefault();
+                await this.CheckPurchaseAsync(provider);
+            }
+
+            if (!this.dataContext.PurchaseDetails.Any())
+            {
+                var product = this.dataContext.Products.FirstOrDefault();
+                var purchase = this.dataContext.Purchases.FirstOrDefault();
+                await this.CheckPurchaseDetailAsync(product,purchase);
+            }
+
+
 
         }
 
@@ -169,7 +238,7 @@
 
         private async Task CheckProductAsync(string name, int price, int quantity, string description, ProductType productType)
         {
-            this.dataContext.Products.Add(new Product { Name = name, Price = price, Description = description, ProductType = productType });
+            this.dataContext.Products.Add(new Product { Name = name, Price = price, Quantity= quantity, Description = description, ProductTypes = productType });
             await this.dataContext.SaveChangesAsync();
         }
 
@@ -185,7 +254,7 @@
             await this.dataContext.SaveChangesAsync();
         }
 
-        private async Task CheckPurchase(Provider provider)
+        private async Task CheckPurchaseAsync(Provider provider)
         {
             this.dataContext.Purchases.Add(new Purchase { Provider = provider });
             await this.dataContext.SaveChangesAsync();

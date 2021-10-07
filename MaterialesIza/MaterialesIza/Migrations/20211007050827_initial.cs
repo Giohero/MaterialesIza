@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MaterialesIza.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -262,18 +262,18 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     Price = table.Column<int>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    ProductTypeId = table.Column<int>(nullable: true)
+                    Description = table.Column<string>(maxLength: 50, nullable: false),
+                    ProductTypesId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_ProductTypes_ProductTypeId",
-                        column: x => x.ProductTypeId,
+                        name: "FK_Products_ProductTypes_ProductTypesId",
+                        column: x => x.ProductTypesId,
                         principalTable: "ProductTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -524,9 +524,9 @@ namespace MaterialesIza.Migrations
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_ProductTypeId",
+                name: "IX_Products_ProductTypesId",
                 table: "Products",
-                column: "ProductTypeId");
+                column: "ProductTypesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Providers_UserId",
