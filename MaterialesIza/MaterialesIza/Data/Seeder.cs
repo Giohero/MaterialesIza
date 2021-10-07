@@ -69,8 +69,6 @@
                 await this.CheckProductAsync("Cemento", 200, 100, "Bulto", productType);
                 await this.CheckProductAsync("Cal", 20, 100, "Bulto", productType);
                 await this.CheckProductAsync("Ladrillo", 5, 100, "Pieza", productType);
-
-
             }
 
             if (!this.dataContext.SaleDetails.Any())
