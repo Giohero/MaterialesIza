@@ -63,6 +63,12 @@
                 await CheckProvidersAsync(user);
             }
 
+            if (!this.dataContext.ProductTypes.Any())
+            {
+               
+                await this.CheckProductTypeAsync("Construccion");
+            }
+
             if (!this.dataContext.Products.Any())
             {
                 var productType = this.dataContext.ProductTypes.FirstOrDefault(p => p.Name == "Cobre");
@@ -92,29 +98,24 @@
                 await this.CheckOrderDetailAsync(order,service);
             }
 
+            if (!this.dataContext.ServiceTypes.Any())
+            {
+                await this.CheckServiceTypeAsync("Mano Chango");
+            }
+
             if (!this.dataContext.Services.Any())
             {
                 var serviceType = this.dataContext.ServiceTypes.FirstOrDefault();
                 await this.CheckServiceAsync("Mano Chango","Retroexcavadora",serviceType);
 
             }
-            if (!this.dataContext.ServiceTypes.Any())
-            {
-                await this.CheckServiceTypeAsync("Mano Chango");
-            }
-
+            
             if (!this.dataContext.Sales.Any())
             {
                 var client = this.dataContext.Clients.FirstOrDefault();
                 var employee = this.dataContext.Employees.FirstOrDefault();
                 await this.CheckSaleAsync(client,employee);
-            }
-
-            if (!this.dataContext.ProductTypes.Any())
-            {
-               
-                await this.CheckProductTypeAsync("Construccion");
-            }
+            }          
 
             if (!this.dataContext.Purchases.Any())
             {
@@ -128,9 +129,6 @@
                 var purchase = this.dataContext.Purchases.FirstOrDefault();
                 await this.CheckPurchaseDetailAsync(product,purchase);
             }
-
-
-
         }
 
         private async Task<User> CheckUserAsync(string lastName, string firstName, string mail, string phone, string password, string rol)
@@ -210,15 +208,15 @@
             await this.dataContext.SaveChangesAsync();
         }
 
-        private async Task CheckServiceAsync(string name, string description, ServiceType serviceType)
-        {
-            this.dataContext.Services.Add(new Service { Name = name, Description = description, ServiceType = serviceType });
-            await this.dataContext.SaveChangesAsync();
-        }
-
         private async Task CheckServiceTypeAsync(string servicetype)
         {
             this.dataContext.ServiceTypes.Add(new ServiceType { TypeService = servicetype });
+            await this.dataContext.SaveChangesAsync();
+        }
+
+        private async Task CheckServiceAsync(string name, string description, ServiceType serviceType)
+        {
+            this.dataContext.Services.Add(new Service { Name = name, Description = description, ServiceType = serviceType });
             await this.dataContext.SaveChangesAsync();
         }
 
@@ -234,15 +232,15 @@
             await this.dataContext.SaveChangesAsync();
         }
 
-        private async Task CheckProductAsync(string name, int price, int quantity, string description, ProductType productType)
-        {
-            this.dataContext.Products.Add(new Product { Name = name, Price = price, Quantity= quantity, Description = description, ProductTypes = productType });
-            await this.dataContext.SaveChangesAsync();
-        }
-
         private async Task CheckProductTypeAsync(string name)
         {
             this.dataContext.ProductTypes.Add(new ProductType { Name = name });
+            await this.dataContext.SaveChangesAsync();
+        }
+
+        private async Task CheckProductAsync(string name, int price, int quantity, string description, ProductType productType)
+        {
+            this.dataContext.Products.Add(new Product { Name = name, Price = price, Quantity= quantity, Description = description, ProductTypes = productType });
             await this.dataContext.SaveChangesAsync();
         }
 
