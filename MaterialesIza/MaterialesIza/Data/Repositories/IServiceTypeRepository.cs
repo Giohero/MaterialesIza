@@ -8,6 +8,6 @@ namespace MaterialesIza.Data.Repositories
 
     public interface IServiceTypeRepository : IGenericRepository<ServiceType>
     {
-        IEnumerable<SelectListItem> GetComboProductType();
+        IEnumerable<SelectListItem> GetComboServiceType();
     }
 }

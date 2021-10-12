@@ -35,18 +35,13 @@
                 var user = await CheckUserAsync
                     ("Zarate", "Yair", "yairz.@gmail.com", "454889", "123456", "Admin");
                 await CheckAdminAsync(user);
-
             }
+
             if (!this.dataContext.Employees.Any())
             {
                 var user = await CheckUserAsync
                     ("Doe", "Jane", "jane.doe@gmail.com", "123456789", "123456", "Employee");
-                //var sale = this.dataContext.Sales.FirstOrDefault();
-                //var order = this.dataContext.Orders.FirstOrDefault();
                 await CheckEmployeesAsync(user);
-
-
-
             }
 
             if (!this.dataContext.Clients.Any())
@@ -65,7 +60,6 @@
 
             if (!this.dataContext.ProductTypes.Any())
             {
-               
                 await this.CheckProductTypeAsync("Construccion");
             }
 
@@ -107,7 +101,6 @@
             {
                 var serviceType = this.dataContext.ServiceTypes.FirstOrDefault();
                 await this.CheckServiceAsync("Mano Chango","Retroexcavadora",serviceType);
-
             }
             
             if (!this.dataContext.Sales.Any())

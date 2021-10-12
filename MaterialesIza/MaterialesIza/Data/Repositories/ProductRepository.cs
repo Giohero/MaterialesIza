@@ -23,9 +23,9 @@ namespace MaterialesIza.Data.Repositories
                 .Include(p => p.SaleDetails);
         }
 
-        public IEnumerable<SelectListItem> GetComboProductTypes()
+        public IEnumerable<SelectListItem> GetComboProduct()
         {
-            var list = this.dataContext.ProductTypes.Select(m => new SelectListItem
+            var list = this.dataContext.Products.Select(m => new SelectListItem
             {
                 Text = m.Name,
                 Value = $"{m.Id}"

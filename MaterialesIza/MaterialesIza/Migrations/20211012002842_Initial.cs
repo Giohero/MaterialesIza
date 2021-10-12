@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MaterialesIza.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -377,6 +377,10 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Date_Sale = table.Column<DateTime>(nullable: false),
+                    Total_Sale = table.Column<double>(nullable: false),
+                    Iva_Sale = table.Column<double>(nullable: false),
+                    Sales_Remarks = table.Column<string>(nullable: true),
                     OrderId = table.Column<int>(nullable: true),
                     ServiceId = table.Column<int>(nullable: true)
                 },
@@ -403,6 +407,10 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Date_Sale = table.Column<DateTime>(nullable: false),
+                    Total_Sale = table.Column<double>(nullable: false),
+                    Iva_Sale = table.Column<double>(nullable: false),
+                    Sales_Remarks = table.Column<string>(nullable: true),
                     SaleId = table.Column<int>(nullable: true),
                     ProductId = table.Column<int>(nullable: true)
                 },
@@ -429,6 +437,10 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Date_Sale = table.Column<DateTime>(nullable: false),
+                    Total_Sale = table.Column<double>(nullable: false),
+                    Iva_Sale = table.Column<double>(nullable: false),
+                    Sales_Remarks = table.Column<string>(nullable: true),
                     ProductId = table.Column<int>(nullable: true),
                     PurchaseId = table.Column<int>(nullable: true)
                 },

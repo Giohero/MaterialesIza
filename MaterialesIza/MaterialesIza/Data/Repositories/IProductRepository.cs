@@ -7,7 +7,7 @@
 
     public interface IProductRepository : IGenericRepository<Product>
     {
-        IEnumerable<SelectListItem> GetComboProductTypes();
+        IEnumerable<SelectListItem> GetComboProduct();
 
         IQueryable GetAllWithSaleDetails(); 
     }

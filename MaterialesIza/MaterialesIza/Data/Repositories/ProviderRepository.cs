@@ -1,5 +1,4 @@
 ﻿
-
 namespace MaterialesIza.Data.Repositories
 {
     using MaterialesIza.Data.Entities;
@@ -7,29 +6,29 @@ namespace MaterialesIza.Data.Repositories
     using System.Collections.Generic;
     using System.Linq;
 
-    public class ServiceTypeRepository : GenericRepository<ServiceType>, IServiceTypeRepository
+    public class ProviderRepository : GenericRepository<Provider>, IProviderRepository
     {
         private readonly DataContext dataContext;
 
-        public ServiceTypeRepository(DataContext dataContext) : base(dataContext)
+        public ProviderRepository(DataContext dataContext) : base(dataContext)
         {
             this.dataContext = dataContext;
         }
 
-        public IEnumerable<SelectListItem> GetComboServiceType()
+        public IEnumerable<SelectListItem> GetComboProvider()
         {
-            var list = this.dataContext.ServiceTypes.Select(m => new SelectListItem
+            var list = this.dataContext.Providers.Select(m => new SelectListItem
             {
-                Text = m.TypeService,
+                Text = m.User.FullName,
                 Value = $"{m.Id}"
             }).ToList();
             list.Insert(0, new SelectListItem
             {
-                Text = "(Selecciona un tipo de servicio)",
+                Text = "(Selecciona un cliente)",
                 Value = "0"
             });
             return list;
-
         }
+
     }
 }

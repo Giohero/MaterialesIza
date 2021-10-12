@@ -3,14 +3,10 @@ namespace MaterialesIza.Controllers.API
 {
     using MaterialesIza.Data.Repositories;
     using Microsoft.AspNetCore.Mvc;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    
+
     [Route("api/[Controller]")]
 
-    public class ProductsController: Controller
+    public class ProductsController : Controller
     {
         private readonly IProductRepository productRepository;
 
@@ -23,7 +19,7 @@ namespace MaterialesIza.Controllers.API
         [HttpGet]
         public IActionResult GetProducts()
         {
-            return Ok (this.productRepository.GetAll());
+            return Ok(this.productRepository.GetAll());
         }
 
 

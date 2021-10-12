@@ -16,9 +16,9 @@ namespace MaterialesIza.Data.Repositories
             this.dataContext = dataContext;
         }
 
-        public IEnumerable<SelectListItem> GetComboProductType()
+        public IEnumerable<SelectListItem> GetComboService()
         {
-            var list = this.dataContext.ProductTypes.Select(m => new SelectListItem
+            var list = this.dataContext.Services.Select(m => new SelectListItem
             {
                 Text = m.Name,
                 Value = $"{m.Id}"

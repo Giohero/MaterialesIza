@@ -16,11 +16,11 @@ namespace MaterialesIza.Data.Repositories
             this.dataContext = dataContext;
         }
 
-        public IEnumerable<SelectListItem> GetComboProductType()
+        public IEnumerable<SelectListItem> GetComboEmployee()
         {
-            var list = this.dataContext.ProductTypes.Select(m => new SelectListItem
+            var list = this.dataContext.Employees.Select(m => new SelectListItem
             {
-                Text = m.Name,
+                Text = m.User.FullName,
                 Value = $"{m.Id}"
             }).ToList();
             list.Insert(0, new SelectListItem

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MaterialesIza.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211007050827_initial")]
-    partial class initial
+    [Migration("20211012002842_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -101,11 +101,23 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("Date_Sale")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("Iva_Sale")
+                        .HasColumnType("float");
+
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Sales_Remarks")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("ServiceId")
                         .HasColumnType("int");
+
+                    b.Property<double>("Total_Sale")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -205,11 +217,23 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("Date_Sale")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("Iva_Sale")
+                        .HasColumnType("float");
+
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int?>("PurchaseId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Sales_Remarks")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Total_Sale")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -249,11 +273,23 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("Date_Sale")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("Iva_Sale")
+                        .HasColumnType("float");
+
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int?>("SaleId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Sales_Remarks")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Total_Sale")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 

@@ -8,6 +8,6 @@ namespace MaterialesIza.Data.Repositories
 
     public interface IEmployeeRepository : IGenericRepository<Employee>
     {
-        IEnumerable<SelectListItem> GetComboProductType();
+        IEnumerable<SelectListItem> GetComboEmployee();
     }
 }
