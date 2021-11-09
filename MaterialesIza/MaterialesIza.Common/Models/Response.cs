@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MaterialesIza.Common.Models
 {
-    class Response
+    public class Response
     {
         public bool IsSuccess { get; set; }
 

@@ -1,37 +1,34 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Text.Json.Serialization;
 
 namespace MaterialesIza.Common.Models
 {
-    public  class Product
+    public class Product
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public int Id { get; set; }
 
-        [JsonPropertyName("name")]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonPropertyName("price")]
+        [JsonProperty("price")]
         public int Price { get; set; }
 
-        [JsonPropertyName("quantity")]
+        [JsonProperty("quantity")]
         public int Quantity { get; set; }
 
-        [JsonPropertyName("description")]
+        [JsonProperty("description")]
         public string Description { get; set; }
 
-        [JsonPropertyName("productTypes")]
+        [JsonProperty("productTypes")]
         public object ProductTypes { get; set; }
 
-        [JsonPropertyName("saleDetails")]
+        [JsonProperty("saleDetails")]
         public List<SaleDetails> SaleDetails { get; set; }
 
-        [JsonPropertyName("purchaseDetails")]
+        [JsonProperty("purchaseDetails")]
         public object PurchaseDetails { get; set; }
-
-
-
     }
 }

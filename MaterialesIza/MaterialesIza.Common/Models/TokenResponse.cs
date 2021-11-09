@@ -12,6 +12,5 @@ namespace MaterialesIza.Common.Models
 
         [JsonProperty("expiraton")]
         public DateTime Expiration { get; set; }
-
     }
 }
