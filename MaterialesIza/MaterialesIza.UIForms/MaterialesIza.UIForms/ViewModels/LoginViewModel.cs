@@ -14,24 +14,20 @@ namespace MaterialesIza.UIForms.ViewModels
         {
             if (string.IsNullOrEmpty(this.Email))
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Debes de introducir un Email", "Aceptar");
-
+                await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir un Email", "Aceptar");
                 return;
             }
             if (string.IsNullOrEmpty(this.Password))
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Debes de introducir una contraseña", "Aceptar");
-
+                await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir una contraseña", "Aceptar");
                 return;
             }
             if (!this.Email.Equals("yairz.@gmail.com") || !this.Password.Equals("123456"))
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Email o contraselña incorrecta", "Aceptar");
-
+                await Application.Current.MainPage.DisplayAlert("Error", "Email o contraseña incorrecta", "Aceptar");
                 return;
             }
-            await Application.Current.MainPage.DisplayAlert("Ok", "Listo", "Aceptar");
-
+            await Application.Current.MainPage.DisplayAlert("OK", "LIIISTO", "Aceptar");
             return;
         }
     }

@@ -18,31 +18,35 @@
                 </button>
 
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row">
-                    <ul class="navbar-nav flex-grow-1">
-                        
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="Index">Servicios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ServiceTypes" asp-action="Index">Tipos Servicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ProductTypes" asp-action="Index">Tipos Producto</a>
-                        </li>
-                    </ul>
+                    
                     <ul class="navbar-nav">
                         @if (this.User.Identity.IsAuthenticated)
                         {
+                            <li>
+                                <ul class="navbar-nav flex-grow-1">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Productos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="Index">Servicios</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="ServiceTypes" asp-action="Index">Tipos Servicio</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="ProductTypes" asp-action="Index">Tipos Producto</a>
+                                    </li>
+                                </ul>
+                            </li>
+
                             <li>
                                 @this.User.Identity.Name
                             </li>
                             <li>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                             </li>
+
+
                         }
                         else
                         {

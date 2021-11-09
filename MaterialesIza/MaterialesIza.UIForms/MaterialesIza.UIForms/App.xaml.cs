@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using MaterialesIza.UIForms.Views;
+using Xamarin.Forms;
 
 namespace MaterialesIza.UIForms
 {
@@ -8,7 +9,7 @@ namespace MaterialesIza.UIForms
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()
