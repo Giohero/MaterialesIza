@@ -1,4 +1,5 @@
-﻿using MaterialesIza.UIForms.Views;
+﻿using MaterialesIza.UIForms.ViewModels;
+using MaterialesIza.UIForms.Views;
 using Xamarin.Forms;
 
 namespace MaterialesIza.UIForms
@@ -8,7 +9,7 @@ namespace MaterialesIza.UIForms
         public App()
         {
             InitializeComponent();
-
+            MainViewModel.GetInstance().Login = new LoginViewModel();
             MainPage = new NavigationPage(new LoginPage());
         }
 

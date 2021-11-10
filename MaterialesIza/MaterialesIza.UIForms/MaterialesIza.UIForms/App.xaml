@@ -6,6 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <infra:InstanceLocator x:Key="Locator"></infra:InstanceLocator>
+            <x:String x:Key="UrlAPI">https://</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

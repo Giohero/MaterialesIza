@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using MaterialesIza.UIForms.Views;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -9,6 +10,12 @@ namespace MaterialesIza.UIForms.ViewModels
         public string Email { get; set; }
         public string Password { get; set; }
         public ICommand LoginCommand { get { return new RelayCommand(Login); } }
+
+        public LoginViewModel()
+        {
+            this.Email = "yairz.@gmail.com";
+            this.Password = "123456";
+        }
 
         private async void Login()
         {
@@ -27,8 +34,11 @@ namespace MaterialesIza.UIForms.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", "Email o contraseña incorrecta", "Aceptar");
                 return;
             }
-            await Application.Current.MainPage.DisplayAlert("OK", "LIIISTO", "Aceptar");
-            return;
+            //await Application.Current.MainPage.DisplayAlert("OK", "LIIISTO", "Aceptar");
+            //return;
+
+            MainViewModel.GetInstance().Products = new ProductsViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new ProductsPage());
         }
     }
 }
