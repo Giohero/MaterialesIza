@@ -6,7 +6,7 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Net;
 
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[Controller]")]
 
     public class ServiceTypesController : Controller

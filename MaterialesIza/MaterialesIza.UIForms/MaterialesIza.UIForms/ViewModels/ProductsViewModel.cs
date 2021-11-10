@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace MaterialesIza.UIForms.ViewModels
 {
-    public class ProductsViewModel:BaseViewModel
+    public class ProductsViewModel : BaseViewModel
     {
         private ApiService apiService;
 
@@ -23,10 +23,11 @@ namespace MaterialesIza.UIForms.ViewModels
             this.apiService = new ApiService();
             this.LoadProducts();
         }
+
         private async void LoadProducts()
         {
             var response = await this.apiService.GetListAsync<Product>(
-                "https://materialesiza20211109222312.azurewebsites.net", "/api", "/Products");
+               "https://materialesiza20211109222312.azurewebsites.net", "/api", "/Products");
 
             if (!response.IsSuccess)
             {

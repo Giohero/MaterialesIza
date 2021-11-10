@@ -7,7 +7,7 @@ namespace MaterialesIza.Controllers.API
     using Microsoft.AspNetCore.Mvc;
 
     [Route("api/[Controller]")]
-    [Authorize (AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ProductsController : Controller
     {
         private readonly IProductRepository productRepository;
