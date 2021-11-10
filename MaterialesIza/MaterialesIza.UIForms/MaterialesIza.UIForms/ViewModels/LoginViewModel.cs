@@ -39,6 +39,15 @@ namespace MaterialesIza.UIForms.ViewModels
 
             MainViewModel.GetInstance().Products = new ProductsViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new ProductsPage());
+
+            MainViewModel.GetInstance().ProductTypes = new ProductTypesViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new ProductTypesPage());
+
+            MainViewModel.GetInstance().Services = new ServicesViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new ServicePage());
+
+            MainViewModel.GetInstance().ServiceTypes = new ServiceTypesViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new ServiceTypesPage());
         }
     }
 }
