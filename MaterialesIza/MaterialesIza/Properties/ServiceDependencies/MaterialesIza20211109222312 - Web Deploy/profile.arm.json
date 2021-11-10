@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "MaterialesIza20211014132858",
+      "defaultValue": "MaterialesIza20211109222312",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }
