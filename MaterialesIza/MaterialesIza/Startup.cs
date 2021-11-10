@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using MaterialesIza.Helpers;
 using MaterialesIza.Data.Repositories;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace MaterialesIza
 {
@@ -45,7 +47,17 @@ namespace MaterialesIza
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
-            
+            services.AddAuthentication().AddCookie().AddJwtBearer(cfg =>
+            {
+                cfg.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidIssuer = this.Configuration["Tokens:Issuer"],
+                    ValidAudience = this.Configuration["Tokens:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey
+                    (Encoding.UTF8.GetBytes(this.Configuration["Tokens:Issuer"]))
+                };
+            });
+
             services.AddTransient<Seeder>();
 
             services.AddScoped<IUserHelper, UserHelper>();
