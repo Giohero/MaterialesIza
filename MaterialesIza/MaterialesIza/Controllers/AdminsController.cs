@@ -31,8 +31,7 @@ namespace MaterialesIza.Controllers
                 return NotFound();
             }
 
-            var admin = await _context.Admins
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var admin = await this.adminRepository.GetByIdAsync(id.Value);
             if (admin == null)
             {
                 return NotFound();
@@ -56,8 +55,7 @@ namespace MaterialesIza.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(admin);
-                await _context.SaveChangesAsync();
+                await this.adminRepository.CreateAsync(admin);
                 return RedirectToAction(nameof(Index));
             }
             return View(admin);
@@ -71,7 +69,7 @@ namespace MaterialesIza.Controllers
                 return NotFound();
             }
 
-            var admin = await _context.Admins.FindAsync(id);
+            var admin = await this.adminRepository.GetByIdAsync(id.Value);
             if (admin == null)
             {
                 return NotFound();
@@ -95,12 +93,11 @@ namespace MaterialesIza.Controllers
             {
                 try
                 {
-                    _context.Update(admin);
-                    await _context.SaveChangesAsync();
+                    await this.adminRepository.UpdateAsync(admin);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AdminExists(admin.Id))
+                    if (!await this.adminRepository.ExistAsync(admin.Id))
                     {
                         return NotFound();
                     }
@@ -122,8 +119,8 @@ namespace MaterialesIza.Controllers
                 return NotFound();
             }
 
-            var admin = await _context.Admins
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var admin = await this.adminRepository.GetByIdAsync(id.Value);
+
             if (admin == null)
             {
                 return NotFound();
@@ -133,20 +130,7 @@ namespace MaterialesIza.Controllers
         }
 
         // POST: Admins/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var admin = await _context.Admins.FindAsync(id);
-            _context.Admins.Remove(admin);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool AdminExists(int id)
-        {
-            return _context.Admins.Any(e => e.Id == id);
-        }
+     
     }
 }
 
