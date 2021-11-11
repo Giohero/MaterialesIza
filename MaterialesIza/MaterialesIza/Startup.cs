@@ -67,7 +67,15 @@ namespace MaterialesIza
             services.AddScoped<IProductTypeRepository, ProductTypeRepository>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
             services.AddScoped<IServiceTypeRepository, ServiceTypeRepository>();
-
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IProviderRepository, ProviderRepository>();
+            services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<ISaleRepository, SaleRepository>();
+            services.AddScoped<ISaleDetailRepository, SaleDetailRepository>();
+            services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+            services.AddScoped<IPurchaseDetailRepository, PurchaseDetailRepository>();
 
             services.AddControllersWithViews();
         }

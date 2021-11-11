@@ -9,8 +9,10 @@ namespace MaterialesIza.Data.Repositories
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Collections.Generic;
 
-    interface IProviderRepository : IGenericRepository<Provider>
+    public interface IProviderRepository : IGenericRepository<Provider>
     {
         IEnumerable<SelectListItem> GetComboProvider();
+
+        IQueryable GetProviders();
     }
 }

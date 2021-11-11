@@ -4,6 +4,7 @@ namespace MaterialesIza.Data.Repositories
 {
     using MaterialesIza.Data.Entities;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -16,6 +17,11 @@ namespace MaterialesIza.Data.Repositories
             this.dataContext = dataContext;
         }
 
+        public IQueryable GetEmployees()
+        {
+            return this.dataContext.Employees
+                .Include(p => p.User);
+        }
         public IEnumerable<SelectListItem> GetComboEmployee()
         {
             var list = this.dataContext.Employees.Select(m => new SelectListItem
@@ -30,5 +36,6 @@ namespace MaterialesIza.Data.Repositories
             });
             return list;
         }
+
     }
 }

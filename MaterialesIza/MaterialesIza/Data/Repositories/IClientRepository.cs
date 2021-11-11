@@ -3,9 +3,12 @@
     using MaterialesIza.Data.Entities;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Collections.Generic;
+    using System.Linq;
 
-    interface IClientRepository : IGenericRepository<Client>
+    public interface IClientRepository : IGenericRepository<Client>
     {
         IEnumerable<SelectListItem> GetComboClient();
+
+        IQueryable GetClients();
     }
 }

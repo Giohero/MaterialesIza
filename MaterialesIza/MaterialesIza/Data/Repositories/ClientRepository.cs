@@ -4,6 +4,7 @@ namespace MaterialesIza.Data.Repositories
 {
     using MaterialesIza.Data.Entities;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -14,6 +15,11 @@ namespace MaterialesIza.Data.Repositories
         public ClientRepository(DataContext dataContext) : base(dataContext)
         {
             this.dataContext = dataContext;
+        }
+        public IQueryable GetClients()
+        {
+            return this.dataContext.Clients
+                .Include(p => p.User);
         }
 
         public IEnumerable<SelectListItem> GetComboClient()

@@ -22,6 +22,7 @@
         public DbSet<Service> Services { get; set; }
         public DbSet<ServiceType> ServiceTypes { get; set; }
 
+
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
 

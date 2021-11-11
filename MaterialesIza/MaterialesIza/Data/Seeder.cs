@@ -3,6 +3,7 @@
     using MaterialesIza.Data.Entities;
     using MaterialesIza.Helpers;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Linq;
     using System.Threading.Tasks;
@@ -83,6 +84,7 @@
                 var employee = this.dataContext.Employees.FirstOrDefault();
                 var client = this.dataContext.Clients.FirstOrDefault();
                 await this.CheckOrderAsync(employee,client);
+
             }
 
             if (!this.dataContext.OrderDetails.Any())
@@ -90,6 +92,7 @@
                 var order = this.dataContext.Orders.FirstOrDefault();
                 var service = this.dataContext.Services.FirstOrDefault();
                 await this.CheckOrderDetailAsync(order,service);
+                
             }
 
             if (!this.dataContext.ServiceTypes.Any())
