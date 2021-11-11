@@ -17,6 +17,10 @@ namespace MaterialesIza.UIForms.ViewModels
 
         public ServiceTypesViewModel ServiceTypes { get; set; }
 
+        public AdminsViewModel Admins { get; set; }
+
+        public ClientsViewModel Clients { get; set; }
+
         public MainViewModel()
         {
             instance = this;

@@ -48,6 +48,12 @@ namespace MaterialesIza.UIForms.ViewModels
 
             MainViewModel.GetInstance().ServiceTypes = new ServiceTypesViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new ServiceTypesPage());
+
+            MainViewModel.GetInstance().Admins = new AdminsViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new AdminsPage());
+
+            MainViewModel.GetInstance().Clients = new ClientsViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new ClientsPage());
         }
     }
 }
