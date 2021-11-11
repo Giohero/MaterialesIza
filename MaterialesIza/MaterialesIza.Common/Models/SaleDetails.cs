@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MaterialesIza.Common.Models
 {
-    public class SaleDetail
+    public class SaleDetails
     {
         [JsonProperty("id")]
         public int Id { get; set; }

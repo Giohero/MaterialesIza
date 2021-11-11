@@ -12,8 +12,8 @@ namespace MaterialesIza.UIForms.ViewModels
     {
         private ApiService apiService;
 
-        private ObservableCollection<SaleDetail> saleDetails;
-        public ObservableCollection<SaleDetail> SaleDetails
+        private ObservableCollection<SaleDetails> saleDetails;
+        public ObservableCollection<SaleDetails> SaleDetails
         {
 
             get { return this.saleDetails; }
@@ -28,7 +28,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
         private async void LoadProducts()
         {
-            var response = await this.apiService.GetListAsync<SaleDetail>(
+            var response = await this.apiService.GetListAsync<SaleDetails>(
                "https://materialesiza20211109222312.azurewebsites.net", "/api", "/SaleDetails");
 
             if (!response.IsSuccess)
@@ -39,8 +39,8 @@ namespace MaterialesIza.UIForms.ViewModels
                     "Accept");
                 return;
             }
-            var mySaleDetails = (List<SaleDetail>)response.Result;
-            this.SaleDetails = new ObservableCollection<SaleDetail>(mySaleDetails);
+            var mySaleDetails = (List<SaleDetails>)response.Result;
+            this.SaleDetails = new ObservableCollection<SaleDetails>(mySaleDetails);
         }
     }
 }

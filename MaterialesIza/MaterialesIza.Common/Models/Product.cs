@@ -26,9 +26,10 @@ namespace MaterialesIza.Common.Models
         public object ProductTypes { get; set; }
 
         [JsonProperty("saleDetails")]
-        public List<SaleDetails> SaleDetails { get; set; }
+        public object SaleDetails { get; set; }
 
         [JsonProperty("purchaseDetails")]
         public object PurchaseDetails { get; set; }
+    
     }
 }
