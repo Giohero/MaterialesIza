@@ -26,7 +26,7 @@ namespace MaterialesIza.UIForms.ViewModels
         private async void LoadServiceTypes()
         {
             var response = await this.apiService.GetListAsync<ServiceType>(
-               "https://materialesiza20211109222312.azurewebsites.net", "/api", "/ServiceTypes");
+               "https://materialesiza20211111035147.azurewebsites.net", "/api", "/ServiceTypes");
 
             if (!response.IsSuccess)
             {

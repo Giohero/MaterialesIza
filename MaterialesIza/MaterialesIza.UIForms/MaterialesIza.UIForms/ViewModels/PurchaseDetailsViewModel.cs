@@ -29,7 +29,7 @@ namespace MaterialesIza.UIForms.ViewModels
         private async void LoadProducts()
         {
             var response = await this.apiService.GetListAsync<PurchaseDetail>(
-               "https://materialesiza20211109222312.azurewebsites.net", "/api", "/PurchaseDetails");
+               "https://materialesiza20211111035147.azurewebsites.net", "/api", "/PurchaseDetails");
 
             if (!response.IsSuccess)
             {

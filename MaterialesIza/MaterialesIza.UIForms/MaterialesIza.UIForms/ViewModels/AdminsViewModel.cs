@@ -27,7 +27,7 @@ namespace MaterialesIza.UIForms.ViewModels
         private async void LoadProducts()
         {
             var response = await this.apiService.GetListAsync<Admin>(
-               "https://materialesiza20211109222312.azurewebsites.net", "/api", "/Admins");
+               "https://materialesiza20211111035147.azurewebsites.net", "/api", "/Admins");
 
             if (!response.IsSuccess)
             {
