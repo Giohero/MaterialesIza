@@ -41,21 +41,21 @@
             if (!this.dataContext.Employees.Any())
             {
                 var user = await CheckUserAsync
-                    ("Doe", "Jane", "jane.doe@gmail.com", "123456789", "123456", "Employee");
+                    ("Saldaña", "Jaime", "jaime.Sal@gmail.com", "123456789", "123456", "Employee");
                 await CheckEmployeesAsync(user);
             }
 
             if (!this.dataContext.Clients.Any())
             {
                 var user = await CheckUserAsync
-                    ("Cena", "Jhon", "jhoncena@gmail.com", "345523424", "123456", "Client");
+                    ("Hernández", "Giovanni", "firmalagio@gmail.com", "345523424", "123456", "Client");
                 await CheckClientsAsync(user);
             }
 
             if (!this.dataContext.Providers.Any())
             {
                 var user = await CheckUserAsync
-                    ("Travolta", "Jhon", "travolta@gmail.com", "345523424", "123456", "Provider");
+                    ("Cruz", "Alexis", "alexiscz@gmail.com", "345523424", "123456", "Provider");
                 await CheckProvidersAsync(user);
             }
 

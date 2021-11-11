@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialesIza.UIForms.Views.OrdersPage"
+             BindingContext="{Binding Main,Source={StaticResource Locator}}"
+             Title="Ordenes">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Orders}"
+            Padding="10">
+
+            <ListView
+                HasUnevenRows="True"
+                ItemsSource="{Binding Orders}">
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

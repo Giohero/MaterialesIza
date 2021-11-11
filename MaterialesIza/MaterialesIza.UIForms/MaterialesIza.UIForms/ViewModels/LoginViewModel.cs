@@ -54,6 +54,30 @@ namespace MaterialesIza.UIForms.ViewModels
 
             MainViewModel.GetInstance().Clients = new ClientsViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new ClientsPage());
+
+            MainViewModel.GetInstance().Employees = new EmployeesViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new EmployeesPage());
+
+            MainViewModel.GetInstance().Orders = new OrdersViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new OrdersPage());
+
+            MainViewModel.GetInstance().OrderDetails = new OrderDetailsViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new OrderDetailsPage());
+
+            MainViewModel.GetInstance().Providers = new ProvidersViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new ProvidersPage());
+
+            MainViewModel.GetInstance().Purchases = new PurchasesViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new PurchasesPage());
+
+            MainViewModel.GetInstance().PurchaseDetails = new PurchaseDetailsViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new PurchaseDetailsPage());
+
+            MainViewModel.GetInstance().Sales = new SalesViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new SalesPage());
+
+            MainViewModel.GetInstance().SaleDetails = new SaleDetailsViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new SaleDetailsPage());
         }
     }
 }

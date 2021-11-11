@@ -21,6 +21,22 @@ namespace MaterialesIza.UIForms.ViewModels
 
         public ClientsViewModel Clients { get; set; }
 
+        public EmployeesViewModel Employees { get; set; }
+
+        public OrdersViewModel Orders { get; set; }
+
+        public OrderDetailsViewModel OrderDetails { get; set; }
+
+        public ProvidersViewModel Providers { get; set; }
+
+        public PurchasesViewModel Purchases { get; set; }
+
+        public PurchaseDetailsViewModel PurchaseDetails { get; set; }
+
+        public SalesViewModel Sales { get; set; }
+
+        public SaleDetailsViewModel SaleDetails { get; set; }
+
         public MainViewModel()
         {
             instance = this;
