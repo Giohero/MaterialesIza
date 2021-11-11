@@ -6,12 +6,12 @@
              Title="Detalles de compra">
     <ContentPage.Content>
         <StackLayout
-            BindingContext="{Binding purchaseDetails}"
+            BindingContext="{Binding PurchaseDetails}"
             Padding="10">
 
             <ListView
                 HasUnevenRows="True"
-                ItemsSource="{Binding purchaseDetails}">
+                ItemsSource="{Binding PurchaseDetails}">
             </ListView>
         </StackLayout>
     </ContentPage.Content>
