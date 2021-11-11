@@ -22,19 +22,44 @@
                     <ul class="navbar-nav">
                         @if (this.User.Identity.IsAuthenticated)
                         {
-                            <li>
-                                <ul class="navbar-nav flex-grow-1">
+                            <li class="dropdown">
+                                <a href="#" class="nav-link text-dark" data-toggle="dropdown">Products</a>
+                                <ul class="dropdown-menu">
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Productos</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="ProductTypes" asp-action="Index">Tipos Producto</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="nav-link text-dark" data-toggle="dropdown">Services</a>
+                                <ul class="dropdown-menu">
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="Index">Servicios</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area="" asp-controller="ServiceTypes" asp-action="Index">Tipos Servicio</a>
                                     </li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="nav-link text-dark" data-toggle="dropdown">Users</a>
+                                <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="ProductTypes" asp-action="Index">Tipos Producto</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Admins" asp-action="Index">Admins</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Clients" asp-action="Index">Clientes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Employees" asp-action="Index">Empleados</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Providers" asp-action="Index">Proveedores</a>
                                     </li>
                                 </ul>
                             </li>
