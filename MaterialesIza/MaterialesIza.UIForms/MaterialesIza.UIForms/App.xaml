@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <infra:InstanceLocator x:Key="Locator"></infra:InstanceLocator>
-            <x:String x:Key="UrlAPI">https://</x:String>
+            <x:String x:Key="UrlAPI">https://materialesiza20211111035147.azurewebsites.net</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
