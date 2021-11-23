@@ -57,7 +57,7 @@ namespace MaterialesIza.UIForms.ViewModels
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var response = await this.apiService.GetTokenAsync(
                 url,
-                "/api",
+                "/account",
                 "/CreateToken",
                 request);
             this.IsEnabled = true;
@@ -72,14 +72,14 @@ namespace MaterialesIza.UIForms.ViewModels
             //    await Application.Current.MainPage.DisplayAlert("Error", "Email o contraseña incorrecta", "Aceptar");
             //    return;
             //}
-            //await Application.Current.MainPage.DisplayAlert("OK", "LIIISTO", "Aceptar");
+            //await Application.Current.MainPage.DisplayAlert("OK", "LISTO", "Aceptar");
             //return;
 
             var token = (TokenResponse)response.Result;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token;           
             mainViewModel.Services = new ServicesViewModel();
-            //await Application.Current.MainPage.Navigation.PushAsync(new ServicePage());
+            await Application.Current.MainPage.Navigation.PushAsync(new ServicePage());
 
             MainViewModel.GetInstance().Products = new ProductsViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new ProductsPage());
