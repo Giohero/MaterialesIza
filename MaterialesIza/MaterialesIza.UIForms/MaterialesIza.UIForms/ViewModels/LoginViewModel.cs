@@ -57,7 +57,7 @@ namespace MaterialesIza.UIForms.ViewModels
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var response = await this.apiService.GetTokenAsync(
                 url,
-                "/account",
+                "/Account",
                 "/CreateToken",
                 request);
             this.IsEnabled = true;
