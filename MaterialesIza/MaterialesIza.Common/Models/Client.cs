@@ -13,10 +13,17 @@ namespace MaterialesIza.Common.Models
         [JsonProperty("user")]
         public object User { get; set; }
 
+        public override string ToString()
+        {
+            return $"{this.Id} {this.User}";
+        }
+
         [JsonProperty("orders")]
         public object Orders { get; set; }
 
         [JsonProperty("sales")]
         public object Sales { get; set; }
+
+
     }
 }

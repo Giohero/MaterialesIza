@@ -17,6 +17,14 @@ namespace MaterialesIza.UIForms.ViewModels
             set { this.SetValue(ref this.serviceTypes, value); }
         }
 
+        //propiedades de recarga
+        private bool isRefreshing;
+        public bool IsRefreshing
+        {
+            get { return this.isRefreshing; }
+            set { this.SetValue(ref this.isRefreshing, value); }
+        }
+
         public ServiceTypesViewModel()
         {
             this.apiService = new ApiService();
@@ -25,9 +33,17 @@ namespace MaterialesIza.UIForms.ViewModels
 
         private async void LoadServiceTypes()
         {
+            //Inicio
+            this.IsRefreshing = true;
+            var url = Application.Current.Resources["UrlAPI"].ToString();
             var response = await this.apiService.GetListAsync<ServiceType>(
-               "https://materialesiza20211111035147.azurewebsites.net", "/api", "/ServiceTypes");
-
+              url,
+              "/api",
+              "/ServiceTypes",
+              "bearer",
+              MainViewModel.GetInstance().Token.Token);
+            //Final de carga
+            this.IsRefreshing = false;
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(

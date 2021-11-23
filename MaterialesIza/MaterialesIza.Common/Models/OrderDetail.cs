@@ -22,6 +22,8 @@ namespace MaterialesIza.Common.Models
         [JsonProperty("sales_Remarks")]
         public object SalesRemarks { get; set; }
 
+
+
         [JsonProperty("order")]
         public object Order { get; set; }
 

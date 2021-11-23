@@ -17,6 +17,14 @@ namespace MaterialesIza.UIForms.ViewModels
             get { return this.clients; }
             set { this.SetValue(ref this.clients, value); }
         }
+        
+         //propiedades de recarga
+        private bool isRefreshing;
+        public bool IsRefreshing
+        {
+            get { return this.isRefreshing; }
+            set { this.SetValue(ref this.isRefreshing, value); }
+        }
 
         public ClientsViewModel()
         {
@@ -26,9 +34,17 @@ namespace MaterialesIza.UIForms.ViewModels
 
         private async void LoadProducts()
         {
+            //Inicio
+            this.IsRefreshing = true;
+            var url = Application.Current.Resources["UrlAPI"].ToString();
             var response = await this.apiService.GetListAsync<Client>(
-               "https://materialesiza20211111035147.azurewebsites.net", "/api", "/Clients");
-
+              url,
+              "/api",
+              "/Clients",
+              "bearer",
+              MainViewModel.GetInstance().Token.Token);
+            //Final de carga
+            this.IsRefreshing = false;
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(

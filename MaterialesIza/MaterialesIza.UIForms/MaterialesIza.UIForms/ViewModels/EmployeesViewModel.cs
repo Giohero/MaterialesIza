@@ -20,6 +20,14 @@ namespace MaterialesIza.UIForms.ViewModels
             set { this.SetValue(ref this.employees, value); }
         }
 
+        //propiedades de recarga
+        private bool isRefreshing;
+        public bool IsRefreshing
+        {
+            get { return this.isRefreshing; }
+            set { this.SetValue(ref this.isRefreshing, value); }
+        }
+
         public EmployeesViewModel()
         {
             this.apiService = new ApiService();
@@ -28,9 +36,17 @@ namespace MaterialesIza.UIForms.ViewModels
 
         private async void LoadProducts()
         {
+            //Inicio
+            this.IsRefreshing = true;
+            var url = Application.Current.Resources["UrlAPI"].ToString();
             var response = await this.apiService.GetListAsync<Employee>(
-               "https://materialesiza20211111035147.azurewebsites.net", "/api", "/Employees");
-
+              url,
+              "/api",
+              "/Employees",
+              "bearer",
+              MainViewModel.GetInstance().Token.Token);
+            //Final de carga
+            this.IsRefreshing = false;
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert(

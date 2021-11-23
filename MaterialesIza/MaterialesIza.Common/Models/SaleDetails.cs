@@ -12,5 +12,7 @@ namespace MaterialesIza.Common.Models
 
         [JsonProperty("sale")]
         public object Sale { get; set; }
+
+        
     }
 }
