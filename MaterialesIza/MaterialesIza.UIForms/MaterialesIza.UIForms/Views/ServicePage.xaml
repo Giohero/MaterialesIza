@@ -26,13 +26,13 @@
                                     <Label Text="{Binding Id}"
                                            FontAttributes="Bold"
                                            FontSize="Small"
-                                           TextColor="Red"></Label>
+                                           TextColor="Yellow"></Label>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1"
                                              VerticalOptions="Center">
                                     <Label Text="{Binding Name}"
                                            FontSize="Small"
-                                           TextColor="Blue"></Label>
+                                           TextColor="White"></Label>
                                 </StackLayout>
                             </Grid>
                         </ViewCell>
