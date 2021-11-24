@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialesIza.UIForms.Views.MenuPage"
+             BindingContext="{Binding Main,Source={StaticResource Locator}}"
+             Title="Menú">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#FFD700">
+            <Label Text="M E N Ú"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                   TextColor="Black"
+                   FontSize="Large"
+                   />
+            <Image Source="material" WidthRequest="100"></Image>
+
+            <ListView
+                HasUnevenRows="True"
+                ItemsSource="{Binding Menus}"
+                SeparatorVisibility="None">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectMenuCommand}"></TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+                                
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       HeightRequest="50"
+                                       WidthRequest="50"
+                                       Source="{Binding Icon}">
+                                    
+                                </Image>
+                                <Label Grid.Column="1"
+                                       TextColor="Black"
+                                       FontAttributes="Bold"
+                                       FontSize="Medium"
+                                       VerticalOptions="Center"
+                                       Text="{Binding Title}">
+                                    
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

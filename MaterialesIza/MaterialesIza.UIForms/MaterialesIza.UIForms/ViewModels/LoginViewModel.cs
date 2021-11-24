@@ -78,61 +78,71 @@ namespace MaterialesIza.UIForms.ViewModels
             var token = (TokenResponse)response.Result;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token;           
+
             mainViewModel.Services = new ServicesViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new ServicePage());
+            //await Application.Current.MainPage.Navigation.PushAsync(new ServicePage());
+            Application.Current.MainPage = new MasterPage();
 
             //MainViewModel.GetInstance().Products = new ProductsViewModel();
             mainViewModel.Products = new ProductsViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new ProductsPage());
+            Application.Current.MainPage = new MasterPage();
+           // await Application.Current.MainPage.Navigation.PushAsync(new ProductsPage());
+           
 
-            //MainViewModel.GetInstance().ProductTypes = new ProductTypesViewModel();
+            ////MainViewModel.GetInstance().ProductTypes = new ProductTypesViewModel();
             mainViewModel.ProductTypes = new ProductTypesViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new ProductTypesPage());
+            //await Application.Current.MainPage.Navigation.PushAsync(new ProductTypesPage());
+            Application.Current.MainPage = new MasterPage();
 
-            //MainViewModel.GetInstance().Services = new ServicesViewModel();
-            //await Application.Current.MainPage.Navigation.PushAsync(new ServicePage());
 
-            //MainViewModel.GetInstance().ServiceTypes = new ServiceTypesViewModel();
+            ////MainViewModel.GetInstance().Services = new ServicesViewModel();
+            ////await Application.Current.MainPage.Navigation.PushAsync(new ServicePage());
+
+            ////MainViewModel.GetInstance().ServiceTypes = new ServiceTypesViewModel();
             mainViewModel.ServiceTypes = new ServiceTypesViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new ServiceTypesPage());
+            Application.Current.MainPage = new MasterPage();
 
-            //MainViewModel.GetInstance().Admins = new AdminsViewModel();
+            //await Application.Current.MainPage.Navigation.PushAsync(new ServiceTypesPage());
+
+            ////MainViewModel.GetInstance().Admins = new AdminsViewModel();
             mainViewModel.Admins = new AdminsViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new AdminsPage());
+            Application.Current.MainPage = new MasterPage();
 
-            //MainViewModel.GetInstance().Clients = new ClientsViewModel();
-            mainViewModel.Clients = new ClientsViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new ClientsPage());
+            //await Application.Current.MainPage.Navigation.PushAsync(new AdminsPage());
 
-            //MainViewModel.GetInstance().Employees = new EmployeesViewModel();
-            mainViewModel.Employees = new EmployeesViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new EmployeesPage());
+            ////MainViewModel.GetInstance().Clients = new ClientsViewModel();
+            //mainViewModel.Clients = new ClientsViewModel();
+            //await Application.Current.MainPage.Navigation.PushAsync(new ClientsPage());
 
-            //MainViewModel.GetInstance().Orders = new OrdersViewModel();
-            mainViewModel.Orders = new OrdersViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new OrdersPage());
+            ////MainViewModel.GetInstance().Employees = new EmployeesViewModel();
+            //mainViewModel.Employees = new EmployeesViewModel();
+            //await Application.Current.MainPage.Navigation.PushAsync(new EmployeesPage());
 
-            //MainViewModel.GetInstance().OrderDetails = new OrderDetailsViewModel();
-            //mainViewModel.OrderDetails = new OrderDetailsViewModel();
-            //await Application.Current.MainPage.Navigation.PushAsync(new OrderDetailsPage());
+            ////MainViewModel.GetInstance().Orders = new OrdersViewModel();
+            //mainViewModel.Orders = new OrdersViewModel();
+            //await Application.Current.MainPage.Navigation.PushAsync(new OrdersPage());
 
-            //MainViewModel.GetInstance().Providers = new ProvidersViewModel();
-            mainViewModel.Providers = new ProvidersViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new ProvidersPage());
+            ////MainViewModel.GetInstance().OrderDetails = new OrderDetailsViewModel();
+            ////mainViewModel.OrderDetails = new OrderDetailsViewModel();
+            ////await Application.Current.MainPage.Navigation.PushAsync(new OrderDetailsPage());
 
-            //MainViewModel.GetInstance().Purchases = new PurchasesViewModel();
-            mainViewModel.Purchases = new PurchasesViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new PurchasesPage());
+            ////MainViewModel.GetInstance().Providers = new ProvidersViewModel();
+            //mainViewModel.Providers = new ProvidersViewModel();
+            //await Application.Current.MainPage.Navigation.PushAsync(new ProvidersPage());
 
-            //MainViewModel.GetInstance().PurchaseDetails = new PurchaseDetailsViewModel();
-            //await Application.Current.MainPage.Navigation.PushAsync(new PurchaseDetailsPage());
+            ////MainViewModel.GetInstance().Purchases = new PurchasesViewModel();
+            //mainViewModel.Purchases = new PurchasesViewModel();
+            //await Application.Current.MainPage.Navigation.PushAsync(new PurchasesPage());
 
-            //MainViewModel.GetInstance().Sales = new SalesViewModel();
-            mainViewModel.Sales = new SalesViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new SalesPage());
+            ////MainViewModel.GetInstance().PurchaseDetails = new PurchaseDetailsViewModel();
+            ////await Application.Current.MainPage.Navigation.PushAsync(new PurchaseDetailsPage());
 
-            //MainViewModel.GetInstance().SaleDetails = new SaleDetailsViewModel();
-            //await Application.Current.MainPage.Navigation.PushAsync(new SaleDetailsPage());
+            ////MainViewModel.GetInstance().Sales = new SalesViewModel();
+            //mainViewModel.Sales = new SalesViewModel();
+            //await Application.Current.MainPage.Navigation.PushAsync(new SalesPage());
+
+            ////MainViewModel.GetInstance().SaleDetails = new SaleDetailsViewModel();
+            ////await Application.Current.MainPage.Navigation.PushAsync(new SaleDetailsPage());
         }
     }
 }

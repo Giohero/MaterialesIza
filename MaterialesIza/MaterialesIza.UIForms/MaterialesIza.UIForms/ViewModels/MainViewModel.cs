@@ -1,5 +1,9 @@
 ﻿
 using MaterialesIza.Common.Models;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace MaterialesIza.UIForms.ViewModels
 {
@@ -37,11 +41,72 @@ namespace MaterialesIza.UIForms.ViewModels
 
         public SaleDetailsViewModel SaleDetails { get; set; }
 
+        public ObservableCollection<MenuItemViewModel> Menus { get; set; }
+
         public MainViewModel()
         {
             instance = this;
             //this.Login = new LoginViewModel();
+            LoadMenu();
         }
+
+        private void LoadMenu()
+        {
+            var menus = new List<Menu>
+            {
+                new Menu
+            {
+                Icon="Setup",
+                PageName="ProductsPage",
+                Title="Products"
+            },
+                new Menu
+            {
+                Icon="Setup",
+                PageName="ServicePage",
+                Title="Services"
+            },
+                   new Menu
+            {
+                Icon="Setup",
+                PageName="ServiceTypesPage",
+                Title="ServiceType"
+            },
+                      new Menu
+            {
+                Icon="Setup",
+                PageName="ProductsTypePage",
+                Title="ProductsType"
+            },
+                new Menu
+            {
+                Icon="Setup",
+                PageName="SetupPage",
+                Title="Setup"
+            },
+                new Menu
+            {
+                Icon="Info",
+                PageName="AboutPage",
+                Title="About"
+            },
+                new Menu
+            {
+                Icon="exit",
+                PageName="LoginPage",
+                Title="Close session"
+
+            }
+
+            };
+            this.Menus = new ObservableCollection<MenuItemViewModel>(menus.Select(m=>new MenuItemViewModel
+            {
+                Icon= m.Icon,
+                PageName =m.PageName,
+                Title = m.Title
+            }).ToList());
+        }
+
         public static MainViewModel GetInstance()
         {
             if(instance==null)

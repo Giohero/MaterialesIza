@@ -7,6 +7,7 @@
     <ContentPage.Content>
         <ScrollView BindingContext="{Binding Login}">
             <StackLayout Padding="10">
+                <Image Source="material"></Image>
                 <Label Text="Email"></Label>
                 <Entry
                 Keyboard="Email"
@@ -22,7 +23,9 @@
                 <Button Text="Login"
                     Command="{Binding LoginCommand }"
                     IsEnabled="{Binding IsEnabled}"
-                    Background="red" BorderColor="Black"></Button>
+                        FontSize="Medium"
+                        TextColor="Black"
+                    Background="lightblue" BorderColor="Black"></Button>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
