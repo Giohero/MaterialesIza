@@ -56,25 +56,25 @@ namespace MaterialesIza.UIForms.ViewModels
             {
                 new Menu
             {
-                Icon="Setup",
+                Icon="ic_assignment",
                 PageName="ProductsPage",
                 Title="Products"
             },
                 new Menu
             {
-                Icon="Setup",
+                Icon="Shipping",
                 PageName="ServicePage",
                 Title="Services"
             },
                    new Menu
             {
-                Icon="Setup",
+                Icon="Lines",
                 PageName="ServiceTypesPage",
                 Title="ServiceType"
             },
                       new Menu
             {
-                Icon="Setup",
+                Icon="LineP",
                 PageName="ProductsTypePage",
                 Title="ProductsType"
             },

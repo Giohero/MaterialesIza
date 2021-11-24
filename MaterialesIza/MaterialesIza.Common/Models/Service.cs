@@ -15,7 +15,7 @@ namespace MaterialesIza.Common.Models
 
         public override string ToString()
         {
-            return $"{this.Id} {this.Name}";
+            return $"{this.Id} {this.Name} {this.Description}";
         }
 
         [JsonProperty("description")]

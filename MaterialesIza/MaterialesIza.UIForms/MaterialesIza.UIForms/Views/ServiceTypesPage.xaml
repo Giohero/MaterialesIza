@@ -27,13 +27,13 @@
                                              VerticalOptions="End">
                                     <Label Text="{Binding Id}"
                                            FontAttributes="Bold"
-                                           FontSize="Medium"
+                                           FontSize="Large"
                                            TextColor="Yellow"></Label>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1"
                                              VerticalOptions="Center">
                                     <Label Text="{Binding TypeService}"
-                                           FontSize="Medium"
+                                           FontSize="Large"
                                            TextColor="White"></Label>
                                 </StackLayout>
                             </Grid>

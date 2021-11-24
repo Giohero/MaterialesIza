@@ -25,13 +25,19 @@
                                              VerticalOptions="End">
                                     <Label Text="{Binding Id}"
                                            FontAttributes="Bold"
-                                           FontSize="Small"
+                                           FontSize="Medium"
                                            TextColor="Yellow"></Label>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1"
                                              VerticalOptions="Center">
                                     <Label Text="{Binding Name}"
-                                           FontSize="Small"
+                                           FontSize="Medium"
+                                           TextColor="White"></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2"
+                                             VerticalOptions="Center">
+                                    <Label Text="{Binding Description}"
+                                           FontSize="Medium"
                                            TextColor="White"></Label>
                                 </StackLayout>
                             </Grid>

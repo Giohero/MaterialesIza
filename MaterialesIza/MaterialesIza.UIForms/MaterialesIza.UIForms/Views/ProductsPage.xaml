@@ -36,6 +36,18 @@
                                            FontSize="Large"
                                            TextColor="White"></Label>
                                 </StackLayout>
+                                <StackLayout Grid.Column="2"
+                                             VerticalOptions="Center">
+                                    <Label Text="{Binding Description}"
+                                           FontSize="Large"
+                                           TextColor="White"></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="3"
+                                             VerticalOptions="Center">
+                                    <Label Text="{Binding Price ,StringFormat='{0:C2}'}"
+                                           FontSize="Large"
+                                           TextColor="White"></Label>
+                                </StackLayout>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
