@@ -60,8 +60,6 @@ namespace MaterialesIza.UIForms.ViewModels
                 case "OrderDetailsPage":
                     await App.Navigator.PushAsync(new OrderDetailsPage());
                     break;
-
-
                 case "AdminsPage":
                     await App.Navigator.PushAsync(new AdminsPage());
                     break;
