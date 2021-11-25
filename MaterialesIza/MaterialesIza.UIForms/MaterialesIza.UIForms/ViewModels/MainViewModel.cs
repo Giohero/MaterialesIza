@@ -114,6 +114,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
 
             };
+
             this.Menus = new ObservableCollection<MenuItemViewModel>(menus.Select(m=>new MenuItemViewModel
             {
                 Icon= m.Icon,
