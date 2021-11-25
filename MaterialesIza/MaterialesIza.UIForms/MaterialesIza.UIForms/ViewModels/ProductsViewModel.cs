@@ -1,7 +1,9 @@
-﻿using MaterialesIza.Common.Models;
+﻿using GalaSoft.MvvmLight.Command;
+using MaterialesIza.Common.Models;
 using MaterialesIza.Common.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace MaterialesIza.UIForms.ViewModels
@@ -24,6 +26,13 @@ namespace MaterialesIza.UIForms.ViewModels
         {
             get { return this.isRefreshing; }
             set { this.SetValue(ref this.isRefreshing, value); }
+        }
+
+        public ICommand RefreshCommand { get { return new RelayCommand(Refresh); } }
+
+        private void Refresh()
+        {
+            this.LoadProducts();
         }
 
         public ProductsViewModel()

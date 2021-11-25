@@ -40,6 +40,17 @@ namespace MaterialesIza.UIForms.ViewModels
                 case "SetupPage":
                     await App.Navigator.PushAsync(new SetupPage());
                     break;
+
+                case "ProvidersPage":
+                    await App.Navigator.PushAsync(new ProvidersPage());
+                    break;
+
+                case "PurchasePage":
+                    await App.Navigator.PushAsync(new PurchasesPage());
+                    break;
+
+                
+
                 default:
                     MainViewModel.GetInstance().Login = new LoginViewModel();
                     Application.Current.MainPage = new NavigationPage(new LoginPage());

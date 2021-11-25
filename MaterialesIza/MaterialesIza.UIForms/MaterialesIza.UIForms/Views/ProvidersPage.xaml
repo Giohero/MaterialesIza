@@ -31,6 +31,13 @@
                                            TextColor="Red"></Label>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1"
+                                             VerticalOptions="End">
+                                    <Label Text="{Binding Purchases}"
+                                           FontAttributes="Bold"
+                                           FontSize="Small"
+                                           TextColor="Red"></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1"
                                              VerticalOptions="Center">
                                     <Label Text="{Binding User}"
                                            FontSize="Small"

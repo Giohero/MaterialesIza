@@ -96,7 +96,22 @@ namespace MaterialesIza.UIForms.ViewModels
                 PageName="LoginPage",
                 Title="Close session"
 
+            },
+                new Menu
+            {
+                Icon="exit",
+                PageName="ProvidersPage",
+                Title="Providers"
+
+            },
+                new Menu
+            {
+                Icon="exit",
+                PageName="PurchasePage",
+                Title="Purchases"
+
             }
+
 
             };
             this.Menus = new ObservableCollection<MenuItemViewModel>(menus.Select(m=>new MenuItemViewModel

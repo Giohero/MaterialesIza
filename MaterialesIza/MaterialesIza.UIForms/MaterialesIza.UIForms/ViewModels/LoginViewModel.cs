@@ -126,13 +126,15 @@ namespace MaterialesIza.UIForms.ViewModels
             ////mainViewModel.OrderDetails = new OrderDetailsViewModel();
             ////await Application.Current.MainPage.Navigation.PushAsync(new OrderDetailsPage());
 
-            ////MainViewModel.GetInstance().Providers = new ProvidersViewModel();
-            //mainViewModel.Providers = new ProvidersViewModel();
-            //await Application.Current.MainPage.Navigation.PushAsync(new ProvidersPage());
+           // MainViewModel.GetInstance().Providers = new ProvidersViewModel();
+            mainViewModel.Providers = new ProvidersViewModel();
+            Application.Current.MainPage = new MasterPage();
 
-            ////MainViewModel.GetInstance().Purchases = new PurchasesViewModel();
-            //mainViewModel.Purchases = new PurchasesViewModel();
-            //await Application.Current.MainPage.Navigation.PushAsync(new PurchasesPage());
+
+            // MainViewModel.GetInstance().Purchases = new PurchasesViewModel();
+            mainViewModel.Purchases = new PurchasesViewModel();
+            Application.Current.MainPage = new MasterPage();
+
 
             ////MainViewModel.GetInstance().PurchaseDetails = new PurchaseDetailsViewModel();
             ////await Application.Current.MainPage.Navigation.PushAsync(new PurchaseDetailsPage());
