@@ -45,11 +45,42 @@ namespace MaterialesIza.UIForms.ViewModels
                     await App.Navigator.PushAsync(new ProvidersPage());
                     break;
 
-                case "PurchasePage":
+                case "PurchasesPage":
                     await App.Navigator.PushAsync(new PurchasesPage());
                     break;
 
-                
+                case "PurchaseDetailsPage":
+                    await App.Navigator.PushAsync(new PurchaseDetailsPage());
+                    break;
+
+                case "OrdersPage":
+                    await App.Navigator.PushAsync(new OrdersPage());
+                    break;
+
+                case "OrderDetailsPage":
+                    await App.Navigator.PushAsync(new OrderDetailsPage());
+                    break;
+
+
+                case "AdminsPage":
+                    await App.Navigator.PushAsync(new AdminsPage());
+                    break;
+
+                case "ClientsPage":
+                    await App.Navigator.PushAsync(new ClientsPage());
+                    break;
+
+                case "EmployeesPage":
+                    await App.Navigator.PushAsync(new EmployeesPage());
+                    break;
+
+                case "SalesPage":
+                    await App.Navigator.PushAsync(new SalesPage());
+                    break;
+
+                case "SaleDetailsPage":
+                    await App.Navigator.PushAsync(new SaleDetailsPage());
+                    break;
 
                 default:
                     MainViewModel.GetInstance().Login = new LoginViewModel();

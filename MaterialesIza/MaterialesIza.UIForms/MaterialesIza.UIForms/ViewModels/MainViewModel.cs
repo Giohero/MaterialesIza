@@ -78,6 +78,79 @@ namespace MaterialesIza.UIForms.ViewModels
                 PageName="ProductsTypePage",
                 Title="ProductsType"
             },
+
+                new Menu
+            {
+                Icon="",
+                PageName="AdminsPage",
+                Title="Admins"
+
+            },
+                 new Menu
+            {
+                Icon="",
+                PageName="ClientsPage",
+                Title="Clients"
+
+            },
+                new Menu
+            {
+                Icon="",
+                PageName="EmployeesPage",
+                Title="Employees"
+
+            },
+                new Menu
+            {
+                Icon="",
+                PageName="ProvidersPage",
+                Title="Providers"
+
+            },
+                new Menu
+                 {
+                Icon="",
+                PageName="PurchasesPage",
+                Title="Purchases"
+
+            },
+                new Menu
+                  {
+                Icon="",
+                PageName="PurchaseDetailsPage",
+                Title="PurchaseDetails"
+
+            },
+                new Menu
+                   {
+                Icon="",
+                PageName="OrdersPage",
+                Title="Orders"
+
+            },
+
+                new Menu
+                   {
+                Icon="",
+                PageName="OrderDetailsPage",
+                Title="OrderDetails"
+
+            },
+
+                new Menu
+                   {
+                Icon="",
+                PageName="SalesPage",
+                Title="Sales"
+
+            },
+                new Menu
+                   {
+                Icon="",
+                PageName="SaleDetailsPage",
+                Title="SaleDetails"
+
+            },
                 new Menu
             {
                 Icon="Setup",
@@ -97,20 +170,7 @@ namespace MaterialesIza.UIForms.ViewModels
                 Title="Close session"
 
             },
-                new Menu
-            {
-                Icon="exit",
-                PageName="ProvidersPage",
-                Title="Providers"
-
-            },
-                new Menu
-            {
-                Icon="exit",
-                PageName="PurchasePage",
-                Title="Purchases"
-
-            }
+                      
 
 
             };
