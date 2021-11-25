@@ -21,7 +21,7 @@ namespace MaterialesIza.Controllers.API
         [HttpGet]
         public IActionResult GetProviders()
         {
-            return Ok(this.providerRepository.GetAll());
+            return Ok(this.providerRepository.GetProviders());
         }
     }
 
