@@ -81,35 +81,35 @@ namespace MaterialesIza.UIForms.ViewModels
 
                 new Menu
             {
-                Icon="",
+                Icon="Admin",
                 PageName="AdminsPage",
                 Title="Admins"
 
             },
                  new Menu
             {
-                Icon="",
+                Icon="client",
                 PageName="ClientsPage",
                 Title="Clients"
 
             },
                 new Menu
             {
-                Icon="",
+                Icon="employee",
                 PageName="EmployeesPage",
                 Title="Employees"
 
             },
                 new Menu
             {
-                Icon="",
+                Icon="provider",
                 PageName="ProvidersPage",
                 Title="Providers"
 
             },
                 new Menu
                  {
-                Icon="",
+                Icon="purchase",
                 PageName="PurchasesPage",
                 Title="Purchases"
 
@@ -123,7 +123,7 @@ namespace MaterialesIza.UIForms.ViewModels
             },
                 new Menu
                    {
-                Icon="",
+                Icon="order",
                 PageName="OrdersPage",
                 Title="Orders"
 
@@ -139,7 +139,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
                 new Menu
                    {
-                Icon="",
+                Icon="sale",
                 PageName="SalesPage",
                 Title="Sales"
 

@@ -22,7 +22,7 @@ namespace MaterialesIza.Controllers.API
         [HttpGet]
         public IActionResult GetClients()
         {
-            return Ok(this.clientRepository.GetAll());
+            return Ok(this.clientRepository.GetClients());
         }
     }
 
