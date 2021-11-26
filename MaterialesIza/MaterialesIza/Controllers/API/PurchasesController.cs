@@ -1,9 +1,5 @@
 ﻿using MaterialesIza.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MaterialesIza.Controllers.API
 {
@@ -21,7 +17,7 @@ namespace MaterialesIza.Controllers.API
         [HttpGet]
         public IActionResult GetPurchases()
         {
-            return Ok(this.purchaseRepository.GetAll());
+            return Ok(this.purchaseRepository.GetPurchases());
         }
     }
 

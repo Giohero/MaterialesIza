@@ -21,7 +21,7 @@ namespace MaterialesIza.Controllers.API
         [HttpGet]
         public IActionResult GetAdmins()
         {
-            return Ok(this.adminRepository.GetAll());
+            return Ok(this.adminRepository.GetAdmins());
         }
     }
 }

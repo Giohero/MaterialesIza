@@ -21,7 +21,7 @@ namespace MaterialesIza.Controllers.API
         [HttpGet]
         public IActionResult GetEmployees()
         {
-            return Ok(this.employeeRepository.GetAll());
+            return Ok(this.employeeRepository.GetEmployees());
         }
     }
 
