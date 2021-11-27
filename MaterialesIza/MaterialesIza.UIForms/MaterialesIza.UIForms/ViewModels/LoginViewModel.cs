@@ -111,29 +111,26 @@ namespace MaterialesIza.UIForms.ViewModels
             //await Application.Current.MainPage.Navigation.PushAsync(new AdminsPage());
 
             ////MainViewModel.GetInstance().Clients = new ClientsViewModel();
-            //mainViewModel.Clients = new ClientsViewModel();
-            //await Application.Current.MainPage.Navigation.PushAsync(new ClientsPage());
-
+            mainViewModel.Clients = new ClientsViewModel();
+            Application.Current.MainPage = new MasterPage();
             ////MainViewModel.GetInstance().Employees = new EmployeesViewModel();
-            //mainViewModel.Employees = new EmployeesViewModel();
-            //await Application.Current.MainPage.Navigation.PushAsync(new EmployeesPage());
-
+            mainViewModel.Employees = new EmployeesViewModel();
+            Application.Current.MainPage = new MasterPage();
             ////MainViewModel.GetInstance().Orders = new OrdersViewModel();
             //mainViewModel.Orders = new OrdersViewModel();
-            //await Application.Current.MainPage.Navigation.PushAsync(new OrdersPage());
-
+            //Application.Current.MainPage = new MasterPage();
             ////MainViewModel.GetInstance().OrderDetails = new OrderDetailsViewModel();
             ////mainViewModel.OrderDetails = new OrderDetailsViewModel();
             ////await Application.Current.MainPage.Navigation.PushAsync(new OrderDetailsPage());
 
-           // MainViewModel.GetInstance().Providers = new ProvidersViewModel();
+            // MainViewModel.GetInstance().Providers = new ProvidersViewModel();
             mainViewModel.Providers = new ProvidersViewModel();
             Application.Current.MainPage = new MasterPage();
 
 
             // MainViewModel.GetInstance().Purchases = new PurchasesViewModel();
-            mainViewModel.Purchases = new PurchasesViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.Purchases = new PurchasesViewModel();
+            //Application.Current.MainPage = new MasterPage();
 
 
             ////MainViewModel.GetInstance().PurchaseDetails = new PurchaseDetailsViewModel();
@@ -141,6 +138,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
             ////MainViewModel.GetInstance().Sales = new SalesViewModel();
             //mainViewModel.Sales = new SalesViewModel();
+            //Application.Current.MainPage = new MasterPage();
             //await Application.Current.MainPage.Navigation.PushAsync(new SalesPage());
 
             ////MainViewModel.GetInstance().SaleDetails = new SaleDetailsViewModel();

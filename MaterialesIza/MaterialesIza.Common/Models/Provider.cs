@@ -11,7 +11,7 @@ namespace MaterialesIza.Common.Models
         public int Id { get; set; }
 
         [JsonProperty("user")]
-        public object User { get; set; }
+        public User User { get; set; }
 
         /*public override string ToString()
         {

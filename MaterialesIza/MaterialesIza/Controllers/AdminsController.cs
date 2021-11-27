@@ -10,7 +10,6 @@ namespace MaterialesIza.Controllers
 {
     public class AdminsController : Controller
     {
-        private readonly DataContext _context;
         private readonly IAdminRepository adminRepository;
         public AdminsController(IAdminRepository adminRepository)
         {
