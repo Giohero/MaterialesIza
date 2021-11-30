@@ -143,17 +143,18 @@
 
             if (!this.dataContext.Purchases.Any())
             {
-                var Provider = this.dataContext.Providers
-                    .Include(c => c.User)
-                    .FirstOrDefault(c => c.User.FirstName == "Cristobal");
-                await this.CheckPurchaseAsync(Provider);
+                var provider = this.dataContext.Providers.FirstOrDefault();
+                await this.CheckPurchaseAsync(provider);
+                //var Provider = this.dataContext.Providers
+                //    .Include(c => c.User)
+                //    .FirstOrDefault(c => c.User.FirstName == "Cristobal");
+                //await this.CheckPurchaseAsync(Provider);
 
-                    Provider = this.dataContext.Providers
-                    .Include(c => c.User)
-                    .FirstOrDefault(c => c.User.FirstName == "Alexis");
-                await this.CheckPurchaseAsync(Provider);
-                //var provider = this.dataContext.Providers.FirstOrDefault();
-                //await this.CheckPurchaseAsync(provider);
+                //    Provider = this.dataContext.Providers
+                //    .Include(c => c.User)
+                //    .FirstOrDefault(c => c.User.FirstName == "Alexis");
+                //await this.CheckPurchaseAsync(Provider);
+
             }
 
             if (!this.dataContext.PurchaseDetails.Any())
