@@ -19,7 +19,7 @@ namespace MaterialesIza.Data.Repositories
         public IQueryable GetOrderDetails()
         {
             return this.dataContext.OrderDetails
-                .Include(p => p.Order)
+                //.Include(p => p.Order)
                 .Include(p => p.Service);
         }
         public IEnumerable<SelectListItem> GetComboOrderDetails()

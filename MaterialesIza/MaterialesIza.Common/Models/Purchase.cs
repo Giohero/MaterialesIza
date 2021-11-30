@@ -11,12 +11,12 @@ namespace MaterialesIza.Common.Models
         public int Id { get; set; }
 
         [JsonProperty("provider")]
-        public object Provider { get; set; }
+        public User Provider { get; set; }
 
-        public override string ToString()
-        {
-            return $"{this.Id} {this.Provider}";
-        }
+        //public override string ToString()
+        //{
+        //    return $"{this.Id} {this.Provider}";
+        //}
 
         [JsonProperty("purchaseDetails")]
         public object PurchaseDetails { get; set; }

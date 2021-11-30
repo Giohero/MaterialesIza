@@ -21,7 +21,7 @@ namespace MaterialesIza.Controllers.API
         [HttpGet]
         public IActionResult GetPurchaseDetails()
         {
-            return Ok(this.purchaseDetailRepository.GetAll());
+            return Ok(this.purchaseDetailRepository.GetPurchaseDetails());
         }
     }
 

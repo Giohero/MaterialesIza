@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using MaterialesIza.Data;
-using MaterialesIza.Data.Entities;
+﻿using MaterialesIza.Data.Entities;
 using MaterialesIza.Data.Repositories;
-
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 namespace MaterialesIza.Controllers
 {
     public class PurchasesController : Controller
     {
-        private readonly DataContext _context;
         private readonly IPurchaseRepository purchaseRepository;
 
         public PurchasesController(IPurchaseRepository purchaseRepository)
@@ -21,10 +14,10 @@ namespace MaterialesIza.Controllers
             this.purchaseRepository = purchaseRepository;
         }
 
-        // GET: Orders
+        // GET: Purchases
         public IActionResult Index()
         {
-            return View(this.purchaseRepository.GetPurchases());
+            return View(this.purchaseRepository.GetPurchaseWithProvider());
         }
 
         // GET: Purchases/Details/5
@@ -35,8 +28,7 @@ namespace MaterialesIza.Controllers
                 return NotFound();
             }
 
-            var purchase = await _context.Purchases
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var purchase = await this.purchaseRepository.GetByIdAsync(id.Value);
             if (purchase == null)
             {
                 return NotFound();
@@ -56,12 +48,11 @@ namespace MaterialesIza.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id")] Purchase purchase)
+        public async Task<IActionResult> Create(Purchase purchase)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(purchase);
-                await _context.SaveChangesAsync();
+                await this.purchaseRepository.CreateAsync(purchase);
                 return RedirectToAction(nameof(Index));
             }
             return View(purchase);
@@ -75,7 +66,7 @@ namespace MaterialesIza.Controllers
                 return NotFound();
             }
 
-            var purchase = await _context.Purchases.FindAsync(id);
+            var purchase = await this.purchaseRepository.GetByIdAsync(id.Value);
             if (purchase == null)
             {
                 return NotFound();
@@ -88,7 +79,7 @@ namespace MaterialesIza.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id")] Purchase purchase)
+        public async Task<IActionResult> Edit(int id,Purchase purchase)
         {
             if (id != purchase.Id)
             {
@@ -99,12 +90,11 @@ namespace MaterialesIza.Controllers
             {
                 try
                 {
-                    _context.Update(purchase);
-                    await _context.SaveChangesAsync();
+                    await this.purchaseRepository.UpdateAsync(purchase);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PurchaseExists(purchase.Id))
+                    if (!await this.purchaseRepository.ExistAsync(purchase.Id))
                     {
                         return NotFound();
                     }
@@ -126,30 +116,13 @@ namespace MaterialesIza.Controllers
                 return NotFound();
             }
 
-            var purchase = await _context.Purchases
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var purchase = await this.purchaseRepository.GetByIdAsync(id.Value);
             if (purchase == null)
             {
                 return NotFound();
             }
 
             return View(purchase);
-        }
-
-        // POST: Purchases/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var purchase = await _context.Purchases.FindAsync(id);
-            _context.Purchases.Remove(purchase);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool PurchaseExists(int id)
-        {
-            return _context.Purchases.Any(e => e.Id == id);
         }
     }
 }

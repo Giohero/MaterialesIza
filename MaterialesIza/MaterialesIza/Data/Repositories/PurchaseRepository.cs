@@ -19,21 +19,27 @@ namespace MaterialesIza.Data.Repositories
         public IQueryable GetPurchases()
         {
             return this.dataContext.Purchases
-                .Include(p => p.Provider.User);
+                .Include(p => p.Id);
         }
         public IEnumerable<SelectListItem> GetComboPurchase()
         {
-            var list = this.dataContext.Products.Select(m => new SelectListItem
+            var list = this.dataContext.Purchases.Select(m => new SelectListItem
             {
-                Text = m.Name,
+                Text = m.Provider.User.FullName,
                 Value = $"{m.Id}"
             }).ToList();
             list.Insert(0, new SelectListItem
             {
-                Text = "(Selecciona una Compra)",
+                Text = "(Selecciona un proveedor)",
                 Value = "0"
             });
             return list;
+        }
+        public IQueryable GetPurchaseWithProvider()
+        {
+            return this.dataContext.Purchases
+                .Include(t => t.Provider.User)
+                .Include(t => t.PurchaseDetails);
         }
     }
 }

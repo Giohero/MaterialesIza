@@ -56,7 +56,11 @@
             {
                 var user = await CheckUserAsync
                     ("Cruz", "Alexis", "alexiscz@gmail.com", "345523424", "123456", "Provider");
-                await CheckProvidersAsync(user);
+                await this.CheckProvidersAsync(user);
+
+                user = await CheckUserAsync
+                    ("Valdez", "Cristobal", "cristo21@gmail.com", "123456789", "654321", "Provider");
+                await this.CheckProvidersAsync(user);
             }
 
             if (!this.dataContext.ProductTypes.Any())
@@ -74,9 +78,23 @@
 
             if (!this.dataContext.SaleDetails.Any())
             {
-                var sale = this.dataContext.Sales.FirstOrDefault();
+
+                var Cliente = this.dataContext.Clients
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Giovanni");
+
+                var Employee = this.dataContext.Employees
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Jaime");
+                await CheckSaleAsync(Cliente,Employee);
+
+
                 var product = this.dataContext.Products.FirstOrDefault();
-                await this.CheckSaleDetailAsync(sale,product);
+                //var purchase = this.dataContext.Purchases.FirstOrDefault();
+                await this.CheckSaleDetailAsync("11/11/21", 234, 16, "Prueba", product);
+                //var sale = this.dataContext.Sales.FirstOrDefault();
+                //var product = this.dataContext.Products.FirstOrDefault();
+                //await this.CheckSaleDetailAsync(sale,product);
             }
 
             if (!this.dataContext.Orders.Any())
@@ -89,10 +107,20 @@
 
             if (!this.dataContext.OrderDetails.Any())
             {
-                var order = this.dataContext.Orders.FirstOrDefault();
+                var Cliente = this.dataContext.Clients
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Giovanni");
+
+                var Employee = this.dataContext.Employees
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Jaime");
+                await CheckSaleAsync(Cliente, Employee);
                 var service = this.dataContext.Services.FirstOrDefault();
-                await this.CheckOrderDetailAsync(order,service);
-                
+                await this.CheckOrderDetailAsync("11/11/21", 234, 16, "PruebaOrder", service);
+                //var order = this.dataContext.Orders.FirstOrDefault();
+                //var service = this.dataContext.Services.FirstOrDefault();
+                //await this.CheckOrderDetailAsync(order,service);
+
             }
 
             if (!this.dataContext.ServiceTypes.Any())
@@ -115,15 +143,29 @@
 
             if (!this.dataContext.Purchases.Any())
             {
-                var provider = this.dataContext.Providers.FirstOrDefault();
-                await this.CheckPurchaseAsync(provider);
+                var Provider = this.dataContext.Providers
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Cristobal");
+                await this.CheckPurchaseAsync(Provider);
+
+                    Provider = this.dataContext.Providers
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Alexis");
+                await this.CheckPurchaseAsync(Provider);
+                //var provider = this.dataContext.Providers.FirstOrDefault();
+                //await this.CheckPurchaseAsync(provider);
             }
 
             if (!this.dataContext.PurchaseDetails.Any())
             {
+                var Provider = this.dataContext.Providers
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Cristobal");
+                await CheckPurchaseAsync(Provider);
+
                 var product = this.dataContext.Products.FirstOrDefault();
                 var purchase = this.dataContext.Purchases.FirstOrDefault();
-                await this.CheckPurchaseDetailAsync(product,purchase);
+                await this.CheckPurchaseDetailAsync("11/11/20", 234,16,"nada",product);
             }
         }
 
@@ -198,9 +240,9 @@
             await this.dataContext.SaveChangesAsync();
         }
 
-        private async Task CheckOrderDetailAsync(Order order, Service service)
+        private async Task CheckOrderDetailAsync(string date_sale, double total_sale, double iva_sale, string sales_remarks,Service service)
         {
-            this.dataContext.OrderDetails.Add(new OrderDetail { Order = order, Service = service });
+            this.dataContext.OrderDetails.Add(new OrderDetail { Date_Sale = date_sale, Total_Sale = total_sale, Iva_Sale = iva_sale, Sales_Remarks = sales_remarks, Service = service });
             await this.dataContext.SaveChangesAsync();
         }
 
@@ -222,9 +264,9 @@
             await this.dataContext.SaveChangesAsync();
         }
 
-        private async Task CheckSaleDetailAsync(Sale sale, Product product)
+        private async Task CheckSaleDetailAsync(string date_sale, double total_sale, double iva_sale, string sales_remarks, Product product)
         {
-            this.dataContext.SaleDetails.Add(new SaleDetail { Sale = sale, Product = product });
+            this.dataContext.SaleDetails.Add(new SaleDetail { Date_Sale = date_sale, Total_Sale = total_sale, Iva_Sale = iva_sale, Sales_Remarks = sales_remarks, Product = product });
             await this.dataContext.SaveChangesAsync();
         }
 
@@ -240,9 +282,9 @@
             await this.dataContext.SaveChangesAsync();
         }
 
-        private async Task CheckPurchaseDetailAsync(Product product, Purchase purchase)
+        private async Task CheckPurchaseDetailAsync(string date_sale, double total_sale, double iva_sale, string sales_remarks, Product product )//, Purchase purchase)
         {
-            this.dataContext.PurchaseDetails.Add(new PurchaseDetail { Product = product, Purchase = purchase });
+            this.dataContext.PurchaseDetails.Add(new PurchaseDetail {   Date_Sale=date_sale, Total_Sale=total_sale,Iva_Sale=iva_sale,Sales_Remarks= sales_remarks, Product = product/*, Purchase = purchase*/ });
             await this.dataContext.SaveChangesAsync();
         }
 

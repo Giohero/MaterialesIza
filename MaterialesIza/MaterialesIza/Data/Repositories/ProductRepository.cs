@@ -20,7 +20,7 @@ namespace MaterialesIza.Data.Repositories
         public IQueryable GetAllWithSaleDetails()
         {
             return this.dataContext.Products
-                .Include(p => p.SaleDetails);
+                /*.Include(p => p.SaleDetails)*/;
         }
 
         public IEnumerable<SelectListItem> GetComboProduct()

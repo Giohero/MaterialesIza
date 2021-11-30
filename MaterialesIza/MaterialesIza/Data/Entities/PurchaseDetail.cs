@@ -9,7 +9,8 @@ namespace MaterialesIza.Data.Entities
     {
         public int Id { get; set; }
 
-        public DateTime Date_Sale { get; set; }
+        //public DateTime Date_Sale { get; set; }
+        public string Date_Sale { get; set; }
 
         public double Total_Sale { get; set; }
 
@@ -19,7 +20,7 @@ namespace MaterialesIza.Data.Entities
 
         public Product Product { get; set; }
 
-        public Purchase Purchase { get; set; }
+        //public Purchase Purchase { get; set; }
 
     }
     

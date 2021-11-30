@@ -17,7 +17,7 @@ namespace MaterialesIza.Controllers.API
         [HttpGet]
         public IActionResult GetPurchases()
         {
-            return Ok(this.purchaseRepository.GetPurchases());
+            return Ok(this.purchaseRepository.GetPurchaseWithProvider());
         }
     }
 

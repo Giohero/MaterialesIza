@@ -1,9 +1,7 @@
-﻿using MaterialesIza.Data;
-using MaterialesIza.Data.Entities;
+﻿using MaterialesIza.Data.Entities;
 using MaterialesIza.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MaterialesIza.Controllers
@@ -129,7 +127,7 @@ namespace MaterialesIza.Controllers
         }
 
         // POST: Admins/Delete/5
-     
+
     }
 }
 

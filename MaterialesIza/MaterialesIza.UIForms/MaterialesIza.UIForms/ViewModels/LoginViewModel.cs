@@ -129,8 +129,8 @@ namespace MaterialesIza.UIForms.ViewModels
 
 
             // MainViewModel.GetInstance().Purchases = new PurchasesViewModel();
-            //mainViewModel.Purchases = new PurchasesViewModel();
-            //Application.Current.MainPage = new MasterPage();
+            mainViewModel.Purchases = new PurchasesViewModel();
+            Application.Current.MainPage = new MasterPage();
 
 
             ////MainViewModel.GetInstance().PurchaseDetails = new PurchaseDetailsViewModel();

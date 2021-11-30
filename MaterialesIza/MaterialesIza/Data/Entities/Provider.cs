@@ -8,7 +8,7 @@ namespace MaterialesIza.Data.Entities
 
         public User User { get; set; }
 
-        public ICollection<Purchase> Purchases { get; set; }
+        //public ICollection<Purchase> Purchases { get; set; }
 
 
     }

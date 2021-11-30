@@ -377,12 +377,12 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Date_Sale = table.Column<DateTime>(nullable: false),
+                    Date_Sale = table.Column<string>(nullable: true),
                     Total_Sale = table.Column<double>(nullable: false),
                     Iva_Sale = table.Column<double>(nullable: false),
                     Sales_Remarks = table.Column<string>(nullable: true),
-                    OrderId = table.Column<int>(nullable: true),
-                    ServiceId = table.Column<int>(nullable: true)
+                    ServiceId = table.Column<int>(nullable: true),
+                    OrderId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -407,12 +407,12 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Date_Sale = table.Column<DateTime>(nullable: false),
+                    Date_Sale = table.Column<string>(nullable: true),
                     Total_Sale = table.Column<double>(nullable: false),
                     Iva_Sale = table.Column<double>(nullable: false),
                     Sales_Remarks = table.Column<string>(nullable: true),
-                    SaleId = table.Column<int>(nullable: true),
-                    ProductId = table.Column<int>(nullable: true)
+                    ProductId = table.Column<int>(nullable: true),
+                    SaleId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -437,7 +437,7 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Date_Sale = table.Column<DateTime>(nullable: false),
+                    Date_Sale = table.Column<string>(nullable: true),
                     Total_Sale = table.Column<double>(nullable: false),
                     Iva_Sale = table.Column<double>(nullable: false),
                     Sales_Remarks = table.Column<string>(nullable: true),

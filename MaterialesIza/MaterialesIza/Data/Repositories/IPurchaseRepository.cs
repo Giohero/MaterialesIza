@@ -12,5 +12,6 @@ namespace MaterialesIza.Data.Repositories
         IEnumerable<SelectListItem> GetComboPurchase();
 
         IQueryable GetPurchases();
+        IQueryable GetPurchaseWithProvider();
     }
 }
