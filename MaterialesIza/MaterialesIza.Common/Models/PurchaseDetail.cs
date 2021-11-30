@@ -11,7 +11,7 @@ namespace MaterialesIza.Common.Models
         public int Id { get; set; }
 
         [JsonProperty("date_Sale")]
-        public DateTime DateSale { get; set; }
+        public string DateSale { get; set; }
 
         [JsonProperty("total_Sale")]
         public int TotalSale { get; set; }
@@ -20,12 +20,9 @@ namespace MaterialesIza.Common.Models
         public int IvaSale { get; set; }
 
         [JsonProperty("sales_Remarks")]
-        public object SalesRemarks { get; set; }
+        public string SalesRemarks { get; set; }
 
         [JsonProperty("product")]
-        public object Product { get; set; }
-
-        [JsonProperty("purchase")]
-        public object Purchase { get; set; }
+        public Product Product { get; set; }
     }
 }

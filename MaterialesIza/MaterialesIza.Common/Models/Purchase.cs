@@ -11,7 +11,7 @@ namespace MaterialesIza.Common.Models
         public int Id { get; set; }
 
         [JsonProperty("provider")]
-        public User Provider { get; set; }
+        public Provider Provider { get; set; }
 
         //public override string ToString()
         //{
@@ -19,6 +19,6 @@ namespace MaterialesIza.Common.Models
         //}
 
         [JsonProperty("purchaseDetails")]
-        public object PurchaseDetails { get; set; }
+        public List<object> PurchaseDetails { get; set; }
     }
 }
