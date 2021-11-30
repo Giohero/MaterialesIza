@@ -117,10 +117,12 @@ namespace MaterialesIza.UIForms.ViewModels
             mainViewModel.Employees = new EmployeesViewModel();
             Application.Current.MainPage = new MasterPage();
             ////MainViewModel.GetInstance().Orders = new OrdersViewModel();
-            //mainViewModel.Orders = new OrdersViewModel();
+            mainViewModel.Orders = new OrdersViewModel();
+            Application.Current.MainPage = new MasterPage();
             //Application.Current.MainPage = new MasterPage();
             ////MainViewModel.GetInstance().OrderDetails = new OrderDetailsViewModel();
-            ////mainViewModel.OrderDetails = new OrderDetailsViewModel();
+            mainViewModel.OrderDetails = new OrderDetailsViewModel();
+            Application.Current.MainPage = new MasterPage();
             ////await Application.Current.MainPage.Navigation.PushAsync(new OrderDetailsPage());
 
             // MainViewModel.GetInstance().Providers = new ProvidersViewModel();
@@ -133,15 +135,18 @@ namespace MaterialesIza.UIForms.ViewModels
             Application.Current.MainPage = new MasterPage();
 
 
-            ////MainViewModel.GetInstance().PurchaseDetails = new PurchaseDetailsViewModel();
+            mainViewModel.PurchaseDetails = new PurchaseDetailsViewModel();
+            Application.Current.MainPage = new MasterPage();
             ////await Application.Current.MainPage.Navigation.PushAsync(new PurchaseDetailsPage());
 
             ////MainViewModel.GetInstance().Sales = new SalesViewModel();
-            //mainViewModel.Sales = new SalesViewModel();
+            mainViewModel.Sales = new SalesViewModel();
+            Application.Current.MainPage = new MasterPage();
             //Application.Current.MainPage = new MasterPage();
             //await Application.Current.MainPage.Navigation.PushAsync(new SalesPage());
 
-            ////MainViewModel.GetInstance().SaleDetails = new SaleDetailsViewModel();
+            mainViewModel.SaleDetails = new SaleDetailsViewModel();
+            Application.Current.MainPage = new MasterPage();
             ////await Application.Current.MainPage.Navigation.PushAsync(new SaleDetailsPage());
         }
     }
