@@ -109,22 +109,22 @@ namespace MaterialesIza.UIForms.ViewModels
             mainViewModel.Sales = new SalesViewModel();
             Application.Current.MainPage = new MasterPage();
 
-            //mainViewModel.OrderDetails = new OrderDetailsViewModel();
-            //Application.Current.MainPage = new MasterPage();
-
-
             mainViewModel.Purchases = new PurchasesViewModel();
             Application.Current.MainPage = new MasterPage();
 
+            mainViewModel.OrderDetails = new OrderDetailsViewModel();
+            Application.Current.MainPage = new MasterPage();
 
-            //mainViewModel.PurchaseDetails = new PurchaseDetailsViewModel();
-            //Application.Current.MainPage = new MasterPage();
-            
-            
-          
+            mainViewModel.SaleDetails = new SaleDetailsViewModel();
+            Application.Current.MainPage = new MasterPage();
 
-            //mainViewModel.SaleDetails = new SaleDetailsViewModel();
-            //Application.Current.MainPage = new MasterPage();
+            mainViewModel.PurchaseDetails = new PurchaseDetailsViewModel();
+            Application.Current.MainPage = new MasterPage();
+
+
+
+
+
         }
     }
 }

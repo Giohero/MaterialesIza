@@ -10,8 +10,48 @@
             Padding="10">
 
             <ListView
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshing}"
                 HasUnevenRows="True"
-                ItemsSource="{Binding OrderDetails}">
+                ItemsSource="{Binding OrderDetails}"
+                RefreshCommand="{Binding RefreshCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0"
+                                             VerticalOptions="End">
+                                    <Label Text="{Binding Id}"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium"
+                                           TextColor="Yellow"></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1"
+                                             VerticalOptions="Center">
+                                    <Label Text="{Binding DateSale}"
+                                           FontSize="Medium"
+                                           TextColor="White"></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2"
+                                             VerticalOptions="Center">
+                                    <Label Text="{Binding TotalSale}"
+                                           FontSize="Medium"
+                                           TextColor="White"></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="3"
+                                             VerticalOptions="Center">
+                                    <Label Text="{Binding SalesRemarks}"
+                                           FontSize="Medium"
+                                           TextColor="White"></Label>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>

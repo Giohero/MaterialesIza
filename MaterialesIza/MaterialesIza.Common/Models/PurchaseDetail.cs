@@ -24,5 +24,10 @@ namespace MaterialesIza.Common.Models
 
         [JsonProperty("product")]
         public Product Product { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.Id} {this.DateSale} {this.TotalSale} {this.SalesRemarks} ";
+        }
     }
 }

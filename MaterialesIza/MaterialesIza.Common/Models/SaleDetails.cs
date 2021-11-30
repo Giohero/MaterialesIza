@@ -10,9 +10,24 @@ namespace MaterialesIza.Common.Models
         [JsonProperty("id")]
         public int Id { get; set; }
 
+        [JsonProperty("date_Sale")]
+        public string DateSale { get; set; }
+
+        [JsonProperty("total_Sale")]
+        public int TotalSale { get; set; }
+
+        [JsonProperty("iva_Sale")]
+        public int IvaSale { get; set; }
+
+        [JsonProperty("sales_Remarks")]
+        public string SalesRemarks { get; set; }
+
         [JsonProperty("sale")]
         public object Sale { get; set; }
 
-        
+        public override string ToString()
+        {
+            return $"{this.Id} {this.DateSale} {this.TotalSale} {this.SalesRemarks} ";
+        }
     }
 }

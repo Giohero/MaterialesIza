@@ -116,7 +116,7 @@ namespace MaterialesIza.UIForms.ViewModels
             },
                 new Menu
                   {
-                Icon="",
+                Icon="PurchaseDetail",
                 PageName="PurchaseDetailsPage",
                 Title="PurchaseDetails"
 
@@ -131,7 +131,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
                 new Menu
                    {
-                Icon="",
+                Icon="OrderDetail",
                 PageName="OrderDetailsPage",
                 Title="OrderDetails"
 
@@ -146,7 +146,7 @@ namespace MaterialesIza.UIForms.ViewModels
             },
                 new Menu
                    {
-                Icon="",
+                Icon="SalesDetail",
                 PageName="SaleDetailsPage",
                 Title="SaleDetails"
 
