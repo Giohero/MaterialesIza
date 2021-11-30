@@ -20,7 +20,7 @@ namespace MaterialesIza.Data.Repositories
         public IQueryable GetAdmins()
         {
             return this.dataContext.Admins
-                .Include(p => p.User.FullName);
+                .Include(p => p.User);
         }
         public IEnumerable<SelectListItem> GetComboAdmin()
         {
