@@ -18,8 +18,6 @@ namespace MaterialesIza.Common.Models
             return $"{this.Id} {this.Name}";
         }
 
-        [JsonProperty("products")]
-        public object Products { get; set; }
 
     }
 }
