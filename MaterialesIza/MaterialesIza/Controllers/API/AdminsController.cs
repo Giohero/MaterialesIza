@@ -23,5 +23,7 @@ namespace MaterialesIza.Controllers.API
         {
             return Ok(this.adminRepository.GetAdmins());
         }
+
+        
     }
 }
