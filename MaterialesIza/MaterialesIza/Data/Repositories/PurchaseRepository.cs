@@ -25,7 +25,7 @@ namespace MaterialesIza.Data.Repositories
         {
             var list = this.dataContext.Purchases.Select(m => new SelectListItem
             {
-                Text = m.Provider.User.FullName,
+                //Text = m.Provider.User.FullName,
                 Value = $"{m.Id}"
             }).ToList();
             list.Insert(0, new SelectListItem
@@ -38,7 +38,7 @@ namespace MaterialesIza.Data.Repositories
         public IQueryable GetPurchaseWithProvider()
         {
             return this.dataContext.Purchases
-                .Include(t => t.Provider.User)
+                //.Include(t => t.Provider.User)
                 .Include(t => t.PurchaseDetails);
         }
     }

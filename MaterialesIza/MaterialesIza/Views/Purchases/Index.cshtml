@@ -12,7 +12,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Provider.User.FullName)
             </th>
             <th>
@@ -20,13 +20,13 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Provider.User.PhoneNumber)
-            </th>
+            </th>*@
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Provider.User.FullName)
             </td>
             <td>
@@ -34,7 +34,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Provider.User.PhoneNumber)
-            </td>
+            </td>*@
 
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

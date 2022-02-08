@@ -11,7 +11,6 @@
     public class Seeder
     {
 
-
         private readonly DataContext dataContext;
         private readonly IUserHelper userHelper;
 
@@ -141,33 +140,33 @@
                 await this.CheckSaleAsync(client,employee);
             }          
 
-            if (!this.dataContext.Purchases.Any())
-            {
-                var provider = this.dataContext.Providers.FirstOrDefault();
-                await this.CheckPurchaseAsync(provider);
-                //var Provider = this.dataContext.Providers
-                //    .Include(c => c.User)
-                //    .FirstOrDefault(c => c.User.FirstName == "Cristobal");
-                //await this.CheckPurchaseAsync(Provider);
+            //if (!this.dataContext.Purchases.Any())
+            //{
+            //    var provider = this.dataContext.Providers.FirstOrDefault();
+            //    await this.CheckPurchaseAsync(provider);
+            //    //var Provider = this.dataContext.Providers
+            //    //    .Include(c => c.User)
+            //    //    .FirstOrDefault(c => c.User.FirstName == "Cristobal");
+            //    //await this.CheckPurchaseAsync(Provider);
 
-                //    Provider = this.dataContext.Providers
-                //    .Include(c => c.User)
-                //    .FirstOrDefault(c => c.User.FirstName == "Alexis");
-                //await this.CheckPurchaseAsync(Provider);
+            //    //    Provider = this.dataContext.Providers
+            //    //    .Include(c => c.User)
+            //    //    .FirstOrDefault(c => c.User.FirstName == "Alexis");
+            //    //await this.CheckPurchaseAsync(Provider);
 
-            }
+            //}
 
-            if (!this.dataContext.PurchaseDetails.Any())
-            {
-                var Provider = this.dataContext.Providers
-                    .Include(c => c.User)
-                    .FirstOrDefault(c => c.User.FirstName == "Cristobal");
-                await CheckPurchaseAsync(Provider);
+            //if (!this.dataContext.PurchaseDetails.Any())
+            //{
+            //    var Provider = this.dataContext.Providers
+            //        .Include(c => c.User)
+            //        .FirstOrDefault(c => c.User.FirstName == "Cristobal");
+            //    await CheckPurchaseAsync(Provider);
 
-                var product = this.dataContext.Products.FirstOrDefault();
-                var purchase = this.dataContext.Purchases.FirstOrDefault();
-                await this.CheckPurchaseDetailAsync("11/11/20", 234,16,"nada",product);
-            }
+            //    var product = this.dataContext.Products.FirstOrDefault();
+            //    var purchase = this.dataContext.Purchases.FirstOrDefault();
+            //    await this.CheckPurchaseDetailAsync("11/11/20", 234,16,"nada",product);
+            //}
         }
 
         private async Task<User> CheckUserAsync(string lastName, string firstName, string mail, string phone, string password, string rol)
@@ -289,11 +288,11 @@
             await this.dataContext.SaveChangesAsync();
         }
 
-        private async Task CheckPurchaseAsync(Provider provider)
-        {
-            this.dataContext.Purchases.Add(new Purchase { Provider = provider });
-            await this.dataContext.SaveChangesAsync();
-        }
+        //private async Task CheckPurchaseAsync(Provider provider)
+        //{
+        //    this.dataContext.Purchases.Add(new Purchase { Provider = provider });
+        //    await this.dataContext.SaveChangesAsync();
+        //}
     }
 }
 

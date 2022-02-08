@@ -121,10 +121,6 @@ namespace MaterialesIza.UIForms.ViewModels
             mainViewModel.PurchaseDetails = new PurchaseDetailsViewModel();
             Application.Current.MainPage = new MasterPage();
 
-
-
-
-
         }
     }
 }

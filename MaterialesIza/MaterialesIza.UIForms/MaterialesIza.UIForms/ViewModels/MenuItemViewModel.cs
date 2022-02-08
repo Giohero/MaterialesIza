@@ -1,6 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using MaterialesIza.UIForms.Views;
-using System;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -15,7 +14,7 @@ namespace MaterialesIza.UIForms.ViewModels
             App.Master.IsPresented = false;
             //var mainViewModel = MainViewModel.GetInstance();
 
-            switch(this.PageName)
+            switch (this.PageName)
             {
                 case "ServicePage":
                     await App.Navigator.PushAsync(new ServicePage());
