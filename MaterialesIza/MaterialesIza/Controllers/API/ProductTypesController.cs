@@ -1,23 +1,24 @@
 ﻿namespace MaterialesIza.Controllers.API
 {
-    using MaterialesIza.Common.Models;
     using MaterialesIza.Data.Repositories;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
 
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[Controller]")]
 
     public class ProductTypesController : Controller
     {
+
         private readonly IProductTypeRepository productTypeRepository;
 
         public ProductTypesController(IProductTypeRepository productTypeRepository)
         {
             this.productTypeRepository = productTypeRepository;
         }
+
 
         // GET: Products
         [HttpGet]
@@ -26,8 +27,9 @@
             return Ok(this.productTypeRepository.GetAll());
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> PostProductTypes([FromBody] ProducType producType)
+        public async Task<IActionResult> PostProductTypes([FromBody] MaterialesIza.Common.Models.ProducType producType)
         {
            if(!ModelState.IsValid)
             {
