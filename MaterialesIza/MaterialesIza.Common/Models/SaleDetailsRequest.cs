@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace MaterialesIza.Data.Entities
+namespace MaterialesIza.Common.Models
 {
-    public class SaleDetail:IEntity
+    public class SaleDetailsRequest
     {
         public int Id { get; set; }
 
@@ -17,10 +16,6 @@ namespace MaterialesIza.Data.Entities
 
         public string Sales_Remarks { get; set; }
 
-        public Sale Sale { get; set; }
-
-        public Product Product { get; set; }
-
-        
+        public ProductRequest product { get; set; }
     }
 }

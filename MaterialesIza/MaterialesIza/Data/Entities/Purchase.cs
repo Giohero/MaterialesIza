@@ -11,7 +11,7 @@ namespace MaterialesIza.Data.Entities
 
         public Client Client { get; set; }
 
-        //public Provider Provider { get; set; }
+        public Provider Provider { get; set; }
 
         public ICollection<PurchaseDetail> PurchaseDetails { get; set; }
     }

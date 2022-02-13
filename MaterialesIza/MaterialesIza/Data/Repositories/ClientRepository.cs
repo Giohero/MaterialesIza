@@ -19,15 +19,15 @@ namespace MaterialesIza.Data.Repositories
         public IQueryable GetClients()
         {
             return this.dataContext.Clients
-                .Include(p => p.User);
+                .Include(c => c.User);
         }
 
         public IEnumerable<SelectListItem> GetComboClient()
         {
-            var list = this.dataContext.Clients.Select(m => new SelectListItem
+            var list = this.dataContext.Clients.Select(c => new SelectListItem
             {
-                Text = m.User.FullName,
-                Value = $"{m.Id}"
+                Text = c.User.FullName,
+                Value = $"{c.Id}"
             }).ToList();
             list.Insert(0, new SelectListItem
             {

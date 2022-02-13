@@ -20,8 +20,8 @@ namespace MaterialesIza.Data.Repositories
         public IQueryable GetOrder()
         {
             return this.dataContext.Orders
-                .Include(p => p.Client.User)
-                .Include(p => p.Employee.User);
+                .Include(o => o.Client.User)
+                .Include(o => o.Employee.User);
         }
         public MaterialesIza.Common.Models.ClientRequest GetOrders(EmailRequest emailClient)
         {

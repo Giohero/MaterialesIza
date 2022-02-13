@@ -20,14 +20,14 @@ namespace MaterialesIza.Data.Repositories
         public IQueryable GetEmployees()
         {
             return this.dataContext.Employees
-                .Include(p => p.User);
+                .Include(e => e.User);
         }
         public IEnumerable<SelectListItem> GetComboEmployee()
         {
-            var list = this.dataContext.Employees.Select(m => new SelectListItem
+            var list = this.dataContext.Employees.Select(e => new SelectListItem
             {
-                Text = m.User.FullName,
-                Value = $"{m.Id}"
+                Text = e.User.FullName,
+                Value = $"{e.Id}"
             }).ToList();
             list.Insert(0, new SelectListItem
             {

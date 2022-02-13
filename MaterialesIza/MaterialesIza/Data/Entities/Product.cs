@@ -29,9 +29,7 @@ namespace MaterialesIza.Data.Entities
         public ProductType ProductTypes { get; set; }
 
 
-        //public ICollection<SaleDetail> SaleDetails { get; set; }
-
-        //public ICollection<PurchaseDetail> PurchaseDetails { get; set; }
+        public ICollection<SaleDetail> SaleDetails { get; set; }
 
     }
     
