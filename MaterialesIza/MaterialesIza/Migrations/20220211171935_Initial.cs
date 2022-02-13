@@ -301,6 +301,25 @@ namespace MaterialesIza.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Purchases",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ClientId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Purchases", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Purchases_Clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Clients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
@@ -353,20 +372,31 @@ namespace MaterialesIza.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Purchases",
+                name: "PurchaseDetails",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProviderId = table.Column<int>(nullable: true)
+                    Date_Sale = table.Column<string>(nullable: true),
+                    Total_Sale = table.Column<double>(nullable: false),
+                    Iva_Sale = table.Column<double>(nullable: false),
+                    Sales_Remarks = table.Column<string>(nullable: true),
+                    ProductId = table.Column<int>(nullable: true),
+                    PurchaseId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Purchases", x => x.Id);
+                    table.PrimaryKey("PK_PurchaseDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Purchases_Providers_ProviderId",
-                        column: x => x.ProviderId,
-                        principalTable: "Providers",
+                        name: "FK_PurchaseDetails_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PurchaseDetails_Purchases_PurchaseId",
+                        column: x => x.PurchaseId,
+                        principalTable: "Purchases",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -377,12 +407,12 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Date_Sale = table.Column<string>(nullable: true),
-                    Total_Sale = table.Column<double>(nullable: false),
-                    Iva_Sale = table.Column<double>(nullable: false),
-                    Sales_Remarks = table.Column<string>(nullable: true),
-                    ServiceId = table.Column<int>(nullable: true),
-                    OrderId = table.Column<int>(nullable: true)
+                    Date_Order = table.Column<DateTime>(nullable: false),
+                    Total_Order = table.Column<double>(nullable: false),
+                    Iva_Order = table.Column<double>(nullable: false),
+                    Order_Remarks = table.Column<string>(nullable: true),
+                    OrderId = table.Column<int>(nullable: true),
+                    ServiceId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -427,36 +457,6 @@ namespace MaterialesIza.Migrations
                         name: "FK_SaleDetails_Sales_SaleId",
                         column: x => x.SaleId,
                         principalTable: "Sales",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PurchaseDetails",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Date_Sale = table.Column<string>(nullable: true),
-                    Total_Sale = table.Column<double>(nullable: false),
-                    Iva_Sale = table.Column<double>(nullable: false),
-                    Sales_Remarks = table.Column<string>(nullable: true),
-                    ProductId = table.Column<int>(nullable: true),
-                    PurchaseId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PurchaseDetails", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_PurchaseDetails_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_PurchaseDetails_Purchases_PurchaseId",
-                        column: x => x.PurchaseId,
-                        principalTable: "Purchases",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -556,9 +556,9 @@ namespace MaterialesIza.Migrations
                 column: "PurchaseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Purchases_ProviderId",
+                name: "IX_Purchases_ClientId",
                 table: "Purchases",
-                column: "ProviderId");
+                column: "ClientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SaleDetails_ProductId",
@@ -610,6 +610,9 @@ namespace MaterialesIza.Migrations
                 name: "OrderDetails");
 
             migrationBuilder.DropTable(
+                name: "Providers");
+
+            migrationBuilder.DropTable(
                 name: "PurchaseDetails");
 
             migrationBuilder.DropTable(
@@ -635,9 +638,6 @@ namespace MaterialesIza.Migrations
 
             migrationBuilder.DropTable(
                 name: "ServiceTypes");
-
-            migrationBuilder.DropTable(
-                name: "Providers");
 
             migrationBuilder.DropTable(
                 name: "ProductTypes");

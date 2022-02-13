@@ -77,7 +77,10 @@
 
             if (!this.dataContext.SaleDetails.Any())
             {
-
+                //var order = this.dataContext.Orders.FirstOrDefault();
+                //var service = this.dataContext.Services.FirstOrDefault();
+                //var dateorder = DateTime.Now;
+                //await CheckOrderDetailAsync(dateorder,order,service);
                 var Cliente = this.dataContext.Clients
                     .Include(c => c.User)
                     .FirstOrDefault(c => c.User.FirstName == "Giovanni");
@@ -85,7 +88,7 @@
                 var Employee = this.dataContext.Employees
                     .Include(c => c.User)
                     .FirstOrDefault(c => c.User.FirstName == "Jaime");
-                await CheckSaleAsync(Cliente,Employee);
+                await CheckSaleAsync(Cliente, Employee);
 
 
                 var product = this.dataContext.Products.FirstOrDefault();
@@ -96,42 +99,61 @@
                 //await this.CheckSaleDetailAsync(sale,product);
             }
 
-            if (!this.dataContext.Orders.Any())
+            if (!this.dataContext.ServiceTypes.Any())
             {
-                var employee = this.dataContext.Employees.FirstOrDefault();
-                var client = this.dataContext.Clients.FirstOrDefault();
-                await this.CheckOrderAsync(employee,client);
-
+                await this.CheckServiceTypeAsync("Flete");
+                await this.CheckServiceTypeAsync("Mano Chango");
+                await this.CheckServiceTypeAsync("Retroexcavadora");
             }
 
-            if (!this.dataContext.OrderDetails.Any())
+            if (!this.dataContext.Orders.Any())
             {
-                var Cliente = this.dataContext.Clients
+                var client = this.dataContext.Clients
                     .Include(c => c.User)
                     .FirstOrDefault(c => c.User.FirstName == "Giovanni");
 
-                var Employee = this.dataContext.Employees
+                var employee = this.dataContext.Employees
                     .Include(c => c.User)
                     .FirstOrDefault(c => c.User.FirstName == "Jaime");
-                await CheckSaleAsync(Cliente, Employee);
-                var service = this.dataContext.Services.FirstOrDefault();
-                await this.CheckOrderDetailAsync("11/11/21", 234, 16, "PruebaOrder", service);
-                //var order = this.dataContext.Orders.FirstOrDefault();
-                //var service = this.dataContext.Services.FirstOrDefault();
-                //await this.CheckOrderDetailAsync(order,service);
+                await this.CheckOrderAsync(employee,client);
 
-            }
+                client = this.dataContext.Clients
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Yair");
+                employee = this.dataContext.Employees
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Gerardo");
+                await this.CheckOrderAsync(employee, client);
 
-            if (!this.dataContext.ServiceTypes.Any())
-            {
-                await this.CheckServiceTypeAsync("Mano Chango");
             }
 
             if (!this.dataContext.Services.Any())
             {
                 var serviceType = this.dataContext.ServiceTypes.FirstOrDefault();
-                await this.CheckServiceAsync("Mano Chango","Retroexcavadora",serviceType);
+                await this.CheckServiceAsync("Maquinaria", "Retroexcavadora", serviceType);
+
+                serviceType = this.dataContext.ServiceTypes.FirstOrDefault(s =>s.TypeService == "Retroexcavadora");
+                await this.CheckServiceAsync("Viaje", "Retroexcavadora", serviceType);
             }
+
+            if (!this.dataContext.OrderDetails.Any())
+            {
+                
+                var service = this.dataContext.Services.FirstOrDefault();
+                var order = this.dataContext.Orders.FirstOrDefault();
+                await this.CheckOrderDetailAsync(DateTime.Now, 234, 16, "Prueba Order 1", service,order);
+
+                service = this.dataContext.Services.FirstOrDefault();
+                order = this.dataContext.Orders.FirstOrDefault();
+                await this.CheckOrderDetailAsync(DateTime.Now, 698, 16, "Prueba Order 2", service, order);
+
+
+
+            }
+
+            
+
+            
             
             if (!this.dataContext.Sales.Any())
             {
@@ -240,9 +262,9 @@
             await this.dataContext.SaveChangesAsync();
         }
 
-        private async Task CheckOrderDetailAsync(string date_sale, double total_sale, double iva_sale, string sales_remarks,Service service)
+        private async Task CheckOrderDetailAsync(DateTime date_order, double total_order, double iva_order, string order_remarks, Service service,Order order)
         {
-            this.dataContext.OrderDetails.Add(new OrderDetail { Date_Sale = date_sale, Total_Sale = total_sale, Iva_Sale = iva_sale, Sales_Remarks = sales_remarks, Service = service });
+            this.dataContext.OrderDetails.Add(new OrderDetail { Date_Order = date_order, Total_Order = total_order, Iva_Order = iva_order, Order_Remarks = order_remarks, Service = service,Order = order });
             await this.dataContext.SaveChangesAsync();
         }
 

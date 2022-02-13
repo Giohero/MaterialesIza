@@ -21,7 +21,8 @@ namespace MaterialesIza.Controllers.API
         [HttpGet]
         public IActionResult GetOrderDetails()
         {
-            return Ok(this.orderDetailRepository.GetOrderDetails());
+            var x = this.orderDetailRepository.GetOrderDetails();
+            return Ok(x);
         }
     }
 

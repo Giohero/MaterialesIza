@@ -13,16 +13,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Date_Sale)
+                @Html.DisplayNameFor(model => model.Date_Order)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Total_Sale)
+                @Html.DisplayNameFor(model => model.Total_Order)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Iva_Sale)
+                @Html.DisplayNameFor(model => model.Iva_Order)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Sales_Remarks)
+                @Html.DisplayNameFor(model => model.Order_Remarks)
             </th>
             @*<th>
                 @Html.DisplayNameFor(model => model.Order)
@@ -37,16 +37,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Date_Sale)
+                @Html.DisplayFor(modelItem => item.Date_Order)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Total_Sale)
+                @Html.DisplayFor(modelItem => item.Total_Order)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Iva_Sale)
+                @Html.DisplayFor(modelItem => item.Iva_Order)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Sales_Remarks)
+                @Html.DisplayFor(modelItem => item.Order_Remarks)
             </td>
             @*<td>                
                 @Html.DisplayFor(modelItem => item.Order)

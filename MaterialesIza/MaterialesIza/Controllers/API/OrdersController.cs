@@ -1,23 +1,33 @@
-﻿using MaterialesIza.Data.Repositories;
+﻿using MaterialesIza.Common.Models;
+using MaterialesIza.Data;
+using MaterialesIza.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MaterialesIza.Controllers.API
 {
     [Route("api/[Controller]")]
-    public class OrdersController : Controller
+    [ApiController]
+    public class OrdersController : ControllerBase
     {
         private readonly IOrderRepository orderRepository;
+        private readonly DataContext dataContext;
 
-        public OrdersController(IOrderRepository orderRepository)
+        public OrdersController(IOrderRepository orderRepository,DataContext dataContext)
         {
             this.orderRepository = orderRepository;
+            this.dataContext = dataContext;
         }
 
         // GET: Orders
-        [HttpGet]
-        public IActionResult GetOrders()
+        //[HttpPost]
+        //[Route("GetOrdersByEmailAsync")]
+        public IActionResult GetOrdersController()
         {
-            return Ok(this.orderRepository.GetOrders());
+            var emailClient = new EmailRequest { Email = "firmalagio@gmail.com" };
+            return Ok(this.orderRepository.GetOrders(emailClient));
         }
     }
 

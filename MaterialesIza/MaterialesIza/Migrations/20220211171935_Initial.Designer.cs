@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MaterialesIza.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211130063129_Initial")]
+    [Migration("20220211171935_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,22 +101,22 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Date_Sale")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Date_Order")
+                        .HasColumnType("datetime2");
 
-                    b.Property<double>("Iva_Sale")
+                    b.Property<double>("Iva_Order")
                         .HasColumnType("float");
 
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Sales_Remarks")
+                    b.Property<string>("Order_Remarks")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ServiceId")
                         .HasColumnType("int");
 
-                    b.Property<double>("Total_Sale")
+                    b.Property<double>("Total_Order")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
@@ -200,12 +200,12 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ProviderId")
+                    b.Property<int?>("ClientId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProviderId");
+                    b.HasIndex("ClientId");
 
                     b.ToTable("Purchases");
                 });
@@ -580,7 +580,7 @@ namespace MaterialesIza.Migrations
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.OrderDetail", b =>
                 {
-                    b.HasOne("MaterialesIza.Data.Entities.Order", null)
+                    b.HasOne("MaterialesIza.Data.Entities.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderId");
 
@@ -605,9 +605,9 @@ namespace MaterialesIza.Migrations
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.Purchase", b =>
                 {
-                    b.HasOne("MaterialesIza.Data.Entities.Provider", "Provider")
+                    b.HasOne("MaterialesIza.Data.Entities.Client", "Client")
                         .WithMany()
-                        .HasForeignKey("ProviderId");
+                        .HasForeignKey("ClientId");
                 });
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.PurchaseDetail", b =>
