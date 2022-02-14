@@ -19,8 +19,8 @@ namespace MaterialesIza.Data.Repositories
         public IQueryable GetPurchaseDetails()
         {
             return this.dataContext.PurchaseDetails
-                //.Include(p => p.Purchase)
-                .Include(p => p.Product);
+                .Include(p => p.Purchase);
+                //.Include(p => p.Product);
         }
         public IEnumerable<SelectListItem> GetComboPurchaseDetails()
         {
