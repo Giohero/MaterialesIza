@@ -201,9 +201,14 @@ namespace MaterialesIza.Migrations
                     b.Property<int?>("ClientId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ProviderId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
+
+                    b.HasIndex("ProviderId");
 
                     b.ToTable("Purchases");
                 });
@@ -215,27 +220,22 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Date_Sale")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Date_purchase")
+                        .HasColumnType("datetime2");
 
-                    b.Property<double>("Iva_Sale")
+                    b.Property<double>("Iva_purchase")
                         .HasColumnType("float");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
 
                     b.Property<int?>("PurchaseId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Sales_Remarks")
+                    b.Property<string>("Purchase_Remarks")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Total_Sale")
+                    b.Property<double>("Total_purchase")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.HasIndex("PurchaseId");
 
@@ -271,8 +271,8 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Date_Sale")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Date_Sale")
+                        .HasColumnType("datetime2");
 
                     b.Property<double>("Iva_Sale")
                         .HasColumnType("float");
@@ -568,7 +568,7 @@ namespace MaterialesIza.Migrations
             modelBuilder.Entity("MaterialesIza.Data.Entities.Order", b =>
                 {
                     b.HasOne("MaterialesIza.Data.Entities.Client", "Client")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("ClientId");
 
                     b.HasOne("MaterialesIza.Data.Entities.Employee", "Employee")
@@ -606,15 +606,15 @@ namespace MaterialesIza.Migrations
                     b.HasOne("MaterialesIza.Data.Entities.Client", "Client")
                         .WithMany()
                         .HasForeignKey("ClientId");
+
+                    b.HasOne("MaterialesIza.Data.Entities.Provider", "Provider")
+                        .WithMany("Purchases")
+                        .HasForeignKey("ProviderId");
                 });
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.PurchaseDetail", b =>
                 {
-                    b.HasOne("MaterialesIza.Data.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
-
-                    b.HasOne("MaterialesIza.Data.Entities.Purchase", null)
+                    b.HasOne("MaterialesIza.Data.Entities.Purchase", "Purchase")
                         .WithMany("PurchaseDetails")
                         .HasForeignKey("PurchaseId");
                 });
@@ -626,17 +626,17 @@ namespace MaterialesIza.Migrations
                         .HasForeignKey("ClientId");
 
                     b.HasOne("MaterialesIza.Data.Entities.Employee", "Employee")
-                        .WithMany()
+                        .WithMany("Sales")
                         .HasForeignKey("EmployeeId");
                 });
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.SaleDetail", b =>
                 {
                     b.HasOne("MaterialesIza.Data.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("SaleDetails")
                         .HasForeignKey("ProductId");
 
-                    b.HasOne("MaterialesIza.Data.Entities.Sale", null)
+                    b.HasOne("MaterialesIza.Data.Entities.Sale", "Sale")
                         .WithMany("SaleDetails")
                         .HasForeignKey("SaleId");
                 });

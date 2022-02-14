@@ -65,14 +65,23 @@
             if (!this.dataContext.ProductTypes.Any())
             {
                 await this.CheckProductTypeAsync("Construccion");
+                await this.CheckProductTypeAsync("Metales");
             }
 
             if (!this.dataContext.Products.Any())
             {
-                var productType = this.dataContext.ProductTypes.FirstOrDefault(p => p.Name == "Cobre");
-                await this.CheckProductAsync("Cemento", 200, 100, "Bulto", productType);
+                var productType = this.dataContext.ProductTypes.FirstOrDefault();
+                await this.CheckProductAsync("Cemento", 200, 100, "Bulto",productType);
+
+                productType = this.dataContext.ProductTypes.FirstOrDefault(p => p.Name == "Construccion");
                 await this.CheckProductAsync("Cal", 20, 100, "Bulto", productType);
+
+                productType = this.dataContext.ProductTypes.FirstOrDefault(p => p.Name == "Construccion");
                 await this.CheckProductAsync("Ladrillo", 5, 100, "Pieza", productType);
+
+                productType = this.dataContext.ProductTypes.FirstOrDefault(p => p.Name == "Metales");
+                await this.CheckProductAsync("Varilla", 10, 300, "Pieza", productType);
+
             }
 
             if (!this.dataContext.SaleDetails.Any())
@@ -81,19 +90,23 @@
                 //var service = this.dataContext.Services.FirstOrDefault();
                 //var dateorder = DateTime.Now;
                 //await CheckOrderDetailAsync(dateorder,order,service);
-                var Cliente = this.dataContext.Clients
-                    .Include(c => c.User)
-                    .FirstOrDefault(c => c.User.FirstName == "Giovanni");
+                //var Cliente = this.dataContext.Clients
+                //    .Include(c => c.User)
+                //    .FirstOrDefault(c => c.User.FirstName == "Giovanni");
 
-                var Employee = this.dataContext.Employees
-                    .Include(c => c.User)
-                    .FirstOrDefault(c => c.User.FirstName == "Jaime");
-                await CheckSaleAsync(Cliente, Employee);
+                //var Employee = this.dataContext.Employees
+                //    .Include(c => c.User)
+                //    .FirstOrDefault(c => c.User.FirstName == "Jaime");
+                //await CheckSaleAsync(Cliente, Employee);
 
 
                 var product = this.dataContext.Products.FirstOrDefault();
                 var sale = this.dataContext.Sales.FirstOrDefault();
                 await this.CheckSaleDetailAsync(DateTime.Now, 234, 16, "Venta 1", product, sale);
+
+                product = this.dataContext.Products.FirstOrDefault();
+                sale = this.dataContext.Sales.FirstOrDefault();
+                await this.CheckSaleDetailAsync(DateTime.Now,340, 10, "Venta 2", product, sale);
             }
 
             if (!this.dataContext.ServiceTypes.Any())
@@ -143,20 +156,29 @@
                 service = this.dataContext.Services.FirstOrDefault();
                 order = this.dataContext.Orders.FirstOrDefault();
                 await this.CheckOrderDetailAsync(DateTime.Now, 698, 16, "Prueba Order 2", service, order);
-
-
-
             }
 
-            
-
-            
-            
             if (!this.dataContext.Sales.Any())
             {
                 var client = this.dataContext.Clients.FirstOrDefault();
                 var employee = this.dataContext.Employees.FirstOrDefault();
-                await this.CheckSaleAsync(client,employee);
+                await this.CheckSaleAsync( client, employee);
+                //var client = this.dataContext.Clients
+                //    .Include(c => c.User)
+                //    .FirstOrDefault(c => c.User.FirstName == "Alex");
+
+                //var employee = this.dataContext.Employees
+                //    .Include(c => c.User)
+                //    .FirstOrDefault(c => c.User.FirstName == "Jaime");
+                //await this.CheckSaleAsync(client, employee );
+
+                //client = this.dataContext.Clients
+                //    .Include(c => c.User)
+                //    .FirstOrDefault(c => c.User.FirstName == "Eduardo");
+                //employee = this.dataContext.Employees
+                //    .Include(c => c.User)
+                //    .FirstOrDefault(c => c.User.FirstName == "Gerardo");
+                //await this.CheckSaleAsync(client, employee);
             }
 
             //if (!this.dataContext.Purchases.Any())
@@ -168,9 +190,9 @@
             //    //    .FirstOrDefault(c => c.User.FirstName == "Cristobal");
             //    //await this.CheckPurchaseAsync(Provider);
 
-            //    //    Provider = this.dataContext.Providers
-            //    //    .Include(c => c.User)
-            //    //    .FirstOrDefault(c => c.User.FirstName == "Alexis");
+            //    //Provider = this.dataContext.Providers
+            //    //.Include(c => c.User)
+            //    //.FirstOrDefault(c => c.User.FirstName == "Alexis");
             //    //await this.CheckPurchaseAsync(Provider);
 
             //}
@@ -277,9 +299,9 @@
             await this.dataContext.SaveChangesAsync();
         }
 
-        private async Task CheckSaleAsync(Client client, Employee employee )
+        private async Task CheckSaleAsync(  Client client, Employee employee )
         {
-            this.dataContext.Sales.Add(new Sale { Client = client, Employee = employee });
+            this.dataContext.Sales.Add(new Sale {   Client = client, Employee = employee });
             await this.dataContext.SaveChangesAsync();
         }
 

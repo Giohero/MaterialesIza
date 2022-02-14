@@ -11,9 +11,10 @@ namespace MaterialesIza.Controllers.API
         private readonly ISaleRepository saleRepository;
         private readonly DataContext dataContext;
 
-        public SalesController(ISaleRepository saleRepository)
+        public SalesController(ISaleRepository saleRepository, DataContext dataContext)
         {
             this.saleRepository = saleRepository;
+            this.dataContext = dataContext;
         }
 
         // GET: Sales

@@ -9,6 +9,6 @@
     {
         IEnumerable<SelectListItem> GetComboProduct();
 
-        IQueryable GetAllWithSaleDetails(); 
+        //IQueryable GetAllWithSaleDetails(); 
     }
 }

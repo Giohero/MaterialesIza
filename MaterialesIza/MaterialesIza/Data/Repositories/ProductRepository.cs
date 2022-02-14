@@ -17,11 +17,11 @@ namespace MaterialesIza.Data.Repositories
             this.dataContext = dataContext;
         }
 
-        public IQueryable GetAllWithSaleDetails()
-        {
-            return this.dataContext.Products
-                /*.Include(p => p.SaleDetails)*/;
-        }
+        //public IQueryable GetAllWithSaleDetails()
+        //{
+        //    return this.dataContext.Products
+        //        /*.Include(p => p.SaleDetails)*/;
+        //}
 
         public IEnumerable<SelectListItem> GetComboProduct()
         {
