@@ -358,16 +358,16 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ClientId = table.Column<int>(nullable: true),
+                    EmployeeId = table.Column<int>(nullable: true),
                     ProviderId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Purchases", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Purchases_Clients_ClientId",
-                        column: x => x.ClientId,
-                        principalTable: "Clients",
+                        name: "FK_Purchases_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -551,9 +551,9 @@ namespace MaterialesIza.Migrations
                 column: "PurchaseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Purchases_ClientId",
+                name: "IX_Purchases_EmployeeId",
                 table: "Purchases",
-                column: "ClientId");
+                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Purchases_ProviderId",

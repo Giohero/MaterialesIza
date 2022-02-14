@@ -185,17 +185,15 @@
 
             if (!this.dataContext.Purchases.Any())
             {
-                //var provider = this.dataContext.Providers.FirstOrDefault();
-                //await this.CheckPurchaseAsync(provider);
-                //var Provider = this.dataContext.Providers
-                //    .Include(c => c.User)
-                //    .FirstOrDefault(c => c.User.FirstName == "Cristobal");
-                //await this.CheckPurchaseAsync(Provider);
+                var Provider = this.dataContext.Providers
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Alexis");
 
-                //Provider = this.dataContext.Providers
-                //.Include(c => c.User)
-                //.FirstOrDefault(c => c.User.FirstName == "Alexis");
-                //await this.CheckPurchaseAsync(Provider);
+                var Employee = this.dataContext.Employees
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Jaime");
+
+                await this.CheckPurchaseAsync(Provider,Employee);
 
             }
 
@@ -331,11 +329,11 @@
             await this.dataContext.SaveChangesAsync();
         }
 
-        //private async Task CheckPurchaseAsync(Provider provider)
-        //{
-        //    this.dataContext.Purchases.Add(new Purchase { Provider = provider });
-        //    await this.dataContext.SaveChangesAsync();
-        //}
+        private async Task CheckPurchaseAsync(Provider provider, Employee employee)
+        {
+            this.dataContext.Purchases.Add(new Purchase { Provider = provider , Employee =employee});
+            await this.dataContext.SaveChangesAsync();
+        }
     }
 }
 

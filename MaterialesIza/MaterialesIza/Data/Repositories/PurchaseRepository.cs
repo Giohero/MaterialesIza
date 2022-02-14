@@ -17,26 +17,24 @@ namespace MaterialesIza.Data.Repositories
         {
             this.dataContext = dataContext;
         }
-        public IQueryable GetPurchases()
-        {
-            return this.dataContext.Purchases
-                .Include(o => o.Employee.User)
-                .Include(o => o.Provider.User);
-        }
+        //public IQueryable GetPurchases()
+        //{
+        //    return this.dataContext.Purchases
+        //        .Include(o => o.Employee.User)
+        //        .Include(o => o.Provider.User);
+        //}
 
 
-        public MaterialesIza.Common.Models.ProviderRequest GetPurchases(EmailRequest emailClient)
+        public MaterialesIza.Common.Models.ProviderRequest GetPurchases(EmailRequest emailProvider)
         {
             var c = this.dataContext.Providers
                 .Include(c => c.User)
                 .Include(c => c.Purchases)
                 .ThenInclude(o => o.PurchaseDetails)
-                //.ThenInclude(od => od.Service)
-                //.ThenInclude(s => s.ServiceType)
                 .Include(c => c.Purchases)
                 .ThenInclude(c => c.Employee)
                 .ThenInclude(c => c.User)
-                .FirstOrDefault(c => c.User.Email.ToLower() == emailClient.Email);
+                .FirstOrDefault(c => c.User.Email.ToLower() == emailProvider.Email);
             if (c == null)
             {
                 return null;
@@ -59,7 +57,7 @@ namespace MaterialesIza.Data.Repositories
                         LastName = o.Employee.User.LastName,
                         PhoneNumber = o.Employee.User.PhoneNumber,
                     },
-                    purchaseDetails = o.PurchaseDetails?.Select(od => new PurchaseDetailsRequest
+                    PurchaseDetails = o.PurchaseDetails?.Select(od => new PurchaseDetailsRequest
                     {
                         Id = od.Id,
                         Date_Purchase = od.Date_purchase,

@@ -17,7 +17,7 @@ namespace MaterialesIza.Controllers
         // GET: Purchases
         public IActionResult Index()
         {
-            return View(this.purchaseRepository.GetPurchaseWithProvider());
+            return View(this.purchaseRepository.GetAll());
         }
 
         // GET: Purchases/Details/5

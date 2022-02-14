@@ -198,7 +198,7 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ClientId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<int?>("ProviderId")
@@ -206,7 +206,7 @@ namespace MaterialesIza.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
+                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("ProviderId");
 
@@ -603,9 +603,9 @@ namespace MaterialesIza.Migrations
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.Purchase", b =>
                 {
-                    b.HasOne("MaterialesIza.Data.Entities.Client", "Client")
+                    b.HasOne("MaterialesIza.Data.Entities.Employee", "Employee")
                         .WithMany()
-                        .HasForeignKey("ClientId");
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("MaterialesIza.Data.Entities.Provider", "Provider")
                         .WithMany("Purchases")

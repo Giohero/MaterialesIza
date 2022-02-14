@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MaterialesIza.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220214154823_Initial")]
+    [Migration("20220214210907_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -200,7 +200,7 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ClientId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<int?>("ProviderId")
@@ -208,7 +208,7 @@ namespace MaterialesIza.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
+                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("ProviderId");
 
@@ -605,9 +605,9 @@ namespace MaterialesIza.Migrations
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.Purchase", b =>
                 {
-                    b.HasOne("MaterialesIza.Data.Entities.Client", "Client")
+                    b.HasOne("MaterialesIza.Data.Entities.Employee", "Employee")
                         .WithMany()
-                        .HasForeignKey("ClientId");
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("MaterialesIza.Data.Entities.Provider", "Provider")
                         .WithMany("Purchases")
