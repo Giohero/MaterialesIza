@@ -5,25 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20220214012149_Initial.cs" />
-    <Compile Remove="Migrations\20220214012149_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20220214034020_Initial.cs" />
-    <Compile Remove="Migrations\20220214034020_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20220214035000_Initial.cs" />
-    <Compile Remove="Migrations\20220214035000_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20220214040546_Initial.cs" />
-    <Compile Remove="Migrations\20220214040546_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20220214041628_Initial.cs" />
-    <Compile Remove="Migrations\20220214041628_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20220214042046_Initial.cs" />
-    <Compile Remove="Migrations\20220214042046_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20220214042347_Initial.cs" />
-    <Compile Remove="Migrations\20220214042347_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20220214153847_Initial.cs" />
-    <Compile Remove="Migrations\20220214153847_Initial.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.20" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.21" />

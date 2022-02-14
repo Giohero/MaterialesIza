@@ -25,8 +25,8 @@ namespace MaterialesIza.Controllers.API
                 
             }
 
-            var emailApplicant = new EmailRequest { Email = "alexiscz@gmail.com" };
-            return Ok(this.purchaseRepository.GetPurchases(emailApplicant));
+            var emailProvider = new EmailRequest { Email = "alexiscz@gmail.com" };
+            return Ok(this.purchaseRepository.GetPurchases(emailProvider));
         }
     }
 

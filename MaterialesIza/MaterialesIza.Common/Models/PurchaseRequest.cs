@@ -10,6 +10,6 @@ namespace MaterialesIza.Common.Models
 
         public EmployeeRequest Employee { get; set; }
 
-        public ICollection<PurchaseDetailsRequest> purchaseDetails { get; set; }
+        public ICollection<PurchaseDetailsRequest> PurchaseDetails { get; set; }
     }
 }

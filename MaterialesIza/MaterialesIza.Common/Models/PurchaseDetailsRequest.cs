@@ -15,7 +15,6 @@ namespace MaterialesIza.Common.Models
         public double Iva_Purchase { get; set; }
 
         public string Purchase_Remarks { get; set; }
-
         
     }
 }
