@@ -2,12 +2,13 @@
 
 namespace MaterialesIza.Data.Repositories
 {
+    using MaterialesIza.Common.Models;
     using MaterialesIza.Data.Entities;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Collections.Generic;
     using System.Linq;
 
-    public class ProductTypeRepository : GenericRepository<ProductType>, IProductTypeRepository
+    public class ProductTypeRepository : GenericRepository<MaterialesIza.Data.Entities.ProductType>, IProductTypeRepository
     {
         private readonly DataContext dataContext;
 
@@ -30,6 +31,23 @@ namespace MaterialesIza.Data.Repositories
             });
             return list;
 
+        }
+
+        public MaterialesIza.Common.Models.ProductTypeRequest GetProductTypes()
+        {
+            var a = this.dataContext.ProductTypes.FirstOrDefault();
+
+            if (a == null)
+            {
+                return null;
+            }
+
+            var x = new ProductTypeRequest
+            {
+                Id = a.Id,
+                Name = a.Name
+            };
+            return x;
         }
 
     }

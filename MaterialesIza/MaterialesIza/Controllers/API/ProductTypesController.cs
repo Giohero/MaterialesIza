@@ -24,66 +24,66 @@
         [HttpGet]
         public IActionResult GetProductTypes()
         {
-            return Ok(this.productTypeRepository.GetAll());
+            return Ok(this.productTypeRepository.GetProductTypes());
         }
 
 
-        //[HttpPost]
-        //public async Task<IActionResult> PostProductTypes([FromBody] MaterialesIza.Common.Models.ProducType producType)
-        //{
-        //   if(!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-        //    var entityProductTypes = new MaterialesIza.Data.Entities.ProductType
-        //    {
-        //        Name = producType.Name
-        //    };
+        [HttpPost]
+        public async Task<IActionResult> PostProductTypes([FromBody] MaterialesIza.Common.Models.ProducType producType)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var entityProductTypes = new MaterialesIza.Data.Entities.ProductType
+            {
+                Name = producType.Name
+            };
 
-        //    var newProductType = await this.productTypeRepository.CreateAsync(entityProductTypes);
-        //    return Ok(newProductType);
-        //}
+            var newProductType = await this.productTypeRepository.CreateAsync(entityProductTypes);
+            return Ok(newProductType);
+        }
 
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutProductTypes([FromRoute] int id, [FromBody]MaterialesIza.Common.Models.ProducType producType)
-        //{
-        //    if(!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-        //    if(id!= producType.Id)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    var oldProductType = await this.productTypeRepository.GetByIdAsync(id);
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutProductTypes([FromRoute] int id, [FromBody] MaterialesIza.Common.Models.ProducType producType)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (id != producType.Id)
+            {
+                return BadRequest();
+            }
+            var oldProductType = await this.productTypeRepository.GetByIdAsync(id);
 
-        //    if(oldProductType == null)
-        //    {
-        //        return BadRequest("Id was not found");
-        //    }
-        //    oldProductType.Name = producType.Name;
-        //    var updateProductType = await this.productTypeRepository.UpdateAsync(oldProductType);
-        //    return Ok(updateProductType);
-            
-        //}
+            if (oldProductType == null)
+            {
+                return BadRequest("Id was not found");
+            }
+            oldProductType.Name = producType.Name;
+            var updateProductType = await this.productTypeRepository.UpdateAsync(oldProductType);
+            return Ok(updateProductType);
 
-        //[HttpDelete ("{id}")]
-        //public async Task<IActionResult> DeleteProductTypes([FromRoute] int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-   
-        //    var oldProductType = await this.productTypeRepository.GetByIdAsync(id);
+        }
 
-        //    if (oldProductType == null)
-        //    {
-        //        return BadRequest("Id was not found");
-        //    }
-        //    await this.productTypeRepository.DeleteAsync(oldProductType);
-        //    return Ok(oldProductType);
-        //}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProductTypes([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var oldProductType = await this.productTypeRepository.GetByIdAsync(id);
+
+            if (oldProductType == null)
+            {
+                return BadRequest("Id was not found");
+            }
+            await this.productTypeRepository.DeleteAsync(oldProductType);
+            return Ok(oldProductType);
+        }
 
     }
 }

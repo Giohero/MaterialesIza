@@ -8,7 +8,9 @@ namespace MaterialesIza.Controllers.API
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
 
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[Controller]")]
+
     public class ProductsController : Controller
     {
         private readonly IProductRepository productRepository;
@@ -22,7 +24,7 @@ namespace MaterialesIza.Controllers.API
         [HttpGet]
         public IActionResult GetProducts()
         {
-            return Ok(this.productRepository.GetAll());
+            return Ok(this.productRepository.GetProducts());
         }
 
         [HttpPost]

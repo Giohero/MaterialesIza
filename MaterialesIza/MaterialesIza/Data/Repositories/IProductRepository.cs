@@ -5,10 +5,12 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public interface IProductRepository : IGenericRepository<Product>
+    public interface IProductRepository : IGenericRepository<MaterialesIza.Data.Entities.Product>
     {
         IEnumerable<SelectListItem> GetComboProduct();
 
-        //IQueryable GetAllWithSaleDetails(); 
+        IQueryable GetAllWithSaleDetails();
+
+        MaterialesIza.Common.Models.ProductRequest GetProducts();
     }
 }

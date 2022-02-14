@@ -22,7 +22,7 @@
         [HttpGet]
         public IActionResult GetServiceTypes()
         {
-            return Ok(this.serviceTypeRepository.GetAll());
+            return Ok(this.serviceTypeRepository.GetServiceTypes());
         }
     }
 }

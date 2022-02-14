@@ -5,7 +5,7 @@ namespace MaterialesIza.Controllers.API
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[Controller]")]
 
     public class ServicesController : Controller
@@ -21,7 +21,7 @@ namespace MaterialesIza.Controllers.API
         [HttpGet]
         public IActionResult GetServices()
         {
-            return Ok(this.serviceRepository.GetAll());
+            return Ok(this.serviceRepository.GetServices());
         }
 
     }

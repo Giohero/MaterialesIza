@@ -6,8 +6,10 @@ namespace MaterialesIza.Data.Repositories
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Collections.Generic;
 
-    public interface IProductTypeRepository : IGenericRepository <ProductType>
+    public interface IProductTypeRepository : IGenericRepository <MaterialesIza.Data.Entities.ProductType>
     {
         IEnumerable<SelectListItem> GetComboProductType();
+
+        MaterialesIza.Common.Models.ProductTypeRequest GetProductTypes();
     }
 }
