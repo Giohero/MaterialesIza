@@ -9,7 +9,7 @@ namespace MaterialesIza.Data.Entities
     {
         public int Id { get; set; }
 
-        public Client Client { get; set; }
+        public Employee Employee { get; set; }
 
         public Provider Provider { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using MaterialesIza.Data.Entities;
+﻿using MaterialesIza.Common.Models;
+using MaterialesIza.Data.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -7,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace MaterialesIza.Data.Repositories
 {
-    public interface IPurchaseRepository: IGenericRepository<Purchase>
+    public interface IPurchaseRepository: IGenericRepository<MaterialesIza.Data.Entities.Purchase>
     {
         IEnumerable<SelectListItem> GetComboPurchase();
 
-        IQueryable GetPurchases();
-        IQueryable GetPurchaseWithProvider();
+        MaterialesIza.Common.Models.ProviderRequest GetPurchases(EmailRequest emailRequest);
     }
 }

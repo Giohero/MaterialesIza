@@ -8,6 +8,8 @@ namespace MaterialesIza.Common.Models
     {
         public int Id { get; set; }
 
-        public string Client { get; set; }
+        public EmployeeRequest Employee { get; set; }
+
+        public ICollection<PurchaseDetailsRequest> purchaseDetails { get; set; }
     }
 }

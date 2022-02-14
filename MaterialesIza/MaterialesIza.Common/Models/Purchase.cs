@@ -10,6 +10,9 @@ namespace MaterialesIza.Common.Models
         [JsonProperty("id")]
         public int Id { get; set; }
 
+        [JsonProperty("employee")]
+        public Employee Employee { get; set; }
+
         [JsonProperty("provider")]
         public Provider Provider { get; set; }
 
