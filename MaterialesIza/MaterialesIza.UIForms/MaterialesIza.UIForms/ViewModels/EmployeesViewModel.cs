@@ -14,8 +14,8 @@ namespace MaterialesIza.UIForms.ViewModels
     {
         private ApiService apiService;
 
-        private ObservableCollection<Employee> employees;
-        public ObservableCollection<Employee> Employees
+        private ObservableCollection<EmployeeRequest> employees;
+        public ObservableCollection<EmployeeRequest> Employees
         {
 
             get { return this.employees; }
@@ -47,7 +47,7 @@ namespace MaterialesIza.UIForms.ViewModels
             //Inicio
             this.IsRefreshing = true;
             var url = Application.Current.Resources["UrlAPI"].ToString();
-            var response = await this.apiService.GetListAsync<Employee>(
+            var response = await this.apiService.GetListAsync<EmployeeRequest>(
               url,
               "/api",
               "/Employees",
@@ -63,8 +63,8 @@ namespace MaterialesIza.UIForms.ViewModels
                     "Accept");
                 return;
             }
-            var myEmployees = (List<Employee>)response.Result;
-            this.Employees = new ObservableCollection<Employee>(myEmployees);
+            var myEmployees = (List<EmployeeRequest>)response.Result;
+            this.Employees = new ObservableCollection<EmployeeRequest>(myEmployees);
         }
     }
 }

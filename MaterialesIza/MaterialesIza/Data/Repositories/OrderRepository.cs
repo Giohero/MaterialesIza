@@ -23,8 +23,9 @@ namespace MaterialesIza.Data.Repositories
                 .Include(o => o.Client.User)
                 .Include(o => o.Employee.User);
         }
-        public MaterialesIza.Common.Models.ClientRequest GetOrders(EmailRequest emailClient)
+        public MaterialesIza.Common.Models.ClientRequest GetOrders (EmailRequest emailClient)
         {
+            var z this.dataContext.
             var c = this.dataContext.Clients
                 .Include(c => c.User)
                 .Include(c => c.Orders)

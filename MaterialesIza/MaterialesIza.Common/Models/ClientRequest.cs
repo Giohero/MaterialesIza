@@ -9,7 +9,7 @@ namespace MaterialesIza.Common.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-
+        public string FullName => $"{LastName} {FirstName}";
         public ICollection<OrderRequest> Orders { get; set; }
     }
 }

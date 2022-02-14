@@ -13,8 +13,8 @@ namespace MaterialesIza.Common.Models
         [JsonProperty("employee")]
         public Employee Employee { get; set; }
 
-        [JsonProperty("client")]
-        public Client Client { get; set; }
+        //[JsonProperty("client")]
+        //public Client Client { get; set; }
 
         [JsonProperty("orderDetails")]
         public object OrderDetails { get; set; }
