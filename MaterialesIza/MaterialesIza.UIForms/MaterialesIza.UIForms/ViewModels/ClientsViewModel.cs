@@ -12,8 +12,8 @@ namespace MaterialesIza.UIForms.ViewModels
     {
         private ApiService apiService;
 
-        private ObservableCollection<Client> clients;
-        public ObservableCollection<Client> Clients
+        private ObservableCollection<ClientRequest> clients;
+        public ObservableCollection<ClientRequest> Clients
         {
 
             get { return this.clients; }
@@ -45,7 +45,7 @@ namespace MaterialesIza.UIForms.ViewModels
             //Inicio
             this.IsRefreshing = true;
             var url = Application.Current.Resources["UrlAPI"].ToString();
-            var response = await this.apiService.GetListAsync<Client>(
+            var response = await this.apiService.GetListAsync<ClientRequest>(
               url,
               "/api",
               "/Clients",
@@ -61,8 +61,8 @@ namespace MaterialesIza.UIForms.ViewModels
                     "Accept");
                 return;
             }
-            var myClients = (List<Client>)response.Result;
-            this.Clients = new ObservableCollection<Client>(myClients);
+            var myClients = (List<ClientRequest>)response.Result;
+            this.Clients = new ObservableCollection<ClientRequest>(myClients);
         }
     }
 }

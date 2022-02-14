@@ -10,8 +10,8 @@ namespace MaterialesIza.Common.Models
         [JsonProperty("id")]
         public int Id { get; set; }
 
-        [JsonProperty("client")]
-        public Client Client { get; set; }
+        //[JsonProperty("client")]
+        //public Client Client { get; set; }
 
         [JsonProperty("employee")]
         public Employee Employee { get; set; }
