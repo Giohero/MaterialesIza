@@ -14,8 +14,8 @@ namespace MaterialesIza.UIForms.ViewModels
     {
         private ApiService apiService;
 
-        private ObservableCollection<Purchase> purchases;
-        public ObservableCollection<Purchase> Purchases
+        private ObservableCollection<PurchaseRequest> purchases;
+        public ObservableCollection<PurchaseRequest> Purchases
         {
 
             get { return this.purchases; }
@@ -46,7 +46,7 @@ namespace MaterialesIza.UIForms.ViewModels
             //Inicio
             this.IsRefreshing = true;
             var url = Application.Current.Resources["UrlAPI"].ToString();
-            var response = await this.apiService.GetListAsync<Purchase>(
+            var response = await this.apiService.GetListAsync<PurchaseRequest>(
               url,
               "/api",
               "/Purchases",
@@ -62,8 +62,8 @@ namespace MaterialesIza.UIForms.ViewModels
                     "Accept");
                 return;
             }
-            var myPurchases = (List<Purchase>)response.Result;
-            this.Purchases = new ObservableCollection<Purchase>(myPurchases);
+            var myPurchases = (List<PurchaseRequest>)response.Result;
+            this.Purchases = new ObservableCollection<PurchaseRequest>(myPurchases);
         }
     }
 }

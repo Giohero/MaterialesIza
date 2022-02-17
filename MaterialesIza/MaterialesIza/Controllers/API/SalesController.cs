@@ -18,17 +18,12 @@ namespace MaterialesIza.Controllers.API
         }
 
         // GET: Sales
-       /* [HttpGet]
+       [HttpGet]
         public IActionResult GetSales()
         {
-            return Ok(this.saleRepository.GetSale());
+            return Ok(this.saleRepository.GetAll());
         }
-       */
-        public IActionResult GetSalesController()
-        {
-            var emailEmployee = new EmailRequest { Email = "jaime.Sal@gmail.com" };
-            return Ok(this.saleRepository.GetSale(emailEmployee));
-        }
+        
     }
 
 }

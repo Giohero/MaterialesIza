@@ -1,4 +1,6 @@
-﻿using MaterialesIza.Data.Repositories;
+﻿using MaterialesIza.Common.Models;
+using MaterialesIza.Data;
+using MaterialesIza.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,17 +13,19 @@ namespace MaterialesIza.Controllers.API
     public class EmployeesController : Controller
     {
         private readonly IEmployeeRepository employeeRepository;
+        private readonly DataContext dataContext;
 
-        public EmployeesController(IEmployeeRepository employeeRepository)
+        public EmployeesController(IEmployeeRepository employeeRepository, DataContext dataContext)
         {
             this.employeeRepository = employeeRepository;
+            this.dataContext = dataContext;
         }
 
         // GET: Employees
-        [HttpGet]
-        public IActionResult GetEmployees()
+        public IActionResult GetEmployeesController()
         {
-            return Ok(this.employeeRepository.GetEmployees());
+            var emailEmployee = new EmailRequest { Email = "jaime.Sal@gmail.com" };
+            return Ok(this.employeeRepository.GetSaleByEmailEmployee(emailEmployee));
         }
     }
 

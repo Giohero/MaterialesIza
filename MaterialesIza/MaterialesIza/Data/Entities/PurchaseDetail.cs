@@ -7,9 +7,7 @@ namespace MaterialesIza.Data.Entities
 {
     public class PurchaseDetail : IEntity
     {
-        public int Id { get; set; }
-
-        public DateTime Date_purchase { get; set; }
+        public int Id { get; set; }    
 
         public double Total_purchase { get; set; }
 

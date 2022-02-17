@@ -9,6 +9,8 @@ namespace MaterialesIza.Data.Entities
     {
         public int Id { get; set; }
 
+        public DateTime Date_purchase { get; set; }
+
         public Employee Employee { get; set; }
 
         public Provider Provider { get; set; }

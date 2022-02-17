@@ -32,13 +32,13 @@
                                 </StackLayout>
                                 <StackLayout Grid.Column="1"
                                              VerticalOptions="Center">
-                                    <Label Text="{Binding Employee.User.FullName}"
+                                    <Label Text="{Binding Employee.FullName}"
                                            FontSize="Medium"
                                            TextColor="White"></Label>
                                 </StackLayout>
                                 <StackLayout Grid.Column="2"
                                              VerticalOptions="Center">
-                                    <Label Text="{Binding Client.User.FullName}"
+                                    <Label Text="{Binding Client.FullName}"
                                            FontSize="Medium"
                                            TextColor="White"></Label>
                                 </StackLayout>

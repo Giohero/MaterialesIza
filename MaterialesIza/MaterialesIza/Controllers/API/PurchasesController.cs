@@ -16,18 +16,13 @@ namespace MaterialesIza.Controllers.API
 
         //// GET: Purchases
         //[HttpGet]
-        public IActionResult GetPurchaseController()
+        [HttpGet]
+        public IActionResult GetProviders()
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-
-                
-            }
-
-            var emailProvider = new EmailRequest { Email = "alexiscz@gmail.com" };
-            return Ok(this.purchaseRepository.GetPurchases(emailProvider));
+            return Ok(this.purchaseRepository.GetAll());
         }
+
+
     }
 
 }

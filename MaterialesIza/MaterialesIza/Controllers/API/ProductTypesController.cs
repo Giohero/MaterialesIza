@@ -29,7 +29,7 @@
 
 
         [HttpPost]
-        public async Task<IActionResult> PostProductTypes([FromBody] MaterialesIza.Common.Models.ProducType producType)
+        public async Task<IActionResult> PostProductTypes([FromBody] MaterialesIza.Common.Models.ProductTypeRequest producType)
         {
             if (!ModelState.IsValid)
             {
@@ -45,7 +45,7 @@
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProductTypes([FromRoute] int id, [FromBody] MaterialesIza.Common.Models.ProducType producType)
+        public async Task<IActionResult> PutProductTypes([FromRoute] int id, [FromBody] MaterialesIza.Common.Models.ProductTypeRequest producType)
         {
             if (!ModelState.IsValid)
             {

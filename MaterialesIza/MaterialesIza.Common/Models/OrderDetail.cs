@@ -22,8 +22,8 @@ namespace MaterialesIza.Common.Models
         [JsonProperty("sales_Remarks")]
         public string OrderRemarks { get; set; }
 
-        [JsonProperty("service")]
-        public Service Service { get; set; }
+        //[JsonProperty("service")]
+        //public Service Service { get; set; }
         
 
     }

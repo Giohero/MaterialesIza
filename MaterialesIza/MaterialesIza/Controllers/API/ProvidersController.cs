@@ -1,4 +1,5 @@
-﻿using MaterialesIza.Data.Repositories;
+﻿using MaterialesIza.Common.Models;
+using MaterialesIza.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaterialesIza.Controllers.API
@@ -14,10 +15,19 @@ namespace MaterialesIza.Controllers.API
         }
 
         // GET: Providers
-        [HttpGet]
-        public IActionResult GetProviders()
+        
+
+        public IActionResult GetProviderController()
         {
-            return Ok(this.providerRepository.GetProviders());
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+
+
+            }
+
+            var emailProvider = new EmailRequest { Email = "alexiscz@gmail.com" };
+            return Ok(this.providerRepository.GetPurchasesByEmailProvider(emailProvider));
         }
     }
 

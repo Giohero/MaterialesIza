@@ -8,7 +8,7 @@ namespace MaterialesIza.Common.Models
     {
         public int Id { get; set; }
 
-        //public ClientRequest Client { get; set; }
+        public ClientRequest Client { get; set; }
 
         public EmployeeRequest Employee { get; set; }
 

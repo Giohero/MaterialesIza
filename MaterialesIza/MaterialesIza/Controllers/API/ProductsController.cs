@@ -2,6 +2,7 @@
 namespace MaterialesIza.Controllers.API
 {
     using MaterialesIza.Common.Models;
+    using MaterialesIza.Data.Entities;
     using MaterialesIza.Data.Repositories;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Authorization;
@@ -44,7 +45,7 @@ namespace MaterialesIza.Controllers.API
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProducts([FromRoute] int id, [FromBody] MaterialesIza.Common.Models.Product product)
+        public async Task<IActionResult> PutProducts([FromRoute] int id, [FromBody] MaterialesIza.Common.Models.ProductRequest product)
         {
             if (!ModelState.IsValid)
             {

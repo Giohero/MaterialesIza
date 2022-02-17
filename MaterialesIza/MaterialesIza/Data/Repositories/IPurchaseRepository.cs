@@ -12,6 +12,6 @@ namespace MaterialesIza.Data.Repositories
     {
         IEnumerable<SelectListItem> GetComboPurchase();
 
-        MaterialesIza.Common.Models.ProviderRequest GetPurchases(EmailRequest emailRequest);
+        
     }
 }

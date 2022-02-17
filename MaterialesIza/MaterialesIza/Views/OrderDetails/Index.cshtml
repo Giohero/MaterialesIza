@@ -11,10 +11,7 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Date_Order)
-            </th>
+        <tr>          
             <th>
                 @Html.DisplayNameFor(model => model.Total_Order)
             </th>
@@ -36,9 +33,7 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date_Order)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.Total_Order)
             </td>

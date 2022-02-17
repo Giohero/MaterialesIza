@@ -12,9 +12,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Date_purchase)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.Total_purchase)
             </th>
@@ -23,10 +21,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Purchase_Remarks)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Purchase)
-            </th>*@
+            </th>           
             <th>
                 @Html.DisplayNameFor(model => model.Purchase)
             </th>
@@ -36,9 +31,7 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date_purchase)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.Total_purchase)
             </td>
@@ -48,9 +41,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Purchase_Remarks)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Purchase)
-            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Purchase)
             </td>

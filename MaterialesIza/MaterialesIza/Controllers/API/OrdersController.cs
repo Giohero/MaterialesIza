@@ -24,10 +24,9 @@ namespace MaterialesIza.Controllers.API
         // GET: Orders
         //[HttpPost]
         //[Route("GetOrdersByEmailAsync")]
-        public IActionResult GetOrdersController()
-        {
-            var emailClient = new EmailRequest { Email = "firmalagio@gmail.com" };
-            return Ok(this.orderRepository.GetOrders(emailClient));
+        public IActionResult GetOrders()
+        {         
+            return Ok(this.orderRepository.GetAll());
         }
     }
 

@@ -22,8 +22,8 @@ namespace MaterialesIza.Data.Repositories
                 .Include(od => od.Order)
                 .ThenInclude(o => o.Client)
                 .ThenInclude(c => c.User)
-                .Include(od => od.Service)
-                .Where(od => od.Date_Order != null);
+                .Include(od => od.Service);
+                //.Where(od => od.Date_Order != null);
         }
         public IEnumerable<SelectListItem> GetComboOrderDetails()
         {

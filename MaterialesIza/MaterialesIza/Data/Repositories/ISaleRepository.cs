@@ -10,6 +10,6 @@ namespace MaterialesIza.Data.Repositories
     {
         IEnumerable<SelectListItem> GetComboSale();
 
-        MaterialesIza.Common.Models.EmployeeRequest GetSale(EmailRequest emailClient);
+        
     }
 }

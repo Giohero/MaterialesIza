@@ -14,8 +14,8 @@ namespace MaterialesIza.UIForms.ViewModels
     {
         private ApiService apiService;
 
-        private ObservableCollection<Provider> providers;
-        public ObservableCollection<Provider> Providers
+        private ObservableCollection<ProviderRequest> providers;
+        public ObservableCollection<ProviderRequest> Providers
         {
 
             get { return this.providers; }
@@ -46,7 +46,7 @@ namespace MaterialesIza.UIForms.ViewModels
             //Inicio
             this.IsRefreshing = true;
             var url = Application.Current.Resources["UrlAPI"].ToString();
-            var response = await this.apiService.GetListAsync<Provider>(
+            var response = await this.apiService.GetListAsync<ProviderRequest>(
               url,
               "/api",
               "/Providers",
@@ -62,8 +62,8 @@ namespace MaterialesIza.UIForms.ViewModels
                     "Accept");
                 return;
             }
-            var myProviders = (List<Provider>)response.Result;
-            this.Providers = new ObservableCollection<Provider>(myProviders);
+            var myProviders = (List<ProviderRequest>)response.Result;
+            this.Providers = new ObservableCollection<ProviderRequest>(myProviders);
         }
     }
 }

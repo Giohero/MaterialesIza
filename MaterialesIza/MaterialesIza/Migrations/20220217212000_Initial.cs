@@ -306,6 +306,7 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Date_Order = table.Column<DateTime>(nullable: false),
                     EmployeeId = table.Column<int>(nullable: true),
                     ClientId = table.Column<int>(nullable: true)
                 },
@@ -332,6 +333,7 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Date_Sale = table.Column<DateTime>(nullable: false),
                     ClientId = table.Column<int>(nullable: true),
                     EmployeeId = table.Column<int>(nullable: true)
                 },
@@ -358,6 +360,7 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Date_purchase = table.Column<DateTime>(nullable: false),
                     EmployeeId = table.Column<int>(nullable: true),
                     ProviderId = table.Column<int>(nullable: true)
                 },
@@ -384,7 +387,6 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Date_Order = table.Column<DateTime>(nullable: false),
                     Total_Order = table.Column<double>(nullable: false),
                     Iva_Order = table.Column<double>(nullable: false),
                     Order_Remarks = table.Column<string>(nullable: true),
@@ -414,7 +416,6 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Date_Sale = table.Column<DateTime>(nullable: false),
                     Total_Sale = table.Column<double>(nullable: false),
                     Iva_Sale = table.Column<double>(nullable: false),
                     Sales_Remarks = table.Column<string>(nullable: true),
@@ -444,7 +445,6 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Date_purchase = table.Column<DateTime>(nullable: false),
                     Total_purchase = table.Column<double>(nullable: false),
                     Iva_purchase = table.Column<double>(nullable: false),
                     Purchase_Remarks = table.Column<string>(nullable: true),

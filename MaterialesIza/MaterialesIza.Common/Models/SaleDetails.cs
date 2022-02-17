@@ -22,8 +22,8 @@ namespace MaterialesIza.Common.Models
         [JsonProperty("sales_Remarks")]
         public string SalesRemarks { get; set; }
 
-        [JsonProperty("product")]
-        public Product product { get; set; }
+        //[JsonProperty("product")]
+        //public Product product { get; set; }
 
         //public override string ToString()
         //{

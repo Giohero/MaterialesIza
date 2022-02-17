@@ -12,6 +12,6 @@ namespace MaterialesIza.Data.Repositories
     {
         IEnumerable<SelectListItem> GetComboOrder();
 
-        MaterialesIza.Common.Models.ClientRequest GetOrders(EmailRequest emailClient);
+        
     }
 }

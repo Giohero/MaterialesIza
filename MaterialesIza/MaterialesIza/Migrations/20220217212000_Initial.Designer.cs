@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MaterialesIza.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220214220947_Initial")]
+    [Migration("20220217212000_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,6 +82,9 @@ namespace MaterialesIza.Migrations
                     b.Property<int?>("ClientId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("Date_Order")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
@@ -100,9 +103,6 @@ namespace MaterialesIza.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Date_Order")
-                        .HasColumnType("datetime2");
 
                     b.Property<double>("Iva_Order")
                         .HasColumnType("float");
@@ -200,6 +200,9 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("Date_purchase")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
@@ -221,9 +224,6 @@ namespace MaterialesIza.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Date_purchase")
-                        .HasColumnType("datetime2");
 
                     b.Property<double>("Iva_purchase")
                         .HasColumnType("float");
@@ -254,6 +254,9 @@ namespace MaterialesIza.Migrations
                     b.Property<int?>("ClientId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("Date_Sale")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
@@ -272,9 +275,6 @@ namespace MaterialesIza.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Date_Sale")
-                        .HasColumnType("datetime2");
 
                     b.Property<double>("Iva_Sale")
                         .HasColumnType("float");
