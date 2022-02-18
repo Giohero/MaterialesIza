@@ -12,7 +12,7 @@ namespace MaterialesIza.Common.Models
 
         public double Price { get; set; }
 
-        public OrderRequest Order { get; set; }
+        //public OrderRequest Order { get; set; }
 
         public ServiceRequest Service { get; set; }
     }

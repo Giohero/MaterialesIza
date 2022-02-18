@@ -79,6 +79,17 @@ namespace MaterialesIza.Data.Repositories
                     {
                         Id = od.Id,
                         Quantity = od.Quantity,
+                        
+                        Product = new ProductRequest
+                        {
+
+                            Id = od.Product.Id,
+                            Name = od.Product.Name,
+                            Price = od.Product.Price,
+                            Description = od.Product.Description,
+                            ProductTypes = od.Product.ProductTypes.Name
+
+                        }
 
 
                     })/*.Where(od => od.Date_Purchase != null)*/.ToList()
