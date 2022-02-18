@@ -35,7 +35,8 @@ namespace MaterialesIza.Controllers
                 return NotFound();
             }
 
-            var order = await this.orderRepository.GetByIdAsync(id.Value);
+            var order = await _context.Orders
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (order == null)
             {
                 return NotFound();
@@ -55,12 +56,12 @@ namespace MaterialesIza.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Order order)
+        public async Task<IActionResult> Create([Bind("Id,Date_Order,Total_Order,Iva_Order,Order_Remarks")] Order order)
         {
             if (ModelState.IsValid)
             {
-
-                await this.orderRepository.CreateAsync(order);
+                _context.Add(order);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(order);
@@ -74,7 +75,7 @@ namespace MaterialesIza.Controllers
                 return NotFound();
             }
 
-            var order = await this.orderRepository.GetByIdAsync(id.Value);
+            var order = await _context.Orders.FindAsync(id);
             if (order == null)
             {
                 return NotFound();
@@ -87,7 +88,7 @@ namespace MaterialesIza.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Date_Order,Total_Order,Iva_Order,Order_Remarks")] Order order)
         {
             if (id != order.Id)
             {
@@ -98,12 +99,12 @@ namespace MaterialesIza.Controllers
             {
                 try
                 {
-
-                    await this.orderRepository.UpdateAsync(order);
+                    _context.Update(order);
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!await this.orderRepository.ExistAsync(order.Id))
+                    if (!OrderExists(order.Id))
                     {
                         return NotFound();
                     }
@@ -125,15 +126,30 @@ namespace MaterialesIza.Controllers
                 return NotFound();
             }
 
-            var order = await this.orderRepository.GetByIdAsync(id.Value);
-
+            var order = await _context.Orders
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (order == null)
             {
                 return NotFound();
             }
 
-            await this.orderRepository.DeleteAsync(order);
+            return View(order);
+        }
+
+        // POST: Orders/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var order = await _context.Orders.FindAsync(id);
+            _context.Orders.Remove(order);
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        private bool OrderExists(int id)
+        {
+            return _context.Orders.Any(e => e.Id == id);
         }
     }
 }

@@ -12,21 +12,15 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
             <div class="form-group">
-                <label asp-for="Total_Order" class="control-label"></label>
-                <input asp-for="Total_Order" class="form-control" />
-                <span asp-validation-for="Total_Order" class="text-danger"></span>
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Iva_Order" class="control-label"></label>
-                <input asp-for="Iva_Order" class="form-control" />
-                <span asp-validation-for="Iva_Order" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Order_Remarks" class="control-label"></label>
-                <input asp-for="Order_Remarks" class="form-control" />
-                <span asp-validation-for="Order_Remarks" class="text-danger"></span>
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

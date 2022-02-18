@@ -12,18 +12,8 @@
 <table class="table">
     <thead>
         <tr>
-           
             <th>
-                @Html.DisplayNameFor(model => model.Total_purchase)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Iva_purchase)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Purchase_Remarks)
-            </th>           
-            <th>
-                @Html.DisplayNameFor(model => model.Purchase)
+                @Html.DisplayNameFor(model => model.Quantity)
             </th>
             <th></th>
         </tr>
@@ -31,18 +21,8 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-           
             <td>
-                @Html.DisplayFor(modelItem => item.Total_purchase)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Iva_purchase)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Purchase_Remarks)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Purchase)
+                @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

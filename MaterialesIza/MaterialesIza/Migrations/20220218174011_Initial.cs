@@ -264,8 +264,7 @@ namespace MaterialesIza.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Price = table.Column<int>(nullable: false),
-                    Quantity = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(maxLength: 50, nullable: false),
+                    Description = table.Column<string>(nullable: false),
                     ProductTypesId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -307,6 +306,9 @@ namespace MaterialesIza.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Date_Order = table.Column<DateTime>(nullable: false),
+                    Total_Order = table.Column<double>(nullable: false),
+                    Iva_Order = table.Column<double>(nullable: false),
+                    Order_Remarks = table.Column<string>(nullable: true),
                     EmployeeId = table.Column<int>(nullable: true),
                     ClientId = table.Column<int>(nullable: true)
                 },
@@ -334,6 +336,9 @@ namespace MaterialesIza.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Date_Sale = table.Column<DateTime>(nullable: false),
+                    Total_Sale = table.Column<double>(nullable: false),
+                    Iva_Sale = table.Column<double>(nullable: false),
+                    Sales_Remarks = table.Column<string>(nullable: true),
                     ClientId = table.Column<int>(nullable: true),
                     EmployeeId = table.Column<int>(nullable: true)
                 },
@@ -361,6 +366,9 @@ namespace MaterialesIza.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Date_purchase = table.Column<DateTime>(nullable: false),
+                    Total_purchase = table.Column<double>(nullable: false),
+                    Iva_purchase = table.Column<double>(nullable: false),
+                    Purchase_Remarks = table.Column<string>(nullable: true),
                     EmployeeId = table.Column<int>(nullable: true),
                     ProviderId = table.Column<int>(nullable: true)
                 },
@@ -387,9 +395,8 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Total_Order = table.Column<double>(nullable: false),
-                    Iva_Order = table.Column<double>(nullable: false),
-                    Order_Remarks = table.Column<string>(nullable: true),
+                    Quantity = table.Column<int>(nullable: false),
+                    Price = table.Column<double>(nullable: false),
                     OrderId = table.Column<int>(nullable: true),
                     ServiceId = table.Column<int>(nullable: true)
                 },
@@ -416,9 +423,7 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Total_Sale = table.Column<double>(nullable: false),
-                    Iva_Sale = table.Column<double>(nullable: false),
-                    Sales_Remarks = table.Column<string>(nullable: true),
+                    Quantity = table.Column<int>(nullable: false),
                     SaleId = table.Column<int>(nullable: true),
                     ProductId = table.Column<int>(nullable: true)
                 },
@@ -445,14 +450,19 @@ namespace MaterialesIza.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Total_purchase = table.Column<double>(nullable: false),
-                    Iva_purchase = table.Column<double>(nullable: false),
-                    Purchase_Remarks = table.Column<string>(nullable: true),
+                    Quantity = table.Column<int>(nullable: false),
+                    ProductId = table.Column<int>(nullable: true),
                     PurchaseId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PurchaseDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PurchaseDetails_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_PurchaseDetails_Purchases_PurchaseId",
                         column: x => x.PurchaseId,
@@ -544,6 +554,11 @@ namespace MaterialesIza.Migrations
                 name: "IX_Providers_UserId",
                 table: "Providers",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PurchaseDetails_ProductId",
+                table: "PurchaseDetails",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PurchaseDetails_PurchaseId",

@@ -86,6 +86,15 @@ namespace MaterialesIza.Migrations
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
+                    b.Property<double>("Iva_Order")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Order_Remarks")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Total_Order")
+                        .HasColumnType("float");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
@@ -102,20 +111,17 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("Iva_Order")
-                        .HasColumnType("float");
-
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Order_Remarks")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.Property<int?>("ServiceId")
                         .HasColumnType("int");
-
-                    b.Property<double>("Total_Order")
-                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -135,8 +141,7 @@ namespace MaterialesIza.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -147,9 +152,6 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("ProductTypesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -204,8 +206,17 @@ namespace MaterialesIza.Migrations
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
+                    b.Property<double>("Iva_purchase")
+                        .HasColumnType("float");
+
                     b.Property<int?>("ProviderId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Purchase_Remarks")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Total_purchase")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -223,19 +234,18 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("Iva_purchase")
-                        .HasColumnType("float");
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("PurchaseId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Purchase_Remarks")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Total_purchase")
-                        .HasColumnType("float");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("PurchaseId");
 
@@ -258,6 +268,15 @@ namespace MaterialesIza.Migrations
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
+                    b.Property<double>("Iva_Sale")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Sales_Remarks")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Total_Sale")
+                        .HasColumnType("float");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
@@ -274,20 +293,14 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("Iva_Sale")
-                        .HasColumnType("float");
-
                     b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.Property<int?>("SaleId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Sales_Remarks")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Total_Sale")
-                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -614,6 +627,10 @@ namespace MaterialesIza.Migrations
 
             modelBuilder.Entity("MaterialesIza.Data.Entities.PurchaseDetail", b =>
                 {
+                    b.HasOne("MaterialesIza.Data.Entities.Product", "Product")
+                        .WithMany("PurchaseDetails")
+                        .HasForeignKey("ProductId");
+
                     b.HasOne("MaterialesIza.Data.Entities.Purchase", "Purchase")
                         .WithMany("PurchaseDetails")
                         .HasForeignKey("PurchaseId");

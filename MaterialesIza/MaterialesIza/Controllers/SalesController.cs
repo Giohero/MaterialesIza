@@ -56,7 +56,7 @@ namespace MaterialesIza.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id")] Sale sale)
+        public async Task<IActionResult> Create([Bind("Id,Date_Sale,Total_Sale,Iva_Sale,Sales_Remarks")] Sale sale)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace MaterialesIza.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id")] Sale sale)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Date_Sale,Total_Sale,Iva_Sale,Sales_Remarks")] Sale sale)
         {
             if (id != sale.Id)
             {

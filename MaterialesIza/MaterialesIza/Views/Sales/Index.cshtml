@@ -16,11 +16,15 @@
                 @Html.DisplayNameFor(model => model.Date_Sale)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee)
+                @Html.DisplayNameFor(model => model.Total_Sale)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Client)
+                @Html.DisplayNameFor(model => model.Iva_Sale)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sales_Remarks)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -30,10 +34,13 @@
                 @Html.DisplayFor(modelItem => item.Date_Sale)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Employee.User.FullName)
+                @Html.DisplayFor(modelItem => item.Total_Sale)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Client.User.FullName)
+                @Html.DisplayFor(modelItem => item.Iva_Sale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sales_Remarks)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

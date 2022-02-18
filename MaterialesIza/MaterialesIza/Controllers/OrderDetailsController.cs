@@ -16,6 +16,10 @@ namespace MaterialesIza.Controllers
         private readonly DataContext _context;
         private readonly IOrderDetailRepository orderDetailRepository;
 
+        public OrderDetailsController(DataContext context)
+        {
+            _context = context;
+        }
         public OrderDetailsController(IOrderDetailRepository orderDetailRepository)
         {
             this.orderDetailRepository = orderDetailRepository;
@@ -26,6 +30,7 @@ namespace MaterialesIza.Controllers
         {
             return View(this.orderDetailRepository.GetOrderDetails());
         }
+        
 
         // GET: OrderDetails/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -56,7 +61,7 @@ namespace MaterialesIza.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(OrderDetail orderDetail)
+        public async Task<IActionResult> Create([Bind("Id,Quantity,Price")] OrderDetail orderDetail)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +93,7 @@ namespace MaterialesIza.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, OrderDetail orderDetail)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Quantity,Price")] OrderDetail orderDetail)
         {
             if (id != orderDetail.Id)
             {

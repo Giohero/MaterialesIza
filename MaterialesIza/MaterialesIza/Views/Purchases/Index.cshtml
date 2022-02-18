@@ -12,38 +12,36 @@
 <table class="table">
     <thead>
         <tr>
-
             <th>
                 @Html.DisplayNameFor(model => model.Date_purchase)
             </th>
-            @*<th>
-            @Html.DisplayNameFor(model => model.Provider.User.FullName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Provider.User.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Provider.User.PhoneNumber)
-        </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Total_purchase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Iva_purchase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Purchase_Remarks)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-
             <td>
                 @Html.DisplayFor(modelItem => item.Date_purchase)
             </td>
-            @*<td>
-            @Html.DisplayFor(modelItem => item.Provider.User.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Provider.User.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Provider.User.PhoneNumber)
-        </td>*@
-
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_purchase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Iva_purchase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Purchase_Remarks)
+            </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

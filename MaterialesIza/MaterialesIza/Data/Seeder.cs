@@ -95,16 +95,16 @@
             if (!this.dataContext.Products.Any())
             {
                 var productType = this.dataContext.ProductTypes.FirstOrDefault();
-                await this.CheckProductAsync("Cemento", 200, 100, "Bulto", productType);
+                await this.CheckProductAsync("Cemento", 200, "Bulto", productType);
 
                 productType = this.dataContext.ProductTypes.FirstOrDefault(p => p.Name == "Construccion");
-                await this.CheckProductAsync("Cal", 20, 100, "Bulto", productType);
+                await this.CheckProductAsync("Cal", 20, "Bulto", productType);
 
                 productType = this.dataContext.ProductTypes.FirstOrDefault(p => p.Name == "Construccion");
-                await this.CheckProductAsync("Ladrillo", 5, 100, "Pieza", productType);
+                await this.CheckProductAsync("Ladrillo", 5, "Pieza", productType);
 
                 productType = this.dataContext.ProductTypes.FirstOrDefault(p => p.Name == "Metales");
-                await this.CheckProductAsync("Varilla", 10, 300, "Pieza", productType);
+                await this.CheckProductAsync("Varilla", 10, "Pieza", productType);
 
             }
 
@@ -126,11 +126,11 @@
 
                 var product = this.dataContext.Products.FirstOrDefault();
                 var sale = this.dataContext.Sales.FirstOrDefault();
-                await this.CheckSaleDetailAsync(  product, sale);
+                await this.CheckSaleDetailAsync(4,  product, sale);
 
                 product = this.dataContext.Products.FirstOrDefault();
                 sale = this.dataContext.Sales.FirstOrDefault();
-                await this.CheckSaleDetailAsync(  product, sale);
+                await this.CheckSaleDetailAsync(10,  product, sale);
             }
 
 
@@ -176,11 +176,11 @@
                 
                 var service = this.dataContext.Services.FirstOrDefault();
                 var order = this.dataContext.Orders.FirstOrDefault();
-                await this.CheckOrderDetailAsync(  service,order);
+                await this.CheckOrderDetailAsync( 2, 500, service,order);
 
                 service = this.dataContext.Services.FirstOrDefault();
                 order = this.dataContext.Orders.FirstOrDefault();
-                await this.CheckOrderDetailAsync(  service, order);
+                await this.CheckOrderDetailAsync(1, 300, service, order);
             }
 
             if (!this.dataContext.Purchases.Any())
@@ -207,7 +207,7 @@
                 //var product = this.dataContext.Products.FirstOrDefault();
                 var purchase = this.dataContext.Purchases.FirstOrDefault();
                 var product = this.dataContext.Products.FirstOrDefault();
-                await this.CheckPurchaseDetailAsync( product, purchase);
+                await this.CheckPurchaseDetailAsync(100, product, purchase);
             }
         }
 
@@ -282,9 +282,9 @@
             await this.dataContext.SaveChangesAsync();
         }
 
-        private async Task CheckOrderDetailAsync(   Service service,Order order)
+        private async Task CheckOrderDetailAsync(int quantity, double price,   Service service,Order order)
         {
-            this.dataContext.OrderDetails.Add(new OrderDetail {   Service = service,Order = order });
+            this.dataContext.OrderDetails.Add(new OrderDetail { Quantity = quantity, Price = price,   Service = service,Order = order });
             await this.dataContext.SaveChangesAsync();
         }
 
@@ -306,9 +306,9 @@
             await this.dataContext.SaveChangesAsync();
         }
 
-        private async Task CheckSaleDetailAsync(  Product product, Sale sale)
+        private async Task CheckSaleDetailAsync(int quantity,  Product product, Sale sale)
         {
-            this.dataContext.SaleDetails.Add(new SaleDetail {   Product = product, Sale = sale });
+            this.dataContext.SaleDetails.Add(new SaleDetail { Quantity = quantity,  Product = product, Sale = sale });
             await this.dataContext.SaveChangesAsync();
         }
 
@@ -318,15 +318,15 @@
             await this.dataContext.SaveChangesAsync();
         }
 
-        private async Task CheckProductAsync(string name, int price, int quantity, string description, ProductType productType)
+        private async Task CheckProductAsync(string name, int price, string description, ProductType productType)
         {
             this.dataContext.Products.Add(new Product { Name = name, Price = price,  Description = description, ProductTypes = productType });
             await this.dataContext.SaveChangesAsync();
         }
 
-        private async Task CheckPurchaseDetailAsync(  Product product, Purchase purchase )
+        private async Task CheckPurchaseDetailAsync( int quantity, Product product, Purchase purchase )
         {
-            this.dataContext.PurchaseDetails.Add(new PurchaseDetail {   Product = product, Purchase = purchase });
+            this.dataContext.PurchaseDetails.Add(new PurchaseDetail { Quantity = quantity,   Product = product, Purchase = purchase });
             await this.dataContext.SaveChangesAsync();
         }
 

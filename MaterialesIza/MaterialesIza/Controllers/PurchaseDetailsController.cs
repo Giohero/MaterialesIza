@@ -27,6 +27,7 @@ namespace MaterialesIza.Controllers
             return View(this.purchaseDetailRepository.GetPurchaseDetails());
         }
 
+
         // GET: PurchaseDetails/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -56,7 +57,7 @@ namespace MaterialesIza.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Date_Sale,Total_Sale,Iva_Sale,Sales_Remarks")] PurchaseDetail purchaseDetail)
+        public async Task<IActionResult> Create([Bind("Id,Quantity")] PurchaseDetail purchaseDetail)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +89,7 @@ namespace MaterialesIza.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Date_Sale,Total_Sale,Iva_Sale,Sales_Remarks")] PurchaseDetail purchaseDetail)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Quantity")] PurchaseDetail purchaseDetail)
         {
             if (id != purchaseDetail.Id)
             {
