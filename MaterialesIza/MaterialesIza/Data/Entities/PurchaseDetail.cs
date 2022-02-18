@@ -7,15 +7,11 @@ namespace MaterialesIza.Data.Entities
 {
     public class PurchaseDetail : IEntity
     {
-        public int Id { get; set; }    
+        public int Id { get; set; }
 
-        public double Total_purchase { get; set; }
+        public int Quantity { get; set; }
 
-        public double Iva_purchase { get; set; }
-
-        public string Purchase_Remarks { get; set; }
-
-        // public Product Product { get; set; }
+        public Product Product { get; set; }
 
         public Purchase Purchase { get; set; }
 

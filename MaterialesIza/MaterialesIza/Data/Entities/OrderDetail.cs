@@ -9,11 +9,9 @@ namespace MaterialesIza.Data.Entities
     {
         public int Id { get; set; }
 
-        public double Total_Order { get; set; }
+        public int Quantity { get; set; } 
 
-        public double Iva_Order { get; set; }
-
-        public string Order_Remarks { get; set; }
+        public double Price { get; set; }
 
         public Order Order { get; set; }
 

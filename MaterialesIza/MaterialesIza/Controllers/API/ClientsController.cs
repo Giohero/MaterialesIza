@@ -27,7 +27,7 @@ namespace MaterialesIza.Controllers.API
         public IActionResult GetClientsController()
         {
             var emailClient = new EmailRequest { Email = "firmalagio@gmail.com" };
-            return Ok(this.clientRepository.GetOrdersByEmailClient(emailClient));
+            return Ok(this.clientRepository.GetClientWithOrdersByEmail(emailClient));
         }
     }
 

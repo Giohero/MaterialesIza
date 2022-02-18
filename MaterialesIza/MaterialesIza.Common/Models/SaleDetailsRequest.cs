@@ -8,14 +8,10 @@ namespace MaterialesIza.Common.Models
     {
         public int Id { get; set; }
 
-        public DateTime Date_Sale { get; set; }
+        public int Quantity { get; set; }
 
-        public double Total_Sale { get; set; }
+        public SaleRequest Sale { get; set; }
 
-        public double Iva_Sale { get; set; }
-
-        public string Sales_Remarks { get; set; }
-
-        public ProductRequest product { get; set; }
+        public ProductRequest Product { get; set; }
     }
 }

@@ -38,7 +38,13 @@ namespace MaterialesIza.Data.Repositories
             return list;
         }
 
-        public MaterialesIza.Common.Models.ClientRequest GetOrdersByEmailClient(EmailRequest emailClient)
+        //TODO Modificar el modelo adecuadamente
+        //TODO metodo GetEmployeeWithOrdersByEmail
+        //TODO metodo GetOrders
+        //TODO METODO GetMAterialWithSalesById
+
+
+        public MaterialesIza.Common.Models.ClientRequest GetClientWithOrdersByEmail(EmailRequest emailClient)
         {
             var c = this.dataContext.Clients
                 .Include(c => c.User)
@@ -64,6 +70,10 @@ namespace MaterialesIza.Data.Repositories
                 Orders = c.Orders?.Select(o => new OrderRequest
                 {
                     Id = o.Id,
+                    Date_Order = o.Date_Order,
+                    Total_Order = o.Total_Order,
+                    Iva_Order = o.Iva_Order,
+                    Order_Remarks = o.Order_Remarks,
                     Employee = new EmployeeRequest
                     {
                         Id = o.Employee.Id,
@@ -75,9 +85,8 @@ namespace MaterialesIza.Data.Repositories
                     OrderDetails = o.OrderDetails?.Select(od => new OrderDetailsRequest
                     {
                         Id = od.Id,
-                        Total_Order = od.Total_Order,
-                        Iva_Order = od.Iva_Order,
-                        Order_Remarks = od.Order_Remarks,
+                        Quantity = od.Quantity,
+                        Price = od.Price,
                         Service = new ServiceRequest
                         {
 
@@ -85,10 +94,11 @@ namespace MaterialesIza.Data.Repositories
                             Name = od.Service.Name,
                             Description = od.Service.Description,
                             ServiceType = od.Service.ServiceType.TypeService
+                            
 
                         }
 
-                    }).Where(od => od.Date_Order != null).ToList()
+                    })/*.Where(od => od.Date_Order != null)*/.ToList()
                 }).ToList()
             };
 

@@ -8,13 +8,11 @@ namespace MaterialesIza.Common.Models
     {
         public int Id { get; set; }
 
-        public DateTime Date_Purchase { get; set; }
+        public int Quantity { get; set; }
 
-        public double Total_Purchase { get; set; }
+        public ProductRequest Product { get; set; }
 
-        public double Iva_Purchase { get; set; }
+        public PurchaseRequest Purchase { get; set; }
 
-        public string Purchase_Remarks { get; set; }
-        
     }
 }

@@ -57,7 +57,6 @@ namespace MaterialesIza.Data.Repositories
                 Id = ps.Id,
                 Name = ps.Name,
                 Price = ps.Price,
-                Quantity = ps.Quantity,
                 Description = ps.Description,
                 ProductTypes = ps.ProductTypes.Name
 

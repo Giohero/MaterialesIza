@@ -16,13 +16,11 @@ namespace MaterialesIza.Data.Entities
         public string Name { get; set; }
         [Required(ErrorMessage = "{0} es obligatorio")]
         [Display(Name = "Price")]
+
         public int Price { get; set; }
         [Required(ErrorMessage = "{0} es obligatorio")]
         [Display(Name = "Quantity")]
-        public int Quantity { get; set; }
-        [Required(ErrorMessage = "{0} es obligatorio")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres")]
-        [Display(Name = "Description")]
+       
         public string Description { get; set; }
 
        
@@ -30,6 +28,8 @@ namespace MaterialesIza.Data.Entities
 
 
         public ICollection<SaleDetail> SaleDetails { get; set; }
+
+        public ICollection<PurchaseDetail> PurchaseDetails { get; set; }
 
     }
     

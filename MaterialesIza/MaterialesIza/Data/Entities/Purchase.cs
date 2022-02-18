@@ -11,6 +11,12 @@ namespace MaterialesIza.Data.Entities
 
         public DateTime Date_purchase { get; set; }
 
+        public double Total_purchase { get; set; }
+
+        public double Iva_purchase { get; set; }
+
+        public string Purchase_Remarks { get; set; }
+
         public Employee Employee { get; set; }
 
         public Provider Provider { get; set; }

@@ -64,6 +64,10 @@ namespace MaterialesIza.Data.Repositories
                 Sales = c.Sales?.Select(o => new SaleRequest
                 {
                     Id = o.Id,
+                    Date_Sale = o.Date_Sale,
+                    Total_Sale = o.Total_Sale,
+                    Iva_Sale = o.Iva_Sale,
+                    Sales_Remarks = o.Sales_Remarks,
                     Client = new ClientRequest
                     {
                         Id = o.Client.Id,
@@ -75,22 +79,19 @@ namespace MaterialesIza.Data.Repositories
                     SaleDetails = o.SaleDetails?.Select(od => new SaleDetailsRequest
                     {
                         Id = od.Id,
-                        Total_Sale = od.Total_Sale,
-                        Iva_Sale = od.Iva_Sale,
-                        Sales_Remarks = od.Sales_Remarks,
-                        product = new ProductRequest
+                        Quantity = od.Quantity,
+                        Product = new ProductRequest
                         {
 
                             Id = od.Product.Id,
                             Name = od.Product.Name,
                             Price = od.Product.Price,
-                            Quantity = od.Product.Quantity,
                             Description = od.Product.Description,
                             ProductTypes = od.Product.ProductTypes.Name
 
                         }
 
-                    }).Where(od => od.Date_Sale != null).ToList()
+                    })/*.Where(od => od.Date_Sale != null)*/.ToList()
                 }).ToList()
             };
 

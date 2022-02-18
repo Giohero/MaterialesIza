@@ -11,6 +11,12 @@ namespace MaterialesIza.Data.Entities
 
         public DateTime Date_Order { get; set; }
 
+        public double Total_Order { get; set; }
+
+        public double Iva_Order { get; set; }
+
+        public string Order_Remarks { get; set; }
+
         public Employee Employee { get; set; }
 
         public Client Client { get; set; }

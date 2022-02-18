@@ -63,6 +63,10 @@ namespace MaterialesIza.Data.Repositories
                 Purchases = c.Purchases?.Select(o => new PurchaseRequest
                 {
                     Id = o.Id,
+                    Date_purchase = o.Date_purchase,
+                    Total_purchase = o.Total_purchase,
+                    Iva_purchase = o.Iva_purchase,
+                    Purchase_Remarks = o.Purchase_Remarks,
                     Employee = new EmployeeRequest
                     {
                         Id = o.Employee.Id,
@@ -74,12 +78,10 @@ namespace MaterialesIza.Data.Repositories
                     PurchaseDetails = o.PurchaseDetails?.Select(od => new PurchaseDetailsRequest
                     {
                         Id = od.Id,
-                        Total_Purchase = od.Total_purchase,
-                        Iva_Purchase = od.Iva_purchase,
-                        Purchase_Remarks = od.Purchase_Remarks
+                        Quantity = od.Quantity,
 
 
-                    }).Where(od => od.Date_Purchase != null).ToList()
+                    })/*.Where(od => od.Date_Purchase != null)*/.ToList()
                 }).ToList()
             };
             return x;
