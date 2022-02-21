@@ -1,5 +1,6 @@
 ﻿namespace MaterialesIza.Data.Repositories
 {
+    using MaterialesIza.Common.Models;
     using MaterialesIza.Data.Entities;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Collections.Generic;
@@ -12,5 +13,7 @@
         IQueryable GetAllWithSaleDetails();
 
         MaterialesIza.Common.Models.ProductRequest GetProducts();
+
+        MaterialesIza.Common.Models.ProductRequest GetProductsWithSalesById(IdRequest IdProduct);
     }
 }

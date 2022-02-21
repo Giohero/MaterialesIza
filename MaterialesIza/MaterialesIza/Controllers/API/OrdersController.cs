@@ -26,7 +26,7 @@ namespace MaterialesIza.Controllers.API
         //[Route("GetOrdersByEmailAsync")]
         public IActionResult GetOrders()
         {         
-            return Ok(this.orderRepository.GetAll());
+            return Ok(this.orderRepository.GetOrders());
         }
     }
 

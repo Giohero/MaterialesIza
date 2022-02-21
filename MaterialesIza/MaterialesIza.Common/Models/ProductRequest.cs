@@ -11,11 +11,11 @@ namespace MaterialesIza.Common.Models
         public string Name { get; set; }
  
         public int Price { get; set; }
-  
-        public int Quantity { get; set; }
       
         public string Description { get; set; }
 
         public string ProductTypes { get; set; }
+
+        public ICollection<SaleDetailsRequest> SaleDetails { get; set; }
     }
 }

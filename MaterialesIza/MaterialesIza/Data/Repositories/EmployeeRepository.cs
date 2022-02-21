@@ -38,7 +38,7 @@ namespace MaterialesIza.Data.Repositories
             return list;
         }
 
-        public MaterialesIza.Common.Models.EmployeeRequest GetSaleByEmailEmployee(EmailRequest emailEmployee)
+        public MaterialesIza.Common.Models.EmployeeRequest GetEmployeeWithSalesByEmail(EmailRequest emailEmployee)
         {
             var c = this.dataContext.Employees
                 .Include(c => c.User)
@@ -97,6 +97,21 @@ namespace MaterialesIza.Data.Repositories
 
             return x;
         }
+
+
+        //public MaterialesIza.Common.Models.EmployeeRequest GetEmployeeWithOrdersByEmail(EmailRequest emailEmployeeO)
+        //{
+        //    var c = this.dataContext.Employees
+        //       .Include(c => c.User)
+        //       .Include(c => c.)
+        //       .ThenInclude(o => o.SaleDetails)
+        //       .ThenInclude(od => od.Product)
+        //       .ThenInclude(s => s.ProductTypes)
+        //       .Include(c => c.Sales)
+        //       .ThenInclude(c => c.Client)
+        //       .ThenInclude(c => c.User)
+        //       .FirstOrDefault(c => c.User.Email.ToLower() == emailEmployeeO.Email);
+        //}
 
     }
 }

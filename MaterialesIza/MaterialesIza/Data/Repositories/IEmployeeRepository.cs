@@ -14,6 +14,6 @@ namespace MaterialesIza.Data.Repositories
 
         IQueryable GetEmployees();
 
-        MaterialesIza.Common.Models.EmployeeRequest GetSaleByEmailEmployee(EmailRequest emailEmployee);
+        MaterialesIza.Common.Models.EmployeeRequest GetEmployeeWithSalesByEmail(EmailRequest emailEmployee);
     }
 }

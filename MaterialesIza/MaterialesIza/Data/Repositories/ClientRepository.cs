@@ -38,10 +38,10 @@ namespace MaterialesIza.Data.Repositories
             return list;
         }
 
-        //TODO Modificar el modelo adecuadamente
-        //TODO metodo GetEmployeeWithOrdersByEmail
-        //TODO metodo GetOrders
-        //TODO METODO GetMAterialWithSalesById
+        //TODO Modificar el modelo adecuadamente - Si
+        //TODO metodo GetEmployeeWithSalesByEmail - Si
+        //TODO metodo GetOrders - Si
+        //TODO METODO GetProductWithSalesById - 
 
 
         public MaterialesIza.Common.Models.ClientRequest GetClientWithOrdersByEmail(EmailRequest emailClient)
