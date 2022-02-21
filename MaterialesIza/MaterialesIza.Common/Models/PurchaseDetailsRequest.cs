@@ -12,7 +12,7 @@ namespace MaterialesIza.Common.Models
 
         public ProductRequest Product { get; set; }
 
-        public PurchaseRequest Purchase { get; set; }
+        //public PurchaseRequest Purchase { get; set; }
 
     }
 }
