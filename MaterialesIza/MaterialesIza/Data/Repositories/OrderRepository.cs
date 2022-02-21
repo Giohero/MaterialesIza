@@ -72,7 +72,7 @@ namespace MaterialesIza.Data.Repositories
                     }
 
 
-                })/*.Where(od => od.Date_Sale != null)*/.ToList()
+                }).ToList()
             };
 
             return x;

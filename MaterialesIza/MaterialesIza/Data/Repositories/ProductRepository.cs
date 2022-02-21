@@ -79,31 +79,32 @@ namespace MaterialesIza.Data.Repositories
             var x = new ProductRequest
             {
                 Id = c.Id,
-                Name = c.Name,               
+                Name = c.Name,
                 Price = c.Price,
-                Description = c.Description,
-                SaleDetails = c.SaleDetails?.Select(o => new SaleDetailsRequest
-                {
-                    Id = o.Id,
-                    Quantity = o.Quantity,                  
-                    Sale = new SaleRequest
-                    {
-                        Id = o.Id,
-                        Date_Sale = o.Sale.Date_Sale,
-                        Total_Sale = o.Sale.Total_Sale,
-                        Iva_Sale = o.Sale.Iva_Sale,
-                        Sales_Remarks = o.Sale.Sales_Remarks,
-                    },
-                    Product = new ProductRequest
-                    {
-                        Id = o.Product.Id,
-                        Name = o.Product.Name,
-                        Price = o.Product.Price,
-                        Description = o.Product.Description,
-                        ProductTypes = o.Product.ProductTypes.Name
-                    }               
-                }).ToList()
+                Description = c.Description
             };
+                //SaleDetails = c.SaleDetails?.Select(o => new SaleDetailsRequest
+                //{
+                //    Id = o.Id,
+                //    Quantity = o.Quantity,                  
+                //    //Sale = new SaleRequest
+                //    //{
+                //    //    Id = o.Id,
+                //    //    Date_Sale = o.Sale.Date_Sale,
+                //    //    Total_Sale = o.Sale.Total_Sale,
+                //    //    Iva_Sale = o.Sale.Iva_Sale,
+                //    //    Sales_Remarks = o.Sale.Sales_Remarks,
+                //    //},
+                //    Product = new ProductRequest
+                //    {
+                //        Id = o.Product.Id,
+                //        Name = o.Product.Name,
+                //        Price = o.Product.Price,
+                //        Description = o.Product.Description,
+                //        ProductTypes = o.Product.ProductTypes.Name
+                //    }               
+            //    }).ToList()
+            //};
             return x;
         }
 
