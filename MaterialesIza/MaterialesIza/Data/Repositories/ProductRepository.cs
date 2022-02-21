@@ -68,9 +68,7 @@ namespace MaterialesIza.Data.Repositories
         public MaterialesIza.Common.Models.ProductRequest GetProductWithSalesById(IdRequest IdProduct)
         {
             var c = this.dataContext.Products
-               .Include(c => c.SaleDetails)
-               .ThenInclude(c => c.Product)
-               .ThenInclude(o => o.ProductTypes)
+               .Include(p => p.ProductTypes)
                .Include(c => c.SaleDetails)                           
                .ThenInclude(c => c.Sale)
                .FirstOrDefault(c => c.Id.ToString() == IdProduct.Id);
