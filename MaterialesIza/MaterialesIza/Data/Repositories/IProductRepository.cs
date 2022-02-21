@@ -14,6 +14,6 @@
 
         MaterialesIza.Common.Models.ProductRequest GetProducts();
 
-        MaterialesIza.Common.Models.ProductRequest GetProductsWithSalesById(IdRequest IdProduct);
+        MaterialesIza.Common.Models.ProductRequest GetProductWithSalesById(IdRequest IdProduct);
     }
 }

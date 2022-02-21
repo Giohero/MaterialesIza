@@ -14,8 +14,8 @@ namespace MaterialesIza.UIForms.ViewModels
     {
         private ApiService apiService;
 
-        private ObservableCollection<OrderDetail> orderDetails;
-        public ObservableCollection<OrderDetail> OrderDetails
+        private ObservableCollection<OrderDetailsRequest> orderDetails;
+        public ObservableCollection<OrderDetailsRequest> OrderDetails
         {
 
             get { return this.orderDetails; }
@@ -45,7 +45,7 @@ namespace MaterialesIza.UIForms.ViewModels
             //Inicio
             this.IsRefreshing = true;
             var url = Application.Current.Resources["UrlAPI"].ToString();
-            var response = await this.apiService.GetListAsync<OrderDetail>(
+            var response = await this.apiService.GetListAsync<OrderDetailsRequest>(
               url,
               "/api",
               "/OrderDetails",
@@ -61,8 +61,8 @@ namespace MaterialesIza.UIForms.ViewModels
                     "Accept");
                 return;
             }
-            var myOrderDetails = (List<OrderDetail>)response.Result;
-            this.OrderDetails = new ObservableCollection<OrderDetail>(myOrderDetails);
+            var myOrderDetails = (List<OrderDetailsRequest>)response.Result;
+            this.OrderDetails = new ObservableCollection<OrderDetailsRequest>(myOrderDetails);
         }
     }
 }

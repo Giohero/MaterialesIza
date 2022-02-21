@@ -28,7 +28,7 @@ namespace MaterialesIza.Controllers.API
             //return Ok(this.productRepository.GetProducts());
 
             var idProduct = new IdRequest { Id = "1" };
-            return Ok(this.productRepository.GetProductsWithSalesById(idProduct));
+            return Ok(this.productRepository.GetProductWithSalesById(idProduct));
         }
 
         [HttpPost]

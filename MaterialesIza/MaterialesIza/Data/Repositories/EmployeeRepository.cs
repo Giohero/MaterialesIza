@@ -99,18 +99,13 @@ namespace MaterialesIza.Data.Repositories
         }
 
 
+
+
+
+
+
         //public MaterialesIza.Common.Models.EmployeeRequest GetEmployeeWithOrdersByEmail(EmailRequest emailEmployeeO)
         //{
-        //    var c = this.dataContext.Employees
-        //       .Include(c => c.User)
-        //       .Include(c => c.)
-        //       .ThenInclude(o => o.SaleDetails)
-        //       .ThenInclude(od => od.Product)
-        //       .ThenInclude(s => s.ProductTypes)
-        //       .Include(c => c.Sales)
-        //       .ThenInclude(c => c.Client)
-        //       .ThenInclude(c => c.User)
-        //       .FirstOrDefault(c => c.User.Email.ToLower() == emailEmployeeO.Email);
         //}
 
     }
