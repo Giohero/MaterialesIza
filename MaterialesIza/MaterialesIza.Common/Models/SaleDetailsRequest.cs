@@ -10,7 +10,7 @@ namespace MaterialesIza.Common.Models
 
         public int Quantity { get; set; }
 
-       // public SaleRequest Sale { get; set; }
+        public SaleRequest Sale { get; set; }
 
         public ProductRequest Product { get; set; }
     }
