@@ -176,6 +176,13 @@
                     .Include(c => c.User)
                     .FirstOrDefault(c => c.User.FirstName == "Jaime");
                 await this.CheckOrderAsync(DateTime.Now, 5680, 16, "Prueba Order 4", employee, client);
+                client = this.dataContext.Clients
+                   .Include(c => c.User)
+                   .FirstOrDefault(c => c.User.FirstName == "Antonio");
+                employee = this.dataContext.Employees
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Jaime");
+                await this.CheckOrderAsync(DateTime.Now, 8680, 16, "Prueba Order 5", employee, client);
 
                 client = this.dataContext.Clients
                     .Include(c => c.User)
@@ -184,6 +191,13 @@
                     .Include(c => c.User)
                     .FirstOrDefault(c => c.User.FirstName == "Jesus");
                 await this.CheckOrderAsync(DateTime.Now, 698, 16, "Prueba Order 2", employee, client);
+                client = this.dataContext.Clients
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Antonio");
+                employee = this.dataContext.Employees
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Jesus");
+                await this.CheckOrderAsync(DateTime.Now, 6998, 16, "Prueba Order 6", employee, client);
 
                 client = this.dataContext.Clients
                     .Include(c => c.User)
