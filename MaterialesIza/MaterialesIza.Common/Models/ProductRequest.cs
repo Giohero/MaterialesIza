@@ -16,7 +16,7 @@ namespace MaterialesIza.Common.Models
 
         public string ProductTypes { get; set; }
 
-        //    public ICollection<SaleDetailsRequest> SaleDetails { get; set; }
-        //}
+        public ICollection<SaleDetailsRequest> SaleDetails { get; set; }
+        
     }
 }

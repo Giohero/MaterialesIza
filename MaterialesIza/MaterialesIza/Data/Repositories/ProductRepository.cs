@@ -65,13 +65,14 @@ namespace MaterialesIza.Data.Repositories
 
         }
 
-        public MaterialesIza.Common.Models.ProductRequest GetProductWithSalesById(IdRequest IdProduct)
+        public MaterialesIza.Common.Models.ProductRequest GetProductWithSalesById(int id)
         {
             var c = this.dataContext.Products
-               .Include(p => p.ProductTypes)
-               .Include(c => c.SaleDetails)                           
-               .ThenInclude(c => c.Sale)
-               .FirstOrDefault(c => c.Id.ToString() == IdProduct.Id);
+               .Include(s => s.SaleDetails)
+               .ThenInclude(sd => sd.Sale)
+               .ThenInclude(s => s.Client)
+               //.ThenInclude(sd => sd.Product)
+               .FirstOrDefault(c => c.Id == id);
             if (c == null)
             {
                 return null;
@@ -79,32 +80,36 @@ namespace MaterialesIza.Data.Repositories
             var x = new ProductRequest
             {
                 Id = c.Id,
+                Description = c.Description,
                 Name = c.Name,
                 Price = c.Price,
-                Description = c.Description
+                SaleDetails = c.SaleDetails?.Select(o => new SaleDetailsRequest
+
+                {
+                    Id = o.Id,
+                    Quantity = o.Quantity,
+                    Sale = new SaleRequest
+                    {
+                        Id = o.Sale.Id,
+                        Date_Sale = o.Sale.Date_Sale,
+                        Iva_Sale = o.Sale.Iva_Sale,
+                        Sales_Remarks = o.Sale.Sales_Remarks,
+                        Total_Sale = o.Sale.Total_Sale,
+
+                        //Client = new ClientRequest
+                        //{
+                        //    Id = o.Id,
+                        //    FirstName = o.User.FirstName,
+                        //    LastName = c.User.LastName,
+                        //    Email = c.User.Email,
+                        //    PhoneNumber = c.User.PhoneNumber,
+                        //}
+
+
+                    }
+
+                }).ToList()
             };
-                //SaleDetails = c.SaleDetails?.Select(o => new SaleDetailsRequest
-                //{
-                //    Id = o.Id,
-                //    Quantity = o.Quantity,                  
-                //    //Sale = new SaleRequest
-                //    //{
-                //    //    Id = o.Id,
-                //    //    Date_Sale = o.Sale.Date_Sale,
-                //    //    Total_Sale = o.Sale.Total_Sale,
-                //    //    Iva_Sale = o.Sale.Iva_Sale,
-                //    //    Sales_Remarks = o.Sale.Sales_Remarks,
-                //    //},
-                //    Product = new ProductRequest
-                //    {
-                //        Id = o.Product.Id,
-                //        Name = o.Product.Name,
-                //        Price = o.Product.Price,
-                //        Description = o.Product.Description,
-                //        ProductTypes = o.Product.ProductTypes.Name
-                //    }               
-            //    }).ToList()
-            //};
             return x;
         }
 
