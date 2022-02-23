@@ -10,6 +10,6 @@ namespace MaterialesIza.Data.Entities
 
         public ICollection<Sale> Sales { get; set; }
 
-        //public ICollection<Order> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

@@ -42,6 +42,14 @@
                 var user = await CheckUserAsync
                     ("Saldaña", "Jaime", "jaime.Sal@gmail.com", "123456789", "123456", "Employee");
                 await CheckEmployeesAsync(user);
+
+                user = await CheckUserAsync
+                    ("Sandoval", "Jesus", "jesus.Sal@gmail.com", "123456789", "123456", "Employee");
+                await CheckEmployeesAsync(user);
+
+                user = await CheckUserAsync
+                    ("Baldomero", "Santiago", "santiago.Sal@gmail.com", "123456789", "123456", "Employee");
+                await CheckEmployeesAsync(user);
             }
 
             if (!this.dataContext.Clients.Any())
@@ -161,14 +169,31 @@
                     .Include(c => c.User)
                     .FirstOrDefault(c => c.User.FirstName == "Jaime");
                 await this.CheckOrderAsync(DateTime.Now, 234, 16, "Prueba Order 1", employee,client);
+                client = this.dataContext.Clients
+                   .Include(c => c.User)
+                   .FirstOrDefault(c => c.User.FirstName == "Yair");
+                employee = this.dataContext.Employees
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Jaime");
+                await this.CheckOrderAsync(DateTime.Now, 5680, 16, "Prueba Order 4", employee, client);
+
+                client = this.dataContext.Clients
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Javier");
+                employee = this.dataContext.Employees
+                    .Include(c => c.User)
+                    .FirstOrDefault(c => c.User.FirstName == "Jesus");
+                await this.CheckOrderAsync(DateTime.Now, 698, 16, "Prueba Order 2", employee, client);
 
                 client = this.dataContext.Clients
                     .Include(c => c.User)
                     .FirstOrDefault(c => c.User.FirstName == "Yair");
                 employee = this.dataContext.Employees
                     .Include(c => c.User)
-                    .FirstOrDefault(c => c.User.FirstName == "Gerardo");
-                await this.CheckOrderAsync(DateTime.Now, 698, 16, "Prueba Order 2", employee, client);
+                    .FirstOrDefault(c => c.User.FirstName == "Santiago");
+                await this.CheckOrderAsync(DateTime.Now, 6498, 16, "Prueba Order 3", employee, client);
+
+
 
             }
 

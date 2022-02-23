@@ -13,7 +13,6 @@ namespace MaterialesIza.Data.Repositories
         IEnumerable<SelectListItem> GetComboEmployee();
 
         IQueryable GetEmployees();
-
-        //MaterialesIza.Common.Models.EmployeeRequest GetEmployeeWithSalesByEmail(EmailRequest emailEmployee);
+        MaterialesIza.Common.Models.EmployeeRequest GetEmployeeWithOrdersByEmail(EmailRequest emailEmployee);
     }
 }

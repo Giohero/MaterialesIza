@@ -15,5 +15,7 @@ namespace MaterialesIza.Common.Models
         public string FullName => $"{LastName} {FirstName}";
 
         public ICollection<SaleRequest> Sales { get; set; }
+        public ICollection<OrderRequest> Orders { get; set; }
+
     }
 }

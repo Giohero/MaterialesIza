@@ -24,10 +24,10 @@ namespace MaterialesIza.Controllers.API
         // GET: Employees
         public IActionResult GetEmployeesController()
         {
-            return Ok(this.employeeRepository.GetAll());
+            //return Ok(this.employeeRepository.GetAll());
 
-            //var emailEmployee = new EmailRequest { Email = "jaime.Sal@gmail.com" };
-            //return Ok(this.employeeRepository.GetEmployeeWithSalesByEmail(emailEmployee));
+            var emailEmployee = new EmailRequest { Email = "jaime.Sal@gmail.com" };
+            return Ok(this.employeeRepository.GetEmployeeWithOrdersByEmail(emailEmployee));
         }
     }
 

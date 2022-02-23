@@ -39,7 +39,7 @@ namespace MaterialesIza.Data.Repositories
         }
 
         //TODO Modificar el modelo adecuadamente - Si
-        //TODO metodo GetEmployeeWithSalesByEmail - Si
+        //TODO metodo GetEmployeeWithOrdersByEmail - Si
         //TODO metodo GetOrders - Si
         //TODO METODO GetProductWithSalesById - 
 
