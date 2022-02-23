@@ -18,6 +18,6 @@ namespace MaterialesIza.Common.Models
 
         public ClientRequest Client { get; set; }
 
-        public ICollection<SaleDetailsRequest> SaleDetails { get; set; }
+        //public ICollection<SaleDetailsRequest> SaleDetails { get; set; }
     }
 }

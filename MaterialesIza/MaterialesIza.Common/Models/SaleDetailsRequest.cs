@@ -12,6 +12,6 @@ namespace MaterialesIza.Common.Models
 
         public SaleRequest Sale { get; set; }
 
-        public ProductRequest Product { get; set; }
+        //public ProductRequest Product { get; set; }
     }
 }

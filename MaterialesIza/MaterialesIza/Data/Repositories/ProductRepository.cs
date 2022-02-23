@@ -71,6 +71,7 @@ namespace MaterialesIza.Data.Repositories
                .Include(s => s.SaleDetails)
                .ThenInclude(sd => sd.Sale)
                .ThenInclude(s => s.Client)
+               .Include(s => s.ProductTypes)
                //.ThenInclude(sd => sd.Product)
                .FirstOrDefault(c => c.Id == id);
             if (c == null)
@@ -83,6 +84,7 @@ namespace MaterialesIza.Data.Repositories
                 Description = c.Description,
                 Name = c.Name,
                 Price = c.Price,
+                ProductTypes = c.ProductTypes.Name,
                 SaleDetails = c.SaleDetails?.Select(o => new SaleDetailsRequest
 
                 {
