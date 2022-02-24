@@ -169,6 +169,7 @@
                     .Include(c => c.User)
                     .FirstOrDefault(c => c.User.FirstName == "Jaime");
                 await this.CheckOrderAsync(DateTime.Now, 234, 16, "Prueba Order 1", employee,client);
+
                 client = this.dataContext.Clients
                    .Include(c => c.User)
                    .FirstOrDefault(c => c.User.FirstName == "Yair");
@@ -228,23 +229,23 @@
                 await this.CheckOrderDetailAsync( 2, 500, service,order);
 
                 service = this.dataContext.Services.FirstOrDefault();
-                order = this.dataContext.Orders.FirstOrDefault();
+                order = this.dataContext.Orders.FirstOrDefault(p => p.Id == 2);
                 await this.CheckOrderDetailAsync(1, 300, service, order);
 
                 service = this.dataContext.Services.FirstOrDefault();
-                order = this.dataContext.Orders.FirstOrDefault();
+                order = this.dataContext.Orders.FirstOrDefault(p => p.Id == 3);
                 await this.CheckOrderDetailAsync(3, 800, service, order);
 
                 service = this.dataContext.Services.FirstOrDefault();
-                order = this.dataContext.Orders.FirstOrDefault();
+                order = this.dataContext.Orders.FirstOrDefault(p => p.Id == 4);
                 await this.CheckOrderDetailAsync(4, 600, service, order);
 
                  service = this.dataContext.Services.FirstOrDefault();
-                 order = this.dataContext.Orders.FirstOrDefault();
+                 order = this.dataContext.Orders.FirstOrDefault(p => p.Id == 5);
                 await this.CheckOrderDetailAsync(5, 1000, service, order);
 
                 service = this.dataContext.Services.FirstOrDefault();
-                order = this.dataContext.Orders.FirstOrDefault();
+                order = this.dataContext.Orders.FirstOrDefault(p => p.Id == 6);
                 await this.CheckOrderDetailAsync(4, 700, service, order);
             }
 
