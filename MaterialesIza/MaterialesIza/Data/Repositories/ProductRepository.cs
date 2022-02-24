@@ -101,7 +101,7 @@ namespace MaterialesIza.Data.Repositories
                         //Client = new ClientRequest
                         //{
                         //    Id = o.Id,
-                        //    FirstName = o.User.FirstName,
+                        //    FirstName = o.Client.User.FirstName,
                         //    LastName = c.User.LastName,
                         //    Email = c.User.Email,
                         //    PhoneNumber = c.User.PhoneNumber,

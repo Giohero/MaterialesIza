@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MaterialesIza.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220221204848_Initial")]
+    [Migration("20220224050835_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -587,7 +587,7 @@ namespace MaterialesIza.Migrations
                         .HasForeignKey("ClientId");
 
                     b.HasOne("MaterialesIza.Data.Entities.Employee", "Employee")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("EmployeeId");
                 });
 

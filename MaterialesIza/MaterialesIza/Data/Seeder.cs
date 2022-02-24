@@ -230,6 +230,22 @@
                 service = this.dataContext.Services.FirstOrDefault();
                 order = this.dataContext.Orders.FirstOrDefault();
                 await this.CheckOrderDetailAsync(1, 300, service, order);
+
+                service = this.dataContext.Services.FirstOrDefault();
+                order = this.dataContext.Orders.FirstOrDefault();
+                await this.CheckOrderDetailAsync(3, 800, service, order);
+
+                service = this.dataContext.Services.FirstOrDefault();
+                order = this.dataContext.Orders.FirstOrDefault();
+                await this.CheckOrderDetailAsync(4, 600, service, order);
+
+                 service = this.dataContext.Services.FirstOrDefault();
+                 order = this.dataContext.Orders.FirstOrDefault();
+                await this.CheckOrderDetailAsync(5, 1000, service, order);
+
+                service = this.dataContext.Services.FirstOrDefault();
+                order = this.dataContext.Orders.FirstOrDefault();
+                await this.CheckOrderDetailAsync(4, 700, service, order);
             }
 
             if (!this.dataContext.Purchases.Any())

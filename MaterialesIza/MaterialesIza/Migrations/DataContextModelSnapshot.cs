@@ -585,7 +585,7 @@ namespace MaterialesIza.Migrations
                         .HasForeignKey("ClientId");
 
                     b.HasOne("MaterialesIza.Data.Entities.Employee", "Employee")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("EmployeeId");
                 });
 

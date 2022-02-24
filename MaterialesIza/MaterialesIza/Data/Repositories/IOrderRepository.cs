@@ -10,11 +10,11 @@ namespace MaterialesIza.Data.Repositories
 {
    public  interface IOrderRepository: IGenericRepository<MaterialesIza.Data.Entities.Order>
     {
+        
+
         IEnumerable<SelectListItem> GetComboOrder();
 
-        MaterialesIza.Common.Models.OrderRequest GetOrders();
 
-
-
+        IEnumerable<OrderRequest> GetOrders();
     }
 }

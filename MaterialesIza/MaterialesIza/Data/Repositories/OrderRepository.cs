@@ -23,7 +23,7 @@ namespace MaterialesIza.Data.Repositories
                 .Include(o => o.Client.User)
                 .Include(o => o.Employee.User);
         }
-        
+
 
         public IEnumerable<SelectListItem> GetComboOrder()
         {
@@ -40,40 +40,50 @@ namespace MaterialesIza.Data.Repositories
             return list;
         }
 
-        public MaterialesIza.Common.Models.OrderRequest GetOrders()
+        public IEnumerable<OrderRequest> GetOrders()
         {
             var o = this.dataContext.Orders
-               .Include(od => od.OrderDetails)
-               .ThenInclude(s => s.Service)
-               .ThenInclude(st => st.ServiceType)
-               .FirstOrDefault();
+                     .Include(e => e.Employee.User)
+                     .Include(od => od.OrderDetails)
+                     .ThenInclude(s => s.Service)
+                     .ThenInclude(st => st.ServiceType);
+
             if (o == null)
             {
                 return null;
             }
-            var x = new OrderRequest
+
+            var x = o.Select(or => new OrderRequest
             {
-                Id = o.Id,
-                Date_Order = o.Date_Order,
-                Total_Order = o.Total_Order,
-                Iva_Order = o.Iva_Order,
-                Order_Remarks = o.Order_Remarks,
-                OrderDetails = o.OrderDetails?.Select(od => new OrderDetailsRequest
+                Id = or.Id,
+                Date_Order = or.Date_Order,
+                Total_Order = or.Total_Order,
+                Iva_Order = or.Iva_Order,
+                Order_Remarks = or.Order_Remarks,
+
+                //Employee = new EmployeeRequest
+                //{
+                //    Id = or.Id,
+                //    FirstName = or.Employee.User.FirstName,
+                //    LastName = or.Employee.User.LastName,
+                //    Email = or.Employee.User.Email,
+                //    PhoneNumber = or.Employee.User.PhoneNumber,
+                //},
+
+                OrderDetails = or.OrderDetails.Select(odr => new OrderDetailsRequest
                 {
-                    Id = od.Id,
-                    Quantity = od.Quantity,
-                    Price = od.Price,
+                    Id = odr.Id,
+                    Quantity = odr.Quantity,
+                    Price = odr.Price,
                     Service = new ServiceRequest
                     {
-                        Id = od.Service.Id,
-                        Name = od.Service.Name,
-                        Description = od.Service.Description,
-                        ServiceType = od.Service.ServiceType.TypeService
+                        Id = odr.Service.Id,
+                        Name = odr.Service.Name,
+                        Description = odr.Service.Description,
+                        ServiceType = odr.Service.ServiceType.TypeService
                     }
-
-
                 }).ToList()
-            };
+            }).ToList();
 
             return x;
         }

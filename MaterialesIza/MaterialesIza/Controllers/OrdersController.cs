@@ -24,7 +24,7 @@ namespace MaterialesIza.Controllers
         // GET: Orders
         public IActionResult Index()
         {
-            return View(this.orderRepository.GetAll());
+            return View(this.orderRepository.GetOrders());
         }
 
         // GET: Orders/Details/5
