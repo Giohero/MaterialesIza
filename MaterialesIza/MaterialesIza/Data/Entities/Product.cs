@@ -15,11 +15,11 @@ namespace MaterialesIza.Data.Entities
 
         public string Name { get; set; }
         [Required(ErrorMessage = "{0} es obligatorio")]
-        [Display(Name = "Price")]
+        [Display(Name = "Name")]
 
-        public int Price { get; set; }
+        public double Price { get; set; }
         [Required(ErrorMessage = "{0} es obligatorio")]
-        [Display(Name = "Quantity")]
+        [Display(Name = "Price")]
        
         public string Description { get; set; }
 

@@ -1,10 +1,13 @@
 ﻿using MaterialesIza.Common.Models;
 using MaterialesIza.Data;
 using MaterialesIza.Data.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaterialesIza.Controllers.API
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[Controller]")]
     public class SalesController : Controller
     {
