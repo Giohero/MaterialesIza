@@ -263,7 +263,7 @@ namespace MaterialesIza.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    Price = table.Column<int>(nullable: false),
+                    Price = table.Column<double>(nullable: false),
                     Description = table.Column<string>(nullable: false),
                     ProductTypesId = table.Column<int>(nullable: true)
                 },

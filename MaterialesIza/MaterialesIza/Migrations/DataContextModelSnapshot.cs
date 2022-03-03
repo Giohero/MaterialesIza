@@ -148,8 +148,8 @@ namespace MaterialesIza.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<int?>("ProductTypesId")
                         .HasColumnType("int");
