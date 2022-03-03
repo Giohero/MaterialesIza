@@ -1,9 +1,12 @@
 ﻿
+using GalaSoft.MvvmLight.Command;
 using MaterialesIza.Common.Models;
+using MaterialesIza.UIForms.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace MaterialesIza.UIForms.ViewModels
 {
@@ -42,6 +45,15 @@ namespace MaterialesIza.UIForms.ViewModels
         public SaleDetailsViewModel SaleDetails { get; set; }
 
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
+
+        public AddProductViewModel AddProduct { get; set; }
+        public ICommand AddProductCommand { get { return new RelayCommand(GoProductCommand); } }
+
+        private async void GoProductCommand()
+        {
+            this.AddProduct = new AddProductViewModel();
+            await App.Navigator.PushAsync(new AddProductsPage());
+        }
 
         public MainViewModel()
         {

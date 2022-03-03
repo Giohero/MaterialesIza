@@ -1,7 +1,6 @@
 ﻿
 namespace MaterialesIza.Controllers.API
 {
-    using MaterialesIza.Common.Models;
     using MaterialesIza.Data.Entities;
     using MaterialesIza.Data.Repositories;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -25,7 +24,7 @@ namespace MaterialesIza.Controllers.API
         [HttpGet]
         public IActionResult GetProducts()
         {
-            return Ok(this.productRepository.GetProductWithSalesById(1));
+            return Ok(this.productRepository.GetProducts());
 
         }
 

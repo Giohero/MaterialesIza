@@ -4,6 +4,10 @@
              x:Class="MaterialesIza.UIForms.Views.ProductsPage"
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
              Title="Productos">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_action_add_circle" Command="{Binding AddProductCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Products}"
@@ -34,19 +38,19 @@
                                              VerticalOptions="Center">
                                     <Label Text="{Binding Name}"
                                            FontSize="Large"
-                                           TextColor="White"></Label>
+                                           TextColor="Yellow"></Label>
                                 </StackLayout>
                                 <StackLayout Grid.Column="2"
                                              VerticalOptions="Center">
                                     <Label Text="{Binding Description}"
                                            FontSize="Large"
-                                           TextColor="White"></Label>
+                                           TextColor="Yellow"></Label>
                                 </StackLayout>
                                 <StackLayout Grid.Column="3"
                                              VerticalOptions="Center">
                                     <Label Text="{Binding Price ,StringFormat='{0:C2}'}"
                                            FontSize="Large"
-                                           TextColor="White"></Label>
+                                           TextColor="Yellow"></Label>
                                 </StackLayout>
                             </Grid>
                         </ViewCell>

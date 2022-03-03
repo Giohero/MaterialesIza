@@ -6,13 +6,14 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public interface IProductRepository : IGenericRepository<MaterialesIza.Data.Entities.Product>
+    public interface IProductRepository : IGenericRepository<Product>
     {
         IEnumerable<SelectListItem> GetComboProduct();
 
         IQueryable GetAllWithSaleDetails();
 
-        MaterialesIza.Common.Models.ProductRequest GetProducts();
+        //MaterialesIza.Common.Models.ProductRequest GetProducts();
+        IQueryable GetProducts();
 
         MaterialesIza.Common.Models.ProductRequest GetProductWithSalesById(int id);
     }

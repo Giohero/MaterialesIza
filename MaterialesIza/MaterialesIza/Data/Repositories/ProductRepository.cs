@@ -38,32 +38,35 @@ namespace MaterialesIza.Data.Repositories
             });
             return list;
         }
-
-        public MaterialesIza.Common.Models.ProductRequest GetProducts()
+        public IQueryable GetProducts()
         {
-            var ps = this.dataContext.Products
-                .Include(sd => sd.SaleDetails)
-                .ThenInclude(p => p.Product)
-                .ThenInclude(pt => pt.ProductTypes)
-                .FirstOrDefault();
-
-            if (ps == null)
-            {
-                return null;
-            }
-
-            var x = new ProductRequest
-            {
-                Id = ps.Id,
-                Name = ps.Name,
-                Price = ps.Price,
-                Description = ps.Description,
-                ProductTypes = ps.ProductTypes.Name
-
-            };
-            return x;
-
+            return this.dataContext.Products;
         }
+        //public MaterialesIza.Common.Models.ProductRequest GetProducts()
+        //{
+        //    var ps = this.dataContext.Products
+        //        .Include(sd => sd.SaleDetails)
+        //        .ThenInclude(p => p.Product)
+        //        .ThenInclude(pt => pt.ProductTypes)
+        //        .FirstOrDefault();
+
+        //    if (ps == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    var x = new ProductRequest
+        //    {
+        //        Id = ps.Id,
+        //        Name = ps.Name,
+        //        Price = ps.Price,
+        //        Description = ps.Description,
+        //        ProductTypes = ps.ProductTypes.Name
+
+        //    };
+        //    return x;
+
+        //}
 
         public MaterialesIza.Common.Models.ProductRequest GetProductWithSalesById(int id)
         {
