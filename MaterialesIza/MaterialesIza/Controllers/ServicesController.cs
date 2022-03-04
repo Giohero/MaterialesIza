@@ -22,9 +22,9 @@ namespace MaterialesIza.Controllers
         }
 
         // GET: Services
-        public IActionResult GetServices()
+        public IActionResult Index()
         {
-            return View(this.serviceRepository.GetServices());
+            return View(this.serviceRepository.GetAll());
         }
 
         // GET: Services/Details/5
