@@ -36,7 +36,13 @@
                                 </StackLayout>
                                 <StackLayout Grid.Column="1"
                                              VerticalOptions="Center">
-                                    <Label Text="{Binding FullName}"
+                                    <Label Text="{Binding FirstName}"
+                                           FontSize="Medium"
+                                           TextColor="White"></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1"
+                                             VerticalOptions="Center">
+                                    <Label Text="{Binding LastName}"
                                            FontSize="Medium"
                                            TextColor="White"></Label>
                                 </StackLayout>
