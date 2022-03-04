@@ -5,7 +5,7 @@
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
              Title="Servicios">
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="about" Command="{Binding AddServiceCommand}"/>
+        <ToolbarItem IconImageSource="Add" Command="{Binding AddServiceCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         
