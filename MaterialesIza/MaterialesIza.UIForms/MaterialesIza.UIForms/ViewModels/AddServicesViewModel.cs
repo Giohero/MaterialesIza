@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace MaterialesIza.UIForms.ViewModels
 {
-    public class AddServicesViewModel:BaseViewModel
+    public class AddServicesViewModel : BaseViewModel
     {
         private readonly ApiService apiService;
         public string Name { get; set; }

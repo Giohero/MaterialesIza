@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MaterialesIza.UIForms.Views.AddServicesPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Service">
+             Title="Services">
     <ContentPage.Content>
         <ScrollView BindingContext="{Binding AddServices}">
             <StackLayout>
@@ -15,11 +15,11 @@
                     <Label Text="Name" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"></Label>
                     <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce el Producto" Text="{Binding Name}"></Entry>
 
-                    <Label Text="Descripcion" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text" Placeholder="Introduce la Descripcion" Text="{Binding Description}"></Entry>
+                    <Label Text="Descripcion" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="1" Keyboard="Text" Placeholder="Introduce la Descripcion" Text="{Binding Description}"></Entry>
 
-                    <Label Text="Tipo de producto" Grid.Column="0" Grid.Row="3" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="3" Keyboard="Text" Placeholder="Introduce el Tipo de Producto" Text="{Binding ServiceType}"></Entry>
+                    <Label Text="Tipo de servicio" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text" Placeholder="Introduce el Tipo de Servicio" Text="{Binding ServiceType}"></Entry>
 
                 </Grid>
                 <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand">
