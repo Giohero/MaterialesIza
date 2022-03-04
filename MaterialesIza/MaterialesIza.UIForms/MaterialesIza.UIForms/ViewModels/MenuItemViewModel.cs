@@ -17,10 +17,12 @@ namespace MaterialesIza.UIForms.ViewModels
             switch (this.PageName)
             {
                 case "ServicePage":
+                    MainViewModel.GetInstance().Services = new ServicesViewModel();
                     await App.Navigator.PushAsync(new ServicePage());
                     break;
 
                 case "ProductsPage":
+                    MainViewModel.GetInstance().Products = new ProductsViewModel();
                     await App.Navigator.PushAsync(new ProductsPage());
                     break;
 

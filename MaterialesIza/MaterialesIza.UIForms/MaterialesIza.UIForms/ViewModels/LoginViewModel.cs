@@ -77,7 +77,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
             var token = (TokenResponse)response.Result;
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Token = token;           
+            mainViewModel.Token = token;
 
             mainViewModel.Services = new ServicesViewModel();
             Application.Current.MainPage = new MasterPage();
@@ -85,40 +85,40 @@ namespace MaterialesIza.UIForms.ViewModels
             mainViewModel.Products = new ProductsViewModel();
             Application.Current.MainPage = new MasterPage();
 
-            mainViewModel.ProductTypes = new ProductTypesViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.ProductTypes = new ProductTypesViewModel();
+            //Application.Current.MainPage = new MasterPage();
 
-            mainViewModel.ServiceTypes = new ServiceTypesViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.ServiceTypes = new ServiceTypesViewModel();
+            //Application.Current.MainPage = new MasterPage();
 
-            mainViewModel.Admins = new AdminsViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.Admins = new AdminsViewModel();
+            //Application.Current.MainPage = new MasterPage();
 
-            mainViewModel.Clients = new ClientsViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.Clients = new ClientsViewModel();
+            //Application.Current.MainPage = new MasterPage();
 
-            mainViewModel.Employees = new EmployeesViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.Employees = new EmployeesViewModel();
+            //Application.Current.MainPage = new MasterPage();
 
-            mainViewModel.Providers = new ProvidersViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.Providers = new ProvidersViewModel();
+            //Application.Current.MainPage = new MasterPage();
 
-            mainViewModel.Orders = new OrdersViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.Orders = new OrdersViewModel();
+            //Application.Current.MainPage = new MasterPage();
 
-            mainViewModel.Sales = new SalesViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.Sales = new SalesViewModel();
+            //Application.Current.MainPage = new MasterPage();
 
-            mainViewModel.Purchases = new PurchasesViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.Purchases = new PurchasesViewModel();
+            //Application.Current.MainPage = new MasterPage();
 
-            mainViewModel.OrderDetails = new OrderDetailsViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.OrderDetails = new OrderDetailsViewModel();
+            //Application.Current.MainPage = new MasterPage();
 
-            mainViewModel.SaleDetails = new SaleDetailsViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.SaleDetails = new SaleDetailsViewModel();
+            //Application.Current.MainPage = new MasterPage();
 
-            mainViewModel.PurchaseDetails = new PurchaseDetailsViewModel();
+            //mainViewModel.PurchaseDetails = new PurchaseDetailsViewModel();
             Application.Current.MainPage = new MasterPage();
 
         }

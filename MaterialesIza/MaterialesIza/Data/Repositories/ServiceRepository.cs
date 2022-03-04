@@ -32,30 +32,33 @@ namespace MaterialesIza.Data.Repositories
             });
             return list;
         }
-
-        public MaterialesIza.Common.Models.ServiceRequest GetServices()
+        public IQueryable GetServices()
         {
-            var a = this.dataContext.Services
-                .Include(od => od.OrderDetails)
-                .ThenInclude(s => s.Service)
-                .ThenInclude(st => st.ServiceType)
-                .FirstOrDefault();
-
-            if (a == null)
-            {
-                return null;
-            }
-
-            var x = new ServiceRequest
-            {
-                Id = a.Id,
-                Name = a.Name,
-                Description = a.Description,
-                ServiceType = a.ServiceType.TypeService
-
-            };
-            return x;
-
+            return this.dataContext.Products;
         }
+        //public MaterialesIza.Common.Models.ServiceRequest GetServices()
+        //{
+        //    var a = this.dataContext.Services
+        //        .Include(od => od.OrderDetails)
+        //        .ThenInclude(s => s.Service)
+        //        .ThenInclude(st => st.ServiceType)
+        //        .FirstOrDefault();
+
+        //    if (a == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    var x = new ServiceRequest
+        //    {
+        //        Id = a.Id,
+        //        Name = a.Name,
+        //        Description = a.Description,
+        //        ServiceType = a.ServiceType.TypeService
+
+        //    };
+        //    return x;
+
+        //}
     }
 }
