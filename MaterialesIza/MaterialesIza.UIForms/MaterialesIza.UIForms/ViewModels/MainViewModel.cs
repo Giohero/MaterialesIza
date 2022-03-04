@@ -56,6 +56,15 @@ namespace MaterialesIza.UIForms.ViewModels
             await App.Navigator.PushAsync(new AddProductsPage());
         }
 
+        public AddServicesViewModel AddServices { get; set; }
+        public ICommand AddServiceCommand { get { return new RelayCommand(GoServiceCommand); } }
+
+        private async void GoServiceCommand()
+        {
+            this.AddServices = new AddServicesViewModel();
+            await App.Navigator.PushAsync(new AddServicesPage());
+        }
+
         public MainViewModel()
         {
             instance = this;
