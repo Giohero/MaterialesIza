@@ -10,11 +10,9 @@
     {
         IEnumerable<SelectListItem> GetComboClient();
 
-        IQueryable GetClients();
-
         IQueryable GetClientsWithUser();
 
-        //IEnumerable<ClientRequest> GetClients();
+        IEnumerable<ClientRequest> GetClients();
 
         MaterialesIza.Common.Models.ClientRequest GetClientWithOrdersByEmail(EmailRequest emailClient);
     }
