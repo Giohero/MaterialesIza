@@ -10,7 +10,7 @@ namespace MaterialesIza.Data.Repositories
     public interface IServiceRepository : IGenericRepository<MaterialesIza.Data.Entities.Service>
     {
         IEnumerable<SelectListItem> GetComboService();
-        IQueryable GetServices();
+        IQueryable GetServices(); 
         //MaterialesIza.Common.Models.ServiceRequest GetServices();
 
     }
