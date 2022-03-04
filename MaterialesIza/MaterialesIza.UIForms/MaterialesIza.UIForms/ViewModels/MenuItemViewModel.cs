@@ -66,6 +66,7 @@ namespace MaterialesIza.UIForms.ViewModels
                     break;
 
                 case "ClientsPage":
+                    MainViewModel.GetInstance().Clients = new ClientsViewModel();
                     await App.Navigator.PushAsync(new ClientsPage());
                     break;
 
