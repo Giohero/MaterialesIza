@@ -31,16 +31,16 @@ namespace MaterialesIza.UIForms.ViewModels
 
         private void Refresh()
         {
-            this.LoadProducts();
+            this.LoadClients();
         }
 
         public ClientsViewModel()
         {
             this.apiService = new ApiService();
-            this.LoadProducts();
+            this.LoadClients();
         }
 
-        private async void LoadProducts()
+        private async void LoadClients()
         {
             //Inicio
             this.IsRefreshing = true;
