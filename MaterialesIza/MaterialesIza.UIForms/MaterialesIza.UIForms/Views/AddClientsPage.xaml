@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialesIza.UIForms.Views.AddClientsPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Clients">
+    <ContentPage.Content>
+        <ScrollView BindingContext="{Binding AddClients}">
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="FirstName" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce el nombre del cliente" Text="{Binding FirstName}"></Entry>
+
+                    <Label Text="LastName" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="1" Keyboard="Text" Placeholder="Introduce los apellidos del cliente" Text="{Binding LastName}"></Entry>
+
+                    <Label Text="Email" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text" Placeholder="Introduce el email" Text="{Binding Email}"></Entry>
+
+                    <Label Text="PhoneNumber" Grid.Column="0" Grid.Row="3" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="3" Keyboard="Text" Placeholder="Introduce el número telefónico" Text="{Binding PhoneNumber}"></Entry>
+
+      
+                </Grid>
+                <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button Text="Save" 
+                        Command="{Binding SaveCommand}"
+                        IsEnabled="{Binding IsEnabled}"
+                        Background="#67CB19" 
+                        TextColor="White" HorizontalOptions="Fill" CornerRadius="20" ></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
