@@ -34,7 +34,7 @@ namespace MaterialesIza.Data.Repositories
         }
         public IQueryable GetServices()
         {
-            return this.dataContext.Products;
+            return this.dataContext.Services;
         }
         //public MaterialesIza.Common.Models.ServiceRequest GetServices()
         //{
