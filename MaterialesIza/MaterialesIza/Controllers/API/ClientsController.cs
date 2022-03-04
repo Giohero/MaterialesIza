@@ -18,10 +18,9 @@ namespace MaterialesIza.Controllers.API
         private readonly IClientRepository clientRepository;
         private readonly DataContext dataContext;
 
-        public ClientsController(IClientRepository clientRepository, DataContext dataContext)
+        public ClientsController(IClientRepository clientRepository)
         {
             this.clientRepository = clientRepository;
-            this.dataContext = dataContext;
         }
 
         // GET: Clients

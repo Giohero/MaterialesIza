@@ -12,6 +12,8 @@
 
         IQueryable GetClients();
 
+        IQueryable GetClientsWithUser();
+
         //IEnumerable<ClientRequest> GetClients();
 
         MaterialesIza.Common.Models.ClientRequest GetClientWithOrdersByEmail(EmailRequest emailClient);

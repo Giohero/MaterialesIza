@@ -23,7 +23,7 @@ namespace MaterialesIza.Controllers
         // GET: Admins
         public IActionResult Index()
         {
-            return View(this.clientRepository.GetClients());
+            return View(this.clientRepository.GetClientsWithUser());
         }
 
         // GET: Clients/Details/5
