@@ -28,7 +28,7 @@ namespace MaterialesIza.Controllers.API
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostProducts([FromBody] Product product)
+        public async Task<IActionResult> PostProducts([FromBody]MaterialesIza.Common.Models.ProductRequest product)
         {
             if (!ModelState.IsValid)
             {
@@ -39,8 +39,8 @@ namespace MaterialesIza.Controllers.API
                 Name = product.Name
             };
 
-            var newProductType = await this.productRepository.CreateAsync(entityProduct);
-            return Ok(newProductType);
+            var newProduct = await this.productRepository.CreateAsync(entityProduct);
+            return Ok(newProduct);
         }
 
         [HttpPut("{id}")]
