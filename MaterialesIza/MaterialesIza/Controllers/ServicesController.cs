@@ -22,9 +22,9 @@ namespace MaterialesIza.Controllers
         }
 
         // GET: Services
-        public IActionResult Index()
+        public IActionResult GetServices()
         {
-            return View(this.serviceRepository.GetAll());
+            return View(this.serviceRepository.GetServices());
         }
 
         // GET: Services/Details/5
@@ -56,7 +56,7 @@ namespace MaterialesIza.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create( Service service)
+        public async Task<IActionResult> Create(Service service)
         {
             if (ModelState.IsValid)
             {
