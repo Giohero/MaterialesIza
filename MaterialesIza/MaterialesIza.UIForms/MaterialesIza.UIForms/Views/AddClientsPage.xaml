@@ -5,7 +5,7 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Clients">
     <ContentPage.Content>
-        <ScrollView BindingContext="{Binding AddClients}">
+        <ScrollView BindingContext="{Binding AddClient}">
             <StackLayout>
                 <Grid>
                     <Grid.ColumnDefinitions>
