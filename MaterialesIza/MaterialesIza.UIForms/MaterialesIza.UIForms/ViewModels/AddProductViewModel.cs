@@ -60,7 +60,7 @@ namespace MaterialesIza.UIForms.ViewModels
             isEnabled = false;
             isRunning = true;
             var product = new ProductRequest { Name = Name, Price=Price,Description=Description,ProductTypes=ProductTypes };
-            var url = Application.Current.Resources["UrlApi"].ToString();
+            var url = Application.Current.Resources["UrlAPI"].ToString();
             var response = await this.apiService.PostAsync(url,
                 "/api",
                 "/Products",

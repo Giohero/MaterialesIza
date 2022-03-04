@@ -53,7 +53,7 @@ namespace MaterialesIza.UIForms.ViewModels
             isEnabled = false;
             isRunning = true;
             var service = new ServiceRequest { Name = Name, Description = Description, ServiceType = ServiceType };
-            var url = Application.Current.Resources["urlApi"].ToString();
+            var url = Application.Current.Resources["urlAPI"].ToString();
             var response = await this.apiService.PostAsync(url,
                 "/api",
                 "/Services",
