@@ -4,6 +4,9 @@
              x:Class="MaterialesIza.UIForms.Views.ProductTypesPage"
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
              Title="Tipos de producto">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_action_add_circle" Command="{Binding AddProductTypeCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding ProductTypes}"

@@ -48,14 +48,22 @@ namespace MaterialesIza.UIForms.ViewModels
 
 
         public AddProductViewModel AddProduct { get; set; }
+        public AddProductTypeViewModel AddProductType { get; set; }
         public AddClientViewModel AddClient { get; set; }
         public ICommand AddProductCommand { get { return new RelayCommand(GoProductCommand); } }
         public ICommand AddClientCommand { get { return new RelayCommand(GoClientCommand); } }
+
+        public ICommand AddProductTypeCommand { get { return new RelayCommand(GoProductTypesCommand); } }
 
         private async void GoProductCommand()
         {
             this.AddProduct = new AddProductViewModel();
             await App.Navigator.PushAsync(new AddProductsPage());
+        }
+        private async void GoProductTypesCommand()
+        {
+            this.AddProductType = new AddProductTypeViewModel();
+            await App.Navigator.PushAsync(new AddProductTypesPage());
         }
         private async void GoClientCommand()
         {
