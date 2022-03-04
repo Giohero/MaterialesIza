@@ -5,7 +5,7 @@
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
              Title="Clientes">
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="about" Command="{Binding AddClientCommand}"/>
+        <ToolbarItem IconImageSource="add" Command="{Binding AddClientCommand}"/>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
@@ -36,16 +36,11 @@
                                 </StackLayout>
                                 <StackLayout Grid.Column="1"
                                              VerticalOptions="Center">
-                                    <Label Text="{Binding FirstName}"
+                                    <Label Text="{Binding FullName}"
                                            FontSize="Medium"
                                            TextColor="White"></Label>
                                 </StackLayout>
-                                <StackLayout Grid.Column="1"
-                                             VerticalOptions="Center">
-                                    <Label Text="{Binding LastName}"
-                                           FontSize="Medium"
-                                           TextColor="White"></Label>
-                                </StackLayout>
+                                
                                 <StackLayout Grid.Column="2"
                                              VerticalOptions="Center">
                                     <Label Text="{Binding Email}"
