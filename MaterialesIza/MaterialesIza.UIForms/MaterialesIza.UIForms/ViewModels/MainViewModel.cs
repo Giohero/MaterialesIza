@@ -2,7 +2,6 @@
 using GalaSoft.MvvmLight.Command;
 using MaterialesIza.Common.Models;
 using MaterialesIza.UIForms.Views;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -46,6 +45,8 @@ namespace MaterialesIza.UIForms.ViewModels
 
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 
+
+
         public AddProductViewModel AddProduct { get; set; }
         public ICommand AddProductCommand { get { return new RelayCommand(GoProductCommand); } }
 
@@ -67,124 +68,119 @@ namespace MaterialesIza.UIForms.ViewModels
             var menus = new List<Menu>
             {
                 new Menu
-            {
+                {
                 Icon="ic_assignment",
                 PageName="ProductsPage",
                 Title="Products"
-            },
+                },
+
                 new Menu
-            {
+                {
                 Icon="Shipping",
                 PageName="ServicePage",
                 Title="Services"
-            },
-                   new Menu
-            {
+                },
+                new Menu
+                {
                 Icon="Lines",
                 PageName="ServiceTypesPage",
                 Title="ServiceType"
-            },
-                      new Menu
-            {
+                },
+                new Menu
+                {
                 Icon="LineP",
                 PageName="ProductsTypePage",
                 Title="ProductsType"
-            },
+                },
 
                 new Menu
-            {
+                {
                 Icon="Admin",
                 PageName="AdminsPage",
                 Title="Admins"
 
-            },
+                },
                  new Menu
-            {
+                {
                 Icon="client",
                 PageName="ClientsPage",
                 Title="Clients"
 
-            },
+                },
                 new Menu
-            {
+                {
                 Icon="employee",
                 PageName="EmployeesPage",
                 Title="Employees"
 
-            },
+                },
                 new Menu
-            {
+                {
                 Icon="provider",
                 PageName="ProvidersPage",
                 Title="Providers"
 
-            },
+                },
                 new Menu
-                 {
+                {
                 Icon="purchase",
                 PageName="PurchasesPage",
                 Title="Purchases"
 
-            },
+                },
                 new Menu
-                  {
+                {
                 Icon="PurchaseDetail",
                 PageName="PurchaseDetailsPage",
                 Title="PurchaseDetails"
 
-            },
+                },
                 new Menu
                    {
                 Icon="order",
                 PageName="OrdersPage",
                 Title="Orders"
-
-            },
+                },
 
                 new Menu
-                   {
+                {
                 Icon="OrderDetail",
                 PageName="OrderDetailsPage",
                 Title="OrderDetails"
-
-            },
+                },
 
                 new Menu
-                   {
+                {
                 Icon="sale",
                 PageName="SalesPage",
                 Title="Sales"
-
-            },
+                },
                 new Menu
-                   {
+                {
                 Icon="SalesDetail",
                 PageName="SaleDetailsPage",
                 Title="SaleDetails"
 
-            },
+                },
                 new Menu
-            {
+                {
                 Icon="Setup",
                 PageName="SetupPage",
                 Title="Setup"
-            },
+                },
                 new Menu
-            {
+                {
                 Icon="Info",
                 PageName="AboutPage",
                 Title="About"
-            },
+                },
                 new Menu
-            {
+                {
                 Icon="exit",
                 PageName="LoginPage",
                 Title="Close session"
 
-            },
-                      
-
-
+                },
             };
 
             this.Menus = new ObservableCollection<MenuItemViewModel>(menus.Select(m=>new MenuItemViewModel

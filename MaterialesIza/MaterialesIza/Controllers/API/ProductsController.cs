@@ -25,7 +25,6 @@ namespace MaterialesIza.Controllers.API
         public IActionResult GetProducts()
         {
             return Ok(this.productRepository.GetProducts());
-
         }
 
         [HttpPost]

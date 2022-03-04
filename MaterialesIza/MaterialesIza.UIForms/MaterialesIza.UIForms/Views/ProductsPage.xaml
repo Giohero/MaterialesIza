@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MaterialesIza.UIForms.Views.ProductsPage"
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
-             Title="Productos">
+             Title="Products">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="ic_action_add_circle" Command="{Binding AddProductCommand}"/>
+        <ToolbarItem IconImageSource="about" Command="{Binding AddProductCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
