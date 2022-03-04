@@ -9,18 +9,18 @@ namespace MaterialesIza.Data.Entities
     public class Product : IEntity
     {
         public int Id { get; set; }
+
         [Required(ErrorMessage = "{0} es obligatorio")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres")]
         [Display(Name = "Name")]
-
         public string Name { get; set; }
-        [Required(ErrorMessage = "{0} es obligatorio")]
-        [Display(Name = "Name")]
 
-        public double Price { get; set; }
         [Required(ErrorMessage = "{0} es obligatorio")]
-        [Display(Name = "Price")]
-       
+        [Display(Name = "Precio")]
+        public double Price { get; set; }
+
+        [Required(ErrorMessage = "{0} es obligatorio")]
+        [Display(Name = "Descripcion")] 
         public string Description { get; set; }
 
        

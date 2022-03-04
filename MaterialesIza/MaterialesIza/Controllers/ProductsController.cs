@@ -13,7 +13,6 @@ namespace MaterialesIza.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly DataContext _context;
         private readonly IProductRepository productRepository;
 
         public ProductsController(IProductRepository productRepository)
@@ -35,8 +34,7 @@ namespace MaterialesIza.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var product = await this.productRepository.GetByIdAsync(id.Value);
             if (product == null)
             {
                 return NotFound();
@@ -56,12 +54,11 @@ namespace MaterialesIza.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,Description")] Product product)
+        public async Task<IActionResult> Create(Product product)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
-                await _context.SaveChangesAsync();
+                await this.productRepository.CreateAsync(product);
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
@@ -75,7 +72,7 @@ namespace MaterialesIza.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products.FindAsync(id);
+            var product = await this.productRepository.GetByIdAsync(id.Value);
             if (product == null)
             {
                 return NotFound();
@@ -88,7 +85,7 @@ namespace MaterialesIza.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Description")] Product product)
+        public async Task<IActionResult> Edit(int id, Product product)
         {
             if (id != product.Id)
             {
@@ -99,12 +96,11 @@ namespace MaterialesIza.Controllers
             {
                 try
                 {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
+                    await this.productRepository.UpdateAsync(product);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.Id))
+                    if (!await this.productRepository.ExistAsync(product.Id))
                     {
                         return NotFound();
                     }
@@ -126,30 +122,13 @@ namespace MaterialesIza.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var product = await this.productRepository.GetByIdAsync(id.Value);
             if (product == null)
             {
                 return NotFound();
             }
-
-            return View(product);
-        }
-
-        // POST: Products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var product = await _context.Products.FindAsync(id);
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
+            await this.productRepository.DeleteAsync(product);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool ProductExists(int id)
-        {
-            return _context.Products.Any(e => e.Id == id);
         }
     }
 }
