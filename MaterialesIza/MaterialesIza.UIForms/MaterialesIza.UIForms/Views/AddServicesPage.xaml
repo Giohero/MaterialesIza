@@ -12,8 +12,8 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Text="Name" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce el Producto" Text="{Binding Name}"></Entry>
+                    <Label Text="Servicio" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce el Servicio" Text="{Binding Name}"></Entry>
 
                     <Label Text="Descripcion" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"></Label>
                     <Entry Grid.Column="1" Grid.Row="1" Keyboard="Text" Placeholder="Introduce la Descripcion" Text="{Binding Description}"></Entry>
@@ -27,7 +27,7 @@
                 <Button Text="Save" 
                         Command="{Binding SaveCommand}"
                         IsEnabled="{Binding IsEnabled}"
-                        Background="#67CB19" 
+                        Background="#67CB" 
                         TextColor="White" HorizontalOptions="Fill" CornerRadius="20" ></Button>
             </StackLayout>
         </ScrollView>
