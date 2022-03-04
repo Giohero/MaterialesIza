@@ -17,11 +17,11 @@ namespace MaterialesIza.Data.Repositories
         {
             this.dataContext = dataContext;
         }
-        //public IQueryable GetClients()
-        //{
-        //    return this.dataContext.Clients
-        //        .Include(c => c.User);
-        //}
+        public IQueryable GetClients()
+        {
+            return this.dataContext.Clients
+                .Include(c => c.User);
+        }
 
         public IEnumerable<SelectListItem> GetComboClient()
         {
@@ -38,28 +38,28 @@ namespace MaterialesIza.Data.Repositories
             return list;
         }
 
-        public IEnumerable<ClientRequest> GetClients()
-        {
-            var i = this.dataContext.Clients
-                .Include(i => i.User);
+        //public IEnumerable<ClientRequest> GetClients()
+        //{
+        //    var i = this.dataContext.Clients
+        //        .Include(i => i.User);
 
-            if (i == null)
-            {
-                return null;
-            }
+        //    if (i == null)
+        //    {
+        //        return null;
+        //    }
 
-            var x = i.Select(a => new ClientRequest
-            {
-                Id = a.Id,
-                FirstName = a.User.FirstName,
-                LastName = a.User.LastName,
-                Email = a.User.Email,
-                PhoneNumber = a.User.PhoneNumber
-            }).ToList();
+        //    var x = i.Select(a => new ClientRequest
+        //    {
+        //        Id = a.Id,
+        //        FirstName = a.User.FirstName,
+        //        LastName = a.User.LastName,
+        //        Email = a.User.Email,
+        //        PhoneNumber = a.User.PhoneNumber
+        //    }).ToList();
 
-            return x;
+        //    return x;
 
-        }
+        //}
 
         //TODO Modificar el modelo adecuadamente - Si
         //TODO metodo GetEmployeeWithOrdersByEmail - Si

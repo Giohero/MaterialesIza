@@ -4,6 +4,10 @@
              x:Class="MaterialesIza.UIForms.Views.ClientsPage"
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
              Title="Clientes">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="about" Command="{Binding AddClientCommand}"/>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Clients}"
