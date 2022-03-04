@@ -6,7 +6,7 @@
              Title="Products">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="about" Command="{Binding AddProductCommand}"/>
+        <ToolbarItem IconImageSource="Add" Command="{Binding AddProductCommand}"/>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
