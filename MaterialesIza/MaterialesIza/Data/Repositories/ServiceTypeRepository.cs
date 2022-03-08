@@ -33,21 +33,25 @@ namespace MaterialesIza.Data.Repositories
 
         }
 
-        public MaterialesIza.Common.Models.ServiceTypeRequest GetServiceTypes()
+        //public MaterialesIza.Common.Models.ServiceTypeRequest GetServiceTypes()
+        //{
+        //    var a = this.dataContext.ServiceTypes.FirstOrDefault();
+
+        //    if (a == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    var x = new ServiceTypeRequest
+        //    {
+        //        Id = a.Id,
+        //        TypeService = a.TypeService
+        //    };
+        //    return x;
+        //}
+        public IQueryable GetServiceTypes()
         {
-            var a = this.dataContext.ServiceTypes.FirstOrDefault();
-
-            if (a == null)
-            {
-                return null;
-            }
-
-            var x = new ServiceTypeRequest
-            {
-                Id = a.Id,
-                TypeService = a.TypeService
-            };
-            return x;
+            return this.dataContext.ServiceTypes;
         }
     }
 }

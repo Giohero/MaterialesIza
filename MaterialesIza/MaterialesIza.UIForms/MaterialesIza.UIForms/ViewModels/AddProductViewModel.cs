@@ -3,7 +3,8 @@ using MaterialesIza.Common.Services;
 using System.Windows.Input;
 using Xamarin.Forms;
 using MaterialesIza.Common.Models;
-
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MaterialesIza.UIForms.ViewModels
 {
@@ -23,6 +24,31 @@ namespace MaterialesIza.UIForms.ViewModels
         {
             get { return isRunning; }
             set { this.SetValue(ref this.isRunning, value); }
+        }
+
+        private IList<string> productTypeList;
+        public IList<string> ProductTypeList
+        {
+            get { return this.productTypeList; }
+            set { this.SetValue(ref this.productTypeList, value); }
+        }
+        private async void LoadProductTypes()
+        {
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var response = await this.apiService.GetListAsync<ProductTypeRequest>(
+                url,
+                "/api",
+                "/ProductTypes",
+                "bearer",
+                MainViewModel.GetInstance().Token.Token);
+
+            if (!response.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                return;
+            }
+            productTypeList = ((List<ProductTypeRequest>)response.Result).Select(m => m.Name).ToList();
+
         }
 
         private bool isEnabled;
@@ -84,6 +110,7 @@ namespace MaterialesIza.UIForms.ViewModels
         {
             this.apiService = new ApiService();
             isEnabled = true;
+            this.LoadProductTypes();
         }
     }
 }

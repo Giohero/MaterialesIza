@@ -22,8 +22,7 @@
                     <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text" Placeholder="Introduce la Descripcion" Text="{Binding Description}"></Entry>
                     
                     <Label Text="Tipo de producto" Grid.Column="0" Grid.Row="3" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="3" Keyboard="Text" Placeholder="Introduce el Tipo de Producto" Text="{Binding ProductTypes}"></Entry>
-
+                    <Picker Grid.Column="1" Grid.Row="3" Title="Selecciona un Tipo de Producto" ItemsSource="{Binding ProductTypeList}" SelectedItem="{Binding ProductTypes, Mode=TwoWay}"/>
                 </Grid>
                 <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>
