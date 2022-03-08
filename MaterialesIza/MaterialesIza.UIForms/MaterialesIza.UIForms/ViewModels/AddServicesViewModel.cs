@@ -2,6 +2,8 @@
 using MaterialesIza.Common.Models;
 using MaterialesIza.Common.Services;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -22,7 +24,30 @@ namespace MaterialesIza.UIForms.ViewModels
             get { return isRunning; }
             set { this.SetValue(ref this.isRunning, value); }
         }
+        private IList<string> serviceTypeList;
+        public IList<string> ServiceTypeList
+        {
+            get { return this.serviceTypeList; }
+            set { this.SetValue(ref this.serviceTypeList, value); }
+        }
+        private async void LoadServicesTypes()
+        {
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var response = await this.apiService.GetListAsync<ServiceTypeRequest>(
+                url,
+                "/api",
+                "/ServiceTypes",
+                "bearer",
+                MainViewModel.GetInstance().Token.Token);
 
+            if (!response.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                return;
+            }
+            serviceTypeList = ((List<ServiceTypeRequest>)response.Result).Select(m => m.TypeService).ToList();
+
+        }
         private bool isEnabled;
         public bool IsEnabled
         {
@@ -77,6 +102,7 @@ namespace MaterialesIza.UIForms.ViewModels
         {
             this.apiService = new ApiService();
             isEnabled = true;
+            this.LoadServicesTypes();
         }
     }
 }
