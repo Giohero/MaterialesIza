@@ -1,6 +1,4 @@
-﻿
-
-namespace MaterialesIza.Controllers
+﻿namespace MaterialesIza.Controllers
 {
     using MaterialesIza.Data.Entities;
     using MaterialesIza.Data.Repositories;

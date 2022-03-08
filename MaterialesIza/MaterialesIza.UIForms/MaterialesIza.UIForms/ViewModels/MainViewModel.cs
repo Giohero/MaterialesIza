@@ -113,7 +113,7 @@ namespace MaterialesIza.UIForms.ViewModels
                 new Menu
                 {
                 Icon="LineP",
-                PageName="ProductsTypePage",
+                PageName="ProductTypesPage",
                 Title="ProductsType"
                 },
 
