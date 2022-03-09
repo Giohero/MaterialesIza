@@ -57,6 +57,33 @@ namespace MaterialesIza.Controllers.API
             return Ok(newClient);
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutClients([FromRoute] int id, [FromBody] MaterialesIza.Common.Models.ClientRequest client)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (id != client.Id)
+            {
+                return BadRequest();
+            }
+            var oldClient = await this.clientRepository.GetByIdAsync(id);
+
+            if (oldClient == null)
+            {
+                return BadRequest("Id was not found");
+            }
+            oldClient.User.FirstName = client.FirstName;
+            oldClient.User.LastName = client.LastName;
+            oldClient.User.Email = client.Email;
+            oldClient.User.PhoneNumber = client.PhoneNumber;
+
+            var updateClient = await this.clientRepository.UpdateAsync(oldClient);
+            return Ok(updateClient);
+
+        }
+
     }
 
 }
