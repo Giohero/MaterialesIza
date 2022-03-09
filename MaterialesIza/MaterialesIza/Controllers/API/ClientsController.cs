@@ -26,14 +26,38 @@ namespace MaterialesIza.Controllers.API
         //[HttpGet]
         //public IActionResult GetClientsController()
         //{
-          //  var emailClient = new EmailRequest { Email = "firmalagio@gmail.com" };
-            //return Ok(this.clientRepository.GetClientWithOrdersByEmail(emailClient));
+        //  var emailClient = new EmailRequest { Email = "firmalagio@gmail.com" };
+        //return Ok(this.clientRepository.GetClientWithOrdersByEmail(emailClient));
         //}
 
         public IActionResult GetClients()
         {
             return Ok(this.clientRepository.GetClients());
         }
+
+        [HttpPost]
+        public async Task<IActionResult> PostClients([FromBody] MaterialesIza.Common.Models.ClientRequest clientRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var entityClient = new MaterialesIza.Data.Entities.Client
+            {
+                User = new Data.Entities.User()
+                {
+                    FirstName = clientRequest.FirstName,
+                    LastName = clientRequest.LastName,
+                    Email = clientRequest.Email,
+                    PhoneNumber = clientRequest.PhoneNumber,
+                }
+            };
+
+            var newClient = await this.clientRepository.CreateAsync(entityClient);
+            return Ok(newClient);
+        }
+
     }
 
 }
+
