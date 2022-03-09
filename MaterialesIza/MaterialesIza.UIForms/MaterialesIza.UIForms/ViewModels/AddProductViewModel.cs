@@ -47,7 +47,7 @@ namespace MaterialesIza.UIForms.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
                 return;
             }
-            productTypeList = ((List<ProductTypeRequest>)response.Result).Select(m => m.Name).ToList();
+            ProductTypeList = ((List<ProductTypeRequest>)response.Result).Select(m => m.Name).ToList();
 
         }
 

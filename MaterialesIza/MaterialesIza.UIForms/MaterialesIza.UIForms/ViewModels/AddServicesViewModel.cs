@@ -45,7 +45,7 @@ namespace MaterialesIza.UIForms.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
                 return;
             }
-            serviceTypeList = ((List<ServiceTypeRequest>)response.Result).Select(m => m.TypeService).ToList();
+            ServiceTypeList = ((List<ServiceTypeRequest>)response.Result).Select(m => m.TypeService).ToList();
 
         }
         private bool isEnabled;
