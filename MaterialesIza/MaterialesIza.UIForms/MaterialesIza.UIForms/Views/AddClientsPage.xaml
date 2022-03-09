@@ -24,7 +24,7 @@
                     <Label Text="PhoneNumber" Grid.Column="0" Grid.Row="3" VerticalOptions="Center"></Label>
                     <Entry Grid.Column="1" Grid.Row="3" Keyboard="Text" Placeholder="Introduce el número telefónico" Text="{Binding PhoneNumber}"></Entry>
 
-      
+
                 </Grid>
                 <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>

@@ -67,7 +67,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
             isEnabled = false;
             isRunning = true;
-            var client = new ClientRequest { FirstName = FirstName, LastName = LastName, Email = Email, PhoneNumber = PhoneNumber, /*Orders = Orders*/ };
+            var client = new ClientRequest { FirstName = FirstName, LastName = LastName, Email = Email, PhoneNumber = PhoneNumber /*Orders = Orders*/ };
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var response = await this.apiService.PostAsync(url,
                 "/api",
