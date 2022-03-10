@@ -30,7 +30,8 @@ namespace MaterialesIza.UIForms.ViewModels
                     await App.Navigator.PushAsync(new ServiceTypesPage());
                     break;
 
-                case "ProductsTypePage":
+                case "ProductTypesPage":
+                    MainViewModel.GetInstance().ProductTypes = new ProductTypesViewModel();
                     await App.Navigator.PushAsync(new ProductTypesPage());
                     break;
 
