@@ -18,11 +18,35 @@ namespace MaterialesIza.Data.Repositories
             this.dataContext = dataContext;
         }
 
-        public IQueryable GetEmployees()
+        public IQueryable GetEmployee()
         {
-            return this.dataContext.Employees
-                .Include(e => e.User);
+            return this.dataContext.Employees;
+                //.Include(e => e.User);
         }
+
+        public IEnumerable<EmployeeRequest> GetEmployees()
+        {
+            var i = this.dataContext.Employees
+                .Include(i => i.User);
+
+            if (i == null)
+            {
+                return null;
+            }
+
+            var x = i.Select(a => new EmployeeRequest
+            {
+                Id = a.Id,
+                FirstName = a.User.FirstName,
+                LastName = a.User.LastName,
+                Email = a.User.Email,
+                PhoneNumber = a.User.PhoneNumber
+            }).ToList();
+
+            return x;
+
+        }
+
         public IEnumerable<SelectListItem> GetComboEmployee()
         {
             var list = this.dataContext.Employees.Select(e => new SelectListItem
@@ -37,7 +61,6 @@ namespace MaterialesIza.Data.Repositories
             });
             return list;
         }
-
         
         public MaterialesIza.Common.Models.EmployeeRequest GetEmployeeWithOrdersByEmail(EmailRequest emailEmployee)
         {

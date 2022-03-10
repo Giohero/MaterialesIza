@@ -33,7 +33,7 @@ namespace MaterialesIza.Controllers.API
         //    return Ok(this.employeeRepository.GetEmployeeWithOrdersByEmail(emailEmployee));
         //}
 
-        public IActionResult GetEmplyees()
+        public IActionResult GetEmployees()
         {
             return Ok(this.employeeRepository.GetEmployees());
         }
