@@ -39,7 +39,7 @@ namespace MaterialesIza.Controllers.API
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostClients([FromBody] MaterialesIza.Common.Models.EmployeeRequest employeeRequest)
+        public async Task<IActionResult> PostEmployees([FromBody] MaterialesIza.Common.Models.EmployeeRequest employeeRequest)
         {
             if (!ModelState.IsValid)
             {
@@ -61,7 +61,7 @@ namespace MaterialesIza.Controllers.API
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutClients([FromRoute] int id, [FromBody] MaterialesIza.Common.Models.EmployeeRequest employee)
+        public async Task<IActionResult> PutEmployees([FromRoute] int id, [FromBody] MaterialesIza.Common.Models.EmployeeRequest employee)
         {
             if (!ModelState.IsValid)
             {
