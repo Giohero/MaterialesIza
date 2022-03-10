@@ -19,7 +19,7 @@
                     <Entry Grid.Column="1" Grid.Row="1" Keyboard="Text" Placeholder="Introduce la Descripcion" Text="{Binding Description}"></Entry>
 
                     <Label Text="Tipo de servicio" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text" Placeholder="Introduce el Tipo de Servicio" Text="{Binding ServiceType}"></Entry>
+                    <Picker Grid.Column="1" Grid.Row="2" Title="Selecciona un Tipo de Servicio" ItemsSource="{Binding ServiceTypeList}" SelectedItem="{Binding ServiceType, Mode=TwoWay}"/>
 
                 </Grid>
                 <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand">

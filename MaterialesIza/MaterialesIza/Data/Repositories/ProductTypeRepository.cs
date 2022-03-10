@@ -33,21 +33,25 @@ namespace MaterialesIza.Data.Repositories
 
         }
 
-        public MaterialesIza.Common.Models.ProductTypeRequest GetProductTypes()
+        //public MaterialesIza.Common.Models.ProductTypeRequest GetProductTypes()
+        //{
+        //    var a = this.dataContext.ProductTypes.FirstOrDefault();
+
+        //    if (a == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    var x = new ProductTypeRequest
+        //    {
+        //        Id = a.Id,
+        //        Name = a.Name
+        //    };
+        //    return x;
+        //}
+        public IQueryable GetProductTypes()
         {
-            var a = this.dataContext.ProductTypes.FirstOrDefault();
-
-            if (a == null)
-            {
-                return null;
-            }
-
-            var x = new ProductTypeRequest
-            {
-                Id = a.Id,
-                Name = a.Name
-            };
-            return x;
+            return this.dataContext.ProductTypes;
         }
 
     }

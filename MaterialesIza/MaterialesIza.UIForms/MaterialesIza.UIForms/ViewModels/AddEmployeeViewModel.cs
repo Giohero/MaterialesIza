@@ -1,14 +1,14 @@
 ﻿using GalaSoft.MvvmLight.Command;
-using System;
+using MaterialesIza.Common.Services;
 using System.Windows.Input;
 using Xamarin.Forms;
-using System.Collections.Generic;
-using MaterialesIza.Common.Services;
 using MaterialesIza.Common.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MaterialesIza.UIForms.ViewModels
 {
-    public class AddClientViewModel : BaseViewModel
+    public class AddEmployeeViewModel : BaseViewModel
     {
         private readonly ApiService apiService;
         public string FirstName { get; set; }
@@ -57,16 +57,16 @@ namespace MaterialesIza.UIForms.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir un número telefónico", "Aceptar");
                 return;
             }
-            
+
 
             isEnabled = false;
             isRunning = true;
-            var client = new ClientRequest { FirstName = FirstName, LastName = LastName, Email = Email, PhoneNumber = PhoneNumber  };
+            var employee = new EmployeeRequest { FirstName = FirstName, LastName = LastName, Email = Email, PhoneNumber = PhoneNumber };
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var response = await this.apiService.PostAsync(url,
                 "/api",
-                "/Clients",
-                client,
+                "/Employees",
+                employee,
                 "bearer",
                 MainViewModel.GetInstance().Token.Token);
 
@@ -75,13 +75,13 @@ namespace MaterialesIza.UIForms.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
                 return;
             }
-            var newClient = (ClientRequest)response.Result;
-            MainViewModel.GetInstance().Clients.Clients.Add(newClient);
+            var newEmployee = (EmployeeRequest)response.Result;
+            MainViewModel.GetInstance().Employees.Employees.Add(newEmployee);
             isEnabled = true;
             isRunning = false;
             await App.Navigator.PopAsync();
         }
-        public AddClientViewModel()
+        public AddEmployeeViewModel()
         {
             this.apiService = new ApiService();
             isEnabled = true;
