@@ -12,6 +12,7 @@ namespace MaterialesIza.UIForms.ViewModels
     public class AddProductTypeViewModel : BaseViewModel
     {
         private readonly ApiService apiService;
+
         public string Name { get; set; }
 
         private bool isRunning;

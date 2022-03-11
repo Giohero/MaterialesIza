@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialesIza.UIForms.Views.EditProductPage"
+             BindingContext="{Binding Main,Source={StaticResource Locator}}"
+             Title="Edit Products">
+    <ContentPage.Content>
+        <ScrollView BindingContext="{Binding EditProduct}"  Padding="10" >
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Name" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce el Producto" Text="{Binding ProductRequest.Name}"></Entry>
+
+                    <Label Text="Precio" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="1" Keyboard="Text" Placeholder="Introduce el Precio" Text="{Binding ProductRequest.Price}"></Entry>
+
+                    <Label Text="Descripcion" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text" Placeholder="Introduce la Descripcion" Text="{Binding ProductRequest.Description}"></Entry>
+
+                    <Label Text="Tipo de producto" Grid.Column="0" Grid.Row="3" VerticalOptions="Center"></Label>
+                    <Picker Grid.Column="1" Grid.Row="3" Title="Selecciona un Tipo de Producto" ItemsSource="{Binding ProductTypeList}" SelectedItem="{Binding ProductRequest.ProductTypes, Mode=TwoWay}"/>
+                </Grid>
+                <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button Text="Save" 
+                        Command="{Binding SaveCommand}"
+                        IsEnabled="{Binding IsEnabled}"
+                        Background="#67CB" 
+                        TextColor="White" HorizontalOptions="Fill" CornerRadius="20" >
+                </Button>
+                <Button Text="Delete" 
+                        Command="{Binding DeleteCommand}"
+                        IsEnabled="{Binding IsEnabled}"
+                        Background="#67CB" 
+                        TextColor="White" HorizontalOptions="Fill" CornerRadius="20" >
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

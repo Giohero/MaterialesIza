@@ -3,6 +3,7 @@ using MaterialesIza.Common.Models;
 using MaterialesIza.Common.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -11,9 +12,10 @@ namespace MaterialesIza.UIForms.ViewModels
     public class ServicesViewModel:BaseViewModel
     {
         private ApiService apiService;
+        private List<ServiceRequest> myServices;
 
-        private ObservableCollection<ServiceRequest> services;
-        public ObservableCollection<ServiceRequest> Services
+        private ObservableCollection<ServiceItemViewModel> services;
+        public ObservableCollection<ServiceItemViewModel> Services
         {
 
             get { return this.services; }
@@ -60,8 +62,47 @@ namespace MaterialesIza.UIForms.ViewModels
                     "Accept");
                 return;
             }
-            var myServices = (List<ServiceRequest>)response.Result;
-            this.Services = new ObservableCollection<ServiceRequest>(myServices);
+            myServices = (List<ServiceRequest>)response.Result;
+            RefreshServicesList();
+        }
+        private void RefreshServicesList()
+        {
+            this.Services = new ObservableCollection<ServiceItemViewModel>
+                (myServices.Select(s => new ServiceItemViewModel
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    Description = s.Description,
+                    ServiceType = s.ServiceType
+                }
+                ).OrderBy(s => s.ServiceType).ToList());
+        }
+        public void AddServiceToList(ServiceRequest service)
+        {
+            this.myServices.Add(service);
+            RefreshServicesList();
+        }
+
+        public void UpdateServiceInList(ServiceRequest service)
+        {
+            var previousService = myServices.Where(s => s.Id == service.Id).FirstOrDefault();
+
+            if (previousService != null)
+            {
+                this.myServices.Remove(previousService);
+            }
+            this.myServices.Add(service);
+            RefreshServicesList();
+        }
+        public void DeleteServiceInList(int serviceId)
+        {
+            var previousService = myServices.Where(s => s.Id == serviceId).FirstOrDefault();
+
+            if (previousService != null)
+            {
+                this.myServices.Remove(previousService);
+            }
+            RefreshServicesList();
         }
     }
 }
