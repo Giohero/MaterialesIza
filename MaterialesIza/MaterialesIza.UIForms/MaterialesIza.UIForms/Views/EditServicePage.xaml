@@ -13,13 +13,13 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Text="Name" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce el Producto" Text="{Binding ServiceRequest.Name}"></Entry>
+                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce el Producto" Text="{Binding Service.Name}"></Entry>
 
-                    <Label Text="Precio" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="1" Keyboard="Text" Placeholder="Introduce el Precio" Text="{Binding ServiceRequest.Description}"></Entry>
+                    <Label Text="Descripcion" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="1" Keyboard="Text" Placeholder="Introduce la descripcion" Text="{Binding Service.Description}"></Entry>
 
-                    <Label Text="Tipo de producto" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"></Label>
-                    <Picker Grid.Column="1" Grid.Row="2" Title="Selecciona un Tipo de Producto" ItemsSource="{Binding ServiceTypeList}" SelectedItem="{Binding ServiceRequest.ServiceType, Mode=TwoWay}"/>
+                    <Label Text="Tipo de servicio" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"></Label>
+                    <Picker Grid.Column="1" Grid.Row="2" Title="Selecciona un Tipo de Servicio" ItemsSource="{Binding ServiceTypeList}" SelectedItem="{Binding Service.ServiceType, Mode=TwoWay}"/>
                 </Grid>
                 <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>

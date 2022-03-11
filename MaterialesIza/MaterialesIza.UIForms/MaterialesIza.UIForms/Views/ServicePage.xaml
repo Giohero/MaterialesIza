@@ -8,11 +8,9 @@
         <ToolbarItem IconImageSource="Add" Command="{Binding AddServiceCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        
         <StackLayout 
             BindingContext="{Binding Services}"
             Padding="10">
-            
             <ListView
                 IsPullToRefreshEnabled="True"
                 IsRefreshing="{Binding IsRefreshing}"
@@ -31,7 +29,6 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
-
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0"
                                              VerticalOptions="Center">

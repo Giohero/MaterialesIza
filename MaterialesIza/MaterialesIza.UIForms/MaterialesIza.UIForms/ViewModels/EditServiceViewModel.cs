@@ -11,7 +11,7 @@ namespace MaterialesIza.UIForms.ViewModels
     public class EditServiceViewModel:BaseViewModel
     {
         private readonly ApiService apiService;
-        public ServiceRequest ServiceRequest { get; set; }
+        public ServiceRequest Service { get; set; }
 
         private bool isRunning;
         public bool IsRunning
@@ -63,7 +63,7 @@ namespace MaterialesIza.UIForms.ViewModels
             var response = await this.apiService.DeleteAsync(url,
                 "/api",
                 "/Products",
-                ServiceRequest.Id,
+                Service.Id,
                 "bearer",
                 MainViewModel.GetInstance().Token.Token);
 
@@ -72,7 +72,7 @@ namespace MaterialesIza.UIForms.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
                 return;
             }
-            MainViewModel.GetInstance().Services.DeleteServiceInList(ServiceRequest.Id);
+            MainViewModel.GetInstance().Services.DeleteServiceInList(Service.Id);
             isEnabled = true;
             isRunning = false;
             await App.Navigator.PopAsync();
@@ -80,17 +80,17 @@ namespace MaterialesIza.UIForms.ViewModels
 
         private async void Save()
         {
-            if (string.IsNullOrEmpty(this.ServiceRequest.Name))
+            if (string.IsNullOrEmpty(this.Service.Name))
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir un Servicio", "Aceptar");
                 return;
             }
-            if (string.IsNullOrEmpty(this.ServiceRequest.Description))
+            if (string.IsNullOrEmpty(this.Service.Description))
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir una descripcion", "Aceptar");
                 return;
             }
-            if (string.IsNullOrEmpty(this.ServiceRequest.ServiceType))
+            if (string.IsNullOrEmpty(this.Service.ServiceType))
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir un Tipo de Servicio", "Aceptar");
                 return;
@@ -102,8 +102,8 @@ namespace MaterialesIza.UIForms.ViewModels
             var response = await this.apiService.PutAsync(url,
                 "/api",
                 "/Products",
-                ServiceRequest.Id,
-                ServiceRequest,
+                Service.Id,
+                Service,
                 "bearer",
                 MainViewModel.GetInstance().Token.Token);
 
@@ -121,7 +121,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
         public EditServiceViewModel(ServiceRequest service)
         {
-            this.ServiceRequest = service;
+            this.Service = service;
             this.apiService = new ApiService();
             this.isEnabled = true;
             this.LoadServicesTypes();

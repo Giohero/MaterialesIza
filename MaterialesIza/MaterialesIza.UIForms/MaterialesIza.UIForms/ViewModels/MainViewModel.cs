@@ -48,15 +48,19 @@ namespace MaterialesIza.UIForms.ViewModels
 
         public AddProductViewModel AddProduct { get; set; }
         public EditProductViewModel EditProduct { get; set; }
+        public ICommand AddProductCommand { get { return new RelayCommand(GoProductCommand); } }
+        
         public AddServicesViewModel AddServices { get; set; }
         public EditServiceViewModel EditService { get; set; }
+        public ICommand AddServiceCommand { get { return new RelayCommand(GoServiceCommand); } }
+
+        
 
         public AddProductTypeViewModel AddProductType { get; set; }
         public AddClientViewModel AddClient { get; set; }
         public AddEmployeeViewModel AddEmployee { get; set; }
         public AddServiceTypeViewModel AddServiceType { get; set; }
-        public ICommand AddProductCommand { get { return new RelayCommand(GoProductCommand); } }
-        public ICommand AddServiceCommand { get { return new RelayCommand(GoServiceCommand); } }
+        
         public ICommand AddClientCommand { get { return new RelayCommand(GoClientCommand); } }
         //public ICommand AddEmployeeCommand { get { return new RelayCommand(GoEmployeeCommand); } }
         public ICommand AddProductTypeCommand { get { return new RelayCommand(GoProductTypesCommand); } }

@@ -68,14 +68,14 @@ namespace MaterialesIza.UIForms.ViewModels
         private void RefreshServicesList()
         {
             this.Services = new ObservableCollection<ServiceItemViewModel>
-                (myServices.Select(p => new ServiceItemViewModel
+                (myServices.Select(s => new ServiceItemViewModel
                 {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Description = p.Description,
-                    ServiceType = p.ServiceType
+                    Id = s.Id,
+                    Name = s.Name,
+                    Description = s.Description,
+                    ServiceType = s.ServiceType
                 }
-                ).OrderBy(p => p.ServiceType).ToList());
+                ).OrderBy(s => s.ServiceType).ToList());
         }
         public void AddServiceToList(ServiceRequest service)
         {
@@ -85,7 +85,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
         public void UpdateServiceInList(ServiceRequest service)
         {
-            var previousService = myServices.Where(p => p.Id == service.Id).FirstOrDefault();
+            var previousService = myServices.Where(s => s.Id == service.Id).FirstOrDefault();
 
             if (previousService != null)
             {
