@@ -92,7 +92,7 @@ namespace MaterialesIza.UIForms.ViewModels
                 return;
             }
             var newService = (ServiceRequest)response.Result;
-            MainViewModel.GetInstance().Services.AddServiceToList(newService);
+            MainViewModel.GetInstance().Services.AddServiceToList(newService); 
             isEnabled = true;
             isRunning = false;
             await App.Navigator.PopAsync();
