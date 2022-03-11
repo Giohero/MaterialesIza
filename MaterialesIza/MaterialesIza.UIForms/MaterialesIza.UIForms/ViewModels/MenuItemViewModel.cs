@@ -73,6 +73,7 @@ namespace MaterialesIza.UIForms.ViewModels
                     break;
 
                 case "EmployeesPage":
+                    MainViewModel.GetInstance().Employees = new EmployeesViewModel();
                     await App.Navigator.PushAsync(new EmployeesPage());
                     break;
 
