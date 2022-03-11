@@ -48,6 +48,8 @@ namespace MaterialesIza.UIForms.ViewModels
 
 
         public AddProductViewModel AddProduct { get; set; }
+        public EditProductViewModel EditProduct { get; set; }
+
         public AddProductTypeViewModel AddProductType { get; set; }
         public AddClientViewModel AddClient { get; set; }
         public ICommand AddProductCommand { get { return new RelayCommand(GoProductCommand); } }
@@ -72,6 +74,7 @@ namespace MaterialesIza.UIForms.ViewModels
         }
 
         public AddServicesViewModel AddServices { get; set; }
+        public EditServiceViewModel EditService { get; set; }
         public ICommand AddServiceCommand { get { return new RelayCommand(GoServiceCommand); } }
 
         private async void GoServiceCommand()

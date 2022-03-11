@@ -3,6 +3,7 @@ using MaterialesIza.Common.Models;
 using MaterialesIza.Common.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -11,9 +12,9 @@ namespace MaterialesIza.UIForms.ViewModels
     public class ProductsViewModel : BaseViewModel
     {
         private ApiService apiService;
-
-        private ObservableCollection<ProductRequest> products;
-        public ObservableCollection<ProductRequest> Products
+        private List<ProductRequest> myProducts;
+        private ObservableCollection<ProductItemViewModel> products;
+        public ObservableCollection<ProductItemViewModel> Products
         {
 
             get { return this.products; }
@@ -62,8 +63,49 @@ namespace MaterialesIza.UIForms.ViewModels
                     "Accept");
                 return;
             }
-            var myProducts = (List<ProductRequest>)response.Result;
-            this.Products = new ObservableCollection<ProductRequest>(myProducts);
+            myProducts = (List<ProductRequest>)response.Result;
+            RefreshProductsList();
+        }
+
+        private void RefreshProductsList()
+        {
+            this.Products = new ObservableCollection<ProductItemViewModel>
+                (myProducts.Select(p => new ProductItemViewModel
+                { 
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Price = p.Price,
+                    ProductTypes = p.ProductTypes
+                }
+                ).OrderBy(p => p.Name).ToList());
+        }
+        public void AddProductToList(ProductRequest product)
+        {
+            this.myProducts.Add(product);
+            RefreshProductsList();
+        }
+
+        public void UpdateProductInList(ProductRequest product)
+        {
+            var previousProduct = myProducts.Where(p => p.Id == product.Id).FirstOrDefault();
+
+            if(previousProduct != null)
+            {
+                this.myProducts.Remove(previousProduct);
+            }
+            this.myProducts.Add(product);
+            RefreshProductsList();
+        }
+        public void DeleteProductInList(int productId)
+        {
+            var previousProduct = myProducts.Where(p => p.Id == productId).FirstOrDefault();
+
+            if (previousProduct != null)
+            {
+                this.myProducts.Remove(previousProduct);
+            }
+            RefreshProductsList();
         }
     }
 }

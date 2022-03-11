@@ -23,30 +23,37 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectServiceCommand}"/>
+                                </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0"
-                                             VerticalOptions="End">
+                                             VerticalOptions="Center">
                                     <Label Text="{Binding Id}"
                                            FontAttributes="Bold"
-                                           FontSize="Large"
+                                           FontSize="Small"
                                            TextColor="Yellow"></Label>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1"
                                              VerticalOptions="Center">
                                     <Label Text="{Binding Name}"
-                                           FontSize="Large"
+                                           FontSize="Small"
                                            TextColor="White"></Label>
                                 </StackLayout>
                                 <StackLayout Grid.Column="2"
                                              VerticalOptions="Center">
                                     <Label Text="{Binding Description}"
-                                           FontSize="Medium"
+                                           FontSize="Small"
                                            TextColor="White"></Label>
                                 </StackLayout>
-                                
+                                <Image Grid.Column="3" Source="Select">
+                                </Image>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
