@@ -85,21 +85,21 @@ namespace MaterialesIza.UIForms.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir un Producto", "Aceptar");
                 return;
             }
-            if (string.IsNullOrEmpty(this.ProductRequest.Price.ToString()))
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir un Precio", "Aceptar");
-                return;
-            }
-            if (string.IsNullOrEmpty(this.ProductRequest.Description))
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir una descripcion", "Aceptar");
-                return;
-            }
-            if (string.IsNullOrEmpty(this.ProductRequest.ProductTypes))
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir un Tipo de Producto", "Aceptar");
-                return;
-            }
+            //if (string.IsNullOrEmpty(this.ProductRequest.Price.ToString()))
+            //{
+            //    await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir un Precio", "Aceptar");
+            //    return;
+            //}
+            //if (string.IsNullOrEmpty(this.ProductRequest.Description))
+            //{
+            //    await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir una descripcion", "Aceptar");
+            //    return;
+            //}
+            //if (string.IsNullOrEmpty(this.ProductRequest.ProductTypes))
+            //{
+            //    await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir un Tipo de Producto", "Aceptar");
+            //    return;
+            //}
 
             isEnabled = false;
             isRunning = true;

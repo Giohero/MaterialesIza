@@ -79,11 +79,11 @@ namespace MaterialesIza.UIForms.ViewModels
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token;
 
-            mainViewModel.Services = new ServicesViewModel();
+            //mainViewModel.Services = new ServicesViewModel();
             Application.Current.MainPage = new MasterPage();
 
-            mainViewModel.Products = new ProductsViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.Products = new ProductsViewModel();
+            //Application.Current.MainPage = new MasterPage();
 
             //mainViewModel.ProductTypes = new ProductTypesViewModel();
             //Application.Current.MainPage = new MasterPage();

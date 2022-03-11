@@ -69,8 +69,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
         private void RefreshProductsList()
         {
-            this.Products = new ObservableCollection<ProductItemViewModel>
-                (myProducts.Select(p => new ProductItemViewModel
+            this.Products = new ObservableCollection<ProductItemViewModel>(myProducts.Select(p => new ProductItemViewModel
                 { 
                     Id = p.Id,
                     Name = p.Name,
