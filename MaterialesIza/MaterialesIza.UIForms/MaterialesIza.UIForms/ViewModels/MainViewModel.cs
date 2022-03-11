@@ -48,6 +48,9 @@ namespace MaterialesIza.UIForms.ViewModels
 
         public AddProductViewModel AddProduct { get; set; }
         public EditProductViewModel EditProduct { get; set; }
+        public AddServicesViewModel AddServices { get; set; }
+        public EditServiceViewModel EditService { get; set; }
+
         public AddProductTypeViewModel AddProductType { get; set; }
         public AddClientViewModel AddClient { get; set; }
         public AddEmployeeViewModel AddEmployee { get; set; }
@@ -75,8 +78,7 @@ namespace MaterialesIza.UIForms.ViewModels
             await App.Navigator.PushAsync(new AddClientsPage());
         }
 
-        public AddServicesViewModel AddServices { get; set; }
-        public EditServiceViewModel EditService { get; set; }
+        
         //public ICommand AddServiceCommand { get { return new RelayCommand(GoServiceCommand); } }
 
         private async void GoServiceCommand()

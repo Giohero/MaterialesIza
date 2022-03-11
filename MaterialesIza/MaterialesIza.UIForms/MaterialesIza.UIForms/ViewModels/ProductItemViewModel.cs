@@ -1,12 +1,11 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using MaterialesIza.Common.Models;
 using MaterialesIza.UIForms.Views;
-using System;
 using System.Windows.Input;
 
 namespace MaterialesIza.UIForms.ViewModels
 {
-    public class ProductItemViewModel: ProductRequest
+    public class ProductItemViewModel : ProductRequest
     {
         public ICommand SelectProductCommand { get { return new RelayCommand(SelectProduct); } }
 
