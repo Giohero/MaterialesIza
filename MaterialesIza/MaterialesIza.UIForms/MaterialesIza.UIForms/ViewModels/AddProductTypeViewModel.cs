@@ -40,12 +40,12 @@ namespace MaterialesIza.UIForms.ViewModels
 
             isEnabled = false;
             isRunning = true;
-            var status = new ProductTypeRequest { Name = Name };
+            var productType = new ProductTypeRequest { Name = Name };
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var response = await this.apiService.PostAsync(url,
                 "/api",
                 "/ProductTypes",
-                status,
+                productType,
                 "bearer",
                 MainViewModel.GetInstance().Token.Token);
 
@@ -55,7 +55,7 @@ namespace MaterialesIza.UIForms.ViewModels
                 return;
             }
             var newProductType = (ProductTypeRequest)response.Result;
-            MainViewModel.GetInstance().ProductTypes.ProductTypes.Add(newProductType);
+            MainViewModel.GetInstance().ProductTypes.AddProductTypeToList(newProductType);
             isEnabled = true;
             isRunning = false;
             await App.Navigator.PopAsync();

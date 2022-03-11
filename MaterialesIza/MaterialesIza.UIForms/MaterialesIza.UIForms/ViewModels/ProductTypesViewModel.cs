@@ -3,6 +3,7 @@ using MaterialesIza.Common.Models;
 using MaterialesIza.Common.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -12,8 +13,10 @@ namespace MaterialesIza.UIForms.ViewModels
     {
         private ApiService apiService;
 
-        private ObservableCollection<ProductTypeRequest> productTypes;
-        public ObservableCollection<ProductTypeRequest> ProductTypes
+        private List<ProductTypeRequest> myProductTypes;
+
+        private ObservableCollection<ProductTypeItemViewModel> productTypes;
+        public ObservableCollection<ProductTypeItemViewModel> ProductTypes
         {
 
             get { return this.productTypes; }
@@ -60,8 +63,42 @@ namespace MaterialesIza.UIForms.ViewModels
                     "Accept");
                 return;
             }
-            var myProductTypes = (List<ProductTypeRequest>)response.Result;
-            this.ProductTypes = new ObservableCollection<ProductTypeRequest>(myProductTypes);
+            myProductTypes = (List<ProductTypeRequest>)response.Result;
+            RefreshProductTypesList();
+            
+        }
+
+        private void RefreshProductTypesList()
+        {
+            this.ProductTypes = new ObservableCollection<ProductTypeItemViewModel>(myProductTypes.Select(pt => new ProductTypeItemViewModel
+            {
+                Id = pt.Id,
+                Name = pt.Name
+            }).OrderBy(pt => pt.Name).ToList());
+        }
+        public void AddProductTypeToList(ProductTypeRequest productType)
+        {
+            this.myProductTypes.Add(productType);
+            RefreshProductTypesList();
+        }
+        public void UpdateProductTypeToList(ProductTypeRequest productType)
+        {
+            var previousProductType = myProductTypes.Where(pt => pt.Id == productType.Id).FirstOrDefault();
+            if (previousProductType != null)
+            {
+                this.myProductTypes.Remove(previousProductType);
+            }
+            this.myProductTypes.Add(productType);
+            RefreshProductTypesList();
+        }
+        public void DeleteProductTypeInList(int productTypeId)
+        {
+            var previousProductType = myProductTypes.Where(pt => pt.Id == productTypeId).FirstOrDefault();
+            if (previousProductType != null)
+            {
+                this.myProductTypes.Remove(previousProductType);
+            }
+            RefreshProductTypesList();
         }
     }
 }

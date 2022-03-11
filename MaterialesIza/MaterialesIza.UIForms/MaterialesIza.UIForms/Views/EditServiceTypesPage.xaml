@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MaterialesIza.UIForms.Views.AddServiceTypesPage"
+             x:Class="MaterialesIza.UIForms.Views.EditServiceTypesPage"
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
-             Title="Tipos de Servicio">
-    
+             Title="Editar Tipos de Servicio">
     <ContentPage.Content>
-        <ScrollView BindingContext="{Binding AddServiceType}">
+        <ScrollView BindingContext="{Binding EditServiceType}">
             <StackLayout>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -14,7 +13,8 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Text="Name" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce el Tipo de Servicio" Text="{Binding TypeService}"></Entry>
+                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce el Tipo de Servicio" Text="{Binding ServiceType.TypeService}">
+                    </Entry>
                 </Grid>
                 <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>
@@ -22,7 +22,14 @@
                         Command="{Binding SaveCommand}"
                         IsEnabled="{Binding IsEnabled}"
                         Background="#67CB19" 
-                        TextColor="White" HorizontalOptions="Fill" CornerRadius="20" ></Button>
+                        TextColor="White" HorizontalOptions="Fill" CornerRadius="20" >
+                </Button>
+                <Button Text="Delete" 
+                        Command="{Binding DeleteCommand}"
+                        IsEnabled="{Binding IsEnabled}"
+                        Background="red" 
+                        TextColor="White" HorizontalOptions="Fill" CornerRadius="20" >
+                </Button>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

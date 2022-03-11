@@ -22,9 +22,13 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectProductTypeCommand}"/>
+                                </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0"
                                              VerticalOptions="End">
@@ -39,6 +43,8 @@
                                            FontSize="Large"
                                            TextColor="White"></Label>
                                 </StackLayout>
+                                <Image Grid.Column="2" Source="select.png">
+                                </Image>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

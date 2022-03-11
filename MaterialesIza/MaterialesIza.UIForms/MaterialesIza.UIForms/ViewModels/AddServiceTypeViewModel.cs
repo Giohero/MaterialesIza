@@ -55,7 +55,7 @@ namespace MaterialesIza.UIForms.ViewModels
                 return;
             }
             var newServiceType = (ServiceTypeRequest)response.Result;
-            MainViewModel.GetInstance().ServiceTypes.ServiceTypes.Add(newServiceType);
+            MainViewModel.GetInstance().ServiceTypes.AddServiceTypeToList(newServiceType);
             isEnabled = true;
             isRunning = false;
             await App.Navigator.PopAsync();
