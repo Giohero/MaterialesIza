@@ -4,6 +4,11 @@
              x:Class="MaterialesIza.UIForms.Views.EmployeesPage"
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
              Title="Empleados">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="add" Command="{Binding AddEmployeeCommand}"/>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Employees}"

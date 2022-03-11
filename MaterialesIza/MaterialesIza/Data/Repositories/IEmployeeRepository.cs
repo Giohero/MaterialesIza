@@ -12,7 +12,9 @@ namespace MaterialesIza.Data.Repositories
     {
         IEnumerable<SelectListItem> GetComboEmployee();
 
-        IQueryable GetEmployees();
+        IQueryable GetEmployee();
+
+        IEnumerable<EmployeeRequest> GetEmployees();
         MaterialesIza.Common.Models.EmployeeRequest GetEmployeeWithOrdersByEmail(EmailRequest emailEmployee);
     }
 }

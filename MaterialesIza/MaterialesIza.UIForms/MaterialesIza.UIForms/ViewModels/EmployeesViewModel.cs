@@ -33,16 +33,16 @@ namespace MaterialesIza.UIForms.ViewModels
 
         private void Refresh()
         {
-            this.LoadProducts();
+            this.LoadEmployees();
         }
 
         public EmployeesViewModel()
         {
             this.apiService = new ApiService();
-            this.LoadProducts();
+            this.LoadEmployees();
         }
 
-        private async void LoadProducts()
+        private async void LoadEmployees()
         {
             //Inicio
             this.IsRefreshing = true;
