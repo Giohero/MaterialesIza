@@ -51,12 +51,13 @@ namespace MaterialesIza.UIForms.ViewModels
         public AddProductTypeViewModel AddProductType { get; set; }
         public AddClientViewModel AddClient { get; set; }
         public AddEmployeeViewModel AddEmployee { get; set; }
-
+        public AddServiceTypeViewModel AddServiceType { get; set; }
         public ICommand AddProductCommand { get { return new RelayCommand(GoProductCommand); } }
         public ICommand AddServiceCommand { get { return new RelayCommand(GoServiceCommand); } }
         public ICommand AddClientCommand { get { return new RelayCommand(GoClientCommand); } }
         public ICommand AddEmployeeCommand { get { return new RelayCommand(GoEmployeeCommand); } }
         public ICommand AddProductTypeCommand { get { return new RelayCommand(GoProductTypesCommand); } }
+        public ICommand AddServiceTypeCommand { get { return new RelayCommand(GoServiceTypesCommand); } }
 
         private async void GoProductCommand()
         {
@@ -82,6 +83,11 @@ namespace MaterialesIza.UIForms.ViewModels
         {
             this.AddServices = new AddServicesViewModel();
             await App.Navigator.PushAsync(new AddServicesPage());
+        }
+        private async void GoServiceTypesCommand()
+        {
+            this.AddServiceType = new AddServiceTypeViewModel();
+            await App.Navigator.PushAsync(new AddServiceTypesPage());
         }
 
         public MainViewModel()

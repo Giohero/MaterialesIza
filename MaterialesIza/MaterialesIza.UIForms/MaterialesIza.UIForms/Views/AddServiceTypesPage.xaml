@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MaterialesIza.UIForms.Views.AddProductTypesPage"
+             x:Class="MaterialesIza.UIForms.Views.AddServiceTypesPage"
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
-             Title="Tipos de Producto">
+             Title="Tipos de Servicio">
+    
     <ContentPage.Content>
-        <ScrollView BindingContext="{Binding AddProductType}">
+        <ScrollView BindingContext="{Binding AddServiceType}">
             <StackLayout>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -13,7 +14,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Text="Name" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce el Tipo de Producto" Text="{Binding Name}"></Entry>
+                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce el Tipo de Producto" Text="{Binding TypeService}"></Entry>
                 </Grid>
                 <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>

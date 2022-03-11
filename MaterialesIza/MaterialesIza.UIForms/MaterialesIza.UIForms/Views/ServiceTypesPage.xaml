@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MaterialesIza.UIForms.Views.ServiceTypesPage"
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
-             Title="Tipos de servicio">
+             Title="ServiceType">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="Add" Command="{Binding AddServiceTypeCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding ServiceTypes}"

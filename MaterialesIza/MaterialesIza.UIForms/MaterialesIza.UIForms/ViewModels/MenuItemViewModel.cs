@@ -27,6 +27,7 @@ namespace MaterialesIza.UIForms.ViewModels
                     break;
 
                 case "ServiceTypesPage":
+                    MainViewModel.GetInstance().ServiceTypes = new ServiceTypesViewModel();
                     await App.Navigator.PushAsync(new ServiceTypesPage());
                     break;
 
