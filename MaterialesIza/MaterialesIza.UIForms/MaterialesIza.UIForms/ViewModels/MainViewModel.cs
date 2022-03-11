@@ -57,9 +57,12 @@ namespace MaterialesIza.UIForms.ViewModels
         
 
         public AddProductTypeViewModel AddProductType { get; set; }
+
+        public EditProductTypeViewModel EditProductType { get; set; }
         public AddClientViewModel AddClient { get; set; }
         public AddEmployeeViewModel AddEmployee { get; set; }
         public AddServiceTypeViewModel AddServiceType { get; set; }
+        public EditServiceTypeViewModel EditServiceType { get; set; }
         
         public ICommand AddClientCommand { get { return new RelayCommand(GoClientCommand); } }
 
