@@ -44,6 +44,47 @@ namespace MaterialesIza.Controllers.API
             var newService = await this.serviceRepository.CreateAsync(entityService);
             return Ok(newService);
         }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutProduct([FromRoute] int id, [FromBody] MaterialesIza.Common.Models.ServiceRequest service)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (id != service.Id)
+            {
+                return BadRequest();
+            }
+            var oldService = await this.serviceRepository.GetByIdAsync(id);
+
+            if (oldService == null)
+            {
+                return BadRequest("Id was not found");
+            }
+            oldService.Name = service.Name;
+            oldService.Description = service.Description;
+            var updateProduct = await this.serviceRepository.UpdateAsync(oldService);
+            return Ok(updateProduct);
+
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var oldService = await this.serviceRepository.GetByIdAsync(id);
+
+            if (oldService == null)
+            {
+                return BadRequest("Id was not found");
+            }
+            await this.serviceRepository.DeleteAsync(oldService);
+            return Ok(oldService);
+        }
 
     }
 }
