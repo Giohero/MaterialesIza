@@ -35,10 +35,16 @@ namespace MaterialesIza.Controllers.API
             {
                 return BadRequest(ModelState);
             }
+            var serviceType = this.serviceTypeRepository.GetServiceTypeByName(service.ServiceType);
+            if (serviceType == null)
+            {
+                return BadRequest("servicetype not found");
+            }
             var entityService = new MaterialesIza.Data.Entities.Service
             {
                 Name = service.Name,
                 Description = service.Description
+                
 
             };
             var newService = await this.serviceRepository.CreateAsync(entityService);

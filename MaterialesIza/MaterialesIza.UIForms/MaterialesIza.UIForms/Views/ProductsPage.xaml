@@ -16,7 +16,7 @@
 
             <ListView
                 IsPullToRefreshEnabled="True"
-                IsRefreshing="{Binding IsRefresing}"
+                IsRefreshing="{Binding IsRefreshing}"
                 HasUnevenRows="True"
                 ItemsSource="{Binding Products}"
                 RefreshCommand="{Binding RefreshCommand}">

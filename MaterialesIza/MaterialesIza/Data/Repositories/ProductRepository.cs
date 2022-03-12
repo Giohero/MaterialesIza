@@ -56,6 +56,7 @@ namespace MaterialesIza.Data.Repositories
                 Id = pr.Id,
                 Name = pr.Name,
                 Description = pr.Description,
+                Price = pr.Price,
                 ProductTypes = pr.ProductTypes.Name
                 
             }).ToList();

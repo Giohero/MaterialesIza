@@ -27,6 +27,12 @@ namespace MaterialesIza.UIForms.ViewModels
             get { return this.isRefreshing; }
             set { this.SetValue(ref this.isRefreshing, value); }
         }
+        public ICommand RefreshCommand { get { return new RelayCommand(Refresh); } }
+
+        private void Refresh()
+        {
+            this.LoadProducts();
+        }
         public ProductsViewModel()
         {
             this.apiService = new ApiService();
