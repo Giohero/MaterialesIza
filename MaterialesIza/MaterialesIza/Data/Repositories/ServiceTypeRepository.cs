@@ -53,5 +53,18 @@ namespace MaterialesIza.Data.Repositories
         {
             return this.dataContext.ServiceTypes;
         }
+        public ServiceType GetServiceTypeByName(string name)
+        {
+            var a = this.dataContext.ServiceTypes;
+            //var si = new Status();
+            foreach (ServiceType st in a)
+            {
+                if (st.TypeService == name)
+                {
+                    return st;
+                }
+            }
+            return null;
+        }
     }
 }

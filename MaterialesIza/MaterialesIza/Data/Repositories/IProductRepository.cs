@@ -14,7 +14,7 @@
 
         //MaterialesIza.Common.Models.ProductRequest GetProducts();
         IQueryable GetProducts();
-
+        IEnumerable<ProductRequest> GetAllProductsWithType();
         MaterialesIza.Common.Models.ProductRequest GetProductWithSalesById(int id);
     }
 }

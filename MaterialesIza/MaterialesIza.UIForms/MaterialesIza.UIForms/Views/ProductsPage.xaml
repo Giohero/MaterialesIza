@@ -16,7 +16,7 @@
 
             <ListView
                 IsPullToRefreshEnabled="True"
-                IsRefreshing="{Binding IsRefreshing}"
+                IsRefreshing="{Binding IsRefresing}"
                 HasUnevenRows="True"
                 ItemsSource="{Binding Products}"
                 RefreshCommand="{Binding RefreshCommand}">
@@ -26,7 +26,6 @@
                             <Grid>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SelectProductCommand}"/>
-
                                 </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -60,7 +59,6 @@
                                            TextColor="White"></Label>
                                 </StackLayout>
                                 <Image Grid.Column="4" Source="Select">
-                                    
                                 </Image>
                             </Grid>
                         </ViewCell>

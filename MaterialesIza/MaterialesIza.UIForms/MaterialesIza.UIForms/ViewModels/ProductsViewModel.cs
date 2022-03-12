@@ -16,7 +16,6 @@ namespace MaterialesIza.UIForms.ViewModels
         private ObservableCollection<ProductItemViewModel> products;
         public ObservableCollection<ProductItemViewModel> Products
         {
-
             get { return this.products; }
             set { this.SetValue(ref this.products, value); }
         }
@@ -28,20 +27,11 @@ namespace MaterialesIza.UIForms.ViewModels
             get { return this.isRefreshing; }
             set { this.SetValue(ref this.isRefreshing, value); }
         }
-
-        public ICommand RefreshCommand { get { return new RelayCommand(Refresh); } }
-
-        private void Refresh()
-        {
-            this.LoadProducts();
-        }
-
         public ProductsViewModel()
         {
             this.apiService = new ApiService();
             this.LoadProducts();
         }
-
         private async void LoadProducts()
         {
             //Inicio
@@ -66,18 +56,16 @@ namespace MaterialesIza.UIForms.ViewModels
             myProducts = (List<ProductRequest>)response.Result;
             RefreshProductsList();
         }
-
         private void RefreshProductsList()
         {
             this.Products = new ObservableCollection<ProductItemViewModel>(myProducts.Select(p => new ProductItemViewModel
-                { 
-                    Id = p.Id,
-                    Name = p.Name,
-                    Description = p.Description,
-                    Price = p.Price,
-                    ProductTypes = p.ProductTypes
-                }
-                ).OrderBy(p => p.Name).ToList());
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Description = p.Description,
+                Price = p.Price,
+                ProductTypes = p.ProductTypes
+            }).OrderBy(p => p.Name).ToList());
         }
         public void AddProductToList(ProductRequest product)
         {
@@ -89,7 +77,7 @@ namespace MaterialesIza.UIForms.ViewModels
         {
             var previousProduct = myProducts.Where(p => p.Id == product.Id).FirstOrDefault();
 
-            if(previousProduct != null)
+            if (previousProduct != null)
             {
                 this.myProducts.Remove(previousProduct);
             }
@@ -106,5 +94,18 @@ namespace MaterialesIza.UIForms.ViewModels
             }
             RefreshProductsList();
         }
+        //public ICommand RefreshCommand { get { return new RelayCommand(Refresh); } }
+
+        //private void Refresh()
+        //{
+        //    this.LoadProducts();
+        //}
+
+     
+
+        
+
+        
+        
     }
 }

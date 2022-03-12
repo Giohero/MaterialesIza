@@ -13,5 +13,6 @@ namespace MaterialesIza.Data.Repositories
 
         //MaterialesIza.Common.Models.ServiceTypeRequest GetServiceTypes();
         IQueryable GetServiceTypes();
+        ServiceType GetServiceTypeByName(string name);
     }
 }

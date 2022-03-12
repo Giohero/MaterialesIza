@@ -38,9 +38,29 @@ namespace MaterialesIza.Data.Repositories
             });
             return list;
         }
+
         public IQueryable GetProducts()
         {
             return this.dataContext.Products;
+        }
+        public IEnumerable<ProductRequest> GetAllProductsWithType()
+        {
+            var p = this.dataContext.Products
+                .Include(pt => pt.ProductTypes);
+            if(p ==null)
+            {
+                return null;
+            }
+            var x = p.Select(pr => new ProductRequest
+            {
+                Id = pr.Id,
+                Name = pr.Name,
+                Description = pr.Description,
+                ProductTypes = pr.ProductTypes.Name
+                
+            }).ToList();
+
+            return x;
         }
         //public MaterialesIza.Common.Models.ProductRequest GetProducts()
         //{

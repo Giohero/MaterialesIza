@@ -36,6 +36,25 @@ namespace MaterialesIza.Data.Repositories
         {
             return this.dataContext.Services;
         }
+        public IEnumerable<ServiceRequest> GetAllServicessWithType()
+        {
+            var s = this.dataContext.Services
+                .Include(st => st.ServiceType);
+            if (s == null)
+            {
+                return null;
+            }
+            var x = s.Select(pr => new ServiceRequest
+            {
+                Id = pr.Id,
+                Name = pr.Name,
+                Description = pr.Description,
+                ServiceType = pr.ServiceType.TypeService
+
+            }).ToList();
+
+            return x;
+        }
         //public MaterialesIza.Common.Models.ServiceRequest GetServices()
         //{
         //    var a = this.dataContext.Services

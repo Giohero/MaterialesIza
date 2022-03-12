@@ -14,33 +14,40 @@ namespace MaterialesIza.Controllers.API
     public class ProductsController : Controller
     {
         private readonly IProductRepository productRepository;
+        private readonly IProductTypeRepository productTypeRepository;
 
-        public ProductsController(IProductRepository productRepository)
+
+        public ProductsController(IProductRepository productRepository,IProductTypeRepository productTypeRepository)
         {
             this.productRepository = productRepository;
+            this.productTypeRepository = productTypeRepository;
         }
 
         // GET: Products
         [HttpGet]
         public IActionResult GetProducts()
         {
-            return Ok(this.productRepository.GetProducts());
+            return Ok(this.productRepository.GetAllProductsWithType());
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostProducts([FromBody]MaterialesIza.Common.Models.ProductRequest product)
+        public async Task<IActionResult> PostProduct([FromBody]MaterialesIza.Common.Models.ProductRequest product)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            var productType = this.productTypeRepository.GetProductTypeByName(product.ProductTypes);
+            if (productType == null)
+            {
+                return BadRequest("product type not found");
+            }
+
             var entityProduct = new MaterialesIza.Data.Entities.Product
             {
                 Name = product.Name,
                 Description = product.Description,
                 Price = product.Price
-
-                
             };
 
             var newProduct = await this.productRepository.CreateAsync(entityProduct);
@@ -48,7 +55,7 @@ namespace MaterialesIza.Controllers.API
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProducts([FromRoute] int id, [FromBody] MaterialesIza.Common.Models.ProductRequest product)
+        public async Task<IActionResult> PutProduct([FromRoute] int id, [FromBody] MaterialesIza.Common.Models.ProductRequest product)
         {
             if (!ModelState.IsValid)
             {
@@ -65,13 +72,15 @@ namespace MaterialesIza.Controllers.API
                 return BadRequest("Id was not found");
             }
             oldProduct.Name = product.Name;
-            var updateProductType = await this.productRepository.UpdateAsync(oldProduct);
-            return Ok(updateProductType);
+            oldProduct.Description = product.Description;
+            oldProduct.Price = product.Price;
+            var updateProduct = await this.productRepository.UpdateAsync(oldProduct);
+            return Ok(updateProduct);
 
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProducts([FromRoute] int id)
+        public async Task<IActionResult> DeleteProduct([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {

@@ -13,5 +13,6 @@ namespace MaterialesIza.Data.Repositories
 
         //MaterialesIza.Common.Models.ProductTypeRequest GetProductTypes();
         IQueryable GetProductTypes();
+        ProductType GetProductTypeByName(string name);
     }
 }

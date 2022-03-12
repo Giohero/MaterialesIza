@@ -53,6 +53,18 @@ namespace MaterialesIza.Data.Repositories
         {
             return this.dataContext.ProductTypes;
         }
-
+        public ProductType GetProductTypeByName(string name)
+        {
+            var a = this.dataContext.ProductTypes;
+            //var si = new Status();
+            foreach (ProductType p in a)
+            {
+                if (p.Name == name)
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
     }
 }

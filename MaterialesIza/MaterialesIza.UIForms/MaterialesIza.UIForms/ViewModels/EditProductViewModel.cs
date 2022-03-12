@@ -19,30 +19,6 @@ namespace MaterialesIza.UIForms.ViewModels
             get { return isRunning; }
             set { this.SetValue(ref this.isRunning, value); }
         }
-        private IList<string> productTypeList;
-        public IList<string> ProductTypeList
-        {
-            get { return this.productTypeList; }
-            set { this.SetValue(ref this.productTypeList, value); }
-        }
-        private async void LoadProductTypes()
-        {
-            var url = Application.Current.Resources["UrlAPI"].ToString();
-            var response = await this.apiService.GetListAsync<ProductTypeRequest>(
-                url,
-                "/api",
-                "/ProductTypes",
-                "bearer",
-                MainViewModel.GetInstance().Token.Token);
-
-            if (!response.IsSuccess)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
-                return;
-            }
-            ProductTypeList = ((List<ProductTypeRequest>)response.Result).Select(m => m.Name).ToList();
-
-        }
         private bool isEnabled;
         public bool IsEnabled
         {
@@ -51,7 +27,6 @@ namespace MaterialesIza.UIForms.ViewModels
         }
         public ICommand SaveCommand { get { return new RelayCommand(Save); } }
         public ICommand DeleteCommand { get { return new RelayCommand(Delete); } }
-
         private async void Delete()
         {
             var confirm = await Application.Current.MainPage.DisplayAlert("Confirmar", "Seguro de eliminar", "SI", "NO");
@@ -80,7 +55,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
         private async void Save()
         {
-            if (string.IsNullOrEmpty(this.ProductRequest.Name))
+            if (string.IsNullOrEmpty(ProductRequest.Name))
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir un Producto", "Aceptar");
                 return;
@@ -123,7 +98,6 @@ namespace MaterialesIza.UIForms.ViewModels
             isRunning = false;
             await App.Navigator.PopAsync();
         }
-
         public EditProductViewModel(ProductRequest product)
         {
             this.ProductRequest = product;
@@ -132,5 +106,33 @@ namespace MaterialesIza.UIForms.ViewModels
             this.LoadProductTypes();
 
         }
+        private IList<string> productTypeList;
+        public IList<string> ProductTypeList
+        {
+            get { return this.productTypeList; }
+            set { this.SetValue(ref this.productTypeList, value); }
+        }
+        private async void LoadProductTypes()
+        {
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var response = await this.apiService.GetListAsync<ProductTypeRequest>(
+                url,
+                "/api",
+                "/ProductTypes",
+                "bearer",
+                MainViewModel.GetInstance().Token.Token);
+
+            if (!response.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                return;
+            }
+            ProductTypeList = ((List<ProductTypeRequest>)response.Result).Select(m => m.Name).ToList();
+
+        }
+      
+        
+
+        
     }
 }

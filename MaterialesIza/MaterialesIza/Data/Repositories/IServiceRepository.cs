@@ -2,6 +2,7 @@
 
 namespace MaterialesIza.Data.Repositories
 {
+    using MaterialesIza.Common.Models;
     using MaterialesIza.Data.Entities;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Collections.Generic;
@@ -10,7 +11,8 @@ namespace MaterialesIza.Data.Repositories
     public interface IServiceRepository : IGenericRepository<MaterialesIza.Data.Entities.Service>
     {
         IEnumerable<SelectListItem> GetComboService();
-        IQueryable GetServices(); 
+        IQueryable GetServices();
+        IEnumerable<ServiceRequest> GetAllServicessWithType();
         //MaterialesIza.Common.Models.ServiceRequest GetServices();
 
     }
