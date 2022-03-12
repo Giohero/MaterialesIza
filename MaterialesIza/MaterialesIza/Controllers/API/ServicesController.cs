@@ -44,8 +44,6 @@ namespace MaterialesIza.Controllers.API
             {
                 Name = service.Name,
                 Description = service.Description
-                
-
             };
             var newService = await this.serviceRepository.CreateAsync(entityService);
             return Ok(newService);
