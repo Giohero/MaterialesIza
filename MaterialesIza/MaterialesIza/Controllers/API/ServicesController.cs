@@ -29,7 +29,7 @@ namespace MaterialesIza.Controllers.API
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostServices([FromBody] MaterialesIza.Common.Models.ServiceRequest service)
+        public async Task<IActionResult> PostService([FromBody] MaterialesIza.Common.Models.ServiceRequest service)
         {
             if (!ModelState.IsValid)
             {
@@ -45,7 +45,7 @@ namespace MaterialesIza.Controllers.API
             return Ok(newService);
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct([FromRoute] int id, [FromBody] MaterialesIza.Common.Models.ServiceRequest service)
+        public async Task<IActionResult> PutService([FromRoute] int id, [FromBody] MaterialesIza.Common.Models.ServiceRequest service)
         {
             if (!ModelState.IsValid)
             {
@@ -69,7 +69,7 @@ namespace MaterialesIza.Controllers.API
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct([FromRoute] int id)
+        public async Task<IActionResult> DeleteService([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
