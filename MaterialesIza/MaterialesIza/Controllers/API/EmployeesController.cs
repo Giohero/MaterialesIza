@@ -16,12 +16,10 @@ namespace MaterialesIza.Controllers.API
     public class EmployeesController : Controller
     {
         private readonly IEmployeeRepository employeeRepository;
-        private readonly DataContext dataContext;
 
-        public EmployeesController(IEmployeeRepository employeeRepository, DataContext dataContext)
+        public EmployeesController(IEmployeeRepository employeeRepository)
         {
             this.employeeRepository = employeeRepository;
-            this.dataContext = dataContext;
         }
 
         // GET: Employees
