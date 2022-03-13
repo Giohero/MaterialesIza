@@ -215,10 +215,10 @@
             if (!this.dataContext.Services.Any())
             {
                 var serviceType = this.dataContext.ServiceTypes.FirstOrDefault();
-                await this.CheckServiceAsync("Maquinaria", "Retroexcavadora", serviceType);
+                await this.CheckServiceAsync("Maquinaria", "Excavadora", serviceType);
 
                 serviceType = this.dataContext.ServiceTypes.FirstOrDefault(s =>s.TypeService == "Retroexcavadora");
-                await this.CheckServiceAsync("Viaje", "Retroexcavadora", serviceType);
+                await this.CheckServiceAsync("Viaje", "Trascavo", serviceType);
             }
 
             if (!this.dataContext.OrderDetails.Any())
