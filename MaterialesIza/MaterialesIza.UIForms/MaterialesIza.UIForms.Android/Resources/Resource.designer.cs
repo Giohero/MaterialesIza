@@ -11839,19 +11839,22 @@ namespace MaterialesIza.UIForms.Droid
 			public const int select = 2131165344;
 			
 			// aapt resource value: 0x7F0700A1
-			public const int setup = 2131165345;
+			public const int Servicio = 2131165345;
 			
 			// aapt resource value: 0x7F0700A2
-			public const int shipping = 2131165346;
+			public const int setup = 2131165346;
 			
 			// aapt resource value: 0x7F0700A3
-			public const int test_custom_background = 2131165347;
+			public const int shipping = 2131165347;
 			
 			// aapt resource value: 0x7F0700A4
-			public const int tooltip_frame_dark = 2131165348;
+			public const int test_custom_background = 2131165348;
 			
 			// aapt resource value: 0x7F0700A5
-			public const int tooltip_frame_light = 2131165349;
+			public const int tooltip_frame_dark = 2131165349;
+			
+			// aapt resource value: 0x7F0700A6
+			public const int tooltip_frame_light = 2131165350;
 			
 			static Drawable()
 			{
