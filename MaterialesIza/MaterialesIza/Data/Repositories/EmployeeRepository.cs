@@ -9,7 +9,7 @@ namespace MaterialesIza.Data.Repositories
     using System.Collections.Generic;
     using System.Linq;
 
-    public class EmployeeRepository : GenericRepository<MaterialesIza.Data.Entities.Employee>, IEmployeeRepository
+    public class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository
     {
         private readonly DataContext dataContext;
 
@@ -20,8 +20,8 @@ namespace MaterialesIza.Data.Repositories
 
         public IQueryable GetEmployee()
         {
-            return this.dataContext.Employees;
-                //.Include(e => e.User);
+            return this.dataContext.Employees
+                .Include(e => e.User);
         }
 
         public IEnumerable<EmployeeRequest> GetEmployees()
