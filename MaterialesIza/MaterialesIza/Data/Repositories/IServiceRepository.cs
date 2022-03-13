@@ -12,7 +12,7 @@ namespace MaterialesIza.Data.Repositories
     {
         IEnumerable<SelectListItem> GetComboService();
         IQueryable GetServices();
-        IEnumerable<ServiceRequest> GetAllServicessWithType();
+        IEnumerable<ServiceRequest> GetAllServicesWithType();
         //MaterialesIza.Common.Models.ServiceRequest GetServices();
 
     }

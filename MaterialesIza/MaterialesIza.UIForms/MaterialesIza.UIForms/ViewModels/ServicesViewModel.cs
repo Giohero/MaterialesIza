@@ -67,8 +67,7 @@ namespace MaterialesIza.UIForms.ViewModels
         }
         private void RefreshServicesList()
         {
-            this.Services = new ObservableCollection<ServiceItemViewModel>
-                (myServices.Select(s => new ServiceItemViewModel
+            this.Services = new ObservableCollection<ServiceItemViewModel>(myServices.Select(s => new ServiceItemViewModel
                 {
                     Id = s.Id,
                     Name = s.Name,

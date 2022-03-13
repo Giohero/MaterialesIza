@@ -36,7 +36,7 @@ namespace MaterialesIza.Data.Repositories
         {
             return this.dataContext.Services;
         }
-        public IEnumerable<ServiceRequest> GetAllServicessWithType()
+        public IEnumerable<ServiceRequest> GetAllServicesWithType()
         {
             var s = this.dataContext.Services
                 .Include(st => st.ServiceType);
@@ -44,12 +44,12 @@ namespace MaterialesIza.Data.Repositories
             {
                 return null;
             }
-            var x = s.Select(pr => new ServiceRequest
+            var x = s.Select(sr => new ServiceRequest
             {
-                Id = pr.Id,
-                Name = pr.Name,
-                Description = pr.Description,
-                ServiceType = pr.ServiceType.TypeService
+                Id = sr.Id,
+                Name = sr.Name,
+                Description = sr.Description,
+                ServiceType = sr.ServiceType.TypeService
 
             }).ToList();
 

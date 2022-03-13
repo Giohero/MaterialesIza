@@ -19,30 +19,6 @@ namespace MaterialesIza.UIForms.ViewModels
             get { return isRunning; }
             set { this.SetValue(ref this.isRunning, value); }
         }
-        private IList<string> serviceTypeList;
-        public IList<string> ServiceTypeList
-        {
-            get { return this.serviceTypeList; }
-            set { this.SetValue(ref this.serviceTypeList, value); }
-        }
-        private async void LoadServicesTypes()
-        {
-            var url = Application.Current.Resources["UrlAPI"].ToString();
-            var response = await this.apiService.GetListAsync<ServiceTypeRequest>(
-                url,
-                "/api",
-                "/ServiceTypes",
-                "bearer",
-                MainViewModel.GetInstance().Token.Token);
-
-            if (!response.IsSuccess)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
-                return;
-            }
-            ServiceTypeList = ((List<ServiceTypeRequest>)response.Result).Select(m => m.TypeService).ToList();
-
-        }
         private bool isEnabled;
         public bool IsEnabled
         {
@@ -51,7 +27,6 @@ namespace MaterialesIza.UIForms.ViewModels
         }
         public ICommand SaveCommand { get { return new RelayCommand(Save); } }
         public ICommand DeleteCommand { get { return new RelayCommand(Delete); } }
-
         private async void Delete()
         {
             var confirm = await Application.Current.MainPage.DisplayAlert("Confirmar", "Seguro de eliminar", "SI", "NO");
@@ -62,7 +37,7 @@ namespace MaterialesIza.UIForms.ViewModels
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var response = await this.apiService.DeleteAsync(url,
                 "/api",
-                "/Products",
+                "/Services",
                 Service.Id,
                 "bearer",
                 MainViewModel.GetInstance().Token.Token);
@@ -101,7 +76,7 @@ namespace MaterialesIza.UIForms.ViewModels
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var response = await this.apiService.PutAsync(url,
                 "/api",
-                "/Products",
+                "/Services",
                 Service.Id,
                 Service,
                 "bearer",
@@ -118,13 +93,36 @@ namespace MaterialesIza.UIForms.ViewModels
             isRunning = false;
             await App.Navigator.PopAsync();
         }
-
         public EditServiceViewModel(ServiceRequest service)
         {
             this.Service = service;
             this.apiService = new ApiService();
             this.isEnabled = true;
             this.LoadServicesTypes();
+
+        }
+        private IList<string> serviceTypeList;
+        public IList<string> ServiceTypeList
+        {
+            get { return this.serviceTypeList; }
+            set { this.SetValue(ref this.serviceTypeList, value); }
+        }
+        private async void LoadServicesTypes()
+        {
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var response = await this.apiService.GetListAsync<ServiceTypeRequest>(
+                url,
+                "/api",
+                "/ServiceTypes",
+                "bearer",
+                MainViewModel.GetInstance().Token.Token);
+
+            if (!response.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                return;
+            }
+            ServiceTypeList = ((List<ServiceTypeRequest>)response.Result).Select(m => m.TypeService).ToList();
 
         }
     }

@@ -25,7 +25,7 @@ namespace MaterialesIza.Controllers.API
         [HttpGet]
         public IActionResult GetServices()
         {
-            return Ok(this.serviceRepository.GetAllServicessWithType());
+            return Ok(this.serviceRepository.GetAllServicesWithType());
         }
 
         [HttpPost]
