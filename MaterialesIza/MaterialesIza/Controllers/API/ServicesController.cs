@@ -43,7 +43,10 @@ namespace MaterialesIza.Controllers.API
             var entityService = new MaterialesIza.Data.Entities.Service
             {
                 Name = service.Name,
-                Description = service.Description
+                Description = service.Description,
+                //
+                ServiceType = serviceType
+                
             };
             var newService = await this.serviceRepository.CreateAsync(entityService);
             return Ok(newService);
@@ -59,6 +62,8 @@ namespace MaterialesIza.Controllers.API
             {
                 return BadRequest();
             }
+            var serviceType = this.serviceTypeRepository.GetServiceTypeByName(service.ServiceType);
+
             var oldService = await this.serviceRepository.GetByIdAsync(id);
 
             if (oldService == null)
@@ -67,6 +72,7 @@ namespace MaterialesIza.Controllers.API
             }
             oldService.Name = service.Name;
             oldService.Description = service.Description;
+            oldService.ServiceType = serviceType;
             var updateProduct = await this.serviceRepository.UpdateAsync(oldService);
             return Ok(updateProduct);
 

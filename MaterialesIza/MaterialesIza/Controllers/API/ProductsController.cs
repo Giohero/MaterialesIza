@@ -67,7 +67,9 @@ namespace MaterialesIza.Controllers.API
             {
                 return BadRequest();
             }
+            //
             var productType = this.productTypeRepository.GetProductTypeByName(product.ProductTypes);
+
             var oldProduct = await this.productRepository.GetByIdAsync(id);
 
             if (oldProduct == null)
@@ -77,6 +79,7 @@ namespace MaterialesIza.Controllers.API
             oldProduct.Name = product.Name;
             oldProduct.Description = product.Description;
             oldProduct.Price = product.Price;
+            //
             oldProduct.ProductTypes = productType;
             var updateProduct = await this.productRepository.UpdateAsync(oldProduct);
             return Ok(updateProduct);
