@@ -84,6 +84,24 @@ namespace MaterialesIza.Controllers.API
 
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteClient([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var oldClient = await this.clientRepository.GetByIdAsync(id);
+            if (oldClient == null)
+            {
+                return BadRequest("Id not found");
+            }
+
+            await this.clientRepository.DeleteAsync(oldClient);
+            return Ok(oldClient);
+        }
+
     }
 
 }

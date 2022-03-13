@@ -84,6 +84,24 @@ namespace MaterialesIza.Controllers.API
             return Ok(updateEmployee);
 
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEmployee([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var oldEmployee = await this.employeeRepository.GetByIdAsync(id);
+            if (oldEmployee == null)
+            {
+                return BadRequest("Id not found");
+            }
+
+            await this.employeeRepository.DeleteAsync(oldEmployee);
+            return Ok(oldEmployee);
+        }
     }
 
 }
