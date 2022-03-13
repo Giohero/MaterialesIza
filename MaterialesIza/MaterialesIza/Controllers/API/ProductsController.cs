@@ -48,6 +48,7 @@ namespace MaterialesIza.Controllers.API
                 Name = product.Name,
                 Description = product.Description,
                 Price = product.Price,
+
                 //
                 ProductTypes = productType
             };
