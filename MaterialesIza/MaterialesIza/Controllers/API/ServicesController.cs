@@ -72,6 +72,7 @@ namespace MaterialesIza.Controllers.API
             }
             oldService.Name = service.Name;
             oldService.Description = service.Description;
+            //
             oldService.ServiceType = serviceType;
             var updateProduct = await this.serviceRepository.UpdateAsync(oldService);
             return Ok(updateProduct);
