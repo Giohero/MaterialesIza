@@ -30,7 +30,7 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Source="Servicios" Grid.Column="0" HeightRequest="80"/>
+                                <Image Source="Servicio" Grid.Column="0" HeightRequest="80"/>
                                 <StackLayout Grid.Column="1"
                                              VerticalOptions="Center">
                                     <Label Text="{Binding Id}"
@@ -45,8 +45,12 @@
                                     <Label Text="{Binding Description}"
                                            FontSize="Small"
                                            TextColor="White"></Label>
+                                    
+                                    <Label Text="{Binding ServiceType}"
+                                           FontSize="Small"
+                                           TextColor="White"></Label>
                                 </StackLayout>
-                                <StackLayout VerticalOptions="Center">
+                                <StackLayout Grid.Column="2" VerticalOptions="Center">
                                     <Image Grid.Column="2" Source="Select" HeightRequest="60"/>
                                 </StackLayout>
                             </Grid>
