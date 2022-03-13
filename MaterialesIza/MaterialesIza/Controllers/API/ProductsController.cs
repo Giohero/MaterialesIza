@@ -47,7 +47,9 @@ namespace MaterialesIza.Controllers.API
             {
                 Name = product.Name,
                 Description = product.Description,
-                Price = product.Price
+                Price = product.Price,
+                //
+                ProductTypes = productType
             };
 
             var newProduct = await this.productRepository.CreateAsync(entityProduct);

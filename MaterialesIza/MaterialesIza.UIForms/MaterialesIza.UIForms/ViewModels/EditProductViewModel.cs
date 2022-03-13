@@ -130,9 +130,5 @@ namespace MaterialesIza.UIForms.ViewModels
             ProductTypeList = ((List<ProductTypeRequest>)response.Result).Select(m => m.Name).ToList();
 
         }
-      
-        
-
-        
     }
 }
