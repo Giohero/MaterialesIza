@@ -26,14 +26,14 @@
                 <Button Text="Save" 
                         Command="{Binding SaveCommand}"
                         IsEnabled="{Binding IsEnabled}"
-                        Background="#67CB" 
-                        TextColor="White" HorizontalOptions="Fill" CornerRadius="20" >
+                        Background="#90EE90" 
+                        TextColor="Black" HorizontalOptions="Fill" CornerRadius="20" >
                 </Button>
                 <Button Text="Delete" 
                         Command="{Binding DeleteCommand}"
                         IsEnabled="{Binding IsEnabled}"
-                        Background="#67CB" 
-                        TextColor="White" HorizontalOptions="Fill" CornerRadius="20" >
+                        Background="#FF6347" 
+                        TextColor="Black" HorizontalOptions="Fill" CornerRadius="20" >
                 </Button>
             </StackLayout>
         </ScrollView>

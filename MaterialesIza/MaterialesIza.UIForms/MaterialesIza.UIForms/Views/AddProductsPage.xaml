@@ -29,8 +29,8 @@
                 <Button Text="Save" 
                         Command="{Binding SaveCommand}"
                         IsEnabled="{Binding IsEnabled}"
-                        Background="#67CB" 
-                        TextColor="White" HorizontalOptions="Fill" CornerRadius="20" ></Button>
+                        Background="#90EE90" 
+                        TextColor="Black" HorizontalOptions="Fill" CornerRadius="20" ></Button>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
