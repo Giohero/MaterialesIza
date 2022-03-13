@@ -20,7 +20,7 @@ namespace MaterialesIza.Controllers
         // GET: Employees
         public IActionResult Index()
         {
-            return View(this.employeeRepository.GetEmployees());
+            return View(this.employeeRepository.GetEmployee());
         }
 
         // GET: Employees/Details/5

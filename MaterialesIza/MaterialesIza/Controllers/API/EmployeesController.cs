@@ -16,12 +16,10 @@ namespace MaterialesIza.Controllers.API
     public class EmployeesController : Controller
     {
         private readonly IEmployeeRepository employeeRepository;
-        private readonly DataContext dataContext;
 
-        public EmployeesController(IEmployeeRepository employeeRepository, DataContext dataContext)
+        public EmployeesController(IEmployeeRepository employeeRepository)
         {
             this.employeeRepository = employeeRepository;
-            this.dataContext = dataContext;
         }
 
         // GET: Employees
@@ -85,6 +83,24 @@ namespace MaterialesIza.Controllers.API
             var updateEmployee = await this.employeeRepository.UpdateAsync(oldEmployee);
             return Ok(updateEmployee);
 
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEmployee([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var oldEmployee = await this.employeeRepository.GetByIdAsync(id);
+            if (oldEmployee == null)
+            {
+                return BadRequest("Id not found");
+            }
+
+            await this.employeeRepository.DeleteAsync(oldEmployee);
+            return Ok(oldEmployee);
         }
     }
 

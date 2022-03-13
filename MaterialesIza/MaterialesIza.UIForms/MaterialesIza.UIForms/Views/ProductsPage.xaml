@@ -31,35 +31,37 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
-
                                 </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Column="0"
+                                <Image Source="Materiales" Grid.Column="0" HeightRequest="80"/>
+                                
+                                <StackLayout Grid.Column="1"
                                              VerticalOptions="Center">
                                     <Label Text="{Binding Id}"
                                            FontAttributes="Bold"
-                                           FontSize="Small"
+                                           FontSize="Medium"
                                            TextColor="Yellow"></Label>
-                                </StackLayout>
-                                <StackLayout Grid.Column="1"
-                                             VerticalOptions="Center">
+                                    
                                     <Label Text="{Binding Name}"
-                                           FontSize="Small"
+                                           FontSize="Medium"
                                            TextColor="White"></Label>
-                                </StackLayout>
-                                <StackLayout Grid.Column="2"
-                                             VerticalOptions="Center">
+                                
                                     <Label Text="{Binding Description}"
-                                           FontSize="Small"
+                                           FontSize="Medium"
                                            TextColor="White"></Label>
-                                </StackLayout>
-                                <StackLayout Grid.Column="3"
-                                             VerticalOptions="Center">
+                                
                                     <Label Text="{Binding Price ,StringFormat='{0:C2}'}"
-                                           FontSize="Small"
+                                           FontSize="Medium"
                                            TextColor="White"></Label>
+                                    
+                                    <Label Text="{Binding ProductTypes}"
+                                           FontSize="Medium"
+                                           TextColor="White"></Label>
+                                    
                                 </StackLayout>
-                                <Image Grid.Column="4" Source="Select">
-                                </Image>
+                                <StackLayout Grid.Column="2" VerticalOptions="Center">
+                                    <Image  Source="Select" HeightRequest="60"/>
+                                </StackLayout>
+                                
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

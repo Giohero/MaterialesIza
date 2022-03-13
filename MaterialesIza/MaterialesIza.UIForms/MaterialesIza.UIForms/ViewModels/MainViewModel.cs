@@ -57,21 +57,13 @@ namespace MaterialesIza.UIForms.ViewModels
         public AddPurchaseViewModel AddPurchase { get; set; }
         public AddServicesViewModel AddServices { get; set; }
         public EditProductViewModel EditProduct { get; set; }
-        public EditProviderViewModel EditProvider { get; set; }
-
-        public EditProviderTypeViewModel EditProviderType { get; set; }
-
-        public EditPurchaseTypeViewModel EditPurchaseType { get; set; }
-
-        public EditPurchaseViewModel EditPurchase { get; set; }
-
-        public EditServiceViewModel EditService { get; set; }
-
+        public EditServiceViewModel EditService { get; set; }    
         public AddProductTypeViewModel AddProductType { get; set; }
-
         public EditProductTypeViewModel EditProductType { get; set; }
         public AddClientViewModel AddClient { get; set; }
         public AddEmployeeViewModel AddEmployee { get; set; }
+        public EditClientViewModel EditClient { get; set; }
+        public EditEmployeeViewModel EditEmployee { get; set; }
         public AddServiceTypeViewModel AddServiceType { get; set; }
         public EditServiceTypeViewModel EditServiceType { get; set; }
 
@@ -81,10 +73,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
         public ICommand AddProductCommand { get { return new RelayCommand(GoProductCommand); } }
         public ICommand AddServiceCommand { get { return new RelayCommand(GoServiceCommand); } }
-
-
         public ICommand AddClientCommand { get { return new RelayCommand(GoClientCommand); } }
-
         public ICommand AddEmployeeCommand { get { return new RelayCommand(GoEmployeeCommand); } }
         public ICommand AddProductTypeCommand { get { return new RelayCommand(GoProductTypesCommand); } }
         public ICommand AddPurchaseTypeCommand { get { return new RelayCommand(GoPurchaseTypesCommand); } }

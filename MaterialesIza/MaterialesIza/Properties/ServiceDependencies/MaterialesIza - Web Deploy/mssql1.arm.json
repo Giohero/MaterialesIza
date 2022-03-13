@@ -4,7 +4,7 @@
   "parameters": {
     "resourceGroupName": {
       "type": "string",
-      "defaultValue": "MatIZA",
+      "defaultValue": "MIZA",
       "metadata": {
         "_parameterType": "resourceGroup",
         "description": "Nombre del grupo de recursos del recurso. Se recomienda poner los recursos en el mismo grupo de recursos para mejorar el seguimiento."
