@@ -49,7 +49,7 @@ namespace MaterialesIza.UIForms.ViewModels
             }
             if (string.IsNullOrEmpty(Email))
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir un email", "Aceptar");
+                await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir un corrro electrónico", "Aceptar");
                 return;
             }
             if (string.IsNullOrEmpty(PhoneNumber))
@@ -76,7 +76,7 @@ namespace MaterialesIza.UIForms.ViewModels
                 return;
             }
             var newEmployee = (EmployeeRequest)response.Result;
-            MainViewModel.GetInstance().Employees.Employees.Add(newEmployee);
+            MainViewModel.GetInstance().Employees.AddEmployeeToList(newEmployee);
             isEnabled = true;
             isRunning = false;
             await App.Navigator.PopAsync();

@@ -3,6 +3,7 @@ using MaterialesIza.Common.Models;
 using MaterialesIza.Common.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -11,9 +12,9 @@ namespace MaterialesIza.UIForms.ViewModels
     public class ClientsViewModel : BaseViewModel
     {
         private ApiService apiService;
-
-        private ObservableCollection<ClientRequest> clients;
-        public ObservableCollection<ClientRequest> Clients
+        private List<ClientRequest> myClients;
+        private ObservableCollection<ClientItemViewModel> clients;
+        public ObservableCollection<ClientItemViewModel> Clients
         {
 
             get { return this.clients; }
@@ -62,8 +63,48 @@ namespace MaterialesIza.UIForms.ViewModels
                     "Accept");
                 return;
             }
-            var myClients = (List<ClientRequest>)response.Result;
-            this.Clients = new ObservableCollection<ClientRequest>(myClients);
+            myClients = (List<ClientRequest>)response.Result;
+            RefreshClientsList();
+        }
+
+        private void RefreshClientsList()
+        {
+            this.Clients = new ObservableCollection<ClientItemViewModel>(myClients.Select(c => new ClientItemViewModel
+            {
+                Id = c.Id,
+                FirstName = c.FirstName,
+                LastName = c.LastName,
+                Email = c.Email,
+                PhoneNumber = c.PhoneNumber
+            }).OrderBy(c => c.FirstName).ToList());
+        }
+
+        public void AddClientToList(ClientRequest client)
+        {
+            this.myClients.Add(client);
+            RefreshClientsList();
+        }
+
+        public void UpdateClientInList(ClientRequest client)
+        {
+            var previousClient = myClients.Where(c => c.Id == client.Id).FirstOrDefault();
+            if (previousClient != null)
+            {
+                this.myClients.Remove(previousClient);
+            }
+            this.myClients.Add(client);
+            RefreshClientsList();
+        }
+
+        public void DeleteClientInList(int clientId)
+        {
+            var previousClient = myClients.Where(e => e.Id == clientId).FirstOrDefault();
+            if (previousClient != null)
+            {
+                this.myClients.Remove(previousClient);
+            }
+            RefreshClientsList();
         }
     }
 }
+
