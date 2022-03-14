@@ -46,5 +46,11 @@ namespace MaterialesIza.Data.Repositories
                 .Include(t => t.Provider.User)
                 .Include(t => t.PurchaseDetails);
         }
+
+        public IQueryable GetPurchases()
+        {
+            return this.dataContext.Purchases;
+               
+        }
     }
 }

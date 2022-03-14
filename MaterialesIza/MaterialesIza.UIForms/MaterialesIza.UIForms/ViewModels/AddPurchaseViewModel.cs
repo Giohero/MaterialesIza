@@ -31,30 +31,8 @@ namespace MaterialesIza.UIForms.ViewModels
             set { this.SetValue(ref this.isRunning, value); }
         }
 
-        private IList<string> purchaseTypeList;
-        public IList<string> PurchaseTypeList
-        {
-            get { return this.purchaseTypeList; }
-            set { this.SetValue(ref this.purchaseTypeList, value); }
-        }
-        private async void LoadPurchaseTypes()
-        {
-            var url = Application.Current.Resources["UrlAPI"].ToString();
-            var response = await this.apiService.GetListAsync<PurchaseTypeRequest>(//¿¿¿PurchasesTypeRequest???
-                url,
-                "/api",
-                "/PurchasesTypes",
-                "bearer",
-                MainViewModel.GetInstance().Token.Token);
-
-            if (!response.IsSuccess)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
-                return;
-            }
-            PurchaseTypeList = ((List<PurchaseTypeRequest>)response.Result).Select(pu => pu.PurchaseName).ToList();//no es posible convertir de int a string
-
-        }
+    
+       
 
         private bool isEnabled;
         public bool IsEnabled
@@ -122,7 +100,7 @@ namespace MaterialesIza.UIForms.ViewModels
         {
             this.apiService = new ApiService();
             isEnabled = true;
-            this.LoadPurchaseTypes();
+        
         }
     }
 }
