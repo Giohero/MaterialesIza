@@ -52,5 +52,27 @@ namespace MaterialesIza.Data.Repositories
             return this.dataContext.Purchases;
                
         }
+
+        public IEnumerable<PurchaseRequest> GetAllPurchases()
+        {
+            var p = this.dataContext.Purchases;
+            if(p==null)
+            {
+                return null;
+            }
+
+            var x = p.Select(pr => new PurchaseRequest
+            {
+                Id = pr.Id,
+                Date_purchase = pr.Date_purchase,
+                Iva_purchase = pr.Iva_purchase,
+                Total_purchase = pr.Total_purchase,
+                Purchase_Remarks = pr.Purchase_Remarks
+            }).ToList();
+            return x;
+        }
+
+
+
     }
 }

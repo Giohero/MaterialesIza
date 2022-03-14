@@ -15,6 +15,8 @@ namespace MaterialesIza.Data.Repositories
         IQueryable GetPurchaseWithProvider();
 
         IQueryable GetPurchases();
+
+        IEnumerable<PurchaseRequest> GetAllPurchases();
     }
 
   
