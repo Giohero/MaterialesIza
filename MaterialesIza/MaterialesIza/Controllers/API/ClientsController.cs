@@ -1,6 +1,8 @@
 ﻿using MaterialesIza.Common.Models;
 using MaterialesIza.Data;
+using MaterialesIza.Data.Entities;
 using MaterialesIza.Data.Repositories;
+using MaterialesIza.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,10 +18,12 @@ namespace MaterialesIza.Controllers.API
     public class ClientsController : Controller
     {
         private readonly IClientRepository clientRepository;
+        private readonly IUserHelper userHelper;
 
-        public ClientsController(IClientRepository clientRepository)
+        public ClientsController(IClientRepository clientRepository, IUserHelper userHelper)
         {
             this.clientRepository = clientRepository;
+            this.userHelper = userHelper;
         }
 
         // GET: Clients
@@ -42,15 +46,29 @@ namespace MaterialesIza.Controllers.API
             {
                 return BadRequest(ModelState);
             }
-            var entityClient = new MaterialesIza.Data.Entities.Client
+            var userClient = await this.userHelper.GetUserByEmailAsync(clientRequest.Email);
+            if(userClient == null)
             {
-                User = new Data.Entities.User()
+                userClient = new Data.Entities.User()
                 {
                     FirstName = clientRequest.FirstName,
                     LastName = clientRequest.LastName,
                     Email = clientRequest.Email,
                     PhoneNumber = clientRequest.PhoneNumber,
-                }
+                };
+                string pasword = "123456";
+                var result = await this.userHelper.AddUserAsync(userClient, pasword);
+            }
+
+            var emailClient = new EmailRequest { Email = clientRequest.Email };
+            var oldClient = this.clientRepository.GetClientWithOrdersByEmail(emailClient);
+            if (oldClient != null)
+            {
+                return BadRequest("Ya existe el usuario");
+            }
+            var entityClient = new Client
+            {
+                User = userClient
             };
 
             var newClient = await this.clientRepository.CreateAsync(entityClient);
@@ -68,18 +86,18 @@ namespace MaterialesIza.Controllers.API
             {
                 return BadRequest();
             }
-            var oldClient = await this.clientRepository.GetByIdAsync(id);
+            var oldClient = await this.userHelper.GetUserByEmailAsync(client.Email);
 
             if (oldClient == null)
             {
                 return BadRequest("Id was not found");
             }
-            oldClient.User.FirstName = client.FirstName;
-            oldClient.User.LastName = client.LastName;
-            oldClient.User.Email = client.Email;
-            oldClient.User.PhoneNumber = client.PhoneNumber;
+            oldClient.FirstName = client.FirstName;
+            oldClient.LastName = client.LastName;
+            oldClient.Email = client.Email;
+            oldClient.PhoneNumber = client.PhoneNumber;
 
-            var updateClient = await this.clientRepository.UpdateAsync(oldClient);
+            var updateClient = await this.userHelper.UpdateUserAsync(oldClient);
             return Ok(updateClient);
 
         }
