@@ -26,14 +26,6 @@ namespace MaterialesIza.Controllers.API
             this.userHelper = userHelper;
         }
 
-        // GET: Clients
-        //[HttpGet]
-        //public IActionResult GetClientsController()
-        //{
-        //  var emailClient = new EmailRequest { Email = "firmalagio@gmail.com" };
-        //return Ok(this.clientRepository.GetClientWithOrdersByEmail(emailClient));
-        //}
-
         public IActionResult GetClients()
         {
             return Ok(this.clientRepository.GetClients());
@@ -68,7 +60,7 @@ namespace MaterialesIza.Controllers.API
             var oldClient = this.clientRepository.GetClientWithOrdersByEmail(emailClient);
             if (oldClient != null)
             {
-                return BadRequest("Ya existe el usuario");
+                return BadRequest("El usuario ya existe");
             }
             var entityClient = new Client
             {
