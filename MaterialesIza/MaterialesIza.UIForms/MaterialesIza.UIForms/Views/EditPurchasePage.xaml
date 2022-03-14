@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialesIza.UIForms.Views.EditPurchasePage"
+             BindingContext="{Binding Main,Source={StaticResource Locator}}"
+             Title="Edit Purchases">
+    <ContentPage.Content>
+        <ScrollView BindingContext="{Binding EditPurchase}"  Padding="10" >
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Compra" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce tu Compra" Text="{Binding PurchaseRequest.Id}"></Entry>
+
+                    <Label Text="Fecha de la Compra" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="1" Keyboard="Text" Placeholder="Introduce la Fecha de Compra" Text="{Binding PurchaseRequest.Date_purchase}"></Entry>
+
+                    <Label Text="Observaciones de la compra" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text" Placeholder="Observaciones de Compra" Text="{Binding PurchaseRequest.Purchase_Remarks}"></Entry>
+
+                    <Label Text="Tipo de Compra" Grid.Column="0" Grid.Row="3" VerticalOptions="Center"></Label>
+                    <Picker Grid.Column="1" Grid.Row="3" Title="Selecciona un Tipo de Compra" ItemsSource="{Binding PurchaseTypeList}" SelectedItem="{Binding PurchaseRequest.PurchaseDetails, Mode=TwoWay}"/>
+                </Grid>
+                <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button Text="Save" 
+                        Command="{Binding SaveCommand}"
+                        IsEnabled="{Binding IsEnabled}"
+                        Background="#67CB" 
+                        TextColor="White" HorizontalOptions="Fill" CornerRadius="20" >
+                </Button>
+                <Button Text="Delete" 
+                        Command="{Binding DeleteCommand}"
+                        IsEnabled="{Binding IsEnabled}"
+                        Background="#67CB" 
+                        TextColor="White" HorizontalOptions="Fill" CornerRadius="20" >
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

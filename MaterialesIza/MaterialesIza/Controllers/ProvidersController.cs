@@ -23,7 +23,8 @@ namespace MaterialesIza.Controllers
         // GET: Providers
         public IActionResult Index()
         {
-            return View(this.providerRepository.GetProviders());
+            //Before return View(this.providerRepository.GetProviders());
+            return View(this.providerRepository.GetProvidersWithUser()); //After
         }
 
         // GET: Providers/Details/5

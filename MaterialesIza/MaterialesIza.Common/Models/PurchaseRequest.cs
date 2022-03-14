@@ -8,6 +8,9 @@ namespace MaterialesIza.Common.Models
     {
         public int Id { get; set; }
 
+        public string PurchaseName { get; set; } //Eliminar o dejar
+
+
         public DateTime Date_purchase { get; set; }
 
         public double Total_purchase { get; set; }

@@ -1,8 +1,9 @@
-﻿using MaterialesIza.Common.Models;
+﻿using MaterialesIza.Data.Entities;
 using MaterialesIza.Data.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace MaterialesIza.Controllers.API
 {
@@ -11,6 +12,7 @@ namespace MaterialesIza.Controllers.API
     public class PurchasesController : Controller
     {
         private readonly IPurchaseRepository purchaseRepository;
+        
 
         public PurchasesController(IPurchaseRepository purchaseRepository)
         {
