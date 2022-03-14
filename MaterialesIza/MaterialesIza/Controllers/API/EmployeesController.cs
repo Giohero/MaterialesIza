@@ -1,6 +1,8 @@
 ﻿using MaterialesIza.Common.Models;
 using MaterialesIza.Data;
+using MaterialesIza.Data.Entities;
 using MaterialesIza.Data.Repositories;
+using MaterialesIza.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,20 +18,14 @@ namespace MaterialesIza.Controllers.API
     public class EmployeesController : Controller
     {
         private readonly IEmployeeRepository employeeRepository;
+        private readonly IUserHelper userHelper;
 
-        public EmployeesController(IEmployeeRepository employeeRepository)
+
+        public EmployeesController(IEmployeeRepository employeeRepository, IUserHelper userHelper)
         {
             this.employeeRepository = employeeRepository;
+            this.userHelper = userHelper;
         }
-
-        // GET: Employees
-        //public IActionResult GetEmployeesController()
-        //{
-        //    //return Ok(this.employeeRepository.GetAll());
-
-        //    var emailEmployee = new EmailRequest { Email = "jesus.Sal@gmail.com" };
-        //    return Ok(this.employeeRepository.GetEmployeeWithOrdersByEmail(emailEmployee));
-        //}
 
         public IActionResult GetEmployees()
         {
@@ -43,15 +39,33 @@ namespace MaterialesIza.Controllers.API
             {
                 return BadRequest(ModelState);
             }
-            var entityEmployee = new MaterialesIza.Data.Entities.Employee
+            var userEmployee = await this.userHelper.GetUserByEmailAsync(employeeRequest.Email);
+            if (userEmployee == null)
             {
-                User = new Data.Entities.User()
+                userEmployee = new Data.Entities.User
                 {
                     FirstName = employeeRequest.FirstName,
                     LastName = employeeRequest.LastName,
                     Email = employeeRequest.Email,
+                    UserName = employeeRequest.Email,
                     PhoneNumber = employeeRequest.PhoneNumber,
-                }
+                };
+
+                string pasword = "123456";
+                var result = await this.userHelper.AddUserAsync(userEmployee, pasword);
+
+                await this.userHelper.AddUserToRoleAsync(userEmployee, "Employee");
+            }
+
+            var emailEmployee = new EmailRequest { Email = employeeRequest.Email };
+            var oldEmployee = this.employeeRepository.GetEmployeeWithOrdersByEmail(emailEmployee);
+            if (oldEmployee != null)
+            {
+                return BadRequest("El usuario ya existe");
+            }
+            var entityEmployee = new Employee
+            {
+                User = userEmployee
             };
 
             var newEmployee = await this.employeeRepository.CreateAsync(entityEmployee);
@@ -69,18 +83,18 @@ namespace MaterialesIza.Controllers.API
             {
                 return BadRequest();
             }
-            var oldEmployee = await this.employeeRepository.GetByIdAsync(id);
+            var userEmployee = await this.userHelper.GetUserByEmailAsync(employee.Email);
 
-            if (oldEmployee == null)
+            if (userEmployee == null)
             {
                 return BadRequest("Id was not found");
             }
-            oldEmployee.User.FirstName = employee.FirstName;
-            oldEmployee.User.LastName = employee.LastName;
-            oldEmployee.User.Email = employee.Email;
-            oldEmployee.User.PhoneNumber = employee.PhoneNumber;
+            userEmployee.FirstName = employee.FirstName;
+            userEmployee.LastName = employee.LastName;
+            userEmployee.Email = employee.Email;
+            userEmployee.PhoneNumber = employee.PhoneNumber;
 
-            var updateEmployee = await this.employeeRepository.UpdateAsync(oldEmployee);
+            var updateEmployee = await this.userHelper.UpdateUserAsync(userEmployee);
             return Ok(updateEmployee);
 
         }
