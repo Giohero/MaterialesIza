@@ -7,15 +7,18 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Linq;
+
 
 namespace MaterialesIza.UIForms.ViewModels
 {
     public class PurchasesViewModel : BaseViewModel
     {
         private ApiService apiService;
+        private List<PurchaseRequest> myPurchases;
 
-        private ObservableCollection<PurchaseRequest> purchases;
-        public ObservableCollection<PurchaseRequest> Purchases
+        private ObservableCollection<PurchaseItemViewModel> purchases;
+        public ObservableCollection<PurchaseItemViewModel> Purchases
         {
 
             get { return this.purchases; }
@@ -33,15 +36,15 @@ namespace MaterialesIza.UIForms.ViewModels
 
         private void Refresh()
         {
-            this.LoadProducts();
+            this.LoadPurchases();
         }
         public PurchasesViewModel()
         {
             this.apiService = new ApiService();
-            this.LoadProducts();
+            this.LoadPurchases();
         }
 
-        private async void LoadProducts()
+        private async void LoadPurchases()
         {
             //Inicio
             this.IsRefreshing = true;
@@ -62,8 +65,48 @@ namespace MaterialesIza.UIForms.ViewModels
                     "Accept");
                 return;
             }
-            var myPurchases = (List<PurchaseRequest>)response.Result;
-            this.Purchases = new ObservableCollection<PurchaseRequest>(myPurchases);
+            myPurchases = (List<PurchaseRequest>)response.Result;
+           // this.Purchases = new ObservableCollection<PurchaseRequest>(myPurchases);
+            RefreshPurchasesList();
         }
+        private void RefreshPurchasesList()
+        {
+            this.Purchases = new ObservableCollection<PurchaseItemViewModel>(myPurchases.Select(pu => new PurchaseItemViewModel
+            {
+                Id = pu.Id,
+                Date_purchase = pu.Date_purchase,
+                Total_purchase = pu.Total_purchase,
+                Iva_purchase = pu.Iva_purchase,
+                Purchase_Remarks = pu.Purchase_Remarks
+            }).OrderBy(pu => pu.Id).ToList());
+        }
+        public void AddPurchaseToList(PurchaseRequest purchase)
+        {
+            this.myPurchases.Add(purchase);
+            RefreshPurchasesList();
+        }
+
+        public void UpdatePurchaseInList(PurchaseRequest purchase)
+        {
+            var previousPurchase = myPurchases.Where(pu => pu.Id == purchase.Id).FirstOrDefault();
+
+            if (previousPurchase != null)
+            {
+                this.myPurchases.Remove(previousPurchase);
+            }
+            this.myPurchases.Add(purchase);
+            RefreshPurchasesList();
+        }
+        public void DeletePurchaseInList(int purchaseId)
+        {
+            var previousPurchase = myPurchases.Where(pu => pu.Id == purchaseId).FirstOrDefault();
+
+            if (previousPurchase != null)
+            {
+                this.myPurchases.Remove(previousPurchase);
+            }
+            RefreshPurchasesList();
+        }
+    
     }
 }
