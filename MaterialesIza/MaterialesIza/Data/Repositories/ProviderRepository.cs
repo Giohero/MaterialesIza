@@ -17,7 +17,7 @@ namespace MaterialesIza.Data.Repositories
             this.dataContext = dataContext;
         }
 
-        public IQueryable GetProviders()
+        public IQueryable GetProvidersWithUser()
         {
             return this.dataContext.Providers
                 .Include(p => p.User);
@@ -35,6 +35,29 @@ namespace MaterialesIza.Data.Repositories
                 Value = "0"
             });
             return list;
+        }
+
+        public IEnumerable<ProviderRequest> GetProviders()
+        {
+            var i = this.dataContext.Providers
+                .Include(i => i.User);
+
+            if (i == null)
+            {
+                return null;
+            }
+
+            var x = i.Select(a => new ProviderRequest
+            {
+                Id = a.Id,
+                FirstName = a.User.FirstName,
+                LastName = a.User.LastName,
+                Email = a.User.Email,
+                PhoneNumber = a.User.PhoneNumber
+            }).ToList();
+
+            return x;
+
         }
 
 

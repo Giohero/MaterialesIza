@@ -14,7 +14,12 @@ namespace MaterialesIza.Data.Repositories
     {
         IEnumerable<SelectListItem> GetComboProvider();
 
-        IQueryable GetProviders();
+        //BeforeIQueryable GetProviders();
+
+        IQueryable GetProvidersWithUser();
+
+      
+        IEnumerable<ProviderRequest> GetProviders();  //Borrar esta linea, no existia antes
 
         MaterialesIza.Common.Models.ProviderRequest GetPurchasesByEmailProvider(EmailRequest emailRequest);
     }
