@@ -13,20 +13,19 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Text="FirstName" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Nombre Proveedor" Text="{Binding ProviderRequest.FirstName}"></Entry>
+                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Nombre Proveedor" Text="{Binding Provider.FirstName}"></Entry>
 
                     <Label Text="LastName" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="1" Keyboard="Text" Placeholder="Apellido Proveedor" Text="{Binding ProviderRequest.LastName}"></Entry>
+                    <Entry Grid.Column="1" Grid.Row="1" Keyboard="Text" Placeholder="Apellido Proveedor" Text="{Binding Provider.LastName}"></Entry>
 
                     <Label Text="Email" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text" Placeholder="Email proveedor" Text="{Binding ProviderRequest.Email}"></Entry>
+                    <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text" Placeholder="Email proveedor" Text="{Binding Provider.Email}"></Entry>
 
                     <Label Text="PhoneNumber" Grid.Column="0" Grid.Row="3" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="3" Keyboard="Text" Placeholder="Celular proveedor" Text="{Binding ProviderRequest.Email}"></Entry>
+                    <Entry Grid.Column="1" Grid.Row="3" Keyboard="Text" Placeholder="Celular proveedor" Text="{Binding Provider.PhoneNumber}"></Entry>
 
 
-                    <Label Text="Tipo de proveedor" Grid.Column="0" Grid.Row="4" VerticalOptions="Center"></Label>
-                    <Picker Grid.Column="1" Grid.Row="4" Title="Selecciona un Tipo de Proveedor" ItemsSource="{Binding ProviderTypeList}" SelectedItem="{Binding ProviderRequest.Purchases, Mode=TwoWay}"/> 
+                  
                 </Grid>
                 <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>
