@@ -64,7 +64,7 @@ namespace MaterialesIza.Controllers.API
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProviders([FromRoute] int id, [FromBody] MaterialesIza.Common.Models.ProviderRequest provider)
+        public async Task<IActionResult> PutProviders([FromRoute] int id, [FromBody] ProviderRequest provider)
         {
             if (!ModelState.IsValid)
             {

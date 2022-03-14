@@ -50,7 +50,7 @@ namespace MaterialesIza.Controllers.API
                 Price = product.Price,
 
                 //
-                //ProductTypes = productType
+                ProductTypes = productType //asi no agrega el tipo de producto
             };
 
             var newProduct = await this.productRepository.CreateAsync(entityProduct);
