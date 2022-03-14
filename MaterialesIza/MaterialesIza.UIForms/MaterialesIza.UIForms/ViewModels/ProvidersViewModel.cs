@@ -33,15 +33,15 @@ namespace MaterialesIza.UIForms.ViewModels
 
         private void Refresh()
         {
-            this.LoadProducts();
+            this.LoadProviders();
         }
         public ProvidersViewModel()
         {
             this.apiService = new ApiService();
-            this.LoadProducts();
+            this.LoadProviders();
         }
 
-        private async void LoadProducts()
+        private async void LoadProviders()
         {
             //Inicio
             this.IsRefreshing = true;
