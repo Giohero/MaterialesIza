@@ -22,10 +22,9 @@
                     <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text" Placeholder="Email del Proveedor" Text="{Binding Email}"></Entry>
                     
                     <Label Text="PhoneNumber" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="3" Keyboard="Text" Placeholder="Email del Proveedor" Text="{Binding Email}"></Entry>
+                    <Entry Grid.Column="1" Grid.Row="3" Keyboard="Text" Placeholder="Email del Proveedor" Text="{Binding PhoneNumber}"></Entry>
 
-                    <Label Text="Tipo de proveedor" Grid.Column="0" Grid.Row="3" VerticalOptions="Center"></Label>
-                    <Picker Grid.Column="1" Grid.Row="4" Title="Selecciona Algun Proveedor" ItemsSource="{Binding ProviderTypeList}" SelectedItem="{Binding ProviderTypes, Mode=TwoWay}"/>
+                    
                 </Grid>
                 <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>

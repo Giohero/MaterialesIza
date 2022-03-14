@@ -49,19 +49,13 @@ namespace MaterialesIza.UIForms.ViewModels
                     await App.Navigator.PushAsync(new ProvidersPage());
                     break;
                 
-                case "ProvidersTypesPage":
-                    MainViewModel.GetInstance().ProviderTypes = new ProviderTypesViewModel();
-                    await App.Navigator.PushAsync(new ProviderTypesPage());
-                    break;
+               
 
                 case "PurchasesPage":
                     MainViewModel.GetInstance().Purchases = new PurchasesViewModel();
                     await App.Navigator.PushAsync(new PurchasesPage());
                     break;
-                case "PurchasesTypesPage":
-                    MainViewModel.GetInstance().PurchaseTypes = new PurchaseTypesViewModel();
-                    await App.Navigator.PushAsync(new PurchasesPage());
-                    break;
+               
 
                 case "PurchaseDetailsPage":
                     await App.Navigator.PushAsync(new PurchaseDetailsPage());
