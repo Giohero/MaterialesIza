@@ -1,9 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using MaterialesIza.Common.Models;
 using MaterialesIza.Common.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
