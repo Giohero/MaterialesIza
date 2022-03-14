@@ -45,27 +45,23 @@ namespace MaterialesIza.UIForms.ViewModels
 
         private async void Save()
         {
-            if (string.IsNullOrEmpty(PurchaseName))
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "Ingresa el nombre de tu compra", "Aceptar");
-                return;
-            }
+            
             if (string.IsNullOrEmpty(Date_purchase.ToString()))
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Ingresa la fecha de la compra", "Aceptar");
                 return;
             }
-            //if (string.IsNullOrEmpty(Total_purchase))
-            //{
-            //    await Application.Current.MainPage.DisplayAlert("Error", "Ingresa el monto total de tu compra", "Aceptar");
-            //    return;
-            //}
+            if (string.IsNullOrEmpty(Total_purchase.ToString()))
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Ingresa el monto total de tu compra", "Aceptar");
+                return;
+            }
 
-            //if (string.IsNullOrEmpty(Iva_purchase))
-            //{
-            //    await Application.Current.MainPage.DisplayAlert("Error", "Ingresa el monto de IVA de tu compra", "Aceptar");
-            //    return;
-            //}
+            if (string.IsNullOrEmpty(Iva_purchase.ToString()))
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Ingresa el monto de IVA de tu compra", "Aceptar");
+                return;
+            }
 
             if (string.IsNullOrEmpty(Purchase_Remarks))
             {

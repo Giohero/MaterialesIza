@@ -61,6 +61,9 @@
                                            FontSize="Medium"
                                            TextColor="White"></Label>
                                 </StackLayout>
+                                <StackLayout Grid.Column="2" VerticalOptions="Center">
+                                    <Image  Source="Select" HeightRequest="60"/>
+                                </StackLayout>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

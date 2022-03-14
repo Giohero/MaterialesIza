@@ -16,7 +16,7 @@
                     <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce el Producto" Text="{Binding Name}"></Entry>
                     
                     <Label Text="Precio" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="1" Keyboard="Text" Placeholder="Introduce el Precio" Text="{Binding Price}"></Entry>
+                    <Entry Grid.Column="1" Grid.Row="1" Keyboard="Numeric" Placeholder="Introduce el Precio" Text="{Binding Price}"></Entry>
                    
                     <Label Text="Descripcion" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"></Label>
                     <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text" Placeholder="Introduce la Descripcion" Text="{Binding Description}"></Entry>
