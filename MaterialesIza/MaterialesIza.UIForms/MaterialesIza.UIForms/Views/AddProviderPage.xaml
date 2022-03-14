@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MaterialesIza.UIForms.Views.AddProvidersPage"
+             x:Class="MaterialesIza.UIForms.Views.AddProviderPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Providers">
     <ContentPage.Content>
-       <ScrollView BindingContext="{Binding AddProvider}">
-         <StackLayout>
-            <Grid>
-               <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
+        <ScrollView BindingContext="{Binding AddProvider}">
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Text="FirstName" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"></Label>
                     <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Nombre Proveedor" Text="{Binding FirstName}"></Entry>
@@ -20,7 +20,7 @@
 
                     <Label Text="Email" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"></Label>
                     <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text" Placeholder="Email del Proveedor" Text="{Binding Email}"></Entry>
-                    
+
                     <Label Text="PhoneNumber" Grid.Column="0" Grid.Row="3" VerticalOptions="Center"></Label>
                     <Entry Grid.Column="1" Grid.Row="3" Keyboard="Numeric" Placeholder="Telefono Proveedor" Text="{Binding PhoneNumber}"></Entry>
                 </Grid>
@@ -30,8 +30,8 @@
                     Command="{Binding SaveCommand }"
                     IsEnabled="{Binding IsEnabled}"
                     Background="#90EE90" 
-                    TextColor="White" HorizontalOptions="Fill" CornerRadius="20" ></Button>  
+                    TextColor="White" HorizontalOptions="Fill" CornerRadius="20" ></Button>
             </StackLayout>
-      </ScrollView>
-    </ContentPage.Content>
+        </ScrollView>
+    </ContentPage.Content> 
 </ContentPage>
