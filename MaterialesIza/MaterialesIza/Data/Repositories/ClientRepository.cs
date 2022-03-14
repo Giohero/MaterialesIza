@@ -117,7 +117,7 @@ namespace MaterialesIza.Data.Repositories
                             Name = od.Service.Name,
                             Description = od.Service.Description,
                             ServiceType = od.Service.ServiceType.TypeService
-                            
+
 
                         }
 
