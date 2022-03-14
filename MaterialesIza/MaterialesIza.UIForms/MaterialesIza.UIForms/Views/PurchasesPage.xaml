@@ -24,7 +24,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0"
-                                             VerticalOptions="End">
+                                             VerticalOptions="Center">
                                     <Label Text="{Binding Id}"
                                            FontAttributes="Bold"
                                            FontSize="Medium"
@@ -32,9 +32,20 @@
                                 </StackLayout>
                                 <StackLayout Grid.Column="1"
                                              VerticalOptions="Center">
-                                    <Label Text="{Binding Provider.FullName}"
+                                    <Label Text="{Binding Date_purchase}"
                                            FontSize="Medium"
                                            TextColor="White"></Label>
+                                    <Label Text="{Binding Purchase_Remarks}"
+                                           FontSize="Medium"
+                                           TextColor="White"></Label>
+                                    <Label Text="{Binding Total_purchase}"
+                                           FontSize="Medium"
+                                           TextColor="White"></Label>
+                                    <Label Text="{Binding Iva_purchase}"
+                                           FontSize="Medium"
+                                           TextColor="White"></Label>
+                                   
+                                    
                                 </StackLayout>
                                 
                             </Grid>
