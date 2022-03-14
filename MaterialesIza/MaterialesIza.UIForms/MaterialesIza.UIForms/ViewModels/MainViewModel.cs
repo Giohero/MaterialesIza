@@ -35,10 +35,9 @@ namespace MaterialesIza.UIForms.ViewModels
 
         public ProvidersViewModel Providers { get; set; }
 
-        public ProviderTypesViewModel ProviderTypes { get; set; }
+ 
         public PurchasesViewModel Purchases { get; set; }
-        public PurchaseTypesViewModel PurchaseTypes { get; set; }
-
+        
         public PurchaseDetailsViewModel PurchaseDetails { get; set; }
 
         public SalesViewModel Sales { get; set; }
@@ -51,9 +50,8 @@ namespace MaterialesIza.UIForms.ViewModels
         public AddProductViewModel AddProduct { get; set; }
 
         public AddProviderViewModel AddProvider { get; set; }
-        public AddProviderTypeViewModel AddProviderType { get; set; }
-        public AddPurchaseTypeViewModel AddPurchaseType { get; set; }
-
+   
+    
         public AddPurchaseViewModel AddPurchase { get; set; }
         public AddServicesViewModel AddServices { get; set; }
         public EditProductViewModel EditProduct { get; set; }
@@ -67,13 +65,12 @@ namespace MaterialesIza.UIForms.ViewModels
         public AddServiceTypeViewModel AddServiceType { get; set; }
         public EditServiceTypeViewModel EditServiceType { get; set; }
 
-        public EditPurchaseTypeViewModel EditPurchaseType { get; set; }
-
+      
         public EditPurchaseViewModel EditPurchase { get; set; }
 
         public EditProviderViewModel EditProvider { get; set; }
 
-        public EditProviderTypeViewModel EditProviderType { get; set; }
+ 
         public ICommand AddProviderCommand { get { return new RelayCommand(GoProviderCommand); } }
 
         public ICommand AddPurchaseCommand { get { return new RelayCommand(GoPurchaseCommand); } }
@@ -83,9 +80,7 @@ namespace MaterialesIza.UIForms.ViewModels
         public ICommand AddClientCommand { get { return new RelayCommand(GoClientCommand); } }
         public ICommand AddEmployeeCommand { get { return new RelayCommand(GoEmployeeCommand); } }
         public ICommand AddProductTypeCommand { get { return new RelayCommand(GoProductTypesCommand); } }
-        public ICommand AddPurchaseTypeCommand { get { return new RelayCommand(GoPurchaseTypesCommand); } }
-
-        public ICommand AddProviderTypeCommand { get { return new RelayCommand(GoProviderTypesCommand); } }
+      
         public ICommand AddServiceTypeCommand { get { return new RelayCommand(GoServiceTypesCommand); } }
 
     
@@ -95,16 +90,8 @@ namespace MaterialesIza.UIForms.ViewModels
             this.AddProvider = new AddProviderViewModel();
             await App.Navigator.PushAsync(new AddProvidersPage());
         }
-        private async void GoProviderTypesCommand()
-        {
-            this.AddProviderType = new AddProviderTypeViewModel();
-            await App.Navigator.PushAsync(new AddProvidersTypePage());
-        }
-        private async void GoPurchaseTypesCommand()
-        {
-            this.AddPurchaseType = new AddPurchaseTypeViewModel();
-            await App.Navigator.PushAsync(new AddPurchaseTypePage());
-        }
+     
+      
         private async void GoPurchaseCommand()
         {
             this.AddPurchase = new AddPurchaseViewModel();

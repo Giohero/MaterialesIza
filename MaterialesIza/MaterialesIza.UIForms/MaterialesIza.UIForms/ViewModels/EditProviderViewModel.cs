@@ -11,7 +11,7 @@ namespace MaterialesIza.UIForms.ViewModels
     public class EditProviderViewModel : BaseViewModel
     {
         private readonly ApiService apiService;
-        public ProviderRequest ProviderRequest { get; set; }
+        public ProviderRequest Provider { get; set; }
 
         private bool isRunning;
         public bool IsRunning
@@ -38,7 +38,7 @@ namespace MaterialesIza.UIForms.ViewModels
             var response = await this.apiService.DeleteAsync(url,
                 "/api",
                 "/Providers",
-                ProviderRequest.Id,
+                Provider.Id,
                 "bearer",
                 MainViewModel.GetInstance().Token.Token);
 
@@ -47,7 +47,7 @@ namespace MaterialesIza.UIForms.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
                 return;
             }
-            MainViewModel.GetInstance().Providers.DeleteProviderInList(ProviderRequest.Id);
+            MainViewModel.GetInstance().Providers.DeleteProviderInList(Provider.Id);
             isEnabled = true;
             isRunning = false;
             await App.Navigator.PopAsync();
@@ -55,7 +55,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
         private async void Save()
         {
-            if (string.IsNullOrEmpty(ProviderRequest.FirstName))
+            if (string.IsNullOrEmpty(Provider.FirstName))
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir un Prooveedor", "Aceptar");
                 return;
@@ -67,8 +67,8 @@ namespace MaterialesIza.UIForms.ViewModels
             var response = await this.apiService.PutAsync(url,
                 "/api",
                 "/Providers",
-                ProviderRequest.Id,
-                ProviderRequest,
+                Provider.Id,
+                Provider,
                 "bearer",
                 MainViewModel.GetInstance().Token.Token);
 
@@ -85,36 +85,13 @@ namespace MaterialesIza.UIForms.ViewModels
         }
         public EditProviderViewModel(ProviderRequest provider)
         {
-            this.ProviderRequest = provider;
+            this.Provider = provider;
             this.apiService = new ApiService();
             this.isEnabled = true;
-            this.LoadProviderTypes();//LoadProductsTypes  
+       
 
         }
-        private IList<string> providerTypeList;
-        public IList<string> ProviderTypeList
-        {
-            get { return this.providerTypeList; }
-            set { this.SetValue(ref this.providerTypeList, value); }
-        }
-        private async void LoadProviderTypes()
-        {
-            var url = Application.Current.Resources["UrlAPI"].ToString();
-            var response = await this.apiService.GetListAsync<ProviderRequest>(
-                url,
-                "/api",
-                "/ProviderTypes",
-                "bearer",
-                MainViewModel.GetInstance().Token.Token);
-
-            if (!response.IsSuccess)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
-                return;
-            }
-            ProviderTypeList = ((List<ProviderRequest>)response.Result).Select(m => m.FirstName).ToList();
-
-        }
+        
 
 
     }

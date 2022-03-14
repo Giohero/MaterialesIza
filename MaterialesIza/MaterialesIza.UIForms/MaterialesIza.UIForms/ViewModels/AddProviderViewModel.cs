@@ -26,30 +26,7 @@ namespace MaterialesIza.UIForms.ViewModels
             set { this.SetValue(ref this.isRunning, value); }
         }
 
-        private IList<string> providerTypeList;
-        public IList<string> ProviderTypeList
-        {
-            get { return this.providerTypeList; }
-            set { this.SetValue(ref this.providerTypeList, value); }
-        }
-        private async void LoadProviderTypes()
-        {
-            var url = Application.Current.Resources["UrlAPI"].ToString();
-            var response = await this.apiService.GetListAsync<ProviderTypeRequest>(//¿¿¿ProviderTypeRequest???
-                url,
-                "/api",
-                "/ProviderTypes",
-                "bearer",
-                MainViewModel.GetInstance().Token.Token);
-
-            if (!response.IsSuccess)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
-                return;
-            }
-            ProviderTypeList = ((List<ProviderTypeRequest>)response.Result).Select(pv => pv.FirstName).ToList();
-
-        }
+       
 
         private bool isEnabled;
         public bool IsEnabled
@@ -110,7 +87,7 @@ namespace MaterialesIza.UIForms.ViewModels
         {
             this.apiService = new ApiService();
             isEnabled = true;
-            this.LoadProviderTypes();
+            
         }
     }
 }

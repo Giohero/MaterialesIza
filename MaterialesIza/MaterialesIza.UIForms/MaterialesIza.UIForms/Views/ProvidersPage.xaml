@@ -4,6 +4,9 @@
              x:Class="MaterialesIza.UIForms.Views.ProvidersPage"
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
              Title="Provedores">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="add" Command="{Binding AddProviderCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Providers}"
@@ -19,6 +22,9 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectProviderCommand}"/>
+                                </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
@@ -32,14 +38,14 @@
                                 </StackLayout>
                                 <StackLayout Grid.Column="1"
                                              VerticalOptions="End">
-                                    <Label Text="{Binding Purchases}"
+                                    <Label Text="{Binding FirstName}"
                                            FontAttributes="Bold"
                                            FontSize="Medium"
                                            TextColor="White"></Label>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1"
                                              VerticalOptions="Center">
-                                    <Label Text="{Binding FullName}"
+                                    <Label Text="{Binding LastName}"
                                            FontSize="Medium"
                                            TextColor="White"></Label>
                                 </StackLayout>

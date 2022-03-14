@@ -78,7 +78,7 @@ namespace MaterialesIza.Controllers.API
 
             if (oldProvider == null)
             {
-                return BadRequest("Id was not found");
+                return BadRequest("Id no encontrado");
             }
             oldProvider.User.FirstName = provider.FirstName;
             oldProvider.User.LastName = provider.LastName;
@@ -101,7 +101,7 @@ namespace MaterialesIza.Controllers.API
             var oldProvider = await this.providerRepository.GetByIdAsync(id);
             if (oldProvider == null)
             {
-                return BadRequest("Id not found");
+                return BadRequest("Id no encontrado");
             }
 
             await this.providerRepository.DeleteAsync(oldProvider);
