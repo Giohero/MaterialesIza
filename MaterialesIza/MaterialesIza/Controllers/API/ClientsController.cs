@@ -49,15 +49,19 @@ namespace MaterialesIza.Controllers.API
             var userClient = await this.userHelper.GetUserByEmailAsync(clientRequest.Email);
             if(userClient == null)
             {
-                userClient = new Data.Entities.User()
+                userClient = new Data.Entities.User
                 {
                     FirstName = clientRequest.FirstName,
                     LastName = clientRequest.LastName,
                     Email = clientRequest.Email,
+                    UserName = clientRequest.Email,
                     PhoneNumber = clientRequest.PhoneNumber,
                 };
+
                 string pasword = "123456";
                 var result = await this.userHelper.AddUserAsync(userClient, pasword);
+
+                await this.userHelper.AddUserToRoleAsync(userClient, "Client");
             }
 
             var emailClient = new EmailRequest { Email = clientRequest.Email };
@@ -86,18 +90,18 @@ namespace MaterialesIza.Controllers.API
             {
                 return BadRequest();
             }
-            var oldClient = await this.userHelper.GetUserByEmailAsync(client.Email);
+            var userClient = await this.userHelper.GetUserByEmailAsync(client.Email);
 
-            if (oldClient == null)
+            if (userClient == null)
             {
                 return BadRequest("Id was not found");
             }
-            oldClient.FirstName = client.FirstName;
-            oldClient.LastName = client.LastName;
-            oldClient.Email = client.Email;
-            oldClient.PhoneNumber = client.PhoneNumber;
+            userClient.FirstName = client.FirstName;
+            userClient.LastName = client.LastName;
+            userClient.Email = client.Email;
+            userClient.PhoneNumber = client.PhoneNumber;
 
-            var updateClient = await this.userHelper.UpdateUserAsync(oldClient);
+            var updateClient = await this.userHelper.UpdateUserAsync(userClient);
             return Ok(updateClient);
 
         }
