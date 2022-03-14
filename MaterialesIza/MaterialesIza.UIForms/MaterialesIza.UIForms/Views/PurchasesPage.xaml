@@ -4,6 +4,9 @@
              x:Class="MaterialesIza.UIForms.Views.PurchasesPage"
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
              Title="Compras">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="add" Command="{Binding AddPurchaseCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Purchases}"
@@ -46,6 +49,9 @@
                                            TextColor="White"></Label>
                                    
                                     
+                                </StackLayout>
+                                <StackLayout Grid.Column="2" VerticalOptions="Center">
+                                    <Image  Source="Select" HeightRequest="60"/>
                                 </StackLayout>
                                 
                             </Grid>
