@@ -22,10 +22,12 @@ namespace MaterialesIza.Controllers.API
         //// GET: Purchases
         //[HttpGet]
         [HttpGet]
-        public IActionResult GetProviders()
+        public IActionResult GetPurchases()
         {
             return Ok(this.purchaseRepository.GetAll());
         }
+
+
 
 
     }

@@ -92,7 +92,5 @@ namespace MaterialesIza.UIForms.ViewModels
 
         }
         
-
-
     }
 }
