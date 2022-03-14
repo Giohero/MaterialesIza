@@ -98,7 +98,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
         public void DeleteClientInList(int clientId)
         {
-            var previousClient = myClients.Where(e => e.Id == clientId).FirstOrDefault();
+            var previousClient = myClients.Where(c => c.Id == clientId).FirstOrDefault();
             if (previousClient != null)
             {
                 this.myClients.Remove(previousClient);

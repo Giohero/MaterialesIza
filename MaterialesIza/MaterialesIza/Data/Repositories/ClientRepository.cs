@@ -71,13 +71,13 @@ namespace MaterialesIza.Data.Repositories
         {
             var c = this.dataContext.Clients
                 .Include(c => c.User)
-                .Include(c => c.Orders)
-                .ThenInclude(o => o.OrderDetails)
-                .ThenInclude(od => od.Service)
-                .ThenInclude(s => s.ServiceType)
-                .Include(c => c.Orders)
-                .ThenInclude(c => c.Employee)
-                .ThenInclude(c => c.User)
+                //.Include(c => c.Orders)
+                //.ThenInclude(o => o.OrderDetails)
+                //.ThenInclude(od => od.Service)
+                //.ThenInclude(s => s.ServiceType)
+                //.Include(c => c.Orders)
+                //.ThenInclude(c => c.Employee)
+                //.ThenInclude(c => c.User)
                 .FirstOrDefault(c => c.User.Email.ToLower() == emailClient.Email);
             if (c == null)
             {
@@ -90,39 +90,39 @@ namespace MaterialesIza.Data.Repositories
                 LastName = c.User.LastName,
                 Email = c.User.Email,
                 PhoneNumber = c.User.PhoneNumber,
-                Orders = c.Orders?.Select(o => new OrderRequest
-                {
-                    Id = o.Id,
-                    Date_Order = o.Date_Order,
-                    Total_Order = o.Total_Order,
-                    Iva_Order = o.Iva_Order,
-                    Order_Remarks = o.Order_Remarks,
-                    Employee = new EmployeeRequest
-                    {
-                        Id = o.Employee.Id,
-                        Email = o.Employee.User.Email,
-                        FirstName = o.Employee.User.FirstName,
-                        LastName = o.Employee.User.LastName,
-                        PhoneNumber = o.Employee.User.PhoneNumber,
-                    },
-                    OrderDetails = o.OrderDetails?.Select(od => new OrderDetailsRequest
-                    {
-                        Id = od.Id,
-                        Quantity = od.Quantity,
-                        Price = od.Price,
-                        Service = new ServiceRequest
-                        {
+                //Orders = c.Orders?.Select(o => new OrderRequest
+                //{
+                //    Id = o.Id,
+                //    Date_Order = o.Date_Order,
+                //    Total_Order = o.Total_Order,
+                //    Iva_Order = o.Iva_Order,
+                //    Order_Remarks = o.Order_Remarks,
+                //    Employee = new EmployeeRequest
+                //    {
+                //        Id = o.Employee.Id,
+                //        Email = o.Employee.User.Email,
+                //        FirstName = o.Employee.User.FirstName,
+                //        LastName = o.Employee.User.LastName,
+                //        PhoneNumber = o.Employee.User.PhoneNumber,
+                //    },
+                //    OrderDetails = o.OrderDetails?.Select(od => new OrderDetailsRequest
+                //    {
+                //        Id = od.Id,
+                //        Quantity = od.Quantity,
+                //        Price = od.Price,
+                //        Service = new ServiceRequest
+                //        {
 
-                            Id = od.Service.Id,
-                            Name = od.Service.Name,
-                            Description = od.Service.Description,
-                            ServiceType = od.Service.ServiceType.TypeService
+                //            Id = od.Service.Id,
+                //            Name = od.Service.Name,
+                //            Description = od.Service.Description,
+                //            ServiceType = od.Service.ServiceType.TypeService
 
 
-                        }
+                //        }
 
-                    })/*.Where(od => od.Date_Order != null)*/.ToList()
-                }).ToList()
+                //    })/*.Where(od => od.Date_Order != null)*/.ToList()
+                //}).ToList()
             };
 
             return x;
