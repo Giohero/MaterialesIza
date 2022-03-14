@@ -12,17 +12,20 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Text="Compra" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce tu Compra" Text="{Binding PurchaseRequest.Id}"></Entry>
 
-                    <Label Text="Fecha de la Compra" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="1" Keyboard="Text" Placeholder="Introduce la Fecha de Compra" Text="{Binding PurchaseRequest.Date_purchase}"></Entry>
+                    <Label Text="Fecha de la Compra" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="0" Keyboard="Text" Placeholder="Introduce la Fecha de Compra" IsReadOnly="True" Text="{Binding PurchaseRequest.Date_purchase}" ></Entry>
+                    
+                    <Label Text="Total de la Compra" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="1" Keyboard="Text" Placeholder="Introduce Total de Compra" Text="{Binding PurchaseRequest.Total_purchase}"></Entry>
+                    
+                    <Label Text="IVA de la Compra" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text" Placeholder="Introduce IVA de Compra" Text="{Binding PurchaseRequest.Iva_purchase}"></Entry>
+                    
+                    <Label Text="Observaciones de la compra" Grid.Column="0" Grid.Row="3" VerticalOptions="Center"></Label>
+                    <Entry Grid.Column="1" Grid.Row="3" Keyboard="Text" Placeholder="Observaciones de Compra" Text="{Binding PurchaseRequest.Purchase_Remarks}"></Entry>
 
-                    <Label Text="Observaciones de la compra" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"></Label>
-                    <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text" Placeholder="Observaciones de Compra" Text="{Binding PurchaseRequest.Purchase_Remarks}"></Entry>
-
-                    <Label Text="Tipo de Compra" Grid.Column="0" Grid.Row="3" VerticalOptions="Center"></Label>
-                    <Picker Grid.Column="1" Grid.Row="3" Title="Selecciona un Tipo de Compra" ItemsSource="{Binding PurchaseTypeList}" SelectedItem="{Binding PurchaseRequest.PurchaseDetails, Mode=TwoWay}"/>
+                    
                 </Grid>
                 <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>

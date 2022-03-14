@@ -55,9 +55,9 @@ namespace MaterialesIza.UIForms.ViewModels
 
         private async void Save()
         {
-            if (string.IsNullOrEmpty(PurchaseRequest.PurchaseName))//¿PurchaseRequest.Id?
+            if (string.IsNullOrEmpty(PurchaseRequest.Total_purchase.ToString()))
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir alguna Compra", "Aceptar");
+                await Application.Current.MainPage.DisplayAlert("Error", "Debes introducir  TOTAL de Compra", "Aceptar");
                 return;
             }
             isEnabled = false;
@@ -87,7 +87,7 @@ namespace MaterialesIza.UIForms.ViewModels
             this.PurchaseRequest = purchase;
             this.apiService = new ApiService();
             this.isEnabled = true;
-            this.LoadPurchaseTypes();
+           
 
         }
         private IList<string> purchaseTypeList;
@@ -96,24 +96,7 @@ namespace MaterialesIza.UIForms.ViewModels
             get { return this.purchaseTypeList; }
             set { this.SetValue(ref this.purchaseTypeList, value); }
         }
-        private async void LoadPurchaseTypes()
-        {
-            var url = Application.Current.Resources["UrlAPI"].ToString();
-            var response = await this.apiService.GetListAsync<PurchaseTypeRequest>(
-                url,
-                "/api",
-                "/PurchaseTypes",
-                "bearer",
-                MainViewModel.GetInstance().Token.Token);
-
-            if (!response.IsSuccess)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
-                return;
-            }
-            PurchaseTypeList = ((List<PurchaseTypeRequest>)response.Result).Select(pu => pu.PurchaseName).ToList();
-
-        }
+       
 
     }
 }

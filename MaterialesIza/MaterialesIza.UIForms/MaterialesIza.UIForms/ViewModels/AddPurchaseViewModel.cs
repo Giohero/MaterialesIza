@@ -71,7 +71,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
             isEnabled = false;
             isRunning = true;
-            var product = new PurchaseRequest { Date_purchase = Date_purchase, Total_purchase = Total_purchase, Iva_purchase = Iva_purchase, Purchase_Remarks = Purchase_Remarks };
+            var product = new PurchaseRequest { Date_purchase = DateTime.Now, Total_purchase = Total_purchase, Iva_purchase = Iva_purchase, Purchase_Remarks = Purchase_Remarks };
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var response = await this.apiService.PostAsync(url,
                 "/api",
