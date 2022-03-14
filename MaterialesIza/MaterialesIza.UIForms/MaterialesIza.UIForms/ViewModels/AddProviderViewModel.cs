@@ -62,7 +62,7 @@ namespace MaterialesIza.UIForms.ViewModels
 
             isEnabled = false;
             isRunning = true;
-            var provider = new ProviderRequest { FirstName = FirstName, LastName = LastName, Email = Email, PhoneNumber = PhoneNumber };
+            var provider = new ProviderRequest { FirstName = FirstName, LastName = LastName, Email = Email, PhoneNumber = PhoneNumber};
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var response = await this.apiService.PostAsync(url,
                 "/api",

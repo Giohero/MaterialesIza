@@ -88,7 +88,7 @@ namespace MaterialesIza.UIForms.ViewModels
         private async void GoProviderCommand()
         {
             this.AddProvider = new AddProviderViewModel();
-            await App.Navigator.PushAsync(new AddProvidersPage());
+            await App.Navigator.PushAsync(new AddProviderPage());
         }
      
       
